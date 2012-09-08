@@ -114,6 +114,7 @@ public class appController {
 	   
        
        ic.Initiate_MainMenu();
+       
        if(checkClear())
        {
            db.clearDatabase();
@@ -123,8 +124,110 @@ public class appController {
        while(!logoutSel)
        {
            
-           
-           @SuppressWarnings("unused")
+        /*   
+        @SuppressWarnings("unused")
+		long newCurrentTime;
+           while(!dataReceived)
+           {
+               dataReceived = ic.mm.dataRec();
+               edSchedSel = ic.mm.editSchedSelected();
+               schedSetupSel = ic.mm.InitSetupSelected();
+               logoutSel = ic.mm.logoutSelected();
+               //System.out.println("Class end time: " +classEnded);
+               //System.out.println("Current time: " +System.currentTimeMillis());
+                       
+                       
+               if(classEnded != 0 && System.currentTimeMillis() - classEnded >= TENMIN)
+               {
+                 //System.out.println("EXIT");
+                 System.exit(0);   
+               }
+               
+               sleep(500);
+           }
+           newCurrentTime = 0;
+           ic.mm.setdataRec(false);
+           dataReceived = false;
+
+           if(logoutSel)
+           {
+               // Logout 
+               auth.logout();
+               ic.Initiate_Logout();
+
+           }
+           else if(edSchedSel)
+           {
+                //Edit Schedule
+               ic.Course_Select_Form();
+
+               while(!dataReceived)
+               {
+                   dataReceived = ic.cs.courseSelected();
+                   sleep(300);
+                //   System.out.println("test");
+               }
+
+               ic.cs.setCourseSelected(false);
+               dataReceived = false;
+
+               courseSel = ic.cs.getSelection();
+               getData(courseSel);
+               
+               ic.Pre_Filled_Form(courseSel,defSub,defCourseName,defSemester,defCourseStart,
+                       defCourseEnd,defMonStart,defMonEnd,defTueStart,defTueEnd,defWedStart,
+                       defWedEnd,defThuStart,defThuEnd,defFriStart,defFriEnd,defSatStart,defSatEnd);
+               
+               while(!dataReceived)
+               {
+                   dataReceived = ic.edSched.dataRec(); 
+                   sleep(300);
+               }
+               
+               dataReceived = false;
+               ic.edSched.setDataRec(false);
+
+               //System.out.println("Save has been pressed" +ic.edSched.newMonStart);
+
+               db.storeClassSched(PrefilledScheduleForm.getDefCourseID(), PrefilledScheduleForm.getNewCourseStart(), PrefilledScheduleForm.getNewCourseEnd(), 
+                       PrefilledScheduleForm.getNewMonStart(), PrefilledScheduleForm.getNewMonEnd(), PrefilledScheduleForm.getNewTueStart(), PrefilledScheduleForm.getNewTueEnd(), 
+                       PrefilledScheduleForm.getNewWedStart(), PrefilledScheduleForm.getNewWedEnd(), PrefilledScheduleForm.getNewThuStart(), PrefilledScheduleForm.getNewThuEnd(), 
+                       PrefilledScheduleForm.getNewFriStart(), PrefilledScheduleForm.getNewFriEnd(), PrefilledScheduleForm.getNewSatStart(), PrefilledScheduleForm.getNewSatEnd());
+
+
+           }
+           else if(schedSetupSel)
+           {
+               ic.sched.launchInitial();
+               //Initial Schedule Setup
+               while(!ic.sched.dataRec())
+               {
+                   dataReceived = ic.sched.dataRec();
+                   sleep(300);
+               }
+               dataReceived = false;
+               ic.sched.setDataRec(false);
+               
+               db.storeClassInfo(ScheduleForm.getNewCourseID(), ScheduleForm.getNewSub(), ScheduleForm.getNewCourseName(),ScheduleForm.getNewSemester());
+               db.storeClassSched(ScheduleForm.getNewCourseID(), ScheduleForm.getNewCourseStart(), ScheduleForm.getNewCourseEnd(), 
+                       ScheduleForm.getNewMonStart(), ScheduleForm.getNewMonEnd(), ScheduleForm.getNewTueStart(), ScheduleForm.getNewTueEnd(), 
+                       ScheduleForm.getNewWedStart(), ScheduleForm.getNewWedEnd(), ScheduleForm.getNewThuStart(), ScheduleForm.getNewThuEnd(), 
+                       ScheduleForm.getNewFriStart(), ScheduleForm.getNewFriEnd(), ScheduleForm.getNewSatStart(), ScheduleForm.getNewSatEnd());
+
+           }
+
+           dataReceived = false;
+           */
+    	   checkSchedule();
+          // db.disconnect();
+       }
+       //end
+       
+    }
+    
+    private static void checkSchedule(){
+    	
+    	@SuppressWarnings("unused")
 		long newCurrentTime;
            while(!dataReceived)
            {
@@ -218,10 +321,8 @@ public class appController {
            dataReceived = false;
            
           // db.disconnect();
-       }
        
     }
-    
     private static void tryLogin(){
     	
     	
