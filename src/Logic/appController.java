@@ -41,8 +41,8 @@ public class appController {
     private static int min;
     private static Calendar autoClear = new GregorianCalendar();
     private static Calendar setRun = new GregorianCalendar();
-    @SuppressWarnings("unused")
-	private static Calendar calendar = new GregorianCalendar();
+    //@SuppressWarnings("unused")
+	//private static Calendar calendar = new GregorianCalendar();
     private static Timer timer = new FutureTimer();
     private static Date date = new Date();
     private static Date date2 = new Date();
@@ -88,7 +88,663 @@ public class appController {
         hr = min = 0;
     }
     
-    public static void main(String args[])
+    
+    /**** BEGIN TEST GENERATED FIELDS ****/
+    /**
+     * @ return edSchedSel
+     */
+     public boolean getEdSchedSel(){
+    	 return edSchedSel;
+     }
+     
+     
+     /**
+      * 
+      * @return schedSetupSel
+      */
+     public boolean getSchedSetupSel(){
+    	 return schedSetupSel;
+     }
+    /**
+	 * @return the hr
+	 */
+	public int getHr() {
+		return hr;
+	}
+
+	/**
+	 * @param hr the hr to set
+	 */
+	public static void setHr(int hr) {
+		appController.hr = hr;
+	}
+
+	/**
+	 * @return the min
+	 */
+	public int getMin() {
+		return min;
+	}
+
+	/**
+	 * @param min the min to set
+	 */
+	public static void setMin(int min) {
+		appController.min = min;
+	}
+
+	/**
+	 * @return the autoClear
+	 */
+	public static Calendar getAutoClear() {
+		return autoClear;
+	}
+
+	/**
+	 * @param autoClear the autoClear to set
+	 */
+	public static void setAutoClear(Calendar autoClear) {
+		appController.autoClear = autoClear;
+	}
+
+	/**
+	 * @return the setRun
+	 */
+	public static Calendar getSetRun() {
+		return setRun;
+	}
+
+	/**
+	 * @param setRun the setRun to set
+	 */
+	public static void setSetRun(Calendar setRun) {
+		appController.setRun = setRun;
+	} 
+
+	/**
+	 * @return the timer
+	 */
+	public static Timer getTimer() {
+		return timer;
+	}
+
+	/**
+	 * @param timer the timer to set
+	 */
+	public static void setTimer(Timer timer) {
+		appController.timer = timer;
+	}
+
+	/**
+	 * @return the date
+	 */
+	public static Date getDate() {
+		return date;
+	}
+
+	/**
+	 * @param date the date to set
+	 */
+	public static void setDate(Date date) {
+		appController.date = date;
+	}
+
+	/**
+	 * @return the date2
+	 */
+	public static Date getDate2() {
+		return date2;
+	}
+
+	/**
+	 * @param date2 the date2 to set
+	 */
+	public static void setDate2(Date date2) {
+		appController.date2 = date2;
+	}
+
+	/**
+	 * @return the defSub
+	 */
+	public String getDefSub() {
+		return defSub;
+	}
+
+	/**
+	 * @param defSub the defSub to set
+	 */
+	public static void setDefSub(String defSub) {
+		appController.defSub = defSub;
+	}
+
+	/**
+	 * @return the defSemester
+	 */
+	public static String getDefSemester() {
+		return defSemester;
+	}
+
+	/**
+	 * @param defSemester the defSemester to set
+	 */
+	public static void setDefSemester(String defSemester) {
+		appController.defSemester = defSemester;
+	}
+
+	/**
+	 * @return the defCourseName
+	 */
+	public static String getDefCourseName() {
+		return defCourseName;
+	}
+
+	/**
+	 * @param defCourseName the defCourseName to set
+	 */
+	public static void setDefCourseName(String defCourseName) {
+		appController.defCourseName = defCourseName;
+	}
+
+	/**
+	 * @return the defCourseStart
+	 */
+	public static String getDefCourseStart() {
+		return defCourseStart;
+	}
+
+	/**
+	 * @param defCourseStart the defCourseStart to set
+	 */
+	public static void setDefCourseStart(String defCourseStart) {
+		appController.defCourseStart = defCourseStart;
+	}
+
+	/**
+	 * @return the defCourseEnd
+	 */
+	public static String getDefCourseEnd() {
+		return defCourseEnd;
+	}
+
+	/**
+	 * @param defCourseEnd the defCourseEnd to set
+	 */
+	public static void setDefCourseEnd(String defCourseEnd) {
+		appController.defCourseEnd = defCourseEnd;
+	}
+
+	/**
+	 * @return the defMonStart
+	 */
+	public static String getDefMonStart() {
+		return defMonStart;
+	}
+
+	/**
+	 * @param defMonStart the defMonStart to set
+	 */
+	public static void setDefMonStart(String defMonStart) {
+		appController.defMonStart = defMonStart;
+	}
+
+	/**
+	 * @return the defMonEnd
+	 */
+	public static String getDefMonEnd() {
+		return defMonEnd;
+	}
+
+	/**
+	 * @param defMonEnd the defMonEnd to set
+	 */
+	public static void setDefMonEnd(String defMonEnd) {
+		appController.defMonEnd = defMonEnd;
+	}
+
+	/**
+	 * @return the defTueStart
+	 */
+	public static String getDefTueStart() {
+		return defTueStart;
+	}
+
+	/**
+	 * @param defTueStart the defTueStart to set
+	 */
+	public static void setDefTueStart(String defTueStart) {
+		appController.defTueStart = defTueStart;
+	}
+
+	/**
+	 * @return the defTueEnd
+	 */
+	public static String getDefTueEnd() {
+		return defTueEnd;
+	}
+
+	/**
+	 * @param defTueEnd the defTueEnd to set
+	 */
+	public static void setDefTueEnd(String defTueEnd) {
+		appController.defTueEnd = defTueEnd;
+	}
+
+	/**
+	 * @return the defWedStart
+	 */
+	public static String getDefWedStart() {
+		return defWedStart;
+	}
+
+	/**
+	 * @param defWedStart the defWedStart to set
+	 */
+	public static void setDefWedStart(String defWedStart) {
+		appController.defWedStart = defWedStart;
+	}
+
+	/**
+	 * @return the defWedEnd
+	 */
+	public static String getDefWedEnd() {
+		return defWedEnd;
+	}
+
+	/**
+	 * @param defWedEnd the defWedEnd to set
+	 */
+	public static void setDefWedEnd(String defWedEnd) {
+		appController.defWedEnd = defWedEnd;
+	}
+
+	/**
+	 * @return the defThuStart
+	 */
+	public static String getDefThuStart() {
+		return defThuStart;
+	}
+
+	/**
+	 * @param defThuStart the defThuStart to set
+	 */
+	public static void setDefThuStart(String defThuStart) {
+		appController.defThuStart = defThuStart;
+	}
+
+	/**
+	 * @return the defThuEnd
+	 */
+	public static String getDefThuEnd() {
+		return defThuEnd;
+	}
+
+	/**
+	 * @param defThuEnd the defThuEnd to set
+	 */
+	public static void setDefThuEnd(String defThuEnd) {
+		appController.defThuEnd = defThuEnd;
+	}
+
+	/**
+	 * @return the defFriStart
+	 */
+	public static String getDefFriStart() {
+		return defFriStart;
+	}
+
+	/**
+	 * @param defFriStart the defFriStart to set
+	 */
+	public static void setDefFriStart(String defFriStart) {
+		appController.defFriStart = defFriStart;
+	}
+
+	/**
+	 * @return the defFriEnd
+	 */
+	public static String getDefFriEnd() {
+		return defFriEnd;
+	}
+
+	/**
+	 * @param defFriEnd the defFriEnd to set
+	 */
+	public static void setDefFriEnd(String defFriEnd) {
+		appController.defFriEnd = defFriEnd;
+	}
+
+	/**
+	 * @return the defSatStart
+	 */
+	public static String getDefSatStart() {
+		return defSatStart;
+	}
+
+	/**
+	 * @param defSatStart the defSatStart to set
+	 */
+	public static void setDefSatStart(String defSatStart) {
+		appController.defSatStart = defSatStart;
+	}
+
+	/**
+	 * @return the defSatEnd
+	 */
+	public static String getDefSatEnd() {
+		return defSatEnd;
+	}
+
+	/**
+	 * @param defSatEnd the defSatEnd to set
+	 */
+	public static void setDefSatEnd(String defSatEnd) {
+		appController.defSatEnd = defSatEnd;
+	}
+
+	/**
+	 * @return the username
+	 */
+	public static String getUsername() {
+		return username;
+	}
+
+	/**
+	 * @param username the username to set
+	 */
+	public static void setUsername(String username) {
+		appController.username = username;
+	}
+
+	/**
+	 * @return the password
+	 */
+	public static String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
+	public static void setPassword(String password) {
+		appController.password = password;
+	}
+
+	/**
+	 * @return the loggedin
+	 */
+	public static boolean isLoggedin() {
+		return loggedin;
+	}
+
+	/**
+	 * @param loggedin the loggedin to set
+	 */
+	public static void setLoggedin(boolean loggedin) {
+		appController.loggedin = loggedin;
+	}
+
+	/**
+	 * @return the dataReceived
+	 */
+	public static boolean isDataReceived() {
+		return dataReceived;
+	}
+
+	/**
+	 * @param dataReceived the dataReceived to set
+	 */
+	public static void setDataReceived(boolean dataReceived) {
+		appController.dataReceived = dataReceived;
+	}
+
+	/**
+	 * @return the edSchedSel
+	 */
+	public static boolean isEdSchedSel() {
+		return edSchedSel;
+	}
+
+	/**
+	 * @param edSchedSel the edSchedSel to set
+	 */
+	public static void setEdSchedSel(boolean edSchedSel) {
+		appController.edSchedSel = edSchedSel;
+	}
+
+	/**
+	 * @return the schedSetupSel
+	 */
+	public static boolean isSchedSetupSel() {
+		return schedSetupSel;
+	}
+
+	/**
+	 * @param schedSetupSel the schedSetupSel to set
+	 */
+	public static void setSchedSetupSel(boolean schedSetupSel) {
+		appController.schedSetupSel = schedSetupSel;
+	}
+
+	/**
+	 * @return the logoutSel
+	 */
+	public static boolean isLogoutSel() {
+		return logoutSel;
+	}
+
+	/**
+	 * @param logoutSel the logoutSel to set
+	 */
+	public static void setLogoutSel(boolean logoutSel) {
+		appController.logoutSel = logoutSel;
+	}
+
+	/**
+	 * @return the clearDate
+	 */
+	public static int getClearDate() {
+		return clearDate;
+	}
+
+	/**
+	 * @param clearDate the clearDate to set
+	 */
+	public static void setClearDate(int clearDate) {
+		appController.clearDate = clearDate;
+	}
+
+	/**
+	 * @return the clearMonth
+	 */
+	public static int getClearMonth() {
+		return clearMonth;
+	}
+
+	/**
+	 * @param clearMonth the clearMonth to set
+	 */
+	public static void setClearMonth(int clearMonth) {
+		appController.clearMonth = clearMonth;
+	}
+
+	/**
+	 * @return the clearYear
+	 */
+	public static int getClearYear() {
+		return clearYear;
+	}
+
+	/**
+	 * @param clearYear the clearYear to set
+	 */
+	public static void setClearYear(int clearYear) {
+		appController.clearYear = clearYear;
+	}
+
+	/**
+	 * @return the counter
+	 */
+	public int getCounter() {
+		return counter;
+	}
+
+	/**
+	 * @param counter the counter to set
+	 */
+	public static void setCounter(int counter) {
+		appController.counter = counter;
+	}
+
+	/**
+	 * @return the db
+	 */
+	public static DBConnection getDb() {
+		return db;
+	}
+
+	/**
+	 * @param db the db to set
+	 */
+	public static void setDb(DBConnection db) {
+		appController.db = db;
+	}
+
+	/**
+	 * @return the ic
+	 */
+	public static InterfaceController getIc() {
+		return ic;
+	}
+
+	/**
+	 * @param ic the ic to set
+	 */
+	public static void setIc(InterfaceController ic) {
+		appController.ic = ic;
+	}
+
+	/**
+	 * @return the auth
+	 */
+	public static Authenticate getAuth() {
+		return auth;
+	}
+
+	/**
+	 * @param auth the auth to set
+	 */
+	public static void setAuth(Authenticate auth) {
+		appController.auth = auth;
+	}
+
+	/**
+	 * @return the courseSel
+	 */
+	public static int getCourseSel() {
+		return courseSel;
+	}
+
+	/**
+	 * @param courseSel the courseSel to set
+	 */
+	public static void setCourseSel(int courseSel) {
+		appController.courseSel = courseSel;
+	}
+
+	/**
+	 * @return the classEnded
+	 */
+	public static long getClassEnded() {
+		return classEnded;
+	}
+
+	/**
+	 * @param classEnded the classEnded to set
+	 */
+	public static void setClassEnded(long classEnded) {
+		appController.classEnded = classEnded;
+	}
+
+	/**
+	 * @return the dbClear
+	 */
+	public static TimerTask getDbClear() {
+		return dbClear;
+	}
+
+	/**
+	 * @param dbClear the dbClear to set
+	 */
+	public static void setDbClear(TimerTask dbClear) {
+		appController.dbClear = dbClear;
+	}
+
+	/**
+	 * @return the popup15min
+	 */
+	public static TimerTask getPopup15min() {
+		return popup15min;
+	}
+
+	/**
+	 * @param popup15min the popup15min to set
+	 */
+	public static void setPopup15min(TimerTask popup15min) {
+		appController.popup15min = popup15min;
+	}
+
+	/**
+	 * @return the popup5min
+	 */
+	public static TimerTask getPopup5min() {
+		return popup5min;
+	}
+
+	/**
+	 * @param popup5min the popup5min to set
+	 */
+	public static void setPopup5min(TimerTask popup5min) {
+		appController.popup5min = popup5min;
+	}
+
+	/**
+	 * @return the endofclass
+	 */
+	public static TimerTask getEndofclass() {
+		return endofclass;
+	}
+
+	/**
+	 * @param endofclass the endofclass to set
+	 */
+	public static void setEndofclass(TimerTask endofclass) {
+		appController.endofclass = endofclass;
+	}
+
+	/**
+	 * @return the systemExit
+	 */
+	public static TimerTask getSystemExit() {
+		return systemExit;
+	}
+
+	/**
+	 * @param systemExit the systemExit to set
+	 */
+	public static void setSystemExit(TimerTask systemExit) {
+		appController.systemExit = systemExit;
+	}
+
+	/**
+	 * @return the tenmin
+	 */
+	public long getTenmin() {
+		return TENMIN;
+	}
+
+    /**** END TEST GENERATED FIELDS ****/
+
+	public static void main(String args[])
     {       
 //       Calendar now = new GregorianCalendar();
 //       now.set(2008, 3, 15, 13, 29);
