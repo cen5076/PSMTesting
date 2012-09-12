@@ -8,6 +8,7 @@ import org.junit.Test;
 
 public class appControllerTest {
 
+	@SuppressWarnings("unused")
 	private appController app1;
 	
 	@Before
@@ -24,7 +25,7 @@ public class appControllerTest {
 	}
 
 	@Test
-	/* Assure that the values are initiated to zero */
+	/* Constructor */
 	public void testAppController() {
 		fail("Not yet implemented");
 		//assertEquals("Zero Hours",0,app1.getHr());
@@ -37,6 +38,7 @@ public class appControllerTest {
 	}
 
 	@Test
+	/* Program Entry point */
 	public void testMain() {
 		fail("Not yet implemented");
 	}
