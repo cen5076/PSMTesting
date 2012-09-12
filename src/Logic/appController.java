@@ -112,12 +112,7 @@ public class appController {
 		return hr;
 	}
 
-	/**
-	 * @param hr the hr to set
-	 */
-	public static void setHr(int hr) {
-		appController.hr = hr;
-	}
+	
 
 	/**
 	 * @return the min
@@ -126,12 +121,7 @@ public class appController {
 		return min;
 	}
 
-	/**
-	 * @param min the min to set
-	 */
-	public static void setMin(int min) {
-		appController.min = min;
-	}
+	
 
 	/**
 	 * @return the autoClear
@@ -140,12 +130,7 @@ public class appController {
 		return autoClear;
 	}
 
-	/**
-	 * @param autoClear the autoClear to set
-	 */
-	public static void setAutoClear(Calendar autoClear) {
-		appController.autoClear = autoClear;
-	}
+	
 
 	/**
 	 * @return the setRun
@@ -154,12 +139,7 @@ public class appController {
 		return setRun;
 	}
 
-	/**
-	 * @param setRun the setRun to set
-	 */
-	public static void setSetRun(Calendar setRun) {
-		appController.setRun = setRun;
-	} 
+	 
 
 	/**
 	 * @return the timer
@@ -168,12 +148,7 @@ public class appController {
 		return timer;
 	}
 
-	/**
-	 * @param timer the timer to set
-	 */
-	public static void setTimer(Timer timer) {
-		appController.timer = timer;
-	}
+	
 
 	/**
 	 * @return the date
@@ -182,12 +157,7 @@ public class appController {
 		return date;
 	}
 
-	/**
-	 * @param date the date to set
-	 */
-	public static void setDate(Date date) {
-		appController.date = date;
-	}
+	
 
 	/**
 	 * @return the date2
@@ -196,12 +166,7 @@ public class appController {
 		return date2;
 	}
 
-	/**
-	 * @param date2 the date2 to set
-	 */
-	public static void setDate2(Date date2) {
-		appController.date2 = date2;
-	}
+	
 
 	/**
 	 * @return the defSub
@@ -210,12 +175,7 @@ public class appController {
 		return defSub;
 	}
 
-	/**
-	 * @param defSub the defSub to set
-	 */
-	public static void setDefSub(String defSub) {
-		appController.defSub = defSub;
-	}
+	
 
 	/**
 	 * @return the defSemester
@@ -224,12 +184,7 @@ public class appController {
 		return defSemester;
 	}
 
-	/**
-	 * @param defSemester the defSemester to set
-	 */
-	public static void setDefSemester(String defSemester) {
-		appController.defSemester = defSemester;
-	}
+	
 
 	/**
 	 * @return the defCourseName
@@ -238,12 +193,7 @@ public class appController {
 		return defCourseName;
 	}
 
-	/**
-	 * @param defCourseName the defCourseName to set
-	 */
-	public static void setDefCourseName(String defCourseName) {
-		appController.defCourseName = defCourseName;
-	}
+	
 
 	/**
 	 * @return the defCourseStart
@@ -252,12 +202,7 @@ public class appController {
 		return defCourseStart;
 	}
 
-	/**
-	 * @param defCourseStart the defCourseStart to set
-	 */
-	public static void setDefCourseStart(String defCourseStart) {
-		appController.defCourseStart = defCourseStart;
-	}
+	
 
 	/**
 	 * @return the defCourseEnd
@@ -266,12 +211,7 @@ public class appController {
 		return defCourseEnd;
 	}
 
-	/**
-	 * @param defCourseEnd the defCourseEnd to set
-	 */
-	public static void setDefCourseEnd(String defCourseEnd) {
-		appController.defCourseEnd = defCourseEnd;
-	}
+	
 
 	/**
 	 * @return the defMonStart
@@ -280,12 +220,7 @@ public class appController {
 		return defMonStart;
 	}
 
-	/**
-	 * @param defMonStart the defMonStart to set
-	 */
-	public static void setDefMonStart(String defMonStart) {
-		appController.defMonStart = defMonStart;
-	}
+	
 
 	/**
 	 * @return the defMonEnd
@@ -294,12 +229,7 @@ public class appController {
 		return defMonEnd;
 	}
 
-	/**
-	 * @param defMonEnd the defMonEnd to set
-	 */
-	public static void setDefMonEnd(String defMonEnd) {
-		appController.defMonEnd = defMonEnd;
-	}
+	
 
 	/**
 	 * @return the defTueStart
@@ -308,12 +238,7 @@ public class appController {
 		return defTueStart;
 	}
 
-	/**
-	 * @param defTueStart the defTueStart to set
-	 */
-	public static void setDefTueStart(String defTueStart) {
-		appController.defTueStart = defTueStart;
-	}
+	
 
 	/**
 	 * @return the defTueEnd
@@ -322,12 +247,7 @@ public class appController {
 		return defTueEnd;
 	}
 
-	/**
-	 * @param defTueEnd the defTueEnd to set
-	 */
-	public static void setDefTueEnd(String defTueEnd) {
-		appController.defTueEnd = defTueEnd;
-	}
+	
 
 	/**
 	 * @return the defWedStart
@@ -336,12 +256,7 @@ public class appController {
 		return defWedStart;
 	}
 
-	/**
-	 * @param defWedStart the defWedStart to set
-	 */
-	public static void setDefWedStart(String defWedStart) {
-		appController.defWedStart = defWedStart;
-	}
+	
 
 	/**
 	 * @return the defWedEnd
@@ -350,12 +265,7 @@ public class appController {
 		return defWedEnd;
 	}
 
-	/**
-	 * @param defWedEnd the defWedEnd to set
-	 */
-	public static void setDefWedEnd(String defWedEnd) {
-		appController.defWedEnd = defWedEnd;
-	}
+	
 
 	/**
 	 * @return the defThuStart
@@ -364,12 +274,7 @@ public class appController {
 		return defThuStart;
 	}
 
-	/**
-	 * @param defThuStart the defThuStart to set
-	 */
-	public static void setDefThuStart(String defThuStart) {
-		appController.defThuStart = defThuStart;
-	}
+	
 
 	/**
 	 * @return the defThuEnd
@@ -378,12 +283,7 @@ public class appController {
 		return defThuEnd;
 	}
 
-	/**
-	 * @param defThuEnd the defThuEnd to set
-	 */
-	public static void setDefThuEnd(String defThuEnd) {
-		appController.defThuEnd = defThuEnd;
-	}
+	
 
 	/**
 	 * @return the defFriStart
@@ -392,12 +292,7 @@ public class appController {
 		return defFriStart;
 	}
 
-	/**
-	 * @param defFriStart the defFriStart to set
-	 */
-	public static void setDefFriStart(String defFriStart) {
-		appController.defFriStart = defFriStart;
-	}
+	
 
 	/**
 	 * @return the defFriEnd
@@ -406,12 +301,7 @@ public class appController {
 		return defFriEnd;
 	}
 
-	/**
-	 * @param defFriEnd the defFriEnd to set
-	 */
-	public static void setDefFriEnd(String defFriEnd) {
-		appController.defFriEnd = defFriEnd;
-	}
+	
 
 	/**
 	 * @return the defSatStart
@@ -420,12 +310,7 @@ public class appController {
 		return defSatStart;
 	}
 
-	/**
-	 * @param defSatStart the defSatStart to set
-	 */
-	public static void setDefSatStart(String defSatStart) {
-		appController.defSatStart = defSatStart;
-	}
+	
 
 	/**
 	 * @return the defSatEnd
@@ -434,12 +319,7 @@ public class appController {
 		return defSatEnd;
 	}
 
-	/**
-	 * @param defSatEnd the defSatEnd to set
-	 */
-	public static void setDefSatEnd(String defSatEnd) {
-		appController.defSatEnd = defSatEnd;
-	}
+	
 
 	/**
 	 * @return the username
@@ -448,12 +328,7 @@ public class appController {
 		return username;
 	}
 
-	/**
-	 * @param username the username to set
-	 */
-	public static void setUsername(String username) {
-		appController.username = username;
-	}
+	
 
 	/**
 	 * @return the password
@@ -462,12 +337,7 @@ public class appController {
 		return password;
 	}
 
-	/**
-	 * @param password the password to set
-	 */
-	public static void setPassword(String password) {
-		appController.password = password;
-	}
+	
 
 	/**
 	 * @return the loggedin
@@ -476,12 +346,7 @@ public class appController {
 		return loggedin;
 	}
 
-	/**
-	 * @param loggedin the loggedin to set
-	 */
-	public static void setLoggedin(boolean loggedin) {
-		appController.loggedin = loggedin;
-	}
+	
 
 	/**
 	 * @return the dataReceived
@@ -490,12 +355,7 @@ public class appController {
 		return dataReceived;
 	}
 
-	/**
-	 * @param dataReceived the dataReceived to set
-	 */
-	public static void setDataReceived(boolean dataReceived) {
-		appController.dataReceived = dataReceived;
-	}
+	
 
 	/**
 	 * @return the edSchedSel
@@ -504,12 +364,7 @@ public class appController {
 		return edSchedSel;
 	}
 
-	/**
-	 * @param edSchedSel the edSchedSel to set
-	 */
-	public static void setEdSchedSel(boolean edSchedSel) {
-		appController.edSchedSel = edSchedSel;
-	}
+	
 
 	/**
 	 * @return the schedSetupSel
@@ -518,12 +373,7 @@ public class appController {
 		return schedSetupSel;
 	}
 
-	/**
-	 * @param schedSetupSel the schedSetupSel to set
-	 */
-	public static void setSchedSetupSel(boolean schedSetupSel) {
-		appController.schedSetupSel = schedSetupSel;
-	}
+	
 
 	/**
 	 * @return the logoutSel
@@ -532,12 +382,7 @@ public class appController {
 		return logoutSel;
 	}
 
-	/**
-	 * @param logoutSel the logoutSel to set
-	 */
-	public static void setLogoutSel(boolean logoutSel) {
-		appController.logoutSel = logoutSel;
-	}
+	
 
 	/**
 	 * @return the clearDate
@@ -546,12 +391,7 @@ public class appController {
 		return clearDate;
 	}
 
-	/**
-	 * @param clearDate the clearDate to set
-	 */
-	public static void setClearDate(int clearDate) {
-		appController.clearDate = clearDate;
-	}
+	
 
 	/**
 	 * @return the clearMonth
@@ -560,12 +400,7 @@ public class appController {
 		return clearMonth;
 	}
 
-	/**
-	 * @param clearMonth the clearMonth to set
-	 */
-	public static void setClearMonth(int clearMonth) {
-		appController.clearMonth = clearMonth;
-	}
+	
 
 	/**
 	 * @return the clearYear
@@ -574,12 +409,7 @@ public class appController {
 		return clearYear;
 	}
 
-	/**
-	 * @param clearYear the clearYear to set
-	 */
-	public static void setClearYear(int clearYear) {
-		appController.clearYear = clearYear;
-	}
+	
 
 	/**
 	 * @return the counter
@@ -588,12 +418,7 @@ public class appController {
 		return counter;
 	}
 
-	/**
-	 * @param counter the counter to set
-	 */
-	public static void setCounter(int counter) {
-		appController.counter = counter;
-	}
+	
 
 	/**
 	 * @return the db
@@ -602,12 +427,7 @@ public class appController {
 		return db;
 	}
 
-	/**
-	 * @param db the db to set
-	 */
-	public static void setDb(DBConnection db) {
-		appController.db = db;
-	}
+	
 
 	/**
 	 * @return the ic
@@ -616,12 +436,7 @@ public class appController {
 		return ic;
 	}
 
-	/**
-	 * @param ic the ic to set
-	 */
-	public static void setIc(InterfaceController ic) {
-		appController.ic = ic;
-	}
+	
 
 	/**
 	 * @return the auth
@@ -630,12 +445,7 @@ public class appController {
 		return auth;
 	}
 
-	/**
-	 * @param auth the auth to set
-	 */
-	public static void setAuth(Authenticate auth) {
-		appController.auth = auth;
-	}
+	
 
 	/**
 	 * @return the courseSel
@@ -644,12 +454,7 @@ public class appController {
 		return courseSel;
 	}
 
-	/**
-	 * @param courseSel the courseSel to set
-	 */
-	public static void setCourseSel(int courseSel) {
-		appController.courseSel = courseSel;
-	}
+	
 
 	/**
 	 * @return the classEnded
@@ -658,12 +463,7 @@ public class appController {
 		return classEnded;
 	}
 
-	/**
-	 * @param classEnded the classEnded to set
-	 */
-	public static void setClassEnded(long classEnded) {
-		appController.classEnded = classEnded;
-	}
+	
 
 	/**
 	 * @return the dbClear
@@ -672,12 +472,7 @@ public class appController {
 		return dbClear;
 	}
 
-	/**
-	 * @param dbClear the dbClear to set
-	 */
-	public static void setDbClear(TimerTask dbClear) {
-		appController.dbClear = dbClear;
-	}
+	
 
 	/**
 	 * @return the popup15min
@@ -686,12 +481,7 @@ public class appController {
 		return popup15min;
 	}
 
-	/**
-	 * @param popup15min the popup15min to set
-	 */
-	public static void setPopup15min(TimerTask popup15min) {
-		appController.popup15min = popup15min;
-	}
+	
 
 	/**
 	 * @return the popup5min
@@ -700,12 +490,7 @@ public class appController {
 		return popup5min;
 	}
 
-	/**
-	 * @param popup5min the popup5min to set
-	 */
-	public static void setPopup5min(TimerTask popup5min) {
-		appController.popup5min = popup5min;
-	}
+	
 
 	/**
 	 * @return the endofclass
@@ -714,12 +499,7 @@ public class appController {
 		return endofclass;
 	}
 
-	/**
-	 * @param endofclass the endofclass to set
-	 */
-	public static void setEndofclass(TimerTask endofclass) {
-		appController.endofclass = endofclass;
-	}
+	
 
 	/**
 	 * @return the systemExit
@@ -728,12 +508,7 @@ public class appController {
 		return systemExit;
 	}
 
-	/**
-	 * @param systemExit the systemExit to set
-	 */
-	public static void setSystemExit(TimerTask systemExit) {
-		appController.systemExit = systemExit;
-	}
+	
 
 	/**
 	 * @return the tenmin
