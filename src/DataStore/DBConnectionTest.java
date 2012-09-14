@@ -50,11 +50,6 @@ public class DBConnectionTest {
 		dbc.connect(USERNAME, PASSWORD);
 		assertEquals("disconnect", 0, dbc.disconnect());
 	}
-
-	@Test
-	public void testDisconnect_fail() {
-		assertEquals("disconnect", -1, dbc.disconnect());
-	}
 	
 	@Test
 	public void testFetchCourseID() {
