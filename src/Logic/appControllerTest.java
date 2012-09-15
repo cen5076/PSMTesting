@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Timer;
+//import java.util.Timer;
 
 import org.junit.After;
 import org.junit.Before;
