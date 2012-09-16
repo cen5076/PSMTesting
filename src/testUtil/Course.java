@@ -45,9 +45,22 @@ public class Course {
 		this.semester = sem;
 		this.startdt = start;
 		this.enddt = end;
-		
+		this.monStart = DBUtil.defaultDates[0];
+		this.monEnd = DBUtil.defaultDates[1];
+		this.tueStart = DBUtil.defaultDates[2];
+		this.tueEnd = DBUtil.defaultDates[3];
+		this.wedStart = DBUtil.defaultDates[4];
+		this.wedEnd = DBUtil.defaultDates[5];
+		this.thuStart = DBUtil.defaultDates[6];
+		this.thuEnd = DBUtil.defaultDates[7];
+		this.friStart = DBUtil.defaultDates[8];
+		this.friEnd = DBUtil.defaultDates[9];
+		this.satStart = DBUtil.defaultDates[10];
+		this.satEnd = DBUtil.defaultDates[11];
+
 		
 	}
+	
 	
 	public Course(int id,String sub,String nam,String sem, String start,String end,String mons,String mone, String tues, String tuee, String weds, String wede,String thus, String thue, String fris, String frie, String sats, String sate){
 		
@@ -136,6 +149,21 @@ public class Course {
 		
 		
 		return true;
+	}
+	
+	public ArrayList<String>  getEndDates(){
+		
+		ArrayList<String> ends = new ArrayList<String>();
+		
+		ends.add(this.monEnd);
+		ends.add(this.tueEnd);
+		ends.add(this.wedEnd);
+		ends.add(this.thuEnd);
+		ends.add(this.friEnd);
+		ends.add(this.satEnd);
+		
+		return ends;
+		
 	}
 
 	/**

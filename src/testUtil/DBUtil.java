@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -211,7 +212,45 @@ public class DBUtil {
 		this.close();
 		return true;
 	}
+	
+	public boolean compareArrayList(ArrayList<String> al1, ArrayList<String> al2){
 		
+		
+		
+		return true;
+		
+	}
+	
+	public ArrayList<Course> getCourseList(){
+		
+		return this.crsList;
+	}
+	
+	public ArrayList<Integer> getCourseIds(){
+		
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		
+		for(Course c : this.crsList ){
+			
+			list.add(new Integer(c.crseid));
+		}
+		
+		return list;
+	}
+	
+	public ArrayList<String> getCourseSubjects(){
+		
+		ArrayList<String> list = new ArrayList<String>();
+		
+		for(Course c : this.crsList){
+			list.add(c.getCrseSub());
+		}
+		
+		return list;
+	}
+		
+	
+	
 		
 
 }
