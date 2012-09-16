@@ -34,8 +34,53 @@ public class DBConnection
     {
       
     }
-           
-    // Connect using known database address
+    
+    /*** TEST GENERATED METHODS FOR VALIDATION ***/
+    /**
+	 * @return the myCon
+	 */
+	public Connection getMyCon() {
+		return myCon;
+	}
+
+	/**
+	 * @return the username
+	 */
+	public String getUsername() {
+		return username;
+	}
+
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @return the dbAddr
+	 */
+	public String getDbAddr() {
+		return dbAddr;
+	}
+
+	/**
+	 * @return the localDb
+	 */
+	public String getLocalDb() {
+		return localDb;
+	}
+
+	/**
+	 * @return the result
+	 */
+	public String getResult() {
+		return result;
+	}
+	
+	/*** END TEST GENERATED METHODS ***/
+
+	// Connect using known database address
     public int connect(String db, String user, String pw)
     {
         dbAddr = db;
