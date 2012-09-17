@@ -22,16 +22,16 @@ import java.lang.Thread;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import DataStore.DBConnection;
-//import stubs.DBConnection;
-import Interface.InterfaceController;
-//import stubs.InterfaceController;
-import Interface.Messages;
-//import stubs.Messages;
-import Interface.PrefilledScheduleForm;
-//import stubs.PrefilledScheduleForm;
-import Interface.ScheduleForm;
-//import stubs.ScheduleForm;
+//import DataStore.DBConnection;
+import stubs.DBConnection;
+//import Interface.InterfaceController;
+import stubs.InterfaceController;
+//import Interface.Messages;
+import stubs.Messages;
+//import Interface.PrefilledScheduleForm;
+import stubs.PrefilledScheduleForm;
+//import Interface.ScheduleForm;
+import stubs.ScheduleForm;
 
 
 /**
@@ -102,7 +102,6 @@ public class appController {
     	 return edSchedSel;
      }
      
-     
      /**
       * 
       * @return schedSetupSel
@@ -117,16 +116,12 @@ public class appController {
 		return hr;
 	}
 
-	
-
 	/**
 	 * @return the min
 	 */
 	public int getMin() {
 		return min;
 	}
-
-	
 
 	/**
 	 * @return the autoClear
@@ -135,8 +130,6 @@ public class appController {
 		return autoClear;
 	}
 
-	
-
 	/**
 	 * @return the setRun
 	 */
@@ -144,8 +137,7 @@ public class appController {
 		return setRun;
 	}
 
-	 
-
+	
 	/**
 	 * @return the timer
 	 */
@@ -153,16 +145,12 @@ public class appController {
 		return timer;
 	}
 
-	
-
 	/**
 	 * @return the date
 	 */
 	public static Date getDate() {
 		return date;
 	}
-
-	
 
 	/**
 	 * @return the date2
@@ -905,6 +893,7 @@ public class appController {
     
     public static long getTimeMillis()
     {
+    	//setRun = Gregorian calendar
         return setRun.getTimeInMillis();
     }
     

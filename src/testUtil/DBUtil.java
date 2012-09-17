@@ -207,8 +207,10 @@ public class DBUtil {
 			stat.executeUpdate("DELETE FROM class100");
 		}
 		catch(SQLException e){
+			System.out.println("Caught Exception Deleting- " + e.toString());
 			return false;
 		}
+		System.out.println("Deleted All");
 		this.close();
 		return true;
 	}
