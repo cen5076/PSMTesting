@@ -215,6 +215,7 @@ public class DBUtil {
 			stat.executeUpdate("DELETE FROM class100");
 		}
 		catch(SQLException e){
+			System.err.println("Caught Exception Deleting- " + e.toString());
 			return false;
 		}
 		this.close();

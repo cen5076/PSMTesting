@@ -133,18 +133,18 @@ public class Course {
 		
 		if(arr.length != 12)
 			return false;
-		this.monStart = arr[1];
-		this.monEnd = arr[2];
-		this.tueStart = arr[3];
-		this.tueEnd = arr[4];
-		this.wedStart = arr[5];
-		this.wedEnd = arr[6];
-		this.thuStart = arr[7];
-		this.thuEnd = arr[8];
-		this.friStart = arr[9];
-		this.friEnd = arr[10];
-		this.satStart = arr[11];
-		this.satEnd = arr[12];
+		this.monStart = arr[0];
+		this.monEnd = arr[1];
+		this.tueStart = arr[2];
+		this.tueEnd = arr[3];
+		this.wedStart = arr[4];
+		this.wedEnd = arr[5];
+		this.thuStart = arr[6];
+		this.thuEnd = arr[7];
+		this.friStart = arr[8];
+		this.friEnd = arr[9];
+		this.satStart = arr[10];
+		this.satEnd = arr[11];
 		
 		
 		return true;
