@@ -1,5 +1,6 @@
 package testUtil;
 
+// TODO Make static as with most utility classes
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,9 +17,9 @@ import testUtil.Course;
 @SuppressWarnings("unused")
 public class DBUtil {
 	
-	public String userName;
-	public String password;
-	public String db;
+	private String userName;
+	private String password;
+	private String db;
 	public Connection conn;
 	public ArrayList<Course> crsList;
 	public static final String[] defaultDates = {"010112"
@@ -32,10 +33,26 @@ public class DBUtil {
 		this.userName = "cen5076";
 		this.password = "cen5076";
 		this.db = "jdbc:mysql://dgarc012.homeip.net:3306/mydb";
+		crsList = new ArrayList<Course>();
 		
 	}
 	
-	public int connect(){
+	public String getUserName() {
+		return userName;
+		
+	}
+	
+	public String getPassword() {
+		return password;
+		
+	}
+	
+	public String getDB() {
+		return db;
+		
+	}
+	
+	public int connect() {
 		
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
@@ -53,7 +70,6 @@ public class DBUtil {
 	
 	public void close(){
 		try{
-		
 			this.conn.close();
 		}
 		catch(SQLException e){
@@ -71,29 +87,23 @@ public class DBUtil {
 		return "'" + String.valueOf(field) + "'";
 	}
 	
-	/* comma seperated and '' quoted fields */
-	private String fieldsSQL(){
+	/* comma separated and '' quoted fields */
+	private String fieldsSQL() {
 		
-		StringBuilder flds = new StringBuilder();
+		StringBuilder fields = new StringBuilder();
 		
 		Course c = new Course();
 		
-		ArrayList<String> f = c.getFieldNames();
+		ArrayList<String> fieldNames = c.getFieldNames();
 		
-		Iterator<String> i = f.iterator();
+		Iterator<String> iter = fieldNames.iterator();
 		
-		while( i.hasNext()){
-			
-			String n = i.next();
-			//flds.append("'");
-			flds.append(n);
-			//flds.append("'");
-			if(i.hasNext())
-				flds.append(",");
-			
+		for (String field : fieldNames) {
+			fields.append(field);
+			fields.append(",");
 		}
 		
-		return flds.toString();
+		return fields.substring(0, fields.length() - 1);
 	}
 	
 	private String valuesSQL(Course c){
@@ -118,14 +128,14 @@ public class DBUtil {
 		return vals.toString();
 	}
 	
-	public int insertCourse( int crsid, String crssub, String crsnam,String semester,String start,String end){
+	public int insertCourse(int crsid, String crssub, String crsnam,String semester,String start,String end){
 		
 		Course c = new Course(crsid,crssub,crsnam,semester,start,end);
 		
 		return this.insertCourse(c);
 	}
 	
-	public int insertCourse(Course c){
+	public int insertCourse(Course c) {
 		
 		int result;
 		this.connect();
@@ -134,7 +144,7 @@ public class DBUtil {
 			
 			Statement sql = this.conn.createStatement();
 			String text = this.insertSQL(c);
-			System.out.println(text);
+//			System.out.println(text);
 			result = sql.executeUpdate(text);
 		}
 		catch(SQLException e){
@@ -169,11 +179,9 @@ public class DBUtil {
 		StringBuilder sql = new StringBuilder();
 	} */
 		
-	public boolean addCourse(Course c){
+	public boolean addCourse(Course c) {
 		
-		this.crsList.add(c);
-		
-		return true;
+		return this.crsList.add(c);
 	}
 	
 	public int insertCourses(){
@@ -207,20 +215,10 @@ public class DBUtil {
 			stat.executeUpdate("DELETE FROM class100");
 		}
 		catch(SQLException e){
-			System.out.println("Caught Exception Deleting- " + e.toString());
 			return false;
 		}
-		System.out.println("Deleted All");
 		this.close();
 		return true;
-	}
-	
-	public boolean compareArrayList(ArrayList<String> al1, ArrayList<String> al2){
-		
-		
-		
-		return true;
-		
 	}
 	
 	public ArrayList<Course> getCourseList(){
@@ -232,8 +230,7 @@ public class DBUtil {
 		
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		
-		for(Course c : this.crsList ){
-			
+		for (Course c : this.crsList ){
 			list.add(new Integer(c.crseid));
 		}
 		
@@ -250,9 +247,4 @@ public class DBUtil {
 		
 		return list;
 	}
-		
-	
-	
-		
-
 }

@@ -456,7 +456,7 @@ public class DBConnection
     }
     
     
-        public String fetchStartThu(int courseID)
+    public String fetchStartThu(int courseID)
     {
         try{
             Statement s = myCon.createStatement();
@@ -490,7 +490,7 @@ public class DBConnection
         }
     }
     
-        public String fetchStartFri(int courseID)
+    public String fetchStartFri(int courseID)
     {
         try{
             Statement s = myCon.createStatement();
@@ -525,7 +525,7 @@ public class DBConnection
     }
     
     
-        public String fetchStartSat(int courseID)
+    public String fetchStartSat(int courseID)
     {
         try{
             Statement s = myCon.createStatement();

@@ -36,9 +36,8 @@ public class Course {
 		days.add("sat");
 	}
 	
-	public Course(int id,String sub,String nam,String sem, String start,String end){
+	public Course(int id, String sub, String nam, String sem, String start, String end){
 		
-		this();
 		this.crseid = id;
 		this.crseNam = nam;
 		this.crseSub = sub;
@@ -62,7 +61,7 @@ public class Course {
 	}
 	
 	
-	public Course(int id,String sub,String nam,String sem, String start,String end,String mons,String mone, String tues, String tuee, String weds, String wede,String thus, String thue, String fris, String frie, String sats, String sate){
+	public Course(int id, String sub, String nam, String sem, String start, String end, String mons, String mone, String tues, String tuee, String weds, String wede,String thus, String thue, String fris, String frie, String sats, String sate){
 		
 		this(id,sub,nam,sem,start,end);
 		
@@ -80,7 +79,7 @@ public class Course {
 		this.satStart = sats;
 	}
 	
-	public  ArrayList<String> getFieldNames(){
+	public ArrayList<String> getFieldNames() {
 		
 		ArrayList<String> fields = new ArrayList<String>();
 		
@@ -93,7 +92,7 @@ public class Course {
 		
 		Iterator<String> days = this.days.iterator();
 		
-		while(days.hasNext()){
+		while(days.hasNext()) {
 			
 			String day = days.next();
 			fields.add("start_" + day);
@@ -114,7 +113,7 @@ public class Course {
 		vals.add(this.startdt);
 		vals.add(this.enddt);
 		vals.add(this.monStart);
-		vals.add(this.monStart);
+		vals.add(this.monEnd);
 		vals.add(this.tueStart);
 		vals.add(this.tueEnd);
 		vals.add(this.wedStart);
@@ -134,18 +133,18 @@ public class Course {
 		
 		if(arr.length != 12)
 			return false;
-		this.monStart = arr[0];
-		this.monEnd = arr[1];
-		this.tueStart = arr[2];
-		this.tueEnd = arr[3];
-		this.wedStart = arr[4];
-		this.wedEnd = arr[5];
-		this.thuStart = arr[6];
-		this.thuEnd = arr[7];
-		this.friStart = arr[8];
-		this.friEnd = arr[9];
-		this.satStart = arr[10];
-		this.satEnd = arr[11];
+		this.monStart = arr[1];
+		this.monEnd = arr[2];
+		this.tueStart = arr[3];
+		this.tueEnd = arr[4];
+		this.wedStart = arr[5];
+		this.wedEnd = arr[6];
+		this.thuStart = arr[7];
+		this.thuEnd = arr[8];
+		this.friStart = arr[9];
+		this.friEnd = arr[10];
+		this.satStart = arr[11];
+		this.satEnd = arr[12];
 		
 		
 		return true;
@@ -166,28 +165,6 @@ public class Course {
 		
 	}
 
-	public boolean clear(){
-		
-		this.crseid = 0;
-		this.crseNam = 
-		this.crseSub = 
-		this.enddt = 
-		this.startdt =
-		this.monEnd =
-		this.monStart = 
-		this.tueEnd = 
-		this.tueStart = 
-		this.wedEnd = 
-		this.wedStart=
-		this.thuEnd = 
-		this.thuStart = 
-		this.friEnd = 
-		this.friStart = 
-		this.satEnd = 
-		this.satStart = "";
-		
-		return true;
-	}
 	/**
 	 * @return the crseid
 	 */
