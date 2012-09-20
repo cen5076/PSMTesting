@@ -164,6 +164,29 @@ public class Course {
 		return ends;
 		
 	}
+	
+	public boolean clear(){
+
+		this.crseid = 0;
+		this.crseNam = "";
+		this.crseSub = "";
+		this.enddt = "";
+		this.startdt = "";
+		this.monEnd = "";
+		this.monStart = "";
+		this.tueEnd = "";
+		this.tueStart = "";
+		this.wedEnd = "";
+		this.wedStart= "";
+		this.thuEnd = "";
+		this.thuStart = "";
+		this.friEnd = "";
+		this.friStart = "";
+		this.satEnd = "";
+		this.satStart = "";
+		
+		return true;
+	}
 
 	/**
 	 * @return the crseid
