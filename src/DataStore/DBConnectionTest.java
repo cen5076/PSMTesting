@@ -2,19 +2,9 @@ package DataStore;
 
 import static org.junit.Assert.*;
 
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.SortedSet;
-import java.util.StringTokenizer;
-import java.util.TreeSet;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.sql.Connection;
 
 import testUtil.Course;
 import testUtil.DBUtil;
@@ -89,6 +79,4 @@ public class DBConnectionTest {
 		int result =  dbc.disconnect();
 		assertEquals("disconnect", 0, result);
 	}
-	
-	
 }
