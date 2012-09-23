@@ -3,6 +3,15 @@ package testUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * 
+ * This class encapsulates all the properties  of a course as stored in the database.
+ * Used for convenience of moving course properties. Mimics necessary database accesses
+ * and has convenience methods for use in classes that call this object.
+ * 
+ * @author David
+ *
+ */
 public class Course {
 	
 	public int crseid;
@@ -23,6 +32,9 @@ public class Course {
 	public String friEnd;
 	public String satStart;
 	public String satEnd;
+	
+	public static final String STARTDATE="010112";
+	public static final String ENDDATE="010212";
 	
 	public final ArrayList<String> days = new ArrayList<String>();
 	

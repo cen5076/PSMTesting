@@ -248,4 +248,30 @@ public class DBUtil {
 		
 		return list;
 	}
+	
+	public long get15Milli(){
+		
+		return 15 * 60000;
+	}
+	
+	public long get5Milli(){
+		
+		return 5 * 60000;
+	}
+	
+	public long secInMilli(int seconds){
+				
+		return seconds * 1000; 
+		
+	}
+	
+	public long minInMilli(int minutes){
+		
+		return this.secInMilli(minutes)*60;
+	}
+	
+	public long hrsInMilli(int hours){
+		
+		return this.minInMilli(hours)*60;
+	}
 }
