@@ -4,9 +4,9 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Timer;
+//import java.util.Date;
+//import java.util.GregorianCalendar;
+//import java.util.Timer;
 
 import org.junit.After;
 import org.junit.Before;
@@ -16,7 +16,7 @@ import testUtil.Course;
 import testUtil.DBUtil;
 
 //@SuppressWarnings("unused")
-@SuppressWarnings("static-access")
+//@SuppressWarnings("static-access")
 public class appControllerTest {
 
 	public appController app1;
