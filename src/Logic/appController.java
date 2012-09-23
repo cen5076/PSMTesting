@@ -42,50 +42,50 @@ public class appController {
     
     private static final long TENMIN = 600000;
     
-    private static int hr;
-    private static int min;
-    private static Calendar autoClear = new GregorianCalendar();
-    private static Calendar setRun = new GregorianCalendar();
+    private  int hr;
+    private  int min;
+    private  Calendar autoClear = new GregorianCalendar();
+    private  Calendar setRun = new GregorianCalendar();
     //@SuppressWarnings("unused")
 	//private static Calendar calendar = new GregorianCalendar();
-    private static Timer timer = new FutureTimer();
-    private static Date date = new Date();
-    private static Date date2 = new Date();
+    private  Timer timer = new FutureTimer();
+    private  Date date = new Date();
+    private  Date date2 = new Date();
     
-    public static String defSub = "";
-    public static String defSemester = "";
-    public static String defCourseName = "";
-    public static String defCourseStart = "";
-    public static String defCourseEnd = "";
-    public static String defMonStart = "";
-    public static String defMonEnd = "";
-    public static String defTueStart = "";
-    public static String defTueEnd = "";
-    public static String defWedStart = "";
-    public static String defWedEnd = "";
-    public static String defThuStart = "";
-    public static String defThuEnd = "";
-    public static String defFriStart = "";
-    public static String defFriEnd = "";
-    public static String defSatStart = "";
-    public static String defSatEnd = "";
+    public  String defSub = "";
+    public  String defSemester = "";
+    public  String defCourseName = "";
+    public  String defCourseStart = "";
+    public  String defCourseEnd = "";
+    public  String defMonStart = "";
+    public  String defMonEnd = "";
+    public  String defTueStart = "";
+    public  String defTueEnd = "";
+    public  String defWedStart = "";
+    public  String defWedEnd = "";
+    public  String defThuStart = "";
+    public  String defThuEnd = "";
+    public  String defFriStart = "";
+    public  String defFriEnd = "";
+    public  String defSatStart = "";
+    public  String defSatEnd = "";
     
-    private static String username;
-    private static String password;
-    private static boolean loggedin;
-    private static boolean dataReceived = false;
-    private static boolean edSchedSel = false;
-    private static boolean schedSetupSel = false;
-    private static boolean logoutSel = false;
+    private  String username;
+    private  String password;
+    private  boolean loggedin;
+    private  boolean dataReceived = false;
+    private  boolean edSchedSel = false;
+    private  boolean schedSetupSel = false;
+    private  boolean logoutSel = false;
     
-    private static int clearDate, clearMonth, clearYear;
-    private static int counter = 0;
+    private  int clearDate, clearMonth, clearYear;
+    private  int counter = 0;
     
     public static DBConnection db = new DBConnection();
     private static InterfaceController ic = new InterfaceController();
-    private static Authenticate auth;
-    private static int courseSel;
-    private static long classEnded = 0;
+    private  Authenticate auth;
+    private  int courseSel;
+    private  static long classEnded = 0;
        
     
     /** Creates a new instance of ApplicationLogic */
@@ -126,14 +126,14 @@ public class appController {
 	/**
 	 * @return the autoClear
 	 */
-	public static Calendar getAutoClear() {
+	public  Calendar getAutoClear() {
 		return autoClear;
 	}
 
 	/**
 	 * @return the setRun
 	 */
-	public static Calendar getSetRun() {
+	public  Calendar getSetRun() {
 		return setRun;
 	}
 
@@ -141,21 +141,21 @@ public class appController {
 	/**
 	 * @return the timer
 	 */
-	public static Timer getTimer() {
+	public  Timer getTimer() {
 		return timer;
 	}
 
 	/**
 	 * @return the date
 	 */
-	public static Date getDate() {
+	public  Date getDate() {
 		return date;
 	}
 
 	/**
 	 * @return the date2
 	 */
-	public static Date getDate2() {
+	public  Date getDate2() {
 		return date2;
 	}
 
@@ -173,7 +173,7 @@ public class appController {
 	/**
 	 * @return the defSemester
 	 */
-	public static String getDefSemester() {
+	public String getDefSemester() {
 		return defSemester;
 	}
 
@@ -182,7 +182,7 @@ public class appController {
 	/**
 	 * @return the defCourseName
 	 */
-	public static String getDefCourseName() {
+	public  String getDefCourseName() {
 		return defCourseName;
 	}
 
@@ -191,7 +191,7 @@ public class appController {
 	/**
 	 * @return the defCourseStart
 	 */
-	public static String getDefCourseStart() {
+	public  String getDefCourseStart() {
 		return defCourseStart;
 	}
 
@@ -200,7 +200,7 @@ public class appController {
 	/**
 	 * @return the defCourseEnd
 	 */
-	public static String getDefCourseEnd() {
+	public  String getDefCourseEnd() {
 		return defCourseEnd;
 	}
 
@@ -209,7 +209,7 @@ public class appController {
 	/**
 	 * @return the defMonStart
 	 */
-	public static String getDefMonStart() {
+	public  String getDefMonStart() {
 		return defMonStart;
 	}
 
@@ -218,7 +218,7 @@ public class appController {
 	/**
 	 * @return the defMonEnd
 	 */
-	public static String getDefMonEnd() {
+	public  String getDefMonEnd() {
 		return defMonEnd;
 	}
 
@@ -227,7 +227,7 @@ public class appController {
 	/**
 	 * @return the defTueStart
 	 */
-	public static String getDefTueStart() {
+	public  String getDefTueStart() {
 		return defTueStart;
 	}
 
@@ -236,7 +236,7 @@ public class appController {
 	/**
 	 * @return the defTueEnd
 	 */
-	public static String getDefTueEnd() {
+	public  String getDefTueEnd() {
 		return defTueEnd;
 	}
 
@@ -245,7 +245,7 @@ public class appController {
 	/**
 	 * @return the defWedStart
 	 */
-	public static String getDefWedStart() {
+	public  String getDefWedStart() {
 		return defWedStart;
 	}
 
@@ -254,7 +254,7 @@ public class appController {
 	/**
 	 * @return the defWedEnd
 	 */
-	public static String getDefWedEnd() {
+	public  String getDefWedEnd() {
 		return defWedEnd;
 	}
 
@@ -263,7 +263,7 @@ public class appController {
 	/**
 	 * @return the defThuStart
 	 */
-	public static String getDefThuStart() {
+	public  String getDefThuStart() {
 		return defThuStart;
 	}
 
@@ -272,7 +272,7 @@ public class appController {
 	/**
 	 * @return the defThuEnd
 	 */
-	public static String getDefThuEnd() {
+	public  String getDefThuEnd() {
 		return defThuEnd;
 	}
 
@@ -281,7 +281,7 @@ public class appController {
 	/**
 	 * @return the defFriStart
 	 */
-	public static String getDefFriStart() {
+	public  String getDefFriStart() {
 		return defFriStart;
 	}
 
@@ -290,7 +290,7 @@ public class appController {
 	/**
 	 * @return the defFriEnd
 	 */
-	public static String getDefFriEnd() {
+	public  String getDefFriEnd() {
 		return defFriEnd;
 	}
 
@@ -299,7 +299,7 @@ public class appController {
 	/**
 	 * @return the defSatStart
 	 */
-	public static String getDefSatStart() {
+	public  String getDefSatStart() {
 		return defSatStart;
 	}
 
@@ -308,7 +308,7 @@ public class appController {
 	/**
 	 * @return the defSatEnd
 	 */
-	public static String getDefSatEnd() {
+	public  String getDefSatEnd() {
 		return defSatEnd;
 	}
 
@@ -317,7 +317,7 @@ public class appController {
 	/**
 	 * @return the username
 	 */
-	public static String getUsername() {
+	public  String getUsername() {
 		return username;
 	}
 
@@ -326,7 +326,7 @@ public class appController {
 	/**
 	 * @return the password
 	 */
-	public static String getPassword() {
+	public  String getPassword() {
 		return password;
 	}
 
@@ -335,7 +335,7 @@ public class appController {
 	/**
 	 * @return the loggedin
 	 */
-	public static boolean isLoggedin() {
+	public  boolean isLoggedin() {
 		return loggedin;
 	}
 
@@ -344,7 +344,7 @@ public class appController {
 	/**
 	 * @return the dataReceived
 	 */
-	public static boolean isDataReceived() {
+	public  boolean isDataReceived() {
 		return dataReceived;
 	}
 
@@ -353,7 +353,7 @@ public class appController {
 	/**
 	 * @return the edSchedSel
 	 */
-	public static boolean isEdSchedSel() {
+	public  boolean isEdSchedSel() {
 		return edSchedSel;
 	}
 
@@ -362,7 +362,7 @@ public class appController {
 	/**
 	 * @return the schedSetupSel
 	 */
-	public static boolean isSchedSetupSel() {
+	public  boolean isSchedSetupSel() {
 		return schedSetupSel;
 	}
 
@@ -371,7 +371,7 @@ public class appController {
 	/**
 	 * @return the logoutSel
 	 */
-	public static boolean isLogoutSel() {
+	public  boolean isLogoutSel() {
 		return logoutSel;
 	}
 
@@ -380,7 +380,7 @@ public class appController {
 	/**
 	 * @return the clearDate
 	 */
-	public static int getClearDate() {
+	public  int getClearDate() {
 		return clearDate;
 	}
 
@@ -389,7 +389,7 @@ public class appController {
 	/**
 	 * @return the clearMonth
 	 */
-	public static int getClearMonth() {
+	public  int getClearMonth() {
 		return clearMonth;
 	}
 
@@ -398,7 +398,7 @@ public class appController {
 	/**
 	 * @return the clearYear
 	 */
-	public static int getClearYear() {
+	public  int getClearYear() {
 		return clearYear;
 	}
 
@@ -416,7 +416,7 @@ public class appController {
 	/**
 	 * @return the db
 	 */
-	public static DBConnection getDb() {
+	public  DBConnection getDb() {
 		return db;
 	}
 
@@ -425,7 +425,7 @@ public class appController {
 	/**
 	 * @return the ic
 	 */
-	public static InterfaceController getIc() {
+	public  InterfaceController getIc() {
 		return ic;
 	}
 
@@ -434,7 +434,7 @@ public class appController {
 	/**
 	 * @return the auth
 	 */
-	public static Authenticate getAuth() {
+	public  Authenticate getAuth() {
 		return auth;
 	}
 
@@ -443,7 +443,7 @@ public class appController {
 	/**
 	 * @return the courseSel
 	 */
-	public static int getCourseSel() {
+	public  int getCourseSel() {
 		return courseSel;
 	}
 
@@ -526,21 +526,25 @@ public class appController {
        
     }
 	
+	/* TODO State Machine */
 	public void begin(){
 		
 		while(!loggedin)
 	       {    
-	    	   
+	    	  
 	    	   
 	           ic.Initiate_Login_Form();            
 	           
 	            do
 	            {
+	            //data ! received
 	            	dataReceived = ic.log.dataReceived();
 	                sleep(300);
 	                
 	            }while(!dataReceived);
 	            
+	            
+	            //data received
 	            ic.log.setDataRec(false);
 	            dataReceived = false;
 	            //CEN5076
@@ -559,6 +563,7 @@ public class appController {
 	            
 	              
 	            if(!loggedin){
+	            //invalid not locked out
 	                ic.Initiate_IncorrectLogin();
 	                counter++;
 	                while(!dataReceived)
@@ -572,6 +577,7 @@ public class appController {
 	            }
 	            if(counter >= 3){
 	               
+	               //lockout
 	                ic.passwordLock();
 	                while(!dataReceived)
 	                {
@@ -579,10 +585,10 @@ public class appController {
 	                    
 	                }
 	                System.exit(0);
-	             }
+	             } 
 	       }
 		   
-	       
+	       //logged in No data
 	       ic.Initiate_MainMenu();
 	       if(checkClear())
 	       {
@@ -681,6 +687,7 @@ public class appController {
 	                   ic.Initiate_Logout();
 
 	               }
+	               
 	               else if(edSchedSel)
 	               {
 	                    //Edit Schedule
@@ -750,7 +757,7 @@ public class appController {
 	}
 	
     /* Created to parse out MAIN */
-    public static boolean checkClear()
+    public boolean checkClear()
     {
         ArrayList<String> endDates = db.getEndDates();
         Calendar endCal = new GregorianCalendar();
@@ -774,7 +781,7 @@ public class appController {
     }
     
     /* Created to parse out MAIN */
-    public static void checkTimes()
+    public void checkTimes()
     {
         ArrayList<Integer> courseList = db.getCourses();
         
@@ -839,7 +846,7 @@ public class appController {
     }
     
     
-    public static void getData(int course)
+    public void getData(int course)
     {
         defSub = db.fetchCourseSubj(course);
         defSemester = db.fetchCourseSemester(course);
@@ -861,7 +868,7 @@ public class appController {
     }
     
     
-    public static void sleep(int milli)
+    public void sleep(int milli)
     {
           try { 
            Thread.sleep(milli);
@@ -870,7 +877,7 @@ public class appController {
         }
     }
 	
-    public static void LogIn()
+    public void LogIn()
     {      
         if(db.connect(username,password) == 0)
             loggedin = true;
@@ -878,7 +885,7 @@ public class appController {
             loggedin = false;        
     }
     
-    public static DBConnection getCon()
+    public DBConnection getCon()
     {
         return db;
     }
@@ -938,21 +945,23 @@ public class appController {
         return setRun.getTime();
     }
     
-    public static long getTimeMillis()
+    public long getTimeMillis()
     {
     	//setRun = Gregorian calendar
         return setRun.getTimeInMillis();
     }
     
-    public static void timerParser(String timer)
+    public void timerParser(String timer)
     {
         hr = Integer.parseInt(timer.substring(0,2));
         min = Integer.parseInt(timer.substring(3,5));
     }
-    public static void dateParser(String timer)
+    public void dateParser(String timer)
     {
+    	System.out.println("dateParser input:"+ timer);
         
         clearMonth = Integer.parseInt(timer.substring(0,2));
+        System.out.println(timer.substring(0,2));
         clearDate = Integer.parseInt(timer.substring(3,5));
         clearYear = Integer.parseInt(timer.substring(6,8));
     }
@@ -967,7 +976,7 @@ public class appController {
         return min;
     }
     
-    public static Date getEndTime(int hrs, int mins)
+    public Date getEndTime(int hrs, int mins)
     {
         @SuppressWarnings("unused")
 		int years, months, dates, dayOfWeek;
@@ -985,7 +994,7 @@ public class appController {
         return tempC.getTime();
     }
     
-    public static void setSemesterClear(int year, int month, int date, int hours, int mins)
+    public void setSemesterClear(int year, int month, int date, int hours, int mins)
     {
         autoClear.set(year, month, date, hours, mins);
         date2 = autoClear.getTime();
@@ -996,7 +1005,7 @@ public class appController {
         return autoClear.getTime();
     }
     
-    public static Date get15BeforeEnd(int hrs, int mins)
+    public Date get15BeforeEnd(int hrs, int mins)
     {
         @SuppressWarnings("unused")
 		int years, months, dates, dayOfWeek; 
@@ -1015,7 +1024,7 @@ public class appController {
         return tempC.getTime();
     }
     
-    public static Date get5BeforeEnd(int hrs, int mins)
+    public Date get5BeforeEnd(int hrs, int mins)
     {
         @SuppressWarnings("unused")
 		int years, months, dates, dayOfWeek;
