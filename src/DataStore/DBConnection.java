@@ -11,6 +11,8 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import testUtil.Course;
+
 /**
  * @author Luis
  */
@@ -651,6 +653,12 @@ public class DBConnection
        return 0;
                        
     }
+
+	public void initializeStub(ArrayList<Course> courseList) throws Exception {
+		// TODO Auto-generated method stub
+		throw new Exception("Unimplemented Do Not Use.");
+		
+	}
     
 //    public void init()
 //    {

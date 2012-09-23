@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import stubs.DBConnection;
 import testUtil.Course;
 
 @SuppressWarnings("unused")
@@ -274,4 +275,11 @@ public class DBUtil {
 		
 		return this.minInMilli(hours)*60;
 	}
-}
+	
+	public void initializeStub(DataStore.DBConnection dbConnection,ArrayList<Course> arrlist){
+	
+		
+		
+	
+	}
+	}

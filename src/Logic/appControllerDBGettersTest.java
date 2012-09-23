@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import testUtil.Course;
 import testUtil.DBUtil;
+import stubs.DBConnection;
 
 public class appControllerDBGettersTest {
 
@@ -50,8 +51,13 @@ public class appControllerDBGettersTest {
 		//add a different course
 		courseList.add(c2);
 		
-		app1.getDb().initializeStub(courseList);
-		
+		try{
+			app1.getDb().initializeStub(courseList);
+		}
+		catch(Exception e){
+			
+			fail("Error Occured- Exception caught");
+		}
 		//get Course 1
 		app1.getData(c1.getCrseid());
 		
@@ -87,7 +93,12 @@ public class appControllerDBGettersTest {
 		courseList.add(c1);
 		
 		//initialize the stub to have course data, similar to DB insert
-		app1.getDb().initializeStub(this.courseList);
+		try{
+			app1.getDb().initializeStub(this.courseList);
+		}
+		catch(Exception e){
+			fail("Error occured- Exceptio Caught");
+		}
 		//this.c1.fillDates(DBUtil.defaultDates);
 		//this.util.insertCourse(c1);
 		app1.getData(this.c1.getCrseid());

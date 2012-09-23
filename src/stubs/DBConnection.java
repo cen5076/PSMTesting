@@ -114,8 +114,8 @@ public class DBConnection {
 	}
 
 	public void initializeStub(ArrayList<Course> arrlist){
-    	//set Arraylist
-    	this.courseList = arrlist;
+		
+		this.courseList = arrlist;
     	System.out.println("list size:"+arrlist.size());
     	Iterator<Course> it = arrlist.iterator();
     	
@@ -536,5 +536,8 @@ Course c = this.courseSet.get(new Integer(courseID));
        return 0;
                        
     }
+    
+  
+    
 
 }
