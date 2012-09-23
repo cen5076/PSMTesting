@@ -12,6 +12,7 @@ import testUtil.Course;
  * This class tests the Begin method which has system functionality and is called within main.
  * 
  */
+@SuppressWarnings("unused")
 public class appControllerBeginTest {
 	
 	appController app1;
