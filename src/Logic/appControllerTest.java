@@ -139,13 +139,37 @@ public class appControllerTest {
 
 	
 	@Test
-	public void testLogIn() {
+	// valid login test
+	public void testLogIn_1() {
 		System.out.println("testLogIn");
 
-		// TODO Setup username and password 
-		
+		app1.getDb().connect("cen5076","cen5076");
 		app1.LogIn();
 		assertTrue("Log In",app1.isLoggedin());
+		System.out.println("END testLogIn");
+
+	}
+	
+	@Test
+	//invalid login username test
+	public void testLogIn_2() {
+		System.out.println("testLogIn");
+
+		app1.getDb().connect("badUser","cen5076");
+		app1.LogIn();
+		assertFalse("Log In",app1.isLoggedin());
+		System.out.println("END testLogIn");
+
+	}
+	
+	@Test
+	//invalid login password test
+	public void testLogIn_3() {
+		System.out.println("testLogIn");
+
+		app1.getDb().connect("cen5076","badPassword");
+		app1.LogIn();
+		assertFalse("Log In",app1.isLoggedin());
 		System.out.println("END testLogIn");
 
 	}
