@@ -532,6 +532,7 @@ public class appController {
 		while(!loggedin)
 	       {    
 	    	  
+			 	//Waiting Login
 	    	   
 	           ic.Initiate_Login_Form();            
 	           
@@ -541,6 +542,8 @@ public class appController {
 	            	dataReceived = ic.log.dataReceived();
 	                sleep(300);
 	                
+				 	//Waiting Login
+
 	            }while(!dataReceived);
 	            
 	            
@@ -559,10 +562,14 @@ public class appController {
 	                loggedin = true;
 	                auth.logout();
 	                db.connect(username,password);
+	                
+	                //logged in
 	            }
 	            
 	              
 	            if(!loggedin){
+				 	//Waiting Login
+
 	            //invalid not locked out
 	                ic.Initiate_IncorrectLogin();
 	                counter++;
@@ -577,7 +584,8 @@ public class appController {
 	            }
 	            if(counter >= 3){
 	               
-	               //lockout
+	            	//terminated
+	               
 	                ic.passwordLock();
 	                while(!dataReceived)
 	                {
@@ -588,7 +596,7 @@ public class appController {
 	             } 
 	       }
 		   
-	       //logged in No data
+	       //logged in
 	       ic.Initiate_MainMenu();
 	       if(checkClear())
 	       {
@@ -653,9 +661,15 @@ public class appController {
 	                endClass = getEndTime(hr, min);
 	                newTimer.schedule(endofclass, endClass);
 	            }
-	        }   
+	        }
+	        
+		       //logged in
+
 	        while(!logoutSel)
 	        { 
+	        	
+			      //logged in
+
 	        	@SuppressWarnings("unused")
 	    		long newCurrentTime;
 	               while(!dataReceived)
@@ -670,18 +684,25 @@ public class appController {
 	                           
 	                   if(classEnded != 0 && System.currentTimeMillis() - classEnded >= TENMIN)
 	                   {
+	                	   //terminated
 	                     //System.out.println("EXIT");
 	                     System.exit(0);   
 	                   }
 	                   
 	                   sleep(500);
+	                   
+				       //logged in
+
 	               }
+	               
+	               
 	               newCurrentTime = 0;
 	               ic.mm.setdataRec(false);
 	               dataReceived = false;
 
 	               if(logoutSel)
 	               {
+	            	   //terminated
 	                   // Logout 
 	                   auth.logout();
 	                   ic.Initiate_Logout();
@@ -690,7 +711,7 @@ public class appController {
 	               
 	               else if(edSchedSel)
 	               {
-	                    //Edit Schedule
+	                    //Editting Schedule
 	                   ic.Course_Select_Form();
 
 	                   while(!dataReceived)
@@ -730,6 +751,7 @@ public class appController {
 	               }
 	               else if(schedSetupSel)
 	               {
+	            	   
 	                   ic.sched.launchInitial();
 	                   //Initial Schedule Setup
 	                   while(!ic.sched.dataRec())
