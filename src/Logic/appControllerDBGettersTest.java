@@ -12,6 +12,7 @@ import testUtil.Course;
 import testUtil.DBUtil;
 import stubs.DBConnection;
 
+@SuppressWarnings("unused")
 public class appControllerDBGettersTest {
 
 	appController app1;
@@ -41,7 +42,7 @@ public class appControllerDBGettersTest {
 		
 	}
 
-	@Test
+	@Test //PSM001_Login-UnitTest-B01
 	/* Test a course id not in database */
 	public void testGetData_1() {
 		String messg = new Object(){}.getClass().getEnclosingMethod().getName(); 
@@ -82,7 +83,7 @@ public class appControllerDBGettersTest {
 		
 	}
 	
-	@Test
+	@Test //PSM001_Login-UnitTest-B02
 	/* Test a course id in database */
 	public void testGetData_2() {
 		
