@@ -1,7 +1,5 @@
 package testUtil;
 
-// TODO Make static as with most utility classes
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -17,78 +15,49 @@ import testUtil.Course;
 @SuppressWarnings("unused")
 public class DBUtil {
 	
-	private String userName;
-	private String password;
-	private String db;
-	public Connection conn;
-	public ArrayList<Course> crsList;
-	public static final String[] defaultDates = {"010112"
-		,"010212","020112","020212","030112","030212","040112","040212"
-		,"050112","050212","060112","060212"};
+	public static final String USERNAME = "cen5076";
+	public static final String PASSWORD = "cen5076";
+	public static final String DB = "jdbc:mysql://dgarc012.homeip.net:3306/mydb";
+	public static Connection conn;
+	public static ArrayList<Course> crsList = new ArrayList<Course>();
+	public static final String[] defaultDates = {"010112",
+		"010212","020112","020212","030112","030212","040112","040212",
+		"050112","050212","060112","060212"};
 	
-	
-	public DBUtil(){
-		
-		/* TODO instantiate connection */
-		this.userName = "cen5076";
-		this.password = "cen5076";
-		this.db = "jdbc:mysql://dgarc012.homeip.net:3306/mydb";
-		crsList = new ArrayList<Course>();
-		
-	}
-	
-	public String getUserName() {
-		return userName;
-		
-	}
-	
-	public String getPassword() {
-		return password;
-		
-	}
-	
-	public String getDB() {
-		return db;
-		
-	}
-	
-	public int connect() {
-		
-		try{
+	public static int connect() {
+		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = java.sql.DriverManager.getConnection(this.db,this.userName,this.password);
-		
+			conn = java.sql.DriverManager.getConnection(DB, USERNAME, PASSWORD);
 		}
 		catch(Exception e){
 			System.out.println(e.toString());
 			return -1;
 		}
-		
 		return 0;
 		
 	}
 	
-	public void close(){
-		try{
-			this.conn.close();
+	public static void close() {
+		try {
+			conn.close();
 		}
-		catch(SQLException e){
-			
+		catch(Exception e){
+			e.printStackTrace();
 		}
 	}
 	
-	private String quote(String field){
+	private static String quote(String field) {
 		
 		return "'" + field + "'";
 	}
 	
-	private String quote(int field){
+	private static String quote(int field){
 		
-		return "'" + String.valueOf(field) + "'";
+		return "'" + field + "'";
 	}
 	
 	/* comma separated and '' quoted fields */
-	private String fieldsSQL() {
+	private static String fieldsSQL() {
 		
 		StringBuilder fields = new StringBuilder();
 		
@@ -106,7 +75,7 @@ public class DBUtil {
 		return fields.substring(0, fields.length() - 1);
 	}
 	
-	private String valuesSQL(Course c){
+	private static String valuesSQL(Course c){
 
 		
 		StringBuilder vals = new StringBuilder();
@@ -128,22 +97,22 @@ public class DBUtil {
 		return vals.toString();
 	}
 	
-	public int insertCourse(int crsid, String crssub, String crsnam,String semester,String start,String end){
+	public static int insertCourse(int crsid, String crssub, String crsnam,String semester,String start,String end){
 		
 		Course c = new Course(crsid,crssub,crsnam,semester,start,end);
 		
-		return this.insertCourse(c);
+		return insertCourse(c);
 	}
 	
-	public int insertCourse(Course c) {
+	public static int insertCourse(Course c) {
 		
 		int result;
-		this.connect();
+		connect();
 		
 		try{
 			
-			Statement sql = this.conn.createStatement();
-			String text = this.insertSQL(c);
+			Statement sql = conn.createStatement();
+			String text = insertSQL(c);
 //			System.out.println(text);
 			result = sql.executeUpdate(text);
 		}
@@ -152,20 +121,20 @@ public class DBUtil {
 			return -1;
 		}
 		
-		this.close();
+		close();
 		
 		return result;
 	}
 	
-	private String insertSQL(Course c){ // (int crsid, String crssub, String crsnam,String semester,String start,String end){
+	private static String insertSQL(Course c){ // (int crsid, String crssub, String crsnam,String semester,String start,String end){
 		
 		StringBuilder sql = new StringBuilder();
 
 		sql.append("INSERT INTO class100 ("); //course_id,course_subject,course_name,semester,start_date,end_date) values (";
 		
-		sql.append(this.fieldsSQL());
+		sql.append(fieldsSQL());
 		sql.append(") VALUES (");
-		sql.append(this.valuesSQL(c));
+		sql.append(valuesSQL(c));
 		sql.append(")");
 		
 		return sql.toString();
@@ -179,21 +148,21 @@ public class DBUtil {
 		StringBuilder sql = new StringBuilder();
 	} */
 		
-	public boolean addCourse(Course c) {
+	public static boolean addCourse(Course c) {
 		
-		return this.crsList.add(c);
+		return crsList.add(c);
 	}
 	
-	public int insertCourses(){
+	public static int insertCourses(){
 		
 		int count = 0;
 		int i =0;
 		
-		Iterator<Course> list = this.crsList.listIterator();
+		Iterator<Course> list = crsList.listIterator();
 
 		while(list.hasNext()){
 			
-			if( this.insertCourse(list.next()) == 1)
+			if( insertCourse(list.next()) == 1)
 				i++;
 			else
 				return -1;
@@ -205,12 +174,12 @@ public class DBUtil {
 	}
 	
 	/* remove all from table */
-	public boolean deleteAll(){
+	public static boolean deleteAll() {
 		
-		this.connect();
+		connect();
 		
 		try{
-			Statement stat = this.conn.createStatement();
+			Statement stat = conn.createStatement();
 			
 			stat.executeUpdate("DELETE FROM class100");
 		}
@@ -218,60 +187,54 @@ public class DBUtil {
 			System.err.println("Caught Exception Deleting- " + e.toString());
 			return false;
 		}
-		this.close();
+		close();
 		return true;
 	}
 	
-	public ArrayList<Course> getCourseList(){
+	public static ArrayList<Course> getCourseList(){
 		
-		return this.crsList;
+		return crsList;
 	}
 	
-	public ArrayList<Integer> getCourseIds(){
+	public static ArrayList<Integer> getCourseIds(){
 		
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		
-		for (Course c : this.crsList ){
+		for (Course c : crsList ){
 			list.add(new Integer(c.crseid));
 		}
 		
 		return list;
 	}
 	
-	public ArrayList<String> getCourseSubjects(){
+	public static ArrayList<String> getCourseSubjects(){
 		
 		ArrayList<String> list = new ArrayList<String>();
 		
-		for(Course c : this.crsList){
+		for(Course c : crsList){
 			list.add(c.getCrseSub());
 		}
 		
 		return list;
 	}
 	
-	public long get15Milli(){
-		
+	public static long get15Milli() {
 		return 15 * 60000;
 	}
-	
-	public long get5Milli(){
-		
+
+	public static long get5Milli() {
 		return 5 * 60000;
-	}
-	
-	public long secInMilli(int seconds){
-				
+	}	
+
+	public static long secInMilli(int seconds) {	
 		return seconds * 1000; 
-		
 	}
-	
-	public long minInMilli(int minutes){
-		
-		return this.secInMilli(minutes)*60;
+
+	public static long minInMilli(int minutes) {
+		return secInMilli(minutes)*60;
 	}
-	
-	public long hrsInMilli(int hours){
-		
-		return this.minInMilli(hours)*60;
+
+	public static long hrsInMilli(int hours) {
+		return minInMilli(hours)*60;
 	}
 }
