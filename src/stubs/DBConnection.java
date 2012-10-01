@@ -29,10 +29,10 @@ import testUtil.Course;
  */
 public class DBConnection {
 
-	private Connection myCon;
-    private String username;
-    private String password;
-    private String dbAddr;
+	public Connection myCon;
+    public String username;
+    public String password;
+    public String dbAddr;
     //CEN5076
     //private String localDb = "jdbc:mysql://10.105.40.92:3306/mydb";
 
