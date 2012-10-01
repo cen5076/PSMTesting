@@ -55,15 +55,16 @@ public class appControllerTimersTest {
 				long mDiff = dbUtil.minInMilli(Calendar.getInstance().get(Calendar.MINUTE)) -dbUtil.minInMilli(m) + dbUtil.get15Milli(); 
 				
 				//create new Date with time offset
-				Date time = new Date(System.currentTimeMillis()- hDiff - mDiff);
+				Date time = new Date(System.currentTimeMillis());//- hDiff - mDiff);
 				
 				//create Calendars from each to compare
 				Calendar expected = new GregorianCalendar();
 				expected.setTimeInMillis(time.getTime());
 				
 				Calendar result = new GregorianCalendar();
-				result.setTime(app1.get15BeforeEnd(h, m));
-				
+				result.setTime(app1.get15BeforeEnd(0, 0));
+				//result.setTime(app1.get15BeforeEnd(expected.get(Calendar.HOUR_OF_DAY), expected.get(Calendar.MINUTE)));
+
 				
 				
 				String messg = new Object(){}.getClass().getEnclosingMethod().getName(); 

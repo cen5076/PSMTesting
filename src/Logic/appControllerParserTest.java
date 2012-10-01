@@ -20,7 +20,7 @@ public class appControllerParserTest {
 		
 		app1 = new appController();
 		dbUtil = new DBUtil();
-		c1 = new Course(1234,"Sub","Nam","Semester","010112","010212");
+		c1 = new Course(1234,"Sub","Nam","Semester",Course.STARTDATE,Course.ENDDATE);
 
 	}
 

@@ -64,16 +64,17 @@ public class appControllerSemesterClearTest {
 		Calendar c = Calendar.getInstance();
 		c.setTime(d);
 		
-		app1.setSemesterClear(c.get(Calendar.YEAR), c.get(Calendar.MONTH),c.get(Calendar.DATE), c.get(Calendar.HOUR), c.get(Calendar.MINUTE));
+		app1.setSemesterClear(c.get(Calendar.YEAR), c.get(Calendar.MONTH),c.get(Calendar.DATE), c.get(Calendar.HOUR), -1);
 		
+		System.out.println(app1.getAutoClear().getTime().toString());
 		//Assert
 		assertEquals("Year",c.get(Calendar.YEAR),app1.getAutoClear().get(Calendar.YEAR));
 		assertEquals("Month",c.get(Calendar.MONTH),app1.getAutoClear().get(Calendar.MONTH));
 		assertEquals("Date",c.get(Calendar.DATE),app1.getAutoClear().get(Calendar.DATE));
-		assertEquals("Hour",c.get(Calendar.HOUR),app1.getAutoClear().get(Calendar.HOUR));
-		assertEquals("Minute",c.get(Calendar.MINUTE),app1.getAutoClear().get(Calendar.MINUTE));
+		assertEquals("Hour",c.get(Calendar.HOUR)-1,app1.getAutoClear().get(Calendar.HOUR));
+		assertEquals("Minute",59,app1.getAutoClear().get(Calendar.MINUTE));
 		
-		assertEquals("Date2",app1.getDate2().compareTo(c.getTime()));
+		assertEquals("Date2",-1,app1.getDate2().compareTo(c.getTime()));
 	}
 
 }

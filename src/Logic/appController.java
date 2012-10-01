@@ -509,6 +509,18 @@ public class appController {
 	public long getTenmin() {
 		return TENMIN;
 	}
+	
+	/**
+	 * Test Driver for entering authenticate
+	 * 
+	 * @param - username
+	 * @param - password
+	 * 
+	 */
+	public void testDriverLogin(String user,String pass){
+		
+		this.dataReceived = true;
+	}
 
     /**** END TEST GENERATED FIELDS ****/
 
@@ -521,12 +533,15 @@ public class appController {
     	
 		appController appc = new appController();
 		
+		//DBConnection db = new DBConnection();
+		
+		//int result = db.connect("jdbc:mysql://dgarc012.homeip.net:3306/mydb", "cen5076", "cen5076");
+		//System.out.println("Connected:" + result);
 		appc.begin();
        
        
     }
 	
-	/* TODO State Machine */
 	public void begin(){
 		
 		while(!loggedin)
@@ -535,7 +550,8 @@ public class appController {
 			 	//Waiting Login
 	    	   
 	           ic.Initiate_Login_Form();            
-	           
+	           dataReceived = false;
+
 	            do
 	            {
 	            //data ! received
@@ -596,12 +612,20 @@ public class appController {
 	             } 
 	       }
 		   
+           //Added by DG
+		   dataReceived = false;
+
 	       //logged in
 	       ic.Initiate_MainMenu();
-	       if(checkClear())
+	       try{
+	       if(this.checkClear())
 	       {
 	    	   
 	    	   db.clearDatabase();
+	       }
+	       }
+	       catch (Exception e){
+	    	   System.out.println(e.toString());
 	       }
 	       ArrayList<Integer> courseList = db.getCourses();
 	        

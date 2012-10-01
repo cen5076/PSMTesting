@@ -25,9 +25,9 @@ public class appControllerDBGettersTest {
 	public void setUp() throws Exception {
 		
 		app1 = new appController();
-		c1= new Course(1234,"Sub","Nam","Semester","010112","010212");
+		c1= new Course(1234,"Sub","Nam","Semester",Course.STARTDATE,Course.ENDDATE);
 		c1.fillDates(DBUtil.defaultDates);
-		c2= new Course(2345,"Sub2","Nam2","Semester","010112","010212");
+		c2= new Course(2345,"Sub2","Nam2","Semester",Course.STARTDATE,Course.ENDDATE);
 		c2.fillDates(DBUtil.defaultDates);
 		courseList = new ArrayList<Course>();
 		
