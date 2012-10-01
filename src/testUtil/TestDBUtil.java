@@ -10,7 +10,9 @@ public class TestDBUtil {
 		
 		DBUtil d = new DBUtil();
 		
-		Course c = new Course(1234,"Sub","Name","Semes","090112","093012");
+		Course c = new Course(1234,"Sub","Name","Semester","01/01/13","01/02/13");
+		
+		c.fillDates(DBUtil.defaultDates);
 		
 		System.out.println(d.insertCourse(c));
 		

@@ -23,9 +23,8 @@ public class DBUtil {
 	private String db;
 	public Connection conn;
 	public ArrayList<Course> crsList;
-	public static final String[] defaultDates = {"010112"
-		,"010212","020112","020212","030112","030212","040112","040212"
-		,"050112","050212","060112","060212"};
+	public static final String[] defaultDates = {"02/01/13","02/02/13","03/01/13","03/02/13","04/01/13","04/02/13"
+		,"05/01/13","05/02/13","06/01/13","06/02/13","07/01/13","07/02/13"};
 	
 	
 	public DBUtil(){
