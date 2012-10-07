@@ -412,7 +412,7 @@ public class appControllerTimersTest {
 	public void testGetPopup15min_1() {
 		
 		//set hour and minutes of day 
-<<<<<<< HEAD
+
 		//h=0=0:00, h=1=1:00, h=-1=23:00
 		//m=0=:00, m=1=:01, m=-1=:59
 		int h=0;
@@ -423,37 +423,14 @@ public class appControllerTimersTest {
 		long mDiff = dbUtil.minInMilli(Calendar.getInstance().get(Calendar.MINUTE)) -dbUtil.minInMilli(m) + dbUtil.get15Milli(); 
 		
 		//create new Date with time offset
-		Date time = new Date(System.currentTimeMillis());//- hDiff - mDiff);
+		Date time = new Date(System.currentTimeMillis()- hDiff - mDiff);
 		
 		//create Calendars from each to compare
 		Calendar expected = new GregorianCalendar();
 		expected.setTimeInMillis(time.getTime());
 		
 		Calendar result = new GregorianCalendar();
-		result.setTime(app1.get15BeforeEnd(0, 0));
-		//result.setTime(app1.get15BeforeEnd(expected.get(Calendar.HOUR_OF_DAY), expected.get(Calendar.MINUTE)));
-=======
-				//h=0=0:00, h=1=1:00, h=-1=23:00
-				//m=0=:00, m=1=:01, m=-1=:59
-				int h=0;
-				int m=0;
-				
-				//set offset for current time to match
-				long hDiff = dbUtil.hrsInMilli(Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) - dbUtil.hrsInMilli(h); 
-				long mDiff = dbUtil.minInMilli(Calendar.getInstance().get(Calendar.MINUTE)) -dbUtil.minInMilli(m) + dbUtil.get15Milli(); 
-				
-				//create new Date with time offset
-				Date time = new Date(System.currentTimeMillis()- hDiff - mDiff);
-				
-				//create Calendars from each to compare
-				Calendar expected = new GregorianCalendar();
-				expected.setTimeInMillis(time.getTime());
-				
-				Calendar result = new GregorianCalendar();
-				result.setTime(app1.get15BeforeEnd(h, m));
-				//result.setTime(app1.get15BeforeEnd(expected.get(Calendar.HOUR_OF_DAY), expected.get(Calendar.MINUTE)));
->>>>>>> branch 'testUtil' of https://github.com/cen5076/PSMTesting.git
-
+		result.setTime(app1.get15BeforeEnd(h, m));
 		
 		
 		String messg = new Object(){}.getClass().getEnclosingMethod().getName(); 
