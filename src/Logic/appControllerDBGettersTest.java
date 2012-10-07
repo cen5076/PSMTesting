@@ -31,6 +31,7 @@ public class appControllerDBGettersTest {
 		c2.fillDates(DBUtil.defaultDates);
 		courseList = new ArrayList<Course>();
 		
+		
 	}
 
 	@After
@@ -38,7 +39,8 @@ public class appControllerDBGettersTest {
 		
 		app1 = null;
 		c1=null;
-		courseList=null;
+		courseList.clear();
+		//dbUtil.deleteAll();
 		
 	}
 
@@ -51,14 +53,9 @@ public class appControllerDBGettersTest {
 		
 		//add a different course
 		courseList.add(c2);
+		app1.getDb().initializeStub(courseList);
 		
-		try{
-			app1.getDb().initializeStub(courseList);
-		}
-		catch(Exception e){
-			
-			fail("Error Occured- Exception caught");
-		}
+		
 		//get Course 1
 		app1.getData(c1.getCrseid());
 		
@@ -92,16 +89,8 @@ public class appControllerDBGettersTest {
 		System.out.println("---" + messg + "---");
 		
 		courseList.add(c1);
+		app1.getDb().initializeStub(courseList);
 		
-		//initialize the stub to have course data, similar to DB insert
-		try{
-			app1.getDb().initializeStub(this.courseList);
-		}
-		catch(Exception e){
-			fail("Error occured- Exceptio Caught");
-		}
-		//this.c1.fillDates(DBUtil.defaultDates);
-		//this.util.insertCourse(c1);
 		app1.getData(this.c1.getCrseid());
 		
 		assertEquals("Subject",this.c1.getCrseSub(),app1.getDefSub());
