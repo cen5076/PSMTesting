@@ -70,97 +70,97 @@ public class appControllerParserTest {
 
 
 
-@Test //PSM014_End_Semester_Clear-UnitTest-C03
-/* Test an invalid formatted string for 'dd'*/
-public void testDateParser_3() {
-
-	String date = "12the rest no matter";
+	@Test //PSM014_End_Semester_Clear-UnitTest-C03
+	/* Test an invalid formatted string for 'dd'*/
+	public void testDateParser_3() {
 	
-	try{
-		app1.dateParser(date);
-	}
-	catch(Exception NumberFormatException){
+		String date = "12the rest no matter";
 		
-		assertEquals("Clear Month",12,app1.getClearMonth());
-		assertEquals("Clear Date",0,app1.getClearDate());
-		assertEquals("Clear Year",0,app1.getClearYear());
-		return;
-	}
-	
-	fail("Exception not Thrown");
-
-	
-}
-
-
-@Test //PSM014_End_Semester_Clear-UnitTest-C04
-/* Test an invalid formatted string for 'yy'*/
-public void testDateParser_4() {
-
-	String date = "12-66the rest no matter";
-	
-	try{
-		app1.dateParser(date);
-	}
-	catch(Exception NumberFormatException){
+		try{
+			app1.dateParser(date);
+		}
+		catch(Exception NumberFormatException){
+			
+			assertEquals("Clear Month",12,app1.getClearMonth());
+			assertEquals("Clear Date",0,app1.getClearDate());
+			assertEquals("Clear Year",0,app1.getClearYear());
+			return;
+		}
 		
-		assertEquals("Clear Month",12,app1.getClearMonth());
-		assertEquals("Clear Date",66,app1.getClearDate());
-		assertEquals("Clear Year",0,app1.getClearYear());
-		return;
-	}
+		fail("Exception not Thrown");
 	
-	fail("Exception not Thrown");
-
-	
-}
-
-@Test //PSM014_End_Semester_Clear-UnitTest-C05
-/* Test an invalid formatted string for '+' more than 1 char*/
-public void testDateParser_5() {
-
-	String date = "12  2276the rest no matter";
-	
-	try{
-		app1.dateParser(date);
-	}
-	catch(Exception NumberFormatException){
-		
-		assertEquals("Clear Month",12,app1.getClearMonth());
-		assertEquals("Clear Date",0,app1.getClearDate());
-		assertEquals("Clear Year",0,app1.getClearYear());
-		return;
-	}
-	
-	fail("Exception not Thrown");
-
-	
-}
-
-@Test //PSM014_End_Semester_Clear-UnitTest-C06
-/* Test an invalid formatted string for '+' less one char*/
-public void testDateParser_6() {
-
-	String date = "12";
-	
-	try{
-		app1.dateParser(date);
-		
-	}
-	catch(Exception e){
-		assertEquals("Clear Month",12,app1.getClearMonth());
-		assertEquals("Clear Date",0,app1.getClearDate());
-		assertEquals("Clear Year",0,app1.getClearYear());
-		return;
 		
 	}
 	
-	fail("Exception not thrown");
-
 	
+	@Test //PSM014_End_Semester_Clear-UnitTest-C04
+	/* Test an invalid formatted string for 'yy'*/
+	public void testDateParser_4() {
 	
+		String date = "12-66the rest no matter";
+		
+		try{
+			app1.dateParser(date);
+		}
+		catch(Exception NumberFormatException){
+			
+			assertEquals("Clear Month",12,app1.getClearMonth());
+			assertEquals("Clear Date",66,app1.getClearDate());
+			assertEquals("Clear Year",0,app1.getClearYear());
+			return;
+		}
+		
+		fail("Exception not Thrown");
 	
-}
+		
+	}
+	
+	@Test //PSM014_End_Semester_Clear-UnitTest-C05
+	/* Test an invalid formatted string for '+' more than 1 char*/
+	public void testDateParser_5() {
+	
+		String date = "12  2276the rest no matter";
+		
+		try{
+			app1.dateParser(date);
+		}
+		catch(Exception NumberFormatException){
+			
+			assertEquals("Clear Month",12,app1.getClearMonth());
+			assertEquals("Clear Date",0,app1.getClearDate());
+			assertEquals("Clear Year",0,app1.getClearYear());
+			return;
+		}
+		
+		fail("Exception not Thrown");
+	
+		
+	}
+	
+	@Test //PSM014_End_Semester_Clear-UnitTest-C06
+	/* Test an invalid formatted string for '+' less one char*/
+	public void testDateParser_6() {
+	
+		String date = "12";
+		
+		try{
+			app1.dateParser(date);
+			
+		}
+		catch(Exception e){
+			assertEquals("Clear Month",12,app1.getClearMonth());
+			assertEquals("Clear Date",0,app1.getClearDate());
+			assertEquals("Clear Year",0,app1.getClearYear());
+			return;
+			
+		}
+		
+		fail("Exception not thrown");
+	
+		
+		
+		
+	}
 
 
 	@Test //PSM001_Login-UnitTest-C07
@@ -265,9 +265,9 @@ public void testDateParser_6() {
 	//Test invalid string format
 	public void testTimerParser_6() {
 		
-String hour = "9";
+		String hour = "9";
 		
-		try{
+		try {
 			app1.timerParser(hour);
 		}
 		
@@ -282,4 +282,4 @@ String hour = "9";
 		fail("No Exception Thrown");
 	}
 
-	}
+}

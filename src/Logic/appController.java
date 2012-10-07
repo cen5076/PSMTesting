@@ -320,6 +320,11 @@ public class appController {
 	public  String getUsername() {
 		return username;
 	}
+	
+	
+	public void setUsername(String name) {
+		this.username = name;
+	}
 
 	
 
@@ -328,6 +333,11 @@ public class appController {
 	 */
 	public  String getPassword() {
 		return password;
+	}
+	
+	
+	public void setPassword(String pass) {
+		this.password = pass;
 	}
 
 	

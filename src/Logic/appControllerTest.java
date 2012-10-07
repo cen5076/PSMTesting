@@ -2,89 +2,35 @@ package Logic;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-//import java.util.Date;
-//import java.util.GregorianCalendar;
-//import java.util.Timer;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import testUtil.Course;
 import testUtil.DBUtil;
 
-//@SuppressWarnings("unused")
-//@SuppressWarnings("static-access")
+
 public class appControllerTest {
 
-	public appController app1;
-	public Calendar testCal;
-	public DBUtil dbUtil;
-	//@SuppressWarnings("unused")
-	//private DBUtil util = new DBUtil();
-	public ArrayList<Course> courseList;
-	public Course c1;
-	public Course c2; 
-	public Course c3; 
+	private appController app1;
+	private DBUtil dbUtil;
 
 	
 	@Before
 	public void setUp() throws Exception {
-
-		dbUtil = new DBUtil();
-		//Date date = app1.getDate();
-		//testCal = new GregorianCalendar();
-		//testCal.setTime(date);
 		this.app1 = new appController();
-		//Date date = app1.getDate();
-		this.courseList = new ArrayList<Course>();
-		c1= new Course(1234,"Sub","Name","Semester",Course.STARTDATE,Course.ENDDATE);
-		c2= new Course(2345,"Sub2","Name2","Semester",Course.STARTDATE,Course.ENDDATE);
-		c3= new Course(3456,"Sub3","Name3","Semester",Course.STARTDATE,Course.ENDDATE);
-		
-		c1.fillDates(DBUtil.defaultDates);
-		c2.fillDates(DBUtil.defaultDates);
-		c3.fillDates(DBUtil.defaultDates);
-		
-		courseList.add(c1);
-		courseList.add(c2);
-		courseList.add(c3);
-		
-		//testCal = new GregorianCalendar();
-		//testCal.setTime(date);
-		
-		this.courseList.add(c1);
-		this.courseList.add(c2);
-		this.courseList.add(c3);
-		
-		//this.app1.getDb().initializeStub(courseList);
-		
-	
-		// DEBUG 
-		//System.out.println("today is " + testCal.getTime().toGMTString());
-		//System.exit(0);
-		
+		dbUtil = new DBUtil();
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		this.c1.clear();
-		this.c2.clear();
-		this.c3.clear();
-		this.courseList = null;
 		app1 = null;
-		this.c1= null;
-		this.c2 = null;
-		this.c3 = null;
+		dbUtil = null;
 	}
 
-	@Test
+	@Test // PSM001_Login-UnitTest-A01
 	// Constructor 
 	public void testAppController() {
 		
-		System.out.println("testAppController");
 		// TODO verify if need to check others 
 		assertEquals("Hours",0,app1.getHr());//
 		assertEquals("Minutes",0,app1.getMin());//
@@ -134,43 +80,41 @@ public class appControllerTest {
 		assertEquals("Course Sel",0,app1.getCourseSel());
 		assertEquals("Class End",0,app1.getClassEnded());
 		
-		System.out.println("END testAppController");
 	}
 
-	
-	@Test
+	@Test // PSM001_Login-UnitTest-A02
 	// valid login test
 	public void testLogIn_1() {
-		System.out.println("testLogIn");
-
-		app1.getDb().connect("cen5076","cen5076");
+		
+		app1.setUsername(DBUtil.USERNAME);
+		app1.setPassword(DBUtil.PASSWORD);
+		
 		app1.LogIn();
 		assertTrue("Log In",app1.isLoggedin());
-		System.out.println("END testLogIn");
 
 	}
 	
-	@Test
+	@Test // PSM001_Login-UnitTest-A03
 	//invalid login username test
 	public void testLogIn_2() {
-		System.out.println("testLogIn");
 
-		app1.getDb().connect("badUser","cen5076");
+		app1.setUsername("badUser");
+		app1.setPassword(DBUtil.PASSWORD);
+
 		app1.LogIn();
 		assertFalse("Log In",app1.isLoggedin());
-		System.out.println("END testLogIn");
 
 	}
 	
-	@Test
+	@Test // PSM001_Login-UnitTest-A04
 	//invalid login password test
 	public void testLogIn_3() {
-		System.out.println("testLogIn");
 
-		app1.getDb().connect("cen5076","badPassword");
+		app1.setUsername(DBUtil.USERNAME);
+		app1.setPassword("badPassword");
+		
 		app1.LogIn();
 		assertFalse("Log In",app1.isLoggedin());
-		System.out.println("END testLogIn");
 
 	}
 
