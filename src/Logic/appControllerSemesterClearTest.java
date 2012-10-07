@@ -30,7 +30,7 @@ public class appControllerSemesterClearTest {
 		dbUtil = null;
 	}
 
-	@Test
+	@Test // PSM014-End_Semester_Clear-UnitTest-E01
 	// Test the setting of the set semester clear
 	// relies on autoclear() stub and 
 	public void testSetSemesterClear_1() {
@@ -55,7 +55,7 @@ public class appControllerSemesterClearTest {
 		
 	}
 	
-	@Test
+	@Test // PSM014-End_Semester_Clear-UnitTest-E02
 	// Test the setting of the set semester clear
 	// relies on autoclear() stub and 
 	public void testSetSemesterClear_2() {

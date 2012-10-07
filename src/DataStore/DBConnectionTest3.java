@@ -1,6 +1,7 @@
 package DataStore;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.fail;
 
 import java.sql.Connection;
@@ -35,10 +36,12 @@ public class DBConnectionTest3 {
 		dbc.connect(USERNAME, PASSWORD);
 		dbc.createClassTable();
 		
-		// Check start/end dates
 		dbu = new DBUtil();
-		c1 = new Course(1234, "Subject", "Name", "Semester", "091012", "092012");
-		dbu.insertCourse(c1);
+		c1 = new Course(1234, "Subject", "Name", "Semester", Course.STARTDATE, Course.ENDDATE);
+		dbc.storeClassInfo(c1.getCrseid(), c1.getCrseSub(), c1.getCrseNam(), c1.getSemester());
+		dbc.storeClassSched(c1.getCrseid(), c1.getStartdt(), c1.getEnddt(), c1.getMonStart(), c1.getMonEnd(),
+				c1.getTueStart(), c1.getTueEnd(), c1.getWedStart(), c1.getWedEnd(), c1.getThuStart(), c1.getThuEnd(),
+				c1.getFriStart(), c1.getFriEnd(), c1.getSatStart(), c1.getSatEnd());
 	}
 
 	@After
@@ -47,63 +50,44 @@ public class DBConnectionTest3 {
 		dbc = null;
 		dbu = null;
 	}
+
 	
-	@Test
-	public void testStoreClassSched() {
-		int cId = c1.getCrseid();
-		String stDt = c1.getStartdt();
-		String enDt = c1.getEnddt();
-		String stMo = c1.getMonStart();
-		String enMo = c1.getMonEnd();
-		String stTu = c1.getTueStart();
-		String enTu = c1.getTueEnd();
-		String stWe = c1.getWedStart();
-		String enWe = c1.getWedEnd();
-		String stTh = c1.getThuStart();
-		String enTh = c1.getThuEnd();
-		String stFr = c1.getFriStart();
-		String enFr = c1.getFriEnd();
-		String stSa = c1.getSatStart();
-		String enSa = c1.getSatEnd();
-		int result = dbc.storeClassSched(cId, stDt, enDt, stMo, enMo, stTu, enTu, stWe, enWe,
-				stTh, enTh, stFr, enFr, stSa, enSa);
-		assertEquals("Store Class Schedule", 0, result);
-		
+	@Test // PSM001_Login-UnitTest-I01
+	public void testClearDatabase() {
 		Connection myCon = dbc.getMyCon();
+		dbc.clearDatabase();
 		try {
-            Statement s = myCon.createStatement();
-            ResultSet res = s.executeQuery("SELECT * FROM Class100 WHERE course_id = " + cId +";");
-            res.next();
-            assertEquals("Store Class Schedule ID", res.getInt("course_id"), cId);
-            assertEquals("Store Class Start Date", res.getString("start_date"), stDt);
-            assertEquals("Store Class End Date", res.getString("end_date"), enDt);
-            assertEquals("Store Class Start Monday", res.getString("start_mon"), stMo);
-            assertEquals("Store Class End Monday", res.getString("end_mon"), enMo);
-            assertEquals("Store Class Start Tuesday", res.getString("start_tue"), stTu);
-            assertEquals("Store Class End Tuesday", res.getString("end_tue"), enTu);
-            assertEquals("Store Class Start Wednesday", res.getString("start_wed"), stWe);
-            assertEquals("Store Class End Wednesday", res.getString("end_wed"), enWe);
-            assertEquals("Store Class Start Thursday", res.getString("start_thu"), stTh);
-            assertEquals("Store Class End Thursday", res.getString("end_thu"), enTh);
-            assertEquals("Store Class Start Friday", res.getString("start_fri"), stFr);
-            assertEquals("Store Class End Friday", res.getString("end_fri"), enFr);
-            assertEquals("Store Class End Saturday", res.getString("start_sat"), stSa);
-            assertEquals("Store Class End Saturday", res.getString("end_sat"), enSa);
-            s.close();
-        }
-        catch(Exception e) {
-        	e.printStackTrace();
-        	fail("Exception thrown");
-        }
+			Statement s = myCon.createStatement();
+			ResultSet res = s.executeQuery("SELECT * FROM Class100;");
+	        assertFalse("Get no rows", res.next());
+	        res.close();
+	        s.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
-	@Test
+	@Test // PSM001_Login-UnitTest-I02
+	public void testClearDatabase2() {
+		Connection myCon = dbc.getMyCon();
+		try {
+			Statement s = myCon.createStatement();
+			s.executeUpdate("DROP TABLE IF EXISTS Class100");
+			dbc.clearDatabase();
+	        s.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("Exception thrown");
+		}
+	}
+	
+	@Test // PSM001_Login-UnitTest-I03
 	public void testFetchCourseID() {
 		int result = dbc.fetchCourseID(c1.getCrseid());
 		assertEquals("Course ID", c1.getCrseid(), result);
 	}
 
-	@Test
+	@Test // PSM001_Login-UnitTest-I04
 	public void testGetEndDates() {
 		Course c2 = new Course(2345, "Subject2", "Name2", "Semester", "101012", "121012");
 		dbu.insertCourse(c2);
@@ -119,11 +103,10 @@ public class DBConnectionTest3 {
 		assertEquals("End Date ArrayList", allDates, endDates);
 	}
 
-	@Test
+	@Test // PSM001_Login-UnitTest-I05
 	public void testGetCourses() {
 		Course c2 = new Course(2345, "Subject2", "Name2", "Semester", "101012", "121012");
 		dbc.storeClassInfo(c2.getCrseid(), c2.getCrseSub(), c2.getCrseNam(), c2.getSemester());
-//		dbu.clearCourseList();
 		dbu.addCourse(c1);
 		dbu.addCourse(c2);
 		
@@ -135,11 +118,10 @@ public class DBConnectionTest3 {
 		assertEquals("CourseID ArrayList", expected, actuals);
 	}
 
-	@Test
+	@Test // PSM001_Login-UnitTest-I06
 	public void testFetchCourses() {
 		Course c2 = new Course(2345, "Subject2", "Name2", "Semester", "101012", "121012");
 		dbc.storeClassInfo(c2.getCrseid(), c2.getCrseSub(), c2.getCrseNam(), c2.getSemester());
-//		dbu.clearCourseList();
 		dbu.addCourse(c1);
 		dbu.addCourse(c2);
 		
@@ -158,85 +140,85 @@ public class DBConnectionTest3 {
 		assertEquals("Fetch Course IDs", expected.toString(), ordered);
 	}
 
-	@Test
+	@Test 
 	public void testFetchCourseSubj() {
 		String result = dbc.fetchCourseSubj(c1.crseid);
 		assertEquals("Fetch Subject", c1.getCrseSub(), result);
 	}
 
-	@Test
+	@Test 
 	public void testFetchCourseName() {
 		String result = dbc.fetchCourseName(c1.getCrseid());
 		assertEquals("Fetch Name", c1.getCrseNam(), result);
 	}
 
-	@Test
+	@Test 
 	public void testFetchCourseSemester() {
 		String result = dbc.fetchCourseSemester(c1.getCrseid());
 		assertEquals("Fetch Semester", c1.getSemester(), result);
 	}
 
-	@Test
+	@Test 
 	public void testFetchCourseStart() {
 		String result = dbc.fetchCourseStart(c1.getCrseid());
 		assertEquals("Fetch Course Start", c1.getStartdt(), result);
 	}
 
-	@Test
+	@Test 
 	public void testFetchCourseEnd() {
 		String result = dbc.fetchCourseEnd(c1.getCrseid());
 		assertEquals("Fetch Course End", c1.getEnddt(), result);
 	}
 
-	@Test
+	@Test 
 	public void testFetchStartMon() {
 		String result = dbc.fetchStartMon(c1.getCrseid());
 		assertEquals("Fetch Start Monday", c1.getMonStart(), result);
 	}
 
-	@Test
+	@Test 
 	public void testFetchEndMon() {
 		String result = dbc.fetchEndMon(c1.getCrseid());
 		assertEquals("Fetch End Monday", c1.getMonEnd(), result);
 	}
 
-	@Test
+	@Test 
 	public void testFetchStartTue() {
 		String result = dbc.fetchStartTue(c1.getCrseid());
 		assertEquals("Fetch Start Tuesday", c1.getTueStart(), result);
 	}
 
-	@Test
+	@Test 
 	public void testFetchEndTue() {
 		String result = dbc.fetchEndTue(c1.getCrseid());
 		assertEquals("Fetch End Tuesday", c1.getTueEnd(), result);
 	}
 
-	@Test
+	@Test 
 	public void testFetchStartWed() {
 		String result = dbc.fetchStartWed(c1.getCrseid());
 		assertEquals("Fetch Start Wednesday", c1.getWedStart(), result);
 	}
 
-	@Test
+	@Test 
 	public void testFetchEndWed() {
 		String result = dbc.fetchEndWed(c1.getCrseid());
 		assertEquals("Fetch End Wednesday", c1.getWedEnd(), result);
 	}
 
-	@Test
+	@Test 
 	public void testFetchStartThu() {
 		String result = dbc.fetchStartThu(c1.getCrseid());
 		assertEquals("Fetch Start Thursday", c1.getThuStart(), result);
 	}
 
-	@Test
+	@Test 
 	public void testFetchEndThu() {
 		String result = dbc.fetchEndThu(c1.getCrseid());
 		assertEquals("Fetch End Thursday", c1.getThuEnd(), result);
 	}
 
-	@Test
+	@Test 
 	public void testFetchStartFri() {
 		String result = dbc.fetchStartFri(c1.getCrseid());
 		assertEquals("Fetch Start Friday", c1.getFriStart(), result);

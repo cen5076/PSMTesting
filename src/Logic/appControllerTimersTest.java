@@ -408,11 +408,10 @@ public class appControllerTimersTest {
 
 	}
 	
-	@Test
+	@Test // PSM_008-Message_PopUp-UnitTest-D10
 	public void testGetPopup15min_1() {
 		
 		//set hour and minutes of day 
-
 		//h=0=0:00, h=1=1:00, h=-1=23:00
 		//m=0=:00, m=1=:01, m=-1=:59
 		int h=0;
@@ -448,7 +447,7 @@ public class appControllerTimersTest {
 
 
 }
-	@Test
+	@Test // PSM_008-Message_PopUp-UnitTest-D11
 	public void testGetPopup15min_2() {
 		
 		//set hour and minutes of day 
@@ -489,7 +488,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	@Test 
+	@Test // PSM_008-Message_PopUp-UnitTest-D12
 	public void testGetPopup15min_3() {
 		
 		//set hour and minutes of day 
@@ -530,7 +529,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	@Test
+	@Test // PSM_008-Message_PopUp-UnitTest-D13
 	public void testGetPopup15min_4() {
 		
 		//set hour and minutes of day 
@@ -541,7 +540,7 @@ public class appControllerTimersTest {
 			
 			//set offset for current time to match
 			long hDiff = dbUtil.hrsInMilli(Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) - dbUtil.hrsInMilli(h); 
-			long mDiff = dbUtil.minInMilli(Calendar.getInstance().get(Calendar.MINUTE)) -dbUtil.minInMilli(m) + dbUtil.get15Milli(); 
+			long mDiff = dbUtil.minInMilli(Calendar.getInstance().get(Calendar.MINUTE)) - dbUtil.minInMilli(m) + dbUtil.get15Milli(); 
 			
 			//create new Date with time offset
 			Date time = new Date(System.currentTimeMillis()- hDiff - mDiff);
@@ -570,7 +569,8 @@ public class appControllerTimersTest {
 
 
 	}
-	@Test
+	
+	@Test // PSM_008-Message_PopUp-UnitTest-D14
 	public void testGetPopup15min_5() {
 		
 		//set hour and minutes of day 
@@ -611,7 +611,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	@Test
+	@Test // PSM_008-Message_PopUp-UnitTest-D15
 	public void testGetPopup15min_6() {
 		
 		//set hour and minutes of day 
@@ -652,7 +652,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	@Test
+	@Test // PSM_008-Message_PopUp-UnitTest-D16
 	public void testGetPopup15min_7() {
 		
 		//set hour and minutes of day 
@@ -693,7 +693,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	@Test 
+	@Test // PSM_008-Message_PopUp-UnitTest-D17
 	public void testGetPopup15min_8() {
 		
 		//set hour and minutes of day 
@@ -734,8 +734,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	@Test
-	// Test Case 1 
+	@Test // PSM_008-Message_PopUp-UnitTest-D18
 	public void testGetPopup15min_9() {
 		
 		//set hour and minutes of day 
@@ -776,7 +775,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	@Test
+	@Test // PSM_008-Message_PopUp-UnitTest-D19
 	 
 	//  Test for a return date that is 5 minutes ahead.
 	 
@@ -819,7 +818,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	@Test
+	@Test // PSM_008-Message_PopUp-UnitTest-D20
 	 
 	 // Test for a return date that is 5 minutes ahead.
 	 
@@ -862,7 +861,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	@Test
+	@Test // PSM_008-Message_PopUp-UnitTest-D21
 	
 	 // Test for a return date that is 5 minutes ahead.
 	 
@@ -905,7 +904,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	@Test
+	@Test // PSM_008-Message_PopUp-UnitTest-D22
 	 
 	// Test for a return date that is 5 minutes ahead.
 	 
@@ -949,7 +948,7 @@ public class appControllerTimersTest {
 	}
 	
 	
-	@Test
+	@Test // PSM_008-Message_PopUp-UnitTest-D23
 	
 	 // Test for a return date that is 5 minutes ahead.
 	 
@@ -992,7 +991,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	@Test
+	@Test // PSM_008-Message_PopUp-UnitTest-D24
 	 
 	// Test for a return date that is 5 minutes ahead.
 	 
@@ -1035,7 +1034,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	@Test
+	@Test // PSM_008-Message_PopUp-UnitTest-D25
 	
 	// Test for a return date that is 5 minutes ahead.
 	 
@@ -1078,9 +1077,9 @@ public class appControllerTimersTest {
 
 	}
 	
-	@Test
+	@Test // PSM_008-Message_PopUp-UnitTest-D26
 	
-	 // Test for a return date that is 5 minutes ahead.
+	// Test for a return date that is 5 minutes ahead.
 	 
 	public void testGetPopup5min_8() {
 		
@@ -1104,7 +1103,7 @@ public class appControllerTimersTest {
 		Calendar result = new GregorianCalendar();
 		result.setTime(app1.get5BeforeEnd(h, m));
 		
-//Assert
+		//Assert
 		assertEquals("Year",expected.get(Calendar.YEAR),result.get(Calendar.YEAR));
 		assertEquals("Month",expected.get(Calendar.MONTH),result.get(Calendar.MONTH));
 		assertEquals("Date",expected.get(Calendar.DATE),result.get(Calendar.DATE));
@@ -1121,7 +1120,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	@Test
+	@Test // PSM_008-Message_PopUp-UnitTest-D27
 	
 	 // Test for a return date that is 5 minutes ahead.
 	 
@@ -1167,4 +1166,3 @@ public class appControllerTimersTest {
 	}
 
 }
-
