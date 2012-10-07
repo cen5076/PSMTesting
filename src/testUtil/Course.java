@@ -33,8 +33,8 @@ public class Course {
 	public String satStart;
 	public String satEnd;
 	
-	public static final String STARTDATE="010112";
-	public static final String ENDDATE="010212";
+	public static final String STARTDATE="01/01/13";
+	public static final String ENDDATE="01/02/13";
 	
 	public final ArrayList<String> days = new ArrayList<String>();
 	
