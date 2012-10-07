@@ -15,6 +15,7 @@ public class DBConnectionTest {
 	private final String USERNAME = DBUtil.USERNAME;
 	private final String PASSWORD = DBUtil.PASSWORD;
 	private final String DB = DBUtil.DB;
+	private DBUtil dbutil = new DBUtil();
 	
 	
 	@Before
@@ -25,7 +26,7 @@ public class DBConnectionTest {
 	@After
 	public void tearDown() throws Exception {
 		dbc = null;
-		DBUtil.deleteAll();
+		dbutil.deleteAll();
 	}
 	
 	@Test

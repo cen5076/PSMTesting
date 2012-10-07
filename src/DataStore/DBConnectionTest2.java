@@ -26,6 +26,7 @@ public class DBConnectionTest2 {
 	
 	private final String USERNAME = DBUtil.USERNAME;
 	private final String PASSWORD = DBUtil.PASSWORD;
+	private DBUtil dbutil = new DBUtil();
 	
 	
 	@Before
@@ -34,11 +35,11 @@ public class DBConnectionTest2 {
 		c1 = new Course(1234,"Subject", "Name", "Semester", "091012", "092012");
 		c2 = new Course(2345,"Subject2", "Name2", "Semester", "101012", "121012");
 		
-		DBUtil.deleteAll();
-		DBUtil.insertCourse(c1);
-		DBUtil.addCourse(c1);
-		DBUtil.insertCourse(c2);
-		DBUtil.addCourse(c2);
+		dbutil.deleteAll();
+		dbutil.insertCourse(c1);
+		dbutil.addCourse(c1);
+		dbutil.insertCourse(c2);
+		dbutil.addCourse(c2);
 		
 		dbc.connect(USERNAME, PASSWORD);
 	}
@@ -47,7 +48,7 @@ public class DBConnectionTest2 {
 	public void tearDown() throws Exception {
 		dbc.disconnect();
 		dbc = null;
-		DBUtil.deleteAll();
+		dbutil.deleteAll();
 	}
 	
 	@Test
@@ -83,7 +84,7 @@ public class DBConnectionTest2 {
 	
 	@Test
 	public void testStoreClassInfo1() {
-		DBUtil.deleteAll();
+		dbutil.deleteAll();
 		int cId = c1.getCrseid();
 		String cSub = c1.getCrseSub();
 		String cName = c1.getCrseNam();
@@ -112,7 +113,7 @@ public class DBConnectionTest2 {
 	
 	@Test
 	public void testStoreClassInfo4() {
-		DBUtil.deleteAll();
+		dbutil.deleteAll();
 		int cId = c1.getCrseid();
 		String cSub = c1.getCrseSub();
 		String cName = "Supercalifragilisticexpialidocious";
@@ -220,7 +221,7 @@ public class DBConnectionTest2 {
 	@Test
 	public void testGetCourses() {
 		ArrayList<Integer> actuals = dbc.getCourses();
-		ArrayList<Integer> expected = DBUtil.getCourseIds();
+		ArrayList<Integer> expected = dbutil.getCourseIds();
 		Collections.sort(actuals);
 		Collections.sort(expected);
 		
@@ -238,7 +239,7 @@ public class DBConnectionTest2 {
 		}
 		String ordered = new ArrayList<String>(orderedCourses).toString();
 		
-		ArrayList<Integer> expected = DBUtil.getCourseIds();
+		ArrayList<Integer> expected = dbutil.getCourseIds();
 		Collections.sort(expected);
 		
 		assertEquals("Fetch Course IDs", expected.toString(), ordered);
