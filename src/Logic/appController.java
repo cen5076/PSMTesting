@@ -22,16 +22,16 @@ import java.lang.Thread;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import DataStore.DBConnection;
-//import stubs.DBConnection;
-import Interface.InterfaceController;
-//import stubs.InterfaceController;
-import Interface.Messages;
-//import stubs.Messages;
-import Interface.PrefilledScheduleForm;
-//import stubs.PrefilledScheduleForm;
-import Interface.ScheduleForm;
-//import stubs.ScheduleForm;
+//import DataStore.DBConnection;
+import stubs.DBConnection;
+//import Interface.InterfaceController;
+import stubs.InterfaceController;
+//import Interface.Messages;
+import stubs.Messages;
+//import Interface.PrefilledScheduleForm;
+import stubs.PrefilledScheduleForm;
+//import Interface.ScheduleForm;
+import stubs.ScheduleForm;
 
 
 /**
@@ -895,6 +895,7 @@ public class appController {
     public void getData(int course)
     {
         defSub = db.fetchCourseSubj(course);
+        System.out.println("setting Course " + course + " sub to " + String.valueOf(db.fetchCourseSubj(course)));
         defSemester = db.fetchCourseSemester(course);
         defCourseName = db.fetchCourseName(course);
         defCourseStart = db.fetchCourseStart(course);
@@ -941,7 +942,8 @@ public class appController {
     {
         public void run()
         {
-           db.clearDatabase();
+        	
+          db.clearDatabase();
         }
     };
     
