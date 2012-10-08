@@ -182,6 +182,7 @@ public class DBConnection
         
         return endDates;
     }
+    
     public ArrayList<Integer> getCourses()
     {
         ArrayList<Integer> courseList = new ArrayList<Integer>();
@@ -194,8 +195,6 @@ public class DBConnection
             {
                 courseList.add(res.getInt("course_id"));       
             }
-            
-            
         }
         catch(Exception e)
         {
@@ -594,7 +593,7 @@ public class DBConnection
                     +"', start_wed = '" +startWed +"', end_wed = '" +endWed +"', start_thu =  '" +startThu 
                     + "', end_thu = '" +endThu +"', start_fri = '" +startFri +"', end_fri = '" +endFri 
                     +"', start_sat =  '" +startSat +"', end_sat = '" +endSat
-                    +"' WHERE course_id = '" +courseID + "';");
+                    +"' WHERE course_id = '" + courseID + "';");
         }
         catch(Exception e){
             e.printStackTrace();

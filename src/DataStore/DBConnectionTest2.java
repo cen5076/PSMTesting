@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import org.junit.After;
@@ -17,6 +18,7 @@ public class DBConnectionTest2 {
 
 	private DBConnection dbc;
 	private Course c1;
+	private Connection myCon;
 	
 	private final String USERNAME = DBUtil.USERNAME;
 	private final String PASSWORD = DBUtil.PASSWORD;
@@ -26,6 +28,7 @@ public class DBConnectionTest2 {
 	public void setUp() throws Exception {
 		dbc = new DBConnection();
 		dbc.connect(USERNAME, PASSWORD);
+		myCon = dbc.getMyCon();
 		dbc.createClassTable();
 		
 		c1 = new Course(1234, "Subject", "Name", "Semester", Course.STARTDATE, Course.ENDDATE);
@@ -46,7 +49,6 @@ public class DBConnectionTest2 {
 		int result = dbc.storeClassInfo(cId, cSub, cName, cSem);
 		assertEquals("Store Class Info", 0, result);
 		
-		Connection myCon = dbc.getMyCon();
 		try {
 			Statement s = myCon.createStatement();
             ResultSet res = s.executeQuery("SELECT * FROM Class100 WHERE course_id = " + cId +";");
@@ -67,7 +69,6 @@ public class DBConnectionTest2 {
 	
 	@Test // PSM001_Login-UnitTest-H02
 	public void testStoreClassInfo2() {
-		Connection myCon = dbc.getMyCon();
 		try {
 			Statement s = myCon.createStatement();
 			s.executeUpdate("DROP TABLE IF EXISTS Class100");
@@ -98,7 +99,6 @@ public class DBConnectionTest2 {
 		int result = dbc.storeClassInfo(cId, cSub, cName, cSem);
 		assertEquals("Store Class Info", -1, result);
 		
-		Connection myCon = dbc.getMyCon();
 		try {
 			Statement s = myCon.createStatement();
 			ResultSet res = s.executeQuery("SELECT * FROM Class100 WHERE course_id = " + cId +";");
@@ -132,7 +132,6 @@ public class DBConnectionTest2 {
 				stTh, enTh, stFr, enFr, stSa, enSa);
 		assertEquals("Store Class Schedule", 0, result);
 		
-		Connection myCon = dbc.getMyCon();
 		try {
             Statement s = myCon.createStatement();
             ResultSet res = s.executeQuery("SELECT * FROM Class100 WHERE course_id = " + cId +";");
@@ -158,5 +157,13 @@ public class DBConnectionTest2 {
         	e.printStackTrace();
         	fail("Exception thrown");
         }
+	}
+	
+	@Test // PSM001_Login-UnitTest-H06
+	public void testStoreClassSched2() {
+		int result = dbc.storeClassSched(c1.getCrseid(), c1.getStartdt(), c1.getEnddt(), c1.getMonStart(), c1.getMonEnd(),
+				c1.getTueStart(), c1.getTueEnd(), c1.getWedStart(), c1.getWedEnd(), c1.getThuStart(), c1.getThuEnd(),
+				c1.getFriStart(), c1.getFriEnd(), c1.getSatStart(), c1.getSatEnd());
+		assertEquals("Store Class Schedule", -1, result);
 	}
 }
