@@ -10,6 +10,8 @@ public class TestDBUtil {
 		
 		DBUtil d = new DBUtil();
 		
+		d.deleteAll();
+		
 		Course c = new Course(1234,"Sub","Name","Semester","01/01/13","01/02/13");
 		
 		c.fillDates(DBUtil.defaultDates);

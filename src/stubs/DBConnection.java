@@ -14,6 +14,7 @@ import java.util.Set;
 import java.util.SortedMap;
 
 import testUtil.Course;
+import testUtil.DBUtil;
 
 @SuppressWarnings("unused")
 /**
@@ -159,6 +160,11 @@ public class DBConnection {
      */
     public int connect(String user,String pw)
     {
+    	
+    	if(user != DBUtil.USERNAME)
+    		return -1;
+    	if(pw != DBUtil.PASSWORD)
+    		return -1;
         username = user;
         password = pw;
         

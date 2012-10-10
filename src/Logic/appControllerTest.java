@@ -18,13 +18,13 @@ public class appControllerTest {
 	@Before
 	public void setUp() throws Exception {
 		this.app1 = new appController();
-		dbUtil = new DBUtil();
+		this.dbUtil = new DBUtil();
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		app1 = null;
-		dbUtil = null;
+		this.app1 = null;
+		this.dbUtil = null;
 	}
 
 	@Test // PSM001_Login-UnitTest-A01

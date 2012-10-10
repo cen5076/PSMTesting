@@ -22,8 +22,8 @@ import java.lang.Thread;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-//import DataStore.DBConnection;
-import stubs.DBConnection;
+import DataStore.DBConnection;
+//import stubs.DBConnection;
 //import Interface.InterfaceController;
 import stubs.InterfaceController;
 //import Interface.Messages;
@@ -86,7 +86,10 @@ public class appController {
     private  Authenticate auth;
     private  int courseSel;
     private  static long classEnded = 0;
-       
+    
+    /* CEN5076 */
+    public boolean is15BeforeEnd = false;
+    public boolean is5BeforeEnd = false;
     
     /** Creates a new instance of ApplicationLogic */
     public appController() {

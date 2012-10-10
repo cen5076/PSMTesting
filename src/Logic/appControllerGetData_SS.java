@@ -44,7 +44,7 @@ public class appControllerGetData_SS {
 		
 	}
 	
-	@Test //PSM001_Login-SubSystemTest-B01
+	@Test //PSM001_Login-SubSystemTest-B02
 	/* Test a course id not in database */
 	public void testGetData1_SS() {
 		String messg = new Object(){}.getClass().getEnclosingMethod().getName(); 
@@ -61,27 +61,27 @@ public class appControllerGetData_SS {
 		}
 		
 		
-		assertEquals("Subject","",app1.getDefSub());
-		assertEquals("Semester","",app1.getDefSemester());
-		assertEquals("CourseName","",app1.getDefCourseName());
-		assertEquals("CourseStart","",app1.getDefCourseStart());
-		assertEquals("CourseEnd","",app1.getDefCourseEnd());
-		assertEquals("MonStart","",app1.getDefMonStart());
-		assertEquals("MonEnd","",app1.getDefMonEnd());
-        assertEquals("TueStart","",app1.getDefTueStart());
-        assertEquals("TueEnd","",app1.getDefTueEnd());
-        assertEquals("WedStart","",app1.getDefWedStart());
-        assertEquals("WedEnd","",app1.getDefWedEnd());
-        assertEquals("ThuStart","",app1.getDefThuStart());
-        assertEquals("ThuEnd","",app1.getDefThuEnd());
-        assertEquals("FriStart","",app1.getDefFriStart());
-        assertEquals("FriEnd","",app1.getDefFriEnd());
-        assertEquals("SatStart","",app1.getDefSatStart());
-        assertEquals("SatEnd","",app1.getDefSatEnd());
+		assertNull("Subject",app1.getDefSub());
+		assertNull("Semester",app1.getDefSemester());
+		assertNull("CourseName",app1.getDefCourseName());
+		assertNull("CourseStart",app1.getDefCourseStart());
+		assertNull("CourseEnd",app1.getDefCourseEnd());
+		assertNull("MonStart",app1.getDefMonStart());
+		assertNull("MonEnd",app1.getDefMonEnd());
+        assertNull("TueStart",app1.getDefTueStart());
+        assertNull("TueEnd",app1.getDefTueEnd());
+        assertNull("WedStart",app1.getDefWedStart());
+        assertNull("WedEnd",app1.getDefWedEnd());
+        assertNull("ThuStart",app1.getDefThuStart());
+        assertNull("ThuEnd",app1.getDefThuEnd());
+        assertNull("FriStart",app1.getDefFriStart());
+        assertNull("FriEnd",app1.getDefFriEnd());
+        assertNull("SatStart",app1.getDefSatStart());
+        assertNull("SatEnd",app1.getDefSatEnd());
 		
 	}
 	
-	@Test //PSM001_Login-SubSystemTest-B02
+	@Test //PSM001_Login-SubSystemTest-B01
 	/* Test a course id in database */
 	public void testGetData2_SS() {
 		

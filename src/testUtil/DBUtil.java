@@ -23,8 +23,8 @@ public class DBUtil {
 	private String db;
 	public Connection conn;
 	public ArrayList<Course> crsList;
-	public static final String[] defaultDates = {"02/01/13","02/02/13","03/01/13","03/02/13","04/01/13","04/02/13"
-		,"05/01/13","05/02/13","06/01/13","06/02/13","07/01/13","07/02/13"};
+	public static final String[] defaultDates = {"12:00","13:00","12:00","13:00","12:00","13:00"
+		,"12:00","13:00","12:00","13:00","12:00","13:00"};
 	
 	public static final String USERNAME = "cen5076";
 	public static final String PASSWORD = "cen5076";
