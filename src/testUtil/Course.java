@@ -33,11 +33,16 @@ public class Course {
 	public String satStart;
 	public String satEnd;
 	
+	/* Default static values to use for start and end dates */
 	public static final String STARTDATE="01/01/13";
 	public static final String ENDDATE="01/02/13";
 	
+	/* Arraylist of the values for the days */
 	public final ArrayList<String> days = new ArrayList<String>();
 	
+	/**
+	 *Constructor for Course, sets the days.
+	 */
 	public Course(){
 		
 		days.add("mon");
@@ -48,8 +53,20 @@ public class Course {
 		days.add("sat");
 	}
 	
+	/**
+	 * Constructor with values for the id and other properties but days uses the default stored values.
+	 * 
+	 * @param id
+	 * @param sub
+	 * @param nam
+	 * @param sem
+	 * @param start
+	 * @param end
+	 */
 	public Course(int id, String sub, String nam, String sem, String start, String end){
 		
+		//calls default to init days
+		this();
 		this.crseid = id;
 		this.crseNam = nam;
 		this.crseSub = sub;
@@ -72,7 +89,29 @@ public class Course {
 		
 	}
 	
-	
+	/**
+	 * Constructor to not use the default values for the days.
+	 * @author - David Garcia
+	 * 
+	 * @param id
+	 * @param sub
+	 * @param nam
+	 * @param sem
+	 * @param start
+	 * @param end
+	 * @param mons
+	 * @param mone
+	 * @param tues
+	 * @param tuee
+	 * @param weds
+	 * @param wede
+	 * @param thus
+	 * @param thue
+	 * @param fris
+	 * @param frie
+	 * @param sats
+	 * @param sate
+	 */
 	public Course(int id, String sub, String nam, String sem, String start, String end, String mons, String mone, String tues, String tuee, String weds, String wede,String thus, String thue, String fris, String frie, String sats, String sate){
 		
 		this(id,sub,nam,sem,start,end);
@@ -91,6 +130,12 @@ public class Course {
 		this.satStart = sats;
 	}
 	
+	/**
+	 * Returns the field names, used to facilitate sql statements.
+	 * 
+	 * @return - a string array with one value of the field name for each field
+	 * that would be in the database.
+	 */
 	public ArrayList<String> getFieldNames() {
 		
 		ArrayList<String> fields = new ArrayList<String>();
@@ -115,6 +160,11 @@ public class Course {
 		
 	}
 	
+	/**
+	 * returns the values of the course as an arraylist.
+	 * 
+	 * @return ArrayList<Stirng> values
+	 */
 	public ArrayList<String> getValues(){
 		
 		ArrayList<String> vals = new ArrayList<String>();
@@ -141,6 +191,12 @@ public class Course {
 		
 	} 
 	
+	/**
+	 * Set the values for the dates based on the array
+	 * 
+	 * @param arr - array with sequence monStart,monEnd,tueStart... 
+	 * @return - true if added successfully
+	 */
 	public boolean fillDates(String[] arr){
 		
 		if(arr.length != 12)
@@ -162,6 +218,11 @@ public class Course {
 		return true;
 	}
 	
+	/**
+	 * returns an array of only the endDates for each day.
+	 * 
+	 * @return - ArrayList<String> ends
+	 */
 	public ArrayList<String>  getEndDates(){
 		
 		ArrayList<String> ends = new ArrayList<String>();
@@ -177,6 +238,11 @@ public class Course {
 		
 	}
 	
+	/**
+	 * Clear all values.
+	 * 
+	 * @return
+	 */
 	public boolean clear(){
 
 		this.crseid = 0;
