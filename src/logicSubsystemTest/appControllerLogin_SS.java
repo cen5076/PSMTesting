@@ -1,10 +1,12 @@
-package Logic;
+package logicSubsystemTest;
 
 import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import Logic.appController;
 
 import testUtil.DBUtil;
 
