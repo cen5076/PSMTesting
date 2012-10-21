@@ -27,6 +27,13 @@ public class appControllerLogin_SS {
 
 	
 	@Test //PSM001_Login-SubSystemTest-A01
+	/**
+	 * Test ID: PSM_008-Message_PopUp-SubSystemTest-A01
+	 * Purpose: To test the login functionality for a valid username and password
+	 * Date Created: 09/18/12
+	 * Author: Jose Borja
+	 * Stubs Needed: 
+	 */
 	//valid login test
 	public void testLogIn() {
 		
@@ -39,6 +46,13 @@ public class appControllerLogin_SS {
 	}
 	
 	@Test //PSM001_Login-SubSystemTest-A02
+	/**
+	 * Test ID: PSM_008-Message_PopUp-SubSystemTest-A02
+	 * Purpose: To test the login functionality for an  invalid username and valid password
+	 * Date Created: 09/18/12
+	 * Author: Jose Borja
+	 * Stubs Needed: 
+	 */
 	//invalid login username test
 	public void testLogIn_BadUser() {
 		
@@ -50,6 +64,13 @@ public class appControllerLogin_SS {
 	}
 	
 	@Test //PSM001_Login-SubSystemTest-A03
+	/**
+	 * Test ID: PSM_008-Message_PopUp-SubSystemTest-A03
+	 * Purpose: To test the login functionality for a valid username and invalid password
+	 * Date Created: 09/18/12
+	 * Author: Jose Borja
+	 * Stubs Needed: 
+	 */
 	//invalid login password test
 	public void testLogIn_BadPass() {
 
@@ -62,6 +83,13 @@ public class appControllerLogin_SS {
 	}
 	
 	@Test //PSM001_Login-SubSystemTest-A04
+	/**
+	 * Test ID: PSM_008-Message_PopUp-SubSystemTest-A04
+	 * Purpose: To test the login functionality for an invalid username and invalid 
+	 * Date Created: 09/18/12
+	 * Author: Jose Borja
+	 * Stubs Needed: 
+	 */
 	//invalid login user and password test
 	public void testLogIn_BadUser_Pass() {
 

@@ -46,44 +46,15 @@ public class appControllerGetData_SS {
 		
 	}
 	
-	@Test //PSM001_Login-SubSystemTest-B02
-	/* Test a course id not in database */
-	public void testGetData1_SS() {
-		String messg = new Object(){}.getClass().getEnclosingMethod().getName(); 
-		System.out.println("---" + messg + "---");
-		
-		try{
-		//add a different course
-		dbUtil.insertCourse(c2);
-		//get Course 1
-		app1.getData(c1.getCrseid());
-		}
-		catch(Exception e){
-			
-		}
-		
-		
-		assertNull("Subject",app1.getDefSub());
-		assertNull("Semester",app1.getDefSemester());
-		assertNull("CourseName",app1.getDefCourseName());
-		assertNull("CourseStart",app1.getDefCourseStart());
-		assertNull("CourseEnd",app1.getDefCourseEnd());
-		assertNull("MonStart",app1.getDefMonStart());
-		assertNull("MonEnd",app1.getDefMonEnd());
-        assertNull("TueStart",app1.getDefTueStart());
-        assertNull("TueEnd",app1.getDefTueEnd());
-        assertNull("WedStart",app1.getDefWedStart());
-        assertNull("WedEnd",app1.getDefWedEnd());
-        assertNull("ThuStart",app1.getDefThuStart());
-        assertNull("ThuEnd",app1.getDefThuEnd());
-        assertNull("FriStart",app1.getDefFriStart());
-        assertNull("FriEnd",app1.getDefFriEnd());
-        assertNull("SatStart",app1.getDefSatStart());
-        assertNull("SatEnd",app1.getDefSatEnd());
-		
-	}
 	
 	@Test //PSM001_Login-SubSystemTest-B01
+	/**
+	 * Test ID: PSM001_Login-SubSystemTest-B01
+	 * Purpose: To test the getData functionality that returns necessary setup data after successful login for a Course Id in the database.
+	 * Date Created: 09/18/12
+	 * Author: Jose Borja
+	 * Stubs Needed: 
+	 */
 	/* Test a course id in database */
 	public void testGetData2_SS() {
 		
@@ -119,7 +90,51 @@ public class appControllerGetData_SS {
 		System.out.println("END testGetData");
 
 	}
-}
+
+	@Test //PSM001_Login-SubSystemTest-B02
+	/**
+	 * Test ID: PSM001_Login-SubSystemTest-B01
+	 * Purpose: To test the getData functionality that returns necessary setup data after successful login for a Course Id NOT in the database.
+	 * Date Created: 09/18/12
+	 * Author: Jose Borja
+	 * Stubs Needed: 
+	 */
+	/* Test a course id not in database */
+	public void testGetData1_SS() {
+		String messg = new Object(){}.getClass().getEnclosingMethod().getName(); 
+		System.out.println("---" + messg + "---");
+	
+		try{
+			//add a different course
+			dbUtil.insertCourse(c2);
+			//get Course 1
+			app1.getData(c1.getCrseid());
+		}
+		catch(Exception e){
+		
+		}
+	
+	
+		assertNull("Subject",app1.getDefSub());
+		assertNull("Semester",app1.getDefSemester());
+		assertNull("CourseName",app1.getDefCourseName());
+		assertNull("CourseStart",app1.getDefCourseStart());
+		assertNull("CourseEnd",app1.getDefCourseEnd());
+		assertNull("MonStart",app1.getDefMonStart());
+		assertNull("MonEnd",app1.getDefMonEnd());
+		assertNull("TueStart",app1.getDefTueStart());
+		assertNull("TueEnd",app1.getDefTueEnd());
+		assertNull("WedStart",app1.getDefWedStart());
+		assertNull("WedEnd",app1.getDefWedEnd());
+		assertNull("ThuStart",app1.getDefThuStart());
+		assertNull("ThuEnd",app1.getDefThuEnd());
+		assertNull("FriStart",app1.getDefFriStart());
+		assertNull("FriEnd",app1.getDefFriEnd());
+		assertNull("SatStart",app1.getDefSatStart());
+		assertNull("SatEnd",app1.getDefSatEnd());
+	
+		}
+	}
 
 /* System.out.println("TuesdayStart=" + app1.getDefTueStart());
 if( app1.getDefTueStart() == null){
