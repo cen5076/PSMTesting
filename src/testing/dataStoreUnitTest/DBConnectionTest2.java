@@ -166,21 +166,4 @@ public class DBConnectionTest2 {
 				c1.getFriStart(), c1.getFriEnd(), c1.getSatStart(), c1.getSatEnd());
 		assertEquals("Store Class Schedule", -1, result);
 	}
-	
-	@Test // PSM001_Login-UnitTest-H07
-	public void testStoreClassSched3() {
-		try {
-			Statement s = myCon.createStatement();
-			s.executeUpdate("DROP TABLE IF EXISTS Class100");
-			s.close();
-		}
-		catch(Exception e) {
-        	e.printStackTrace();
-        	fail("Exception thrown");
-        }
-		int result = dbc.storeClassSched(c1.getCrseid(), c1.getStartdt(), c1.getEnddt(), c1.getMonStart(), c1.getMonEnd(),
-				c1.getTueStart(), c1.getTueEnd(), c1.getWedStart(), c1.getWedEnd(), c1.getThuStart(), c1.getThuEnd(),
-				c1.getFriStart(), c1.getFriEnd(), c1.getSatStart(), c1.getSatEnd());
-		assertEquals("Store Class Schedule", -1, result);
-	}
 }

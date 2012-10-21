@@ -6,7 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({ DBConnectionTest.class, DBConnectionTest2.class,
-		DBConnectionTest3.class, DBConnectionTest4.class })
-public class DBConnectionTestAll {
+		DBConnectionTest3.class })
+public class DBConnectionTestAllOld {
 	
 }

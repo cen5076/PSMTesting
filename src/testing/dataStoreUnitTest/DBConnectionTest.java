@@ -21,8 +21,6 @@ public class DBConnectionTest {
 	
 	private final String USERNAME = DBUtil.USERNAME;
 	private final String PASSWORD = DBUtil.PASSWORD;
-	private final String UNDERPRIV_USERNAME = "selectOnly";
-	private final String UNDERPRIV_PASSWORD = "selectOnly";
 	private final String DB = DBUtil.DB;
 	
 	
@@ -164,13 +162,5 @@ public class DBConnectionTest {
 		finally {
 			dbc.disconnect();
 		}
-	}
-	
-	@Test // PSM001_Login-UnitTest-G10
-	public void testCreateClassTable3() {
-		dbc.connect(UNDERPRIV_USERNAME, UNDERPRIV_PASSWORD);
-        int result = dbc.createClassTable();
-		assertEquals("Create New Class100 Table", -1, result);
-		dbc.disconnect();
 	}
 }

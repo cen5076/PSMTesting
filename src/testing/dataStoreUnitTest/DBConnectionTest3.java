@@ -56,7 +56,6 @@ public class DBConnectionTest3 {
 		dbc = null;
 		dbu = null;
 	}
-
 	
 	@Test // PSM001_Login-UnitTest-I01
 	public void testClearDatabase() {
@@ -122,22 +121,6 @@ public class DBConnectionTest3 {
 		
 		assertTrue("End Date ArrayList", endDates.isEmpty());
 	}
-
-	@Test // PSM001_Login-UnitTest-I07
-	public void testGetEndDates3() {
-		try {
-			Statement s = myCon.createStatement();
-			s.executeUpdate("DROP TABLE IF EXISTS Class100");
-			s.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-			fail("Exception thrown");
-		}
-		
-		ArrayList<String> endDates = dbc.getEndDates();
-		
-		assertTrue("End Date ArrayList", endDates.isEmpty());
-	}
 	
 	@Test // PSM001_Login-UnitTest-I08
 	public void testGetCourses() {
@@ -157,22 +140,6 @@ public class DBConnectionTest3 {
 	@Test // PSM001_Login-UnitTest-I09
 	public void testGetCourses2() {
 		dbc.clearDatabase();
-		
-		ArrayList<Integer> actuals = dbc.getCourses();
-		
-		assertTrue("CourseID ArrayList", actuals.isEmpty());
-	}
-
-	@Test // PSM001_Login-UnitTest-I10
-	public void testGetCourses3() {
-		try {
-			Statement s = myCon.createStatement();
-			s.executeUpdate("DROP TABLE IF EXISTS Class100");
-			s.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-			fail("Exception thrown");
-		}
 		
 		ArrayList<Integer> actuals = dbc.getCourses();
 		
@@ -205,41 +172,6 @@ public class DBConnectionTest3 {
 	@Test // PSM001_Login-UnitTest-I12
 	public void testFetchCourses2() {
 		dbc.clearDatabase();
-		
-		String courses = dbc.fetchCourses();
-		
-		assertEquals("Fetch Course IDs", "", courses);
-	}
-	
-	@Test // PSM001_Login-UnitTest-I13
-	public void testFetchCourses3() {
-		try {
-			Statement s = myCon.createStatement();
-			s.executeUpdate("DROP TABLE IF EXISTS Class100");
-			s.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-			fail("Exception thrown");
-		}
-		
-		String courses = dbc.fetchCourses();
-		
-		assertEquals("Fetch Course IDs", "", courses);
-	}
-	
-	@Test // PSM001_Login-UnitTest-I14
-	public void testFetchCourses4() {
-		
-		dbc.fetchCourses();
-		
-		try {
-			Statement s = myCon.createStatement();
-			s.executeUpdate("DROP TABLE IF EXISTS Class100");
-			s.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-			fail("Exception thrown");
-		}
 		
 		String courses = dbc.fetchCourses();
 		
@@ -297,6 +229,8 @@ public class DBConnectionTest3 {
 	@Test // PSM001_Login-UnitTest-I23
 	public void testFetchCourseEnd() {
 		String result = dbc.fetchCourseEnd(c1.getCrseid());
+		System.out.println("result: " + result);
+		System.out.println("Enddt: " + c1.getEnddt());
 		assertEquals("Fetch Course End", c1.getEnddt(), result);
 	}
 	

@@ -69,16 +69,16 @@ public class DBConnection
 	/**
 	 * @return the localDb
 	 */
-	public String getLocalDb() {
-		return localDb;
-	}
+//	public String getLocalDb() {
+//		return localDb;
+//	}
 
 	/**
 	 * @return the result
 	 */
-	public String getResult() {
-		return result;
-	}
+//	public String getResult() {
+//		return result;
+//	}
 	
 	/*** END TEST GENERATED METHODS ***/
 
