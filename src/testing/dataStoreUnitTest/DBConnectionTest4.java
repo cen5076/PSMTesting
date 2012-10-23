@@ -74,6 +74,12 @@ public class DBConnectionTest4 {
 	}
 	
 	@Test // PSM001_Login-UnitTest-I07
+	/** Test Case ID: PSM001_Login-UnitTest-I07
+	 * Purpose: Test that all course IDs in DB are returned
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testGetEndDates3() {
 		try {
 			Statement s = myCon.createStatement();
@@ -90,6 +96,12 @@ public class DBConnectionTest4 {
 	}
 	
 	@Test // PSM001_Login-UnitTest-I10
+	/** Test Case ID: PSM001_Login-UnitTest-I10
+	 * Purpose: Test that all course IDs in DB are returned where there are no courses
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testGetCourses3() {
 		try {
 			Statement s = myCon.createStatement();
@@ -106,6 +118,12 @@ public class DBConnectionTest4 {
 	}
 	
 	@Test // PSM001_Login-UnitTest-I13
+	/** Test Case ID: PSM001_Login-UnitTest-I13
+	 * Purpose: Test that the correct course name is fetched
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchCourses3() {
 		try {
 			Statement s = myCon.createStatement();
@@ -122,6 +140,12 @@ public class DBConnectionTest4 {
 	}
 	
 	@Test // PSM001_Login-UnitTest-I14
+	/** Test Case ID: PSM001_Login-UnitTest-I14
+	 * Purpose: Test fetching the course name for a course that does not exist
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchCourses4() {
 		
 		dbc.fetchCourses();

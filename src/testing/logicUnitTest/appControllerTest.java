@@ -30,10 +30,11 @@ public class appControllerTest {
 	}
 
 	@Test // PSM001_Login-UnitTest-A01
-	/**
-	 * Test id:
-	 * Purpose:
-	 * 
+	/** Test Case ID: PSM001_Login-UnitTest-A01
+	 * Purpose: Test initialization of appController and its properties. Verify that appController is in correct state for all subsequent tests that rely on it.
+	 * Date Created: 09/08/12
+	 * Author: David Garcia
+	 * Stubs needed: DBConnection, InterfaceController, Messages, PrefilledScheduleForm, ScheduleForm
 	 */
 	// Constructor 
 	public void testAppController() {
@@ -90,6 +91,12 @@ public class appControllerTest {
 	}
 
 	@Test // PSM001_Login-UnitTest-A02
+	/** Test Case ID: PSM001_Login-UnitTest-A02
+	 * Purpose: To test the login functionality for a valid username and password
+	 * Date Created: 09/08/12
+	 * Author: David Garcia
+	 * Stubs needed: DBConnection
+	 */
 	// valid login test
 	public void testLogIn_1() {
 		
@@ -102,6 +109,13 @@ public class appControllerTest {
 	}
 	
 	@Test // PSM001_Login-UnitTest-A03
+	/** Test Case ID: PSM001_Login-UnitTest-A03
+	 * Purpose: To test the login functionality for an  invalid username and valid password
+	 * Date Created: 09/08/12
+	 * Author: David Garcia
+	 * Stubs needed: DBConnection
+	 */
+
 	//invalid login username test
 	public void testLogIn_2() {
 
@@ -114,6 +128,12 @@ public class appControllerTest {
 	}
 	
 	@Test // PSM001_Login-UnitTest-A04
+	/** Test Case ID: PSM001_Login-UnitTest-A04
+	 * Purpose: To test the login functionality for a valid username and invalid password
+	 * Date Created: 09/08/12
+	 * Author: David Garcia
+	 * Stubs needed: DBConnection
+	 */
 	//invalid login password test
 	public void testLogIn_3() {
 

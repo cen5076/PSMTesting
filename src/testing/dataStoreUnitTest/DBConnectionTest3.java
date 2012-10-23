@@ -58,6 +58,12 @@ public class DBConnectionTest3 {
 	}
 	
 	@Test // PSM001_Login-UnitTest-I01
+	/** Test Case ID: PSM001_Login-UnitTest-I01
+	 * Purpose: Test the clearing of the Class100 table
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testClearDatabase() {
 		dbc.clearDatabase();
 		try {
@@ -72,6 +78,12 @@ public class DBConnectionTest3 {
 	}
 	
 	@Test // PSM001_Login-UnitTest-I02
+	/** Test Case ID: PSM001_Login-UnitTest-I02
+	 * Purpose: Test the clearing of the Class100 table when it doesn’t exist
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testClearDatabase2() {
 		try {
 			Statement s = myCon.createStatement();
@@ -85,6 +97,12 @@ public class DBConnectionTest3 {
 	}
 	
 	@Test // PSM001_Login-UnitTest-I03
+	/** Test Case ID: PSM001_Login-UnitTest-I03
+	 * Purpose: Test fetching a course ID from the database
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchCourseID() {
 		int result = dbc.fetchCourseID(c1.getCrseid());
 		
@@ -92,12 +110,24 @@ public class DBConnectionTest3 {
 	}
 	
 	@Test // PSM001_Login-UnitTest-I04
+	/** Test Case ID: PSM001_Login-UnitTest-I04
+	 * Purpose: Test fetching a course ID from the database without that course
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchCourseID2() {
 		int result = dbc.fetchCourseID(BADCRSEID);
 		assertEquals("Course ID", -1, result);
 	}
 
 	@Test // PSM001_Login-UnitTest-I05
+	/** Test Case ID: PSM001_Login-UnitTest-I05
+	 * Purpose: Test that all end dates in DB are returned
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testGetEndDates() {
 		Course c2 = new Course(2345, "Subject2", "Name2", "Semester", "10/10/12", "12/10/12");
 		dbu.insertCourse(c2);
@@ -114,6 +144,12 @@ public class DBConnectionTest3 {
 	}
 	
 	@Test // PSM001_Login-UnitTest-I06
+	/** Test Case ID: PSM001_Login-UnitTest-I06
+	 * Purpose: Test that no end dates are returned for empty Class 100 table
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testGetEndDates2() {
 		dbc.clearDatabase();
 		
@@ -123,6 +159,12 @@ public class DBConnectionTest3 {
 	}
 	
 	@Test // PSM001_Login-UnitTest-I08
+	/** Test Case ID: PSM001_Login-UnitTest-I08
+	 * Purpose: Test that no course IDs are returned for empty Class 100 table
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testGetCourses() {
 		Course c2 = new Course(2345, "Subject2", "Name2", "Semester", "10/10/12", "12/10/12");
 		dbc.storeClassInfo(c2.getCrseid(), c2.getCrseSub(), c2.getCrseNam(), c2.getSemester());
@@ -138,6 +180,12 @@ public class DBConnectionTest3 {
 	}
 	
 	@Test // PSM001_Login-UnitTest-I09
+	/** Test Case ID: PSM001_Login-UnitTest-I09
+	 * Purpose: Test that all course IDs in DB are returned
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testGetCourses2() {
 		dbc.clearDatabase();
 		
@@ -148,6 +196,12 @@ public class DBConnectionTest3 {
 	
 	
 	@Test // PSM001_Login-UnitTest-I11
+	/** Test Case ID: PSM001_Login-UnitTest-I11
+	 * Purpose: Test that the correct course subject is fetched
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchCourses() {
 		Course c2 = new Course(2345, "Subject2", "Name2", "Semester", "10/10/12", "12/10/12");
 		dbc.storeClassInfo(c2.getCrseid(), c2.getCrseSub(), c2.getCrseNam(), c2.getSemester());
@@ -170,6 +224,12 @@ public class DBConnectionTest3 {
 	}
 	
 	@Test // PSM001_Login-UnitTest-I12
+	/** Test Case ID: PSM001_Login-UnitTest-I12
+	 * Purpose: Test fetching the course subject for a course that does not exist
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchCourses2() {
 		dbc.clearDatabase();
 		
@@ -179,54 +239,108 @@ public class DBConnectionTest3 {
 	}
 
 	@Test // PSM001_Login-UnitTest-I15
+	/** Test Case ID: PSM001_Login-UnitTest-I15
+	 * Purpose: Test that the correct semester is fetched
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchCourseSubj() {
 		String result = dbc.fetchCourseSubj(c1.crseid);
 		assertEquals("Fetch Subject", c1.getCrseSub(), result);
 	}
 	
 	@Test // PSM001_Login-UnitTest-I16
+	/** Test Case ID: PSM001_Login-UnitTest-I16
+	 * Purpose: Test fetching the semester for a course that does not exist
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchCourseSubj2() {
 		String result = dbc.fetchCourseSubj(BADCRSEID);
 		assertNull("Fetch Subject", result);
 	}
 
 	@Test // PSM001_Login-UnitTest-I17
+	/** Test Case ID: PSM001_Login-UnitTest-I17
+	 * Purpose: Test that the correct start date is fetched
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchCourseName() {
 		String result = dbc.fetchCourseName(c1.getCrseid());
 		assertEquals("Fetch Name", c1.getCrseNam(), result);
 	}
 	
 	@Test // PSM001_Login-UnitTest-I18
+	/** Test Case ID: PSM001_Login-UnitTest-I18
+	 * Purpose: Test fetching the start date for a course that does not exist
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchCourseName2() {
 		String result = dbc.fetchCourseName(BADCRSEID);
 		assertNull("Fetch Name", result);
 	}
 
 	@Test // PSM001_Login-UnitTest-I19
+	/** Test Case ID: PSM001_Login-UnitTest-I19
+	 * Purpose: Test that the correct end date is fetched
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchCourseSemester() {
 		String result = dbc.fetchCourseSemester(c1.getCrseid());
 		assertEquals("Fetch Semester", c1.getSemester(), result);
 	}
 
 	@Test // PSM001_Login-UnitTest-I20
+	/** Test Case ID: PSM001_Login-UnitTest-I20
+	 * Purpose: Test fetching the end date for a course that does not exist
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchCourseSemester2() {
 		String result = dbc.fetchCourseSemester(BADCRSEID);
 		assertNull("Fetch Semester", result);
 	}
 	
 	@Test // PSM001_Login-UnitTest-I21
+	/** Test Case ID: PSM001_Login-UnitTest-I21
+	 * Purpose: Test that the correct time is fetched
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchCourseStart() {
 		String result = dbc.fetchCourseStart(c1.getCrseid());
 		assertEquals("Fetch Course Start", c1.getStartdt(), result);
 	}
 	
 	@Test // PSM001_Login-UnitTest-I22
+	/** Test Case ID: PSM001_Login-UnitTest-I22
+	 * Purpose: Test fetching a time for a course that does not exist
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchCourseStart2() {
 		String result = dbc.fetchCourseStart(BADCRSEID);
 		assertNull("Fetch Course Start", result);
 	}
 
 	@Test // PSM001_Login-UnitTest-I23
+	/** Test Case ID: PSM001_Login-UnitTest-I23
+	 * Purpose: Test that the correct time is fetched
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchCourseEnd() {
 		String result = dbc.fetchCourseEnd(c1.getCrseid());
 		System.out.println("result: " + result);
@@ -235,126 +349,252 @@ public class DBConnectionTest3 {
 	}
 	
 	@Test // PSM001_Login-UnitTest-I24
+	/** Test Case ID: PSM001_Login-UnitTest-I24
+	 * Purpose: Test fetching a time for a course that does not exist
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchCourseEnd2() {
 		String result = dbc.fetchCourseEnd(BADCRSEID);
 		assertNull("Fetch Course End", result);
 	}
 
 	@Test // PSM001_Login-UnitTest-I25
+	/** Test Case ID: PSM001_Login-UnitTest-I25
+	 * Purpose: Test that the correct time is fetched
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchStartMon() {
 		String result = dbc.fetchStartMon(c1.getCrseid());
 		assertEquals("Fetch Start Monday", c1.getMonStart(), result);
 	}
 	
 	@Test // PSM001_Login-UnitTest-I26
+	/** Test Case ID: PSM001_Login-UnitTest-I26
+	 * Purpose: Test fetching a time for a course that does not exist
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchStartMon2() {
 		String result = dbc.fetchStartMon(BADCRSEID);
 		assertNull("Fetch Start Monday", result);
 	}
 
 	@Test // PSM001_Login-UnitTest-I27
+	/** Test Case ID: PSM001_Login-UnitTest-I27
+	 * Purpose: Test that the correct time is fetched
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchEndMon() {
 		String result = dbc.fetchEndMon(c1.getCrseid());
 		assertEquals("Fetch End Monday", c1.getMonEnd(), result);
 	}
 	
 	@Test // PSM001_Login-UnitTest-I28
+	/** Test Case ID: PSM001_Login-UnitTest-I28
+	 * Purpose: Test fetching a time for a course that does not exist
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchEndMon2() {
 		String result = dbc.fetchEndMon(BADCRSEID);
 		assertNull("Fetch End Monday", result);
 	}
 
 	@Test // PSM001_Login-UnitTest-I29
+	/** Test Case ID: PSM001_Login-UnitTest-I29
+	 * Purpose: Test that the correct time is fetched
+	 * Date Created: 09/15/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchStartTue() {
 		String result = dbc.fetchStartTue(c1.getCrseid());
 		assertEquals("Fetch Start Tuesday", c1.getTueStart(), result);
 	}
 	
 	@Test // PSM001_Login-UnitTest-I30
+	/** Test Case ID: PSM001_Login-UnitTest-I30
+	 * Purpose: Test fetching a time for a course that does not exist
+	 * Date Created: 09/18/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchStartTue2() {
 		String result = dbc.fetchStartTue(BADCRSEID);
 		assertNull("Fetch Start Tuesday", result);
 	}
 
 	@Test // PSM001_Login-UnitTest-I31
+	/** Test Case ID: PSM001_Login-UnitTest-I31
+	 * Purpose: Test that the correct time is fetched
+	 * Date Created: 09/18/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchEndTue() {
 		String result = dbc.fetchEndTue(c1.getCrseid());
 		assertEquals("Fetch End Tuesday", c1.getTueEnd(), result);
 	}
 	
 	@Test // PSM001_Login-UnitTest-I32
+	/** Test Case ID: PSM001_Login-UnitTest-I32
+	 * Purpose: Test fetching a time for a course that does not exist
+	 * Date Created: 09/18/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchEndTue2() {
 		String result = dbc.fetchEndTue(BADCRSEID);
 		assertNull("Fetch End Tuesday", result);
 	}
 
 	@Test // PSM001_Login-UnitTest-I33
+	/** Test Case ID: PSM001_Login-UnitTest-I33
+	 * Purpose: Test that the correct time is fetched
+	 * Date Created: 09/18/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchStartWed() {
 		String result = dbc.fetchStartWed(c1.getCrseid());
 		assertEquals("Fetch Start Wednesday", c1.getWedStart(), result);
 	}
 	
 	@Test // PSM001_Login-UnitTest-I34
+	/** Test Case ID: PSM001_Login-UnitTest-I34
+	 * Purpose: Test fetching a time for a course that does not exist
+	 * Date Created: 09/18/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchStartWed2() {
 		String result = dbc.fetchStartWed(BADCRSEID);
 		assertNull("Fetch Start Wednesday", result);
 	}
 
 	@Test // PSM001_Login-UnitTest-I35
+	/** Test Case ID: PSM001_Login-UnitTest-I35
+	 * Purpose: Test that the correct time is fetched
+	 * Date Created: 09/18/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchEndWed() {
 		String result = dbc.fetchEndWed(c1.getCrseid());
 		assertEquals("Fetch End Wednesday", c1.getWedEnd(), result);
 	}
 	
 	@Test // PSM001_Login-UnitTest-I36
+	/** Test Case ID: PSM001_Login-UnitTest-I36
+	 * Purpose: Test fetching a time for a course that does not exist
+	 * Date Created: 09/18/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchEndWed2() {
 		String result = dbc.fetchEndWed(BADCRSEID);
 		assertNull("Fetch End Wednesday", result);
 	}
 
 	@Test // PSM001_Login-UnitTest-I37
+	/** Test Case ID: PSM001_Login-UnitTest-I37
+	 * Purpose: Test that the correct time is fetched
+	 * Date Created: 09/18/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchStartThu() {
 		String result = dbc.fetchStartThu(c1.getCrseid());
 		assertEquals("Fetch Start Thursday", c1.getThuStart(), result);
 	}
 	
 	@Test // PSM001_Login-UnitTest-I38
+	/** Test Case ID: PSM001_Login-UnitTest-I38
+	 * Purpose: Test fetching a time for a course that does not exist
+	 * Date Created: 09/18/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchStartThu2() {
 		String result = dbc.fetchStartThu(BADCRSEID);
 		assertNull("Fetch Start Thursday", result);
 	}
 
 	@Test // PSM001_Login-UnitTest-I39
+	/** Test Case ID: PSM001_Login-UnitTest-I39
+	 * Purpose: Test that the correct time is fetched
+	 * Date Created: 09/18/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchEndThu() {
 		String result = dbc.fetchEndThu(c1.getCrseid());
 		assertEquals("Fetch End Thursday", c1.getThuEnd(), result);
 	}
 	
 	@Test // PSM001_Login-UnitTest-I40
+	/** Test Case ID: PSM001_Login-UnitTest-I40
+	 * Purpose: Test fetching a time for a course that does not exist
+	 * Date Created: 09/18/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchEndThu2() {
 		String result = dbc.fetchEndThu(BADCRSEID);
 		assertNull("Fetch End Thursday", result);
 	}
 
 	@Test // PSM001_Login-UnitTest-I41
+	/** Test Case ID: PSM001_Login-UnitTest-I41
+	 * Purpose: Test that the correct time is fetched
+	 * Date Created: 09/18/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchStartFri() {
 		String result = dbc.fetchStartFri(c1.getCrseid());
 		assertEquals("Fetch Start Friday", c1.getFriStart(), result);
 	}
 	
 	@Test // PSM001_Login-UnitTest-I42
+	/** Test Case ID: PSM001_Login-UnitTest-I42
+	 * Purpose: Test fetching a time for a course that does not exist
+	 * Date Created: 09/18/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchStartFri2() {
 		String result = dbc.fetchStartFri(BADCRSEID);
 		assertNull("Fetch Start Friday", result);
 	}
 
 	@Test // PSM001_Login-UnitTest-I43
+	/** Test Case ID: PSM001_Login-UnitTest-I43
+	 * Purpose: Test that the correct time is fetched
+	 * Date Created: 09/18/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchEndFri() {
 		String result = dbc.fetchEndFri(c1.getCrseid());
 		assertEquals("Fetch End Friday", c1.getFriEnd(), result);
 	}
 	
 	@Test // PSM001_Login-UnitTest-I44
+	/** Test Case ID: PSM001_Login-UnitTest-I44
+	 * Purpose: Test fetching a time for a course that does not exist
+	 * Date Created: 09/18/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testFetchEndFri2() {
 		String result = dbc.fetchEndFri(BADCRSEID);
 		assertNull("Fetch End Friday", result);

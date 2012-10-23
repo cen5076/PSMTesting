@@ -33,8 +33,13 @@ public class appControllerSemesterClearTest {
 	}
 
 	@Test // PSM014-End_Semester_Clear-UnitTest-E01
+	/** Test Case ID: PSM014_End_Semester_Clear-UnitTest-E01
+	 * Purpose: To test the setSemesterClear function which sets a variable used when clearing the database on a Timer action.
+	 * Date Created: 09/18/12
+	 * Author: David Garcia
+	 * Stubs needed: AutoClear()
+	 */
 	// Test the setting of the set semester clear
-	// relies on autoclear() stub and 
 	public void testSetSemesterClear_1() {
 		
 		Date d = new Date(System.currentTimeMillis());
@@ -59,8 +64,13 @@ public class appControllerSemesterClearTest {
 	}
 	
 	@Test // PSM014-End_Semester_Clear-UnitTest-E02
+	/** Test Case ID: PSM014_End_Semester_Clear-UnitTest-E02
+	 * Purpose: To test the setSemesterClear function which sets a variable used when clearing the database on a Timer action.
+	 * Date Created: 09/18/12
+	 * Author: David Garcia
+	 * Stubs needed: AutoClear()
+	 */
 	// Test the setting of the set semester clear
-	// relies on autoclear() stub and 
 	public void testSetSemesterClear_2() {
 		
 	    Date d = new Date(System.currentTimeMillis());

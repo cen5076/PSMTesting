@@ -38,6 +38,12 @@ public class DBConnectionTest {
 	
 	
 	@Test // PSM001_Login-UnitTest-G01
+	/** Test Case ID: PSM001_Login-UnitTest-G01
+	 * Purpose: Test creating a good database connection to the default database
+	 * Date Created: 09/08/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testConnectDefaultDB_success() {
 		int result =  dbc.connect(USERNAME, PASSWORD);
 		assertEquals("Username", USERNAME, dbc.getUsername());
@@ -53,6 +59,12 @@ public class DBConnectionTest {
 	}
 	
 	@Test // PSM001_Login-UnitTest-G02
+	/** Test Case ID: PSM001_Login-UnitTest-G02
+	 * Purpose: Test creating a bad database connection to the default database
+	 * Date Created: 09/08/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testConnectDefaultDB_fail() {
 		int result =  dbc.connect(USERNAME, "CEN5076");
 		assertEquals("Username", USERNAME, dbc.getUsername());
@@ -62,6 +74,12 @@ public class DBConnectionTest {
 	}
 	
 	@Test // PSM001_Login-UnitTest-G03
+	/** Test Case ID: PSM001_Login-UnitTest-G03
+	 * Purpose: Test creating a good database connection to a given database while already connected to a database
+	 * Date Created: 09/08/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testConnect_success() {
 		int result = dbc.connect(DB, USERNAME, PASSWORD);
 		assertEquals("DB Address", DB, dbc.getDbAddr());
@@ -78,6 +96,12 @@ public class DBConnectionTest {
 	}
 	
 	@Test // PSM001_Login-UnitTest-G04
+	/** Test Case ID: PSM001_Login-UnitTest-G04
+	 * Purpose: Test creating a bad database connection to a given database
+	 * Date Created: 09/08/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testConnect_fail() {
 		int result = dbc.connect("", USERNAME, PASSWORD);
 		assertEquals("DB Address", "", dbc.getDbAddr());
@@ -88,6 +112,12 @@ public class DBConnectionTest {
 	}
 
 	@Test // PSM001_Login-UnitTest-G05
+	/** Test Case ID: PSM001_Login-UnitTest-G05
+	 * Purpose: Test disconnecting an open database connection
+	 * Date Created: 09/08/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testDisconnect() {
 		dbc.connect(USERNAME, PASSWORD);
 		int result =  dbc.disconnect();
@@ -100,6 +130,12 @@ public class DBConnectionTest {
 	}
 	
 	@Test // PSM001_Login-UnitTest-G06
+	/** Test Case ID: PSM001_Login-UnitTest-G06
+	 * Purpose: Test disconnecting an already closed database connection
+	 * Date Created: 09/08/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testDisconnect2() {
 		dbc.connect(USERNAME, PASSWORD);
 		dbc.disconnect();
@@ -113,6 +149,12 @@ public class DBConnectionTest {
 	}
 	
 	@Test // PSM001_Login-UnitTest-G07
+	/** Test Case ID: PSM001_Login-UnitTest-G07
+	 * Purpose: Test disconnecting a null connection
+	 * Date Created: 09/08/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testDisconnect3() {
 		int result =  dbc.disconnect();
 		assertNull("Null connection", dbc.getMyCon());
@@ -120,6 +162,12 @@ public class DBConnectionTest {
 	}
 	
 	@Test // PSM001_Login-UnitTest-G08
+	/** Test Case ID: PSM001_Login-UnitTest-G08
+	 * Purpose: Test the creation of the Class100 table in the database
+	 * Date Created: 09/08/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testCreateClassTable1() {
 		dbc.connect(USERNAME, PASSWORD);
 		try {
@@ -139,6 +187,12 @@ public class DBConnectionTest {
 	}
 	
 	@Test // PSM001_Login-UnitTest-G09
+	/** Test Case ID: PSM001_Login-UnitTest-G09
+	 * Purpose: Test the creation of the Class100 table in a database that already has one
+	 * Date Created: 09/08/12
+	 * Author: Matthew Brown
+	 * Stubs needed: 
+	 */
 	public void testCreateClassTable2() {
 		dbc.connect(USERNAME, PASSWORD);
 		try {
