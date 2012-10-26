@@ -1,6 +1,6 @@
-@echo off
 cd %UserProfile%\workspace\PSMTesting
 del cobertura.ser
-rd /s /q instrumented
+copy cobertura.ser.bak cobertura.ser
+del cobertura.ser.lock
 rd /s /q coverage-report
-cobertura-instrument.bat --destination instrumented bin
+cobertura-instrument.bat psm.jar
