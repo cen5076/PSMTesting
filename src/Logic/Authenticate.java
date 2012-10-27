@@ -1,5 +1,7 @@
 package Logic;
-import DataStore.DBConnection;
+
+//import DataStore.DBConnection;
+import stubs.DBConnection;
 
 
 /*
@@ -31,11 +33,10 @@ public class Authenticate {
         
     }
     
-    public boolean validate_Login()
-    {
+    public boolean validate_Login() {
         int state; 
         state = db.connect(username,password);          // connect to default database
-        if(state == 0)
+        if (state == 0)
             return true;
         else
             return false;   

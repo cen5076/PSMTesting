@@ -1,12 +1,14 @@
 package stubs;
 
+import testUtil.DBUtil;
+
 @SuppressWarnings("unused")
 public class LoginForm {
 
 	private static final long serialVersionUID = 1L;
 
-	public boolean loggedin = false;
-    public boolean dataRec = true;
+	public boolean loggedin;
+    public boolean dataRec;
     public String username;
     public String password;
     
@@ -14,6 +16,10 @@ public class LoginForm {
     
     public LoginForm() {
     	/* TODO Initialize variables */
+    	loggedin = false;
+    	dataRec = true;
+    	username = DBUtil.USERNAME;
+    	password = DBUtil.PASSWORD;
     }
     
     private void initComponents() {

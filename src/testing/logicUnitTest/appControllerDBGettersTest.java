@@ -61,7 +61,7 @@ public class appControllerDBGettersTest {
 		
 		//add a different course
 		courseList.add(c2);
-		app1.getDb().initializeStub(courseList);
+//		app1.getDb().initializeStub(courseList);
 		
 		
 		//get Course 1
@@ -103,7 +103,7 @@ public class appControllerDBGettersTest {
 		System.out.println("---" + messg + "---");
 		
 		courseList.add(c1);
-		app1.getDb().initializeStub(courseList);
+//		app1.getDb().initializeStub(courseList);
 		
 		app1.getData(this.c1.getCrseid());
 		

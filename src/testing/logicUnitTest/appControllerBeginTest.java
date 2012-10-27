@@ -13,6 +13,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 import Logic.appController;
+import stubs.DBConnection;
 import stubs.FutureTimer;
 import testUtil.DBUtil;
 import testUtil.Course;
@@ -26,6 +27,7 @@ public class appControllerBeginTest {
 	
 	appController app1;
 	Course c1;
+	DBConnection dbc;
 
 	@Rule
 	public final ExpectedSystemExit exit = ExpectedSystemExit.none();
@@ -39,6 +41,7 @@ public class appControllerBeginTest {
 		
 		app1 = new appController();
 		app1.newTimer = new FutureTimer();
+		dbc = app1.getDb();
 		//app1.newTimers() = new FutureTimer();
 		//app1.begin();
 		
@@ -94,7 +97,7 @@ public class appControllerBeginTest {
 		app1.authenticate();
 		
 		
-		assertTrue("Connected",app1.getDb().connected);
+		assertTrue("Connected", dbc.isConnected());
 		assertEquals("Counter unchanged", counter , app1.getCounter());
 		
 		
@@ -154,9 +157,8 @@ public class appControllerBeginTest {
 		
 		
 		//System.out.println(endDate);
-		//app1.getDb().courseList.add(c1);
-		app1.getDb().courseList.add(c2);
-		app1.getDb().courseSet.put(c2.crseid, c2);
+		//dbc.courseList.add(c1);
+		dbc.addCourse(c2);
 		
 		app1.ready();
 		
@@ -199,7 +201,7 @@ public class appControllerBeginTest {
 		c1.fillDates(DBUtil.defaultDates);
 		
 		//System.out.println(endDate);
-		app1.getDb().addCourse(c1);
+		dbc.addCourse(c1);
 		
 		try{
 			app1.ready();
@@ -241,7 +243,7 @@ public class appControllerBeginTest {
 		
 		//make sure class has not ended
 		app1.setClassEnded(0);
-		app1.getDb().connected = true;
+		dbc.connected = true;
 		app1.initAuthenticate(DBUtil.USERNAME, DBUtil.PASSWORD);
 
 		app1.logOut();
@@ -278,7 +280,7 @@ public class appControllerBeginTest {
 		
 		//make sure class has not ended
 		app1.setClassEnded(0);
-		app1.getDb().connected = true;
+		dbc.connected = true;
 		app1.getIc().Course_Select_Form();
 		app1.getIc().cs.setCourseSelected(true);
 		app1.getIc().cs.setSelection(c1.crseid);
@@ -363,7 +365,7 @@ public class appControllerBeginTest {
 		app1.authenticate();
 		//156
 		
-		assertTrue("Connected",app1.getDb().connected);
+		assertTrue("Connected", dbc.isConnected());
 		assertEquals("Counter unchanged", counter , app1.getCounter());
 		
 		
@@ -393,10 +395,10 @@ public class appControllerBeginTest {
 			
 		}
 		
-		assertNotNull("Database Null",app1.getDb());
+		assertNotNull("Database Null",dbc);
 		System.out.println("Course=" + c1.getCrseid());
 		System.out.println(c1.toString());
-		app1.getDb().addCourse(c1);
+		dbc.addCourse(c1);
 		
 		try{
 			app1.ready();
@@ -418,7 +420,7 @@ public class appControllerBeginTest {
 		Course c2 = new Course(DBUtil.defaultCourseId,"Sub","Nam","Semester",Course.STARTDATE,Course.ENDDATE);
 		c1.fillDates(DBUtil.defaultDates);
 		
-		app1.db.addCourse(c2);
+		dbc.addCourse(c2);
 		app1.getIc().sched.addCourse(c2);
 		app1.getIc().sched.dataReceived=true;
 		
@@ -446,7 +448,7 @@ public class appControllerBeginTest {
 		
 		//make sure class has not ended
 		app1.setClassEnded(0);
-		app1.getDb().connected = true;
+		dbc.connect(DBUtil.USERNAME, DBUtil.PASSWORD);
 		app1.getIc().Course_Select_Form();
 		app1.getIc().cs.setCourseSelected(true);
 		app1.getIc().cs.setSelection(c3.crseid);
@@ -482,7 +484,7 @@ public class appControllerBeginTest {
 		
 		//make sure class has not ended
 		app1.setClassEnded(0);
-		app1.getDb().connected = true;
+		dbc.connect(DBUtil.USERNAME, DBUtil.PASSWORD);
 		app1.initAuthenticate(DBUtil.USERNAME, DBUtil.PASSWORD);
 
 		app1.logOut();
@@ -531,10 +533,10 @@ public class appControllerBeginTest {
 			
 		}
 		
-		assertNotNull("Database Null",app1.getDb());
+		assertNotNull("Database Null",dbc);
 		System.out.println("Course=" + c1.getCrseid());
 		System.out.println(c1.toString());
-		app1.getDb().addCourse(c1);
+		dbc.addCourse(c1);
 		
 		try{
 			app1.ready();
@@ -582,10 +584,10 @@ public class appControllerBeginTest {
 			
 		}
 		
-		assertNotNull("Database Null",app1.getDb());
+		assertNotNull("Database Null",dbc);
 		System.out.println("Course=" + c1.getCrseid());
 		System.out.println(c1.toString());
-		app1.getDb().addCourse(c1);
+		dbc.addCourse(c1);
 		
 		try{
 			app1.ready();
@@ -632,10 +634,10 @@ public class appControllerBeginTest {
 			
 		}
 		
-		assertNotNull("Database Null",app1.getDb());
+		assertNotNull("Database Null",dbc);
 		System.out.println("Course=" + c1.getCrseid());
 		System.out.println(c1.toString());
-		app1.getDb().addCourse(c1);
+		dbc.addCourse(c1);
 		
 		try{
 			app1.ready();
@@ -683,10 +685,10 @@ public class appControllerBeginTest {
 			
 		}
 		
-		assertNotNull("Database Null",app1.getDb());
+		assertNotNull("Database Null",dbc);
 		System.out.println("Course=" + c1.getCrseid());
 		System.out.println(c1.toString());
-		app1.getDb().addCourse(c1);
+		dbc.addCourse(c1);
 		
 		try{
 			app1.ready();
@@ -733,10 +735,10 @@ public class appControllerBeginTest {
 			
 		}
 		
-		assertNotNull("Database Null",app1.getDb());
+		assertNotNull("Database Null",dbc);
 		System.out.println("Course=" + c1.getCrseid());
 		System.out.println(c1.toString());
-		app1.getDb().addCourse(c1);
+		dbc.addCourse(c1);
 		
 		try{
 			app1.ready();
@@ -783,10 +785,10 @@ public class appControllerBeginTest {
 			
 		}
 		
-		assertNotNull("Database Null",app1.getDb());
+		assertNotNull("Database Null",dbc);
 		System.out.println("Course=" + c1.getCrseid());
 		System.out.println(c1.toString());
-		app1.getDb().addCourse(c1);
+		dbc.addCourse(c1);
 		
 		try{
 			app1.ready();
@@ -833,10 +835,10 @@ public class appControllerBeginTest {
 			
 		}
 		
-		assertNotNull("Database Null",app1.getDb());
+		assertNotNull("Database Null",dbc);
 		System.out.println("Course=" + c1.getCrseid());
 		System.out.println(c1.toString());
-		app1.getDb().addCourse(c1);
+		dbc.addCourse(c1);
 		
 		try{
 			app1.ready();
@@ -869,7 +871,7 @@ public class appControllerBeginTest {
 		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
 		c1.fillDates(DBUtil.defaultDates);
 		
-		app1.getDb().addCourse(c1);
+		dbc.addCourse(c1);
 		//app1.setLoggedIn(false);
 		//app1.setDataReceived(false);
 
@@ -915,7 +917,7 @@ public class appControllerBeginTest {
 		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
 		c1.fillDates(DBUtil.defaultDates);
 		
-		app1.getDb().addCourse(c1);
+		dbc.addCourse(c1);
 		//app1.setLoggedIn(false);
 		//app1.setDataReceived(false);
 

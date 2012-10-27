@@ -26,6 +26,7 @@ public class appControllerGetTimers_SS {
 	public void setUp() throws Exception {
 		//Create new appController
 		app1 = new appController();
+		app1.setTestingTimers();
 		dbUtil = new DBUtil();
 		
 	}
@@ -108,7 +109,7 @@ public class appControllerGetTimers_SS {
 		
 		//create Calendars from each to compare
 		Calendar expected = new GregorianCalendar();
-		expected.setTimeInMillis(time.getTime()+mDiff);
+		expected.setTimeInMillis(time.getTime() + mDiff);
 		
 		Calendar result = new GregorianCalendar();
 		result.setTime(app1.get15BeforeEnd(expected.get(Calendar.HOUR_OF_DAY), expected.get(Calendar.MINUTE)));
@@ -128,7 +129,7 @@ public class appControllerGetTimers_SS {
 			System.out.println(e.toString());
 		}
 		//Assert
-		assertTrue("15 before",app1.is15BeforeEnd);
+		assertTrue("15 before", app1.is15BeforeEnd);
 
 }
 	

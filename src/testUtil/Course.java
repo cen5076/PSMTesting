@@ -34,8 +34,8 @@ public class Course {
 	public String satEnd;
 	
 	/* Default static values to use for start and end dates */
-	public static final String STARTDATE="01/01/13";
-	public static final String ENDDATE="01/02/13";
+	public static final String STARTDATE = "01/01/13";
+	public static final String ENDDATE = "01/02/13";
 	
 	/* Arraylist of the values for the days */
 	public final ArrayList<String> days = new ArrayList<String>();
