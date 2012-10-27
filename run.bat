@@ -1,3 +1,0 @@
-@echo off
-cd %UserProfile%\workspace\PSMTesting
-java -cp "C:\Program Files (x86)\cobertura-1.9.4.1\cobertura.jar";"%UserProfile%\workspace\PSMTesting\lib\swing-layout-1.0.4.jar";"%UserProfile%\workspace\PSMTesting\lib\mysql-connector-java-5.1.21-bin.jar";"%UserProfile%\workspace\PSMTesting\instrumented" -Dnet.sourceforge.cobertura.datafile="%UserProfile%\workspace\PSMTesting\cobertura.ser" Logic.appController

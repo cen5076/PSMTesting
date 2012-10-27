@@ -48,7 +48,7 @@ public class DBConnectionTest4 {
 		dbc = null;
 	}
 	
-	@Test // PSM001_Login-UnitTest-G10
+	@Test
 	public void testCreateClassTable3() {
 		dbc.connect(UNDERPRIV_USERNAME, UNDERPRIV_PASSWORD);
         int result = dbc.createClassTable();
@@ -56,7 +56,7 @@ public class DBConnectionTest4 {
 		dbc.disconnect();
 	}
 	
-	@Test // PSM001_Login-UnitTest-H07
+	@Test
 	public void testStoreClassSched3() {
 		try {
 			Statement s = myCon.createStatement();
@@ -73,13 +73,12 @@ public class DBConnectionTest4 {
 		assertEquals("Store Class Schedule", -1, result);
 	}
 	
-	@Test // PSM001_Login-UnitTest-I07
 	/** Test Case ID: PSM001_Login-UnitTest-I07
 	 * Purpose: Test that all course IDs in DB are returned
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
-	 * Stubs needed: 
 	 */
+	@Test
 	public void testGetEndDates3() {
 		try {
 			Statement s = myCon.createStatement();
@@ -95,13 +94,12 @@ public class DBConnectionTest4 {
 		assertTrue("End Date ArrayList", endDates.isEmpty());
 	}
 	
-	@Test // PSM001_Login-UnitTest-I10
 	/** Test Case ID: PSM001_Login-UnitTest-I10
 	 * Purpose: Test that all course IDs in DB are returned where there are no courses
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
-	 * Stubs needed: 
 	 */
+	@Test
 	public void testGetCourses3() {
 		try {
 			Statement s = myCon.createStatement();
@@ -117,13 +115,12 @@ public class DBConnectionTest4 {
 		assertTrue("CourseID ArrayList", actuals.isEmpty());
 	}
 	
-	@Test // PSM001_Login-UnitTest-I13
 	/** Test Case ID: PSM001_Login-UnitTest-I13
 	 * Purpose: Test that the correct course name is fetched
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
-	 * Stubs needed: 
 	 */
+	@Test
 	public void testFetchCourses3() {
 		try {
 			Statement s = myCon.createStatement();
@@ -139,13 +136,12 @@ public class DBConnectionTest4 {
 		assertEquals("Fetch Course IDs", "", courses);
 	}
 	
-	@Test // PSM001_Login-UnitTest-I14
 	/** Test Case ID: PSM001_Login-UnitTest-I14
 	 * Purpose: Test fetching the course name for a course that does not exist
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
-	 * Stubs needed: 
 	 */
+	@Test
 	public void testFetchCourses4() {
 		
 		dbc.fetchCourses();
@@ -163,5 +159,4 @@ public class DBConnectionTest4 {
 		
 		assertEquals("Fetch Course IDs", "", courses);
 	}
-
 }
