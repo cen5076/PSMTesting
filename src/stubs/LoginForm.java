@@ -7,8 +7,8 @@ public class LoginForm {
 
 	private static final long serialVersionUID = 1L;
 
-	public boolean loggedin;
-    public boolean dataRec;
+	public boolean loggedin = false;
+    public boolean dataRec = true;
     public String username;
     public String password;
     

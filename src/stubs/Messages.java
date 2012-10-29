@@ -15,8 +15,9 @@ public class Messages {
 	    private static boolean lockedOut;
 	    private javax.swing.JButton jButton1;
 	    private javax.swing.JLabel jLabel1;
-	    
-	    private static int counter = 0;
+	    public boolean exitTest = false;
+
+
 	    
 	    /** Creates new form Messages */
 	    public Messages() {
@@ -33,6 +34,7 @@ public class Messages {
 	    public boolean fiveMinuteWarning= false;
 	    public boolean fifteenMinuteWarning = false;
 	    public boolean endClassWarning = false;
+		//public boolean exitTest =false;
 	    
 	    /** Added CEN5076 
 	     * 
@@ -166,7 +168,10 @@ public class Messages {
 	    
 	    public void logoutConfirmation()
 	    {
-	    	
+	    	if(exitTest)
+	    	System.exit(0);
+	    	else
+
 	    	logout = true;
 	      
 	    }
@@ -193,14 +198,14 @@ public class Messages {
 	    }
 	    
 	    public static boolean isAck() {
-	    	counter++;
-	    	System.out.println(counter);
-	    	if (counter >= 5) setAck(!ack);
+
+
+
 			return ack;
 		}
 
 		public static void setAck(boolean ack) {
-			Messages.ack = ack;
+
 		}
 
 		

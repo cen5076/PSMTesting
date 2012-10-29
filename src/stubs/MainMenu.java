@@ -2,10 +2,12 @@ package stubs;
 
 public class MainMenu {
 
-		private static boolean dataRec;
+		public static boolean dataRec;
 	    private static boolean editSched;
 	    private static boolean logout;
 	    private static boolean initSetup;
+		public boolean togglelogout=false;
+		public boolean alwaystrue = false;
 	    public MainMenu() {
 	    
 	    }
@@ -18,13 +20,19 @@ public class MainMenu {
 	    }
 	    public boolean dataRec()
 	    {
-	        return dataRec;
+	    	if(alwaystrue)
+	    		return true;
+	    	else
+	    		return dataRec;
 	    }
 	    
 	    public boolean logoutSelected()
 	    {
+	    	if(this.togglelogout){
 	    	this.logout = (!this.logout);
 	        return (!logout);
+	    	}
+	    	return logout;
 	    }
 	    
 	    public boolean InitSetupSelected()

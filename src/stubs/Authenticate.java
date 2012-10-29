@@ -1,5 +1,6 @@
 package stubs;
 
+import Logic.appController;
 import stubs.DBConnection;
 
 
@@ -27,6 +28,8 @@ public class Authenticate {
 	    DBConnection db;
 	    /*** CEN5076 ***/
 	    public boolean exit = false;
+
+    	public boolean passLogoutRef;
 	   
 	    /** Creates a new instance of Authenticate */
 	    public Authenticate(String user, String pw) {
@@ -55,6 +58,15 @@ public class Authenticate {
 	            return true;
 	        else
 	            return false;
+	    }
+	    
+	    public boolean logout(appController app){
+	    	
+			if(passLogoutRef){
+	    		app.setLogOutSel(true);
+	    		app.dataReceived = true;
+			}
+	    	return this.logout();
 	    }
 	    
 	}

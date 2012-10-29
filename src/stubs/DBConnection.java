@@ -30,10 +30,11 @@ import testUtil.DBUtil;
  */
 public class DBConnection {
 
-	private boolean connected;
-	private String username;
-	private String password;
-	private String dbAddr;
+	public Connection myCon;
+
+    public String username;
+    public String password;
+    public String dbAddr;
     //CEN5076
     //private String localDb = "jdbc:mysql://10.105.40.92:3306/mydb";
 
@@ -41,36 +42,45 @@ public class DBConnection {
     private String localDb = "jdbc:mysql://dgarc012.homeip.net:3306/mydb";
     private String result;
     private String [] courses;
-//    private ArrayList<Course> courseList;
-    private HashMap<Integer, Course> courseMap;
+    public ArrayList<Course> courseList = new ArrayList<Course>();
+    public HashMap<Integer,Course> courseSet = new HashMap<Integer,Course>();
+    //private HashMap<Integer, Course> courseMap;
     
     //two sets that are inaccessible to use for disconnect without nulling out
-//    private ArrayList<Course> lockedList;
+    private ArrayList<Course> lockedList;
     private HashMap<Integer,Course> lockedSet;
     
+    public boolean connected = false;
+    
     /** Creates a new instance of DBConnection */
-    public DBConnection() {
+    public DBConnection()
+    {
 //    	courseList = new ArrayList<Course>();
-    	courseMap = new HashMap<Integer, Course>();
-    	connected = false;
+//    	courseMap = new HashMap<Integer, Course>();
+//    	connected = false;
     	/*
-    	this.courseList = arrlist;
-    	System.out.println("list size: " + arrlist.size());
+//    	this.courseList = arrlist;
+//    	System.out.println("list size: " + arrlist.size());
     	
+
     	//set map for searching
-    	for (Course c : arrlist) {
-    		this.courseSet.put(new Integer(c.getCrseid()), c);
-    	}
+ //   	for (Course c : arrlist) {
+ //   		this.courseSet.put(new Integer(c.getCrseid()), c);
+ //   	}
+
     	*/
     }
     
     
+
     /**
 	 * @return the myCon
 	 */
-//	public Connection getMyCon() {
-//		return myCon;
-//	}
+	public Connection getMyCon() {
+		
+		return myCon;
+		
+	}
 
 	/**
 	 * @return the username
@@ -114,35 +124,61 @@ public class DBConnection {
 	/**
 	 * @return the courseList
 	 */
-//	public ArrayList<Course> getCourseList() {
-//		return courseList;
-//	}
+	public ArrayList<Course> getCourseList() {
+		return courseList;
+	}
 
 	/**
 	 * @return the courseSet
 	 */
 	public HashMap<Integer, Course> getCourseSet() {
-		return courseMap;
+		return courseSet;
 	}
 
-	/*
-	public void initializeStub(ArrayList<Course> arrlist) {
+
+	public void initializeStub(ArrayList<Course> arrlist){
+		
 		this.courseList = arrlist;
-    	System.out.println("list size: " + arrlist.size());
+    	System.out.println("list size:"+arrlist.size());
+    	Iterator<Course> it = arrlist.iterator();
     	
     	//set map for searching
-    	for (Course c : arrlist) {
-    		this.courseSet.put(new Integer(c.getCrseid()), c);
+    	while(it.hasNext()){
+    		Course c = it.next();
+
+    		this.courseSet.put(new Integer(c.crseid), c);
     	}
+    	
     }
-    */
+
 	
-	// shortcut method that calls internal methods
-	public void addCourse(Course c) {
-		storeClassInfo(c.getCrseid(), c.getCrseSub(), c.getCrseNam(), c.getSemester());
-		storeClassSched(c.getCrseid(), c.getStartdt(), c.getEnddt(), c.getMonStart(), c.getMonEnd(),
-				c.getTueStart(), c.getTueEnd(), c.getWedStart(), c.getWedEnd(), c.getThuStart(), c.getThuEnd(),
-				c.getFriStart(), c.getFriEnd(), c.getSatStart(), c.getSatEnd());
+
+	public void addCourse(Course c){
+		
+		System.out.println(c.toString());
+		
+		if(this.courseList == null){
+			this.courseList = new ArrayList<Course>();
+			//System.out.println("Why is course list null?");
+		}
+		
+		if(this.courseSet == null){
+			
+			this.courseSet = new HashMap<Integer,Course>();
+		}
+		this.courseList.add(c);
+		this.courseSet.put(new Integer(c.crseid), c);
+		
+		
+
+		//System.out.println("Courses:" + this.courseList.size());
+		//this.courseSet.put(c.crseid, c);
+		//System.out.println("Courses:" + this.courseSet.size());
+		//System.out.println("Returned-" + this.courseSet.get(c.crseid));
+
+
+
+
 	}
     
 	/*
@@ -152,21 +188,26 @@ public class DBConnection {
 	 * @param String user - username
 	 * @param String pw - password
 	 */
-    public int connect(String db, String user, String pw) {
-    	if (db != DBUtil.DB)
-    		return -1;
-    	if (user != DBUtil.USERNAME)
-    		return -1;
-    	if (pw != DBUtil.PASSWORD)
-    		return -1;
+    public int connect(String db, String user, String pw)
+    {
+    
+
+
+
+
+
+
         dbAddr = db;
         username = user;
         password = pw;
         
         //reconnect the sets
-//      	this.courseList = lockedList;
-//      	this.courseSet = lockedSet;
-      	this.connected = true;
+      	this.courseList = lockedList;
+      	this.courseSet = lockedSet;
+       
+        this.connected = true;
+        
+
         return 0;
     }
     
@@ -178,17 +219,35 @@ public class DBConnection {
      * @returns - 0 if successful
      * 
      */
-    public int connect(String user, String pw) {
-    	return connect(DBUtil.DB, user, pw);
+    public int connect(String user,String pw)
+    {
+    	
+    	if(user != DBUtil.USERNAME)
+    		return -1;
+    	if(pw != DBUtil.PASSWORD)
+    		return -1;
+        username = user;
+        password = pw;
+        
+        //reconnect the sets
+      	this.courseList = lockedList;
+      	this.courseSet = lockedSet;
+        
+      	this.connected = true;
+      	
+        return 0;
     }
     
     //disconnect from database
     public int disconnect()
     {
-        this.connected = false;
-//    	this.courseList = this.lockedList;
-//    	this.courseSet = this.lockedSet;
+        this.myCon = null;
+
+    	this.courseList = this.lockedList;
+    	this.courseSet = this.lockedSet;
         
+    	this.connected = false;
+    	
         return 0;
     }
      
@@ -201,38 +260,88 @@ public class DBConnection {
      */
     public int fetchCourseID(int courseID)
     {
-    	if (!connected || !courseMap.containsKey(courseID)) {
-    		return -1;
-    	}
-    	Course c = this.courseMap.get(courseID);
-    	return c.getCrseid();
+    	
+
+
+
+    	Course c = this.courseSet.get(new Integer(courseID));
+    	
+    	if (c==null)
+    			return -1;
+    	else
+    		return c.getCrseid();
+    	
+    	
     }
     
     //returns a list of end dates for all the courses in set
-    public ArrayList<String> getEndDates() {
+    public ArrayList<String> getEndDates()
+    {
         ArrayList<String> endDates = new ArrayList<String>();
+        
+        
+        
+        Iterator<Course> it = this.courseList.iterator();
+        
+        while(it.hasNext()){
+        	
+        	Course c = it.next();
 
-        for (Course c : courseMap.values()) {
+
         	endDates.add(c.getEnddt());
         }
         
         return endDates;
     }
     
-    public ArrayList<Integer> getCourses()  {
-        return new ArrayList<Integer>(courseMap.keySet());
+    // stub uses course set
+    public ArrayList<Integer> getCourses()
+    {
+        ArrayList<Integer> courseList = new ArrayList<Integer>();
+       
+        
+        Iterator<Course> it = this.courseList.iterator();
+        
+        while(it.hasNext()){
+        	
+        	Course c = it.next();
+        	courseList.add(new Integer(c.getCrseid()));
+        }
+        
+        return courseList;
+    
+
     }
     
     // stub uses course set
-    public String fetchCourses() {
-    	if (!connected) {
-    		return null;
-    	}
-    	StringBuilder result = new StringBuilder();
+    public String fetchCourses()
+    {
+      
+    	StringBuilder result= new StringBuilder();
     	
-    	for (Integer cid : courseMap.keySet()) {
-    		result.append(cid);
-    		result.append(",");
+    	Collections.sort(this.courseList, 
+    			new Comparator<Course>()
+    			{
+    		
+    				public int compare(Course c1,Course c2){ 
+    					return (c1.getCrseid()-c2.getCrseid());
+    					}
+    			});
+
+
+
+
+    	
+    	Iterator<Course> it = this.courseList.iterator();
+
+    	while (it.hasNext()){
+    		
+    		Course c = it.next();
+
+    		result.append(c.crseid);
+    		if(it.hasNext())
+    			result.append(",");
+    		
     	}
     	
         return result.toString();
@@ -243,187 +352,285 @@ public class DBConnection {
     // stub uses course set
     public String fetchCourseSubj(int courseID)
     {
-    	if (!connected || !courseMap.containsKey(courseID)) {
+       
+    	Course c = this.courseSet.get(new Integer(courseID));
+    	
+    	if (c==null)
+
     		return null;
-    	}
-    	Course c = this.courseMap.get(courseID);
-    	return c.getCrseSub();
+    	else
+
+
+    		return c.getCrseSub();
        
     }
     
     // stub uses course set
     public String fetchCourseName(int courseID)
     {
-    	if (!connected || !courseMap.containsKey(courseID)) {
+       
+    	Course c = this.courseSet.get(new Integer(courseID));
+    	
+    	if (c == null)
+
     		return null;
-    	}
-    	Course c = this.courseMap.get(courseID);
-   		return c.getCrseNam();
+    	else
+
+
+    		return c.getCrseNam();
     }
     
     // stub uses course set
     public String fetchCourseSemester(int courseID)
     {
-    	if (!connected || !courseMap.containsKey(courseID)) {
+    	
+    	Course c = this.courseSet.get(courseID);
+    	
+    	if(c == null)
+
     		return null;
-    	}
-    	Course c = this.courseMap.get(courseID);
-   		return c.getSemester();
+    	else
+
+
+    		return c.getSemester();
        
     }
     
     // stub uses course set
     public String fetchCourseStart(int courseID)
     {
-    	if (!connected || !courseMap.containsKey(courseID)) {
+    	
+    	Course c = this.courseSet.get(new Integer(courseID));
+    	
+    	if (c == null)
+
     		return null;
-    	}
-    	Course c = this.courseMap.get(courseID);
-   		return c.getStartdt();
+    	else
+
+
+    		return c.getStartdt();
        
     }
     
     // stub uses course set
     public String fetchCourseEnd(int courseID)
     {
-    	if (!connected || !courseMap.containsKey(courseID)) {
-    		return null;
-    	}
+        
     	
-    	Course c = this.courseMap.get(courseID);
-    	return c.getEnddt();
+    	Course c = this.courseSet.get(new Integer(courseID));
+    	
+    	if (c == null)
+
+    		return null;
+    	else
+
+
+
+    		return c.getEnddt();
     }
     
     
     // stub uses course set
     public String fetchStartMon(int courseID)
     {
-    	if (!connected || !courseMap.containsKey(courseID)) {
+     
+    	Course c = this.courseSet.get(new Integer(courseID));
+    	
+    	if (c == null)
+
     		return null;
-    	}
-    	Course c = this.courseMap.get(courseID);
-   		return c.getMonStart();
+    	else
+
+
+    		return c.getMonStart();
     }
     
     // stub uses course set
     public String fetchEndMon(int courseID)
     {
-    	if (!connected || !courseMap.containsKey(courseID)) {
+		Course c = this.courseSet.get(new Integer(courseID));
+    	
+    	if (c == null)
+
     		return null;
-    	}
-    	Course c = this.courseMap.get(new Integer(courseID));
-    	return c.getMonEnd();
+    	else
+
+
+    		return c.getMonEnd();
     }
    
     // stub uses course set
     public String fetchStartTue(int courseID)
     {
-    	if (!connected || !courseMap.containsKey(courseID)) {
+    	Course c = this.courseSet.get(new Integer(courseID));
+    	
+    	if (c == null)
+
     		return null;
-    	}
-    	Course c = this.courseMap.get(new Integer(courseID));
-    	return c.getTueStart();
+    	else
+
+
+    		return c.getTueStart();
     }
     
     // stub uses course set
     public String fetchEndTue(int courseID)
     {
-    	if (!connected || !courseMap.containsKey(courseID)) {
+      
+	Course c = this.courseSet.get(new Integer(courseID));
+    	
+    	if (c == null)
+
     		return null;
-    	}
-    	Course c = this.courseMap.get(new Integer(courseID));
-   		return c.getTueEnd();
+    	else
+
+
+    		return c.getTueEnd();
     }
     
     // stub uses course set
     public String fetchStartWed(int courseID)
     {
-    	if (!connected || !courseMap.containsKey(courseID)) {
+       
+	Course c = this.courseSet.get(new Integer(courseID));
+    	
+    	if (c == null)
+
     		return null;
-    	}
-    	Course c = this.courseMap.get(new Integer(courseID));
-    	return c.getWedStart();
+    	else
+
+
+    		return c.getWedStart();
     }
     
     // stub uses course set
     public String fetchEndWed(int courseID)
     {
-    	if (!connected || !courseMap.containsKey(courseID)) {
+       Course c = this.courseSet.get(new Integer(courseID));
+    	
+    	if (c == null)
+
     		return null;
-    	}
-    	Course c = this.courseMap.get(new Integer(courseID));
-    	return c.getWedEnd();
+    	else
+
+
+    		return c.getWedEnd();
     }
     
     // stub uses course set
-    public String fetchStartThu(int courseID)
+        public String fetchStartThu(int courseID)
     {
-    	if (!connected || !courseMap.containsKey(courseID)) {
-    		return null;
-    	}
-        Course c = this.courseMap.get(new Integer(courseID));
-        return c.getThuStart();
+        
+
+
+
+        	Course c = this.courseSet.get(new Integer(courseID));
+        	
+        	if (c == null)
+        		return null;
+        	else
+        		return c.getThuStart();
     }
         // stub uses course set
     public String fetchEndThu(int courseID)
     {
-    	if (!connected || !courseMap.containsKey(courseID)) {
+        
+    	
+	Course c = this.courseSet.get(new Integer(courseID));
+    	
+    	if (c == null)
+
     		return null;
-    	}
-    	Course c = this.courseMap.get(new Integer(courseID));
-    	return c.getThuEnd();
+    	else
+
+
+    		return c.getThuEnd();
     }
-    
+
     // stub uses course set
     public String fetchStartFri(int courseID)
     {
-    	if (!connected || !courseMap.containsKey(courseID)) {
-    		return null;
-    	}
-        Course c = this.courseMap.get(new Integer(courseID));
-        return c.getFriStart();
+
+
+
+
+        	Course c = this.courseSet.get(new Integer(courseID));
+        	
+        	if (c == null)
+        		return null;
+        	else
+        		return c.getFriStart();
     }
     
+	
     // stub uses course set
     public String fetchEndFri(int courseID)
     {
-    	if (!connected || !courseMap.containsKey(courseID)) {
+      
+	Course c = this.courseSet.get(new Integer(courseID));
+    	
+    	if (c == null)
+
     		return null;
-    	}
-    	Course c = this.courseMap.get(new Integer(courseID));
-    	return c.getFriEnd();
+    	else
+
+
+    		return c.getFriEnd();
     }
     
 
     // stub uses course set
     public String fetchStartSat(int courseID)
     {
-    	if (!connected || !courseMap.containsKey(courseID)) {
-    		return null;
-    	}
-        Course c = this.courseMap.get(new Integer(courseID));
-        return c.getSatStart();
+        /*try{
+            Statement s = myCon.createStatement();
+            ResultSet res = s.executeQuery("SELECT start_sat FROM Class100 WHERE course_id = " +courseID +";");
+            
+            res.next();
+            return res.getString("start_sat");
+            
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+
+            return null;
+        } */
+
+        	Course c = this.courseSet.get(new Integer(courseID));
+        	
+        	if (c == null)
+        		return null;
+        	else
+        		return c.getSatStart();
     }
     
     // stub uses course set
     public String fetchEndSat(int courseID)
     {
-    	if (!connected || !courseMap.containsKey(courseID)) {
+        
+       Course c = this.courseSet.get(new Integer(courseID));
+    	
+    	if (c == null)
+
     		return null;
-    	}
-    	Course c = this.courseMap.get(new Integer(courseID));
-    	return c.getSatEnd();
+    	else
+
+
+    		return c.getSatEnd();
     }
     
     //stub to insert into the set a course with default start and end date
     public int storeClassInfo(int courseID, String courseSubj, String courseName, String semester)
     {
-        if (!connected || courseMap.containsKey(courseID)) {
-        	return -1;
-        }
-    	Course c = new Course(courseID, courseSubj, courseName, semester, Course.STARTDATE, Course.ENDDATE);
-    	courseMap.put(courseID, c);
+       
+
+
+
+    	Course c = new Course(courseID,courseSubj,courseName,semester,Course.STARTDATE,Course.ENDDATE);
+
     	
+    	this.courseList.add(c);
     	return 0;
     }
     
@@ -432,11 +639,12 @@ public class DBConnection {
             String startTue, String endTue, String startWed, String endWed, String startThu, String endThu, 
             String startFri, String endFri, String startSat, String endSat)
     {
-    	if (!connected || !courseMap.containsKey(courseID)) {
-    		return -1;
-    	}
+    	Course c = this.courseSet.get(courseID);
+
+
+
     	
-    	Course c = this.courseMap.get(courseID);
+
 
     	c.setStartdt(startDate);
     	c.setEnddt(endDate);
@@ -458,14 +666,20 @@ public class DBConnection {
     }
     
     //clears course list and course set
-    public void clearDatabase() {
-//    	this.courseList.clear();
-    	this.courseMap.clear();
+    public void clearDatabase()
+    {
+    	
+    	this.courseList = new ArrayList<Course>();
+    	this.courseSet = new HashMap<Integer,Course>();
+
+
     }
     
     // Stub returns 0
-    public int createClassTable() {
-    	clearDatabase();
-    	return 0;                
+    public int createClassTable()
+    {
+       return 0;                  
+
+
     }
 }
