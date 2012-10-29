@@ -15,6 +15,8 @@ import testUtil.Course;
 import testUtil.DBUtil;
 import Logic.appController;
 
+/** This is supplemantary class to get additional coverage **/
+/** K class **/
 public class appControllerTimerTaskTest {
 
 	appController app1;
