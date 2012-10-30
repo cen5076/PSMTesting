@@ -25,6 +25,22 @@ public class Messages {
 	    	Messages.ack = true;
 	    	Messages.lockedOut= false;
 	    }
+	    
+	    /** Added for Message desplay confirmation ***/
+	    
+	    public boolean fiveMinuteWarning= false;
+	    public boolean fifteenMinuteWarning = false;
+	    public boolean endClassWarning = false;
+	    
+	    /** Added CEN5076 
+	     * 
+	     * @return - the logout value
+	     */
+	    public boolean getLogOut(){
+	    	
+	    	return logout;
+
+	    }
 	   
 	    /**
 		 * @return the m
@@ -127,23 +143,29 @@ public class Messages {
 	    }
 	    public void FifteenMinWarning()
 	    {
-	      
+	    	System.out.println("FifteenMinute Warning Ran");
+
+	      this.fifteenMinuteWarning = true;
 	    }
 
 	    public void FiveMinWarning()
 	    {
-	        
+	    	System.out.println("FiveMinute Warning Ran");
+	        this.fiveMinuteWarning = true;
 	    }
 	    
 	    public void endClassWarning()
 	    {
-	       
-	        
+	    	System.out.println("EndClass Warning Ran");
+
+	        this.endClassWarning = true;
 	        
 	    }
 	    
 	    public void logoutConfirmation()
 	    {
+	    	
+	    	logout = true;
 	      
 	    }
 	    

@@ -5,10 +5,10 @@ public class LoginForm {
 
 	private static final long serialVersionUID = 1L;
 
-	private boolean loggedin = false;
-    private static boolean dataRec;
-    private static String username;
-    private static String password;
+	public boolean loggedin = false;
+    public boolean dataRec = true;
+    public String username;
+    public String password;
     
 
     

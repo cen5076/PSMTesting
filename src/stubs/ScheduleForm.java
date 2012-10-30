@@ -1,4 +1,7 @@
+
 package stubs;
+
+import testUtil.Course;
 
 //import Interface.ScheduleForm;
 
@@ -31,13 +34,36 @@ public class ScheduleForm extends javax.swing.JFrame {
       private static String newFriEnd;
       private static String newSatStart;
       private static String newSatEnd;
-      
-      private static boolean dataReceived;
+
+      public static boolean dataReceived;
      
     
     /** Creates new form ScheduleSetupUI2 */
     public ScheduleForm() {
-    	/* TODO initialize all */
+
+    }
+    
+    /* Added Helper Method for Testing CEN5076 - DG */
+    public void addCourse(Course c){
+    	
+    	newCourseID = c.crseid;
+    	newCourseName = c.crseNam;
+    	newSub = c.crseSub;
+    	newSemester = c.crseSub;
+    	newCourseStart = c.startdt;
+    	newCourseEnd = c.enddt;
+    	newMonStart = c.monStart;
+    	newMonEnd = c.monEnd;
+    	newTueEnd = c.tueEnd;
+    	newTueStart = c.tueStart;
+    	newWedStart = c.wedStart;
+    	newWedEnd = c.wedEnd;
+    	newThuStart = c.thuStart;
+    	newThuEnd = c.thuEnd;
+    	newFriStart = c.friStart;
+    	newFriEnd = c.friEnd;
+    	newSatStart = c.satStart;
+    	newSatEnd = c.satEnd;
     }
     
     public boolean dataRec()

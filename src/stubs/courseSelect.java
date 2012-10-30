@@ -2,6 +2,8 @@ package stubs;
 
 import java.util.ArrayList;
 
+import testUtil.DBUtil;
+
 //import javax.swing.JButton;
 //import javax.swing.JComboBox;
 
@@ -13,7 +15,7 @@ public class courseSelect {
 	/** Creates new form courseSelect2 */
    //DBConnection Data = new DBConnection();
    
-   private static int selection;
+   public static int selection;
    private static boolean courseSelected;
    public String [] listCourses;
    private javax.swing.JButton jButton1;
@@ -21,20 +23,23 @@ public class courseSelect {
    @SuppressWarnings("rawtypes")
    private javax.swing.JComboBox jComboBox1;
    private javax.swing.JPanel jPanel1;
+   
+   
 
    
 @SuppressWarnings("rawtypes")
 public courseSelect() {
        /* TODO Initialize Course list */
-	   courseSelect.selection = 1;
+	   courseSelect.selection = DBUtil.defaultCourseId;
 	   courseSelect.courseSelected = true;
-	   this.jButton1 = new javax.swing.JButton();
+	   /*this.jButton1 = new javax.swing.JButton();
 	   this.jButton2 = new javax.swing.JButton();
 	   this.jComboBox1 = new javax.swing.JComboBox();
 	   this.jPanel1 = new javax.swing.JPanel();
 	   for (int i=0;i<5;i++){
 		   this.listCourses[i]="Course"+i;
 	   }
+	   */
     }
     
    /**
@@ -126,14 +131,16 @@ public static boolean isCourseSelected() {
 /**
  * @param selection the selection to set
  */
-public static void setSelection(int selection) {
-	courseSelect.selection = selection;
+public static void setSelection(int s) {
+	courseSelect.selection = s;
+	System.out.println("Selection=" + courseSelect.selection);
 }
 
 public int getSelection()
     {
-        return selection;
+        return courseSelect.selection;
     }
+
    
    public boolean courseSelected()
     {
@@ -142,7 +149,7 @@ public int getSelection()
     
     public void setCourseSelected(boolean condition)
     {
-    
+    	this.courseSelected = condition;
     }
     
 	private void initComponents() {

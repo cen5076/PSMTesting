@@ -33,7 +33,7 @@ public class InterfaceController {
 	    public void Initiate_Logout() 
 	    {
 	        
-	         //msg.logoutConfirmation();
+	         msg.logoutConfirmation();
 	     
 	    }
 
@@ -58,15 +58,15 @@ public class InterfaceController {
 
 	    
 	        
-	         /* edSched.launchEdit(courseID, courseSubj, courseName, semester,
+	          edSched.launchEdit(courseID, courseSubj, courseName, semester,
 	            startDate, endDate, startMon, endMon, startTue, endTue, 
 	            startWed, endWed, startThu, endThu, startFri, endFri, startSat, endSat);
-	            */
+	            
 	    }
 	    
 	    public void Course_Select_Form(){
-	        //cs = new courseSelect();
-	        //cs.launchCourse();
+	        cs = new courseSelect();
+	        cs.launchCourse();
 	    }
 	    public void Initiate_Login_Form() {
 

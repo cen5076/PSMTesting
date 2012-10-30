@@ -1,5 +1,6 @@
 package stubs;
 
+import testUtil.Course;
 //import Interface.PrefilledScheduleForm;
 @SuppressWarnings("unused")
 public class PrefilledScheduleForm {
@@ -57,11 +58,38 @@ public class PrefilledScheduleForm {
     public void setDataRec(boolean condition)
     {
        
-        //dataReceived = condition; 
+        dataReceived = condition; 
         
     }
     
-
+	/**
+     * ***STUBS ***
+     * Added method for Testing CEN5076
+     */
+    public void addCourse(Course c){
+    	
+    	defCourseID = c.crseid;
+    	newCourseName = c.crseNam;
+    	newSub = c.crseSub;
+    	newSemester = c.crseSub;
+    	newCourseStart = c.startdt;
+    	newCourseEnd = c.enddt;
+    	newMonStart = c.monStart;
+    	newMonEnd = c.monEnd;
+    	newTueEnd = c.tueEnd;
+    	newTueStart = c.tueStart;
+    	newWedStart = c.wedStart;
+    	newWedEnd = c.wedEnd;
+    	newThuStart = c.thuStart;
+    	newThuEnd = c.thuEnd;
+    	newFriStart = c.friStart;
+    	newFriEnd = c.friEnd;
+    	newSatStart = c.satStart;
+    	newSatEnd = c.satEnd;
+    	
+    }
+    
+	
   //  private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
    // }
     

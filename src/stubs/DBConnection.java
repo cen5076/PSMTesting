@@ -48,9 +48,12 @@ public class DBConnection {
     private ArrayList<Course> lockedList;
     private HashMap<Integer,Course> lockedSet;
     
+    public boolean connected = false;
+    
     /** Creates a new instance of DBConnection */
     public DBConnection()
     {
+    	
       
     }
     
@@ -127,6 +130,28 @@ public class DBConnection {
     	}
     	
     }
+	
+	public void addCourse(Course c){
+		
+		System.out.println(c.toString());
+		
+		if(this.courseList == null){
+			this.courseList = new ArrayList<Course>();
+			System.out.println("Why is course list null?");
+		}
+		
+		if(this.courseSet == null){
+			
+			this.courseSet = new HashMap<Integer,Course>();
+		}
+		this.courseList.add(c);
+		
+		
+
+		System.out.println("Courses:" + this.courseList.size());
+		this.courseSet.put(c.crseid, c);
+		System.out.println("Courses:" + this.courseSet.size());
+	}
     
 	/*
 	 * Connect using known database address
@@ -146,6 +171,7 @@ public class DBConnection {
       	this.courseList = lockedList;
       	this.courseSet = lockedSet;
        
+        this.connected = true;
         
         return 0;
     }
@@ -172,6 +198,8 @@ public class DBConnection {
       	this.courseList = lockedList;
       	this.courseSet = lockedSet;
         
+      	this.connected = true;
+      	
         return 0;
     }
     
@@ -182,6 +210,8 @@ public class DBConnection {
     	this.courseList = this.lockedList;
     	this.courseSet = this.lockedSet;
         
+    	this.connected = false;
+    	
         return 0;
     }
      
@@ -529,10 +559,9 @@ Course c = this.courseSet.get(new Integer(courseID));
     //clears course list and course set
     public void clearDatabase()
     {
-       
     	
-    	this.courseList.clear();
-    	this.courseSet.clear();
+    	this.courseList = new ArrayList<Course>();
+    	this.courseSet = new HashMap<Integer,Course>();
     }
     
     // Stub returns 0
