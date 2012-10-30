@@ -53,6 +53,7 @@ public class appControllerTimerTaskTest {
 		dbUtil = null;
 	}
 
+	/* K01 */	
 	@Test
 	public void testTimerTask_testAll() {
 		
@@ -149,8 +150,8 @@ public class appControllerTimerTaskTest {
 
 
 	}
-	
-	//@Test
+/*** THESE TESTS WERE SUBSUMED BY ABOVE TESTALL ***/	
+/*	//@Test
 	public void testTimerTaks_popup15Min() {
 		
 		GregorianCalendar gc = new GregorianCalendar();
@@ -261,21 +262,30 @@ public class appControllerTimerTaskTest {
 		assertTrue("Timer Ran",app1.getIc().msg.endClassWarning);
 		
 	}
+	*/
 	
+	/** K02 **/
 	@Test
 	public void testTimerTasks_autoExit(){
 		
 		app1.setDate(new Date(System.currentTimeMillis()));
 		
+		/* TODO - add check for system.exit(0) @Rule */
 		app1.autoExit();
+	
+		assertNotNull("Completed test autoExit",app1);
 	}
 	
+	/** K03 **/
 	@Test
 	public void testTimerTasks_autoClear(){
 		
 		app1.setDate(new Date(System.currentTimeMillis()));
 		
+		/* TODO - Add dbClear check */
 		app1.autoClear();
+		assertNotNull("Completed test autoClear check database state.",app1);
+
 	}
 
 }
