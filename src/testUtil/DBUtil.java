@@ -8,7 +8,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -24,13 +27,13 @@ public class DBUtil {
 	public Connection conn;
 	public ArrayList<Course> crsList;
 	public static final String[] defaultDates = {"12:00","13:00","12:00","13:00","12:00","13:00"
-		,"12:00","13:00","12:00","13:00","12:00","13:00"};
+		,"12:00","13:00","12:00","13:00","12:00","24:00"};
 	
 	public static final String USERNAME = "cen5076";
 	public static final String PASSWORD = "cen5076";
 	public static final String DB = "jdbc:mysql://dgarc012.homeip.net:3306/mydb";
 	
-	
+	public static int defaultCourseId = 1234;
 	
 	public DBUtil(){
 		
@@ -286,4 +289,41 @@ public class DBUtil {
 		
 	
 	}
+	
+	/**
+	 * Returns a String of a date object passed in the right format expected by DB
+	 * 
+	 * @param dayOffSet
+	 * @return
+	 */
+	public static String pastAsString(Date d){
+		
+		
+		GregorianCalendar now = new GregorianCalendar();
+		now.setTimeInMillis(System.currentTimeMillis());
+		
+		String endDate = d.toString();
+		String mon;
+		switch(now.get(Calendar.MONTH)){
+		
+		case Calendar.JANUARY: mon = "01"; break;
+		case Calendar.FEBRUARY: mon="02";break;
+		case Calendar.MARCH: mon="03";break;
+		case Calendar.APRIL: mon="04";break;
+		case Calendar.MAY: mon="05";break;
+		case Calendar.JUNE: mon="06";break;
+		case Calendar.JULY: mon="07";break;
+		case Calendar.AUGUST: mon="08";break;
+		case Calendar.SEPTEMBER: mon="09";break;
+		case Calendar.OCTOBER: mon="10";break;
+		case Calendar.NOVEMBER: mon="11";break;
+		case Calendar.DECEMBER: mon="12";break;
+		default: mon="00";
+		}
+		
+		endDate = mon + "/" + endDate.substring(8,10) + "/" + endDate.substring(endDate.length()-2,endDate.length());
+		
+		return endDate;
+	}
+	
 	}

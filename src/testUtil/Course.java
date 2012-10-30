@@ -517,5 +517,13 @@ public class Course {
 	public void setSatEnd(String satEnd) {
 		this.satEnd = satEnd;
 	}
+	
+	public String toString(){
+		
+		String course = "Course=Id-" + this.crseid + ",Name-" + this.crseNam + ",Subj-" + this.crseSub + ",Semester-" + this.semester + ",Starts[" + this.monStart + "," + this.tueStart + "," + this.wedStart + "," + this.thuStart + "," + this.friStart + this.satStart + "],Ends=[" + this.monEnd + "," + this.tueEnd + "," + this.wedEnd + ","+ this.thuEnd + ","+ this.friEnd + ","+ this.satEnd + "]";
+		
+		return course;
+		
+	}
 
 }
