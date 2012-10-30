@@ -27,6 +27,7 @@ public class appControllerSupplementary {
 		app1 = null;
 	}
 
+	/*** L01 ***/
 	@Test
 	public void testGetters() {
 		
@@ -46,6 +47,7 @@ public class appControllerSupplementary {
 		assertNotNull("Completed Getters Successfully",app1);
 	}
 	
+	/*** L02 ***/
 	@Test
 	public void testSetters() {
 		
@@ -56,18 +58,20 @@ public class appControllerSupplementary {
 		app1.setTime(now.get(Calendar.YEAR),now.get(Calendar.MONTH), now.get(Calendar.DATE), now.get(Calendar.HOUR), now.get(Calendar.MINUTE));
 		
 		assertEquals("Year",now.get(Calendar.YEAR),app1.getSetRun().get(Calendar.YEAR));
-		assertEquals("Year",now.get(Calendar.MONTH),app1.getSetRun().get(Calendar.MONTH));
-		assertEquals("Year",now.get(Calendar.DATE),app1.getSetRun().get(Calendar.DATE));
-		assertEquals("Year",now.get(Calendar.HOUR),app1.getSetRun().get(Calendar.HOUR));
-		assertEquals("Year",now.get(Calendar.MINUTE),app1.getSetRun().get(Calendar.MINUTE));
+		assertEquals("Month",now.get(Calendar.MONTH),app1.getSetRun().get(Calendar.MONTH));
+		assertEquals("Date",now.get(Calendar.DATE),app1.getSetRun().get(Calendar.DATE));
+		assertEquals("Hour",now.get(Calendar.HOUR),app1.getSetRun().get(Calendar.HOUR));
+		assertEquals("Minute",now.get(Calendar.MINUTE),app1.getSetRun().get(Calendar.MINUTE));
 		
 		
 	}
 	
+	/*** L03 ***/
 	@Test
 	public void testSystemCalls() {
 		
 		app1.sleep(0);
+		assertNotNull("Completed sleep command",app1);
 	}
 
 }
