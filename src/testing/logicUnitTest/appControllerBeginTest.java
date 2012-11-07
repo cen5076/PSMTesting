@@ -36,16 +36,14 @@ public class appControllerBeginTest {
 	
 	@Before
 	/*
-	 * Create a new appController, call begin
-	 * 
+	 * Create a new appController
 	 */
 	public void setUp() throws Exception {
 		
 		app1 = new appController();
 		app1.newTimer = new FutureTimer();
 
-		//app1.newTimers() = new FutureTimer();
-		//app1.begin();
+		
 		
 	}
 
@@ -66,6 +64,8 @@ public class appControllerBeginTest {
 	
 
 	/* Test States of Begin method */
+	/*** Subsumed by other tests ***/
+	/*
 	//@Test
 	public void atestBegin_LoginState() {
 		
@@ -104,7 +104,9 @@ public class appControllerBeginTest {
 		
 		
 	}
+	*/
 	
+	/*** M01 ***/
 	@Test  //Valid
 	public void testBegin_AuthenticateToLoginTransition(){
 		
@@ -134,6 +136,7 @@ public class appControllerBeginTest {
 	 *  Does not clear the DB
 	 *  
 	 */
+	/**
 	//@Test
 	public void testBegin_ReadyState_NoClearDB(){
 		
@@ -176,12 +179,15 @@ public class appControllerBeginTest {
 		
 		
 	}
+	**/
+	
 	
 	/**
 	 * 
-	 * Has an enddate that has passed and clears the DB
+	 * Has an end date that has passed and clears the DB
 	 * 
 	 */
+	/*** M02 ***/
 	@Test  //Valid
 	public void testBegin_ReadyState_ClearDB(){
 		
@@ -338,6 +344,8 @@ public class appControllerBeginTest {
 		
 	}
 	*/
+	
+	/*** MO3 ***/
 	@Test  //Valid
 	public void testBegin_AllStates(){
 		
@@ -502,6 +510,7 @@ public class appControllerBeginTest {
 		
 	}
 	
+	/*** M04 ***/
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesMon(){
 		
@@ -551,8 +560,12 @@ public class appControllerBeginTest {
 			
 			
 		}
+		
+		assertTrue("Logged in",app1.isLoggedin());
+		assertFalse("Data Received",app1.getDataReceived());
 	}
 	
+	/*** M05 ***/
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesTue(){
 		
@@ -603,6 +616,8 @@ public class appControllerBeginTest {
 			
 		}
 	}
+	
+	/*** M06 ***/
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesWed(){
 		
@@ -654,6 +669,8 @@ public class appControllerBeginTest {
 		}
 	}
 	
+	
+	/*** M07 ***/
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesThu(){
 		
@@ -704,6 +721,8 @@ public class appControllerBeginTest {
 			
 		}
 	}
+	
+	/*** M08 ***/
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesFri(){
 		
@@ -754,6 +773,8 @@ public class appControllerBeginTest {
 			
 		}
 	}
+	
+	/*** M09 ***/
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesSat(){
 		
@@ -804,6 +825,8 @@ public class appControllerBeginTest {
 			
 		}
 	}
+	
+	/*** M10 ***/
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesSun(){
 		
@@ -855,6 +878,8 @@ public class appControllerBeginTest {
 		}
 	}
 	
+	
+	/*** M11 ***/
 	//@Test
 	public void testBegin_Begin(){
 		
