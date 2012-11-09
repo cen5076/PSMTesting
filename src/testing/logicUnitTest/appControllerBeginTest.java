@@ -53,11 +53,9 @@ public class appControllerBeginTest {
 		app1.getPopup5min().cancel();
 		app1.getPopup15min().cancel();
 		app1.getEndofclass().cancel();
-		//app1.newTimer.purge();
 		c1  =null;
 
 		
-		//app1.nullTimers();
 		app1 = null;
 		
 	}
@@ -346,6 +344,7 @@ public class appControllerBeginTest {
 	*/
 	
 	/*** MO3 ***/
+	@SuppressWarnings("static-access")
 	@Test  //Valid
 	public void testBegin_AllStates(){
 		
@@ -375,7 +374,6 @@ public class appControllerBeginTest {
 		app1.setCounter(counter);
 		
 		app1.authenticate();
-		//156
 		
 		assertTrue("Connected",app1.getDb().connected);
 		assertEquals("Counter unchanged", counter , app1.getCounter());
@@ -399,7 +397,6 @@ public class appControllerBeginTest {
 		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
 		c1.fillDates(DBUtil.defaultDates);
 		
-		//System.out.println(endDate);
 		try{
 			Thread.sleep(300);
 		}
@@ -440,10 +437,6 @@ public class appControllerBeginTest {
 		
 		/*** Assert in Set Schedule ***/
 		assertFalse("DataReceived",app1.getDataReceived());
-		
-		//app1.setLoggedIn(true);
-		//app1.setUsername(DBUtil.USERNAME);
-		//app1.setPassword(DBUtil.PASSWORD);
 		app1.setDataReceived(false);
 		
 		//enter loop
@@ -451,7 +444,6 @@ public class appControllerBeginTest {
 		app1.getIc().mm.setEditSched(true);
 		app1.getIc().mm.setdataRec(true);
 		
-		//DBUtil dbUtil = new DBUtil();
 		dbUtil.defaultCourseId = 1234;
 		Course c3 = new Course(DBUtil.defaultCourseId,"Sub","Nam","Semester",Course.STARTDATE,Course.ENDDATE);
 		c3.fillDates(DBUtil.defaultDates);
@@ -465,7 +457,6 @@ public class appControllerBeginTest {
 		app1.getIc().Course_Select_Form();
 		app1.getIc().cs.setCourseSelected(true);
 		app1.getIc().cs.setSelection(c3.crseid);
-		//app1.getIc().cs.selection = c1.crseid;
 		System.out.println("IC.cs.getselection()=" + app1.getIc().cs.getSelection());
 		System.out.println("IC.cs.selection1=" + app1.getIc().cs.selection);
 
@@ -475,7 +466,6 @@ public class appControllerBeginTest {
 		app1.getIc().edSched.addCourse(c3);
 		System.out.println("IC.cs.selection3=" + app1.getIc().cs.selection);
 
-		//app1.initAuthenticate(DBUtil.USERNAME, DBUtil.PASSWORD);
 		System.out.println("IC.cs.selection4=" + app1.getIc().cs.selection);
 
 
