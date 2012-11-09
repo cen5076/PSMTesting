@@ -10,6 +10,7 @@ import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 
 import Logic.appController;
 
+import stubs.DBConnection;
 import stubs.Messages;
 import testUtil.DBUtil;
 
@@ -29,10 +30,8 @@ public class appControllerLogin_SS {
 	@After
 	public void tearDown() throws Exception {
 		app1 = null;
-	}	
+	}
 
-	
-	@Test
 	/**
 	 * Test ID: PSM_008-Message_PopUp-SubSystemTest-A01
 	 * Purpose: To test the login functionality for a valid username and password
@@ -40,18 +39,17 @@ public class appControllerLogin_SS {
 	 * Author: Jose Borja
 	 * Stubs Needed: 
 	 */
-	//valid login test
+	@Test
 	public void testLogIn() {
 		
 		app1.setUsername(DBUtil.USERNAME);
 		app1.setPassword(DBUtil.PASSWORD);
 		
 		app1.LogIn();
-		assertTrue("Log In",app1.isLoggedin());
+		assertTrue("Log In", app1.isLoggedin());
 
 	}
 	
-	@Test
 	/**
 	 * Test ID: PSM_008-Message_PopUp-SubSystemTest-A02
 	 * Purpose: To test the login functionality for an  invalid username and valid password
@@ -59,17 +57,16 @@ public class appControllerLogin_SS {
 	 * Author: Jose Borja
 	 * Stubs Needed: 
 	 */
-	//invalid login username test
+	@Test
 	public void testLogIn_BadUser() {
 		
 		app1.setUsername("badUser");
 		app1.setPassword(DBUtil.PASSWORD);
 
 		app1.LogIn();
-		assertFalse("Log In",app1.isLoggedin());
+		assertFalse("Log In", app1.isLoggedin());
 	}
 	
-	@Test
 	/**
 	 * Test ID: PSM_008-Message_PopUp-SubSystemTest-A03
 	 * Purpose: To test the login functionality for a valid username and invalid password
@@ -77,18 +74,17 @@ public class appControllerLogin_SS {
 	 * Author: Jose Borja
 	 * Stubs Needed: 
 	 */
-	//invalid login password test
+	@Test
 	public void testLogIn_BadPass() {
 
 		app1.setUsername(DBUtil.USERNAME);
 		app1.setPassword("badPassword");
 		
 		app1.LogIn();
-		assertFalse("Log In",app1.isLoggedin());
+		assertFalse("Log In", app1.isLoggedin());
 
 	}
 	
-	@Test
 	/**
 	 * Test ID: PSM_008-Message_PopUp-SubSystemTest-A04
 	 * Purpose: To test the login functionality for an invalid username and invalid 
@@ -96,7 +92,7 @@ public class appControllerLogin_SS {
 	 * Author: Jose Borja
 	 * Stubs Needed: 
 	 */
-	//invalid login user and password test
+	@Test
 	public void testLogIn_BadUser_Pass() {
 
 		app1.setUsername("badUser");
@@ -107,10 +103,42 @@ public class appControllerLogin_SS {
 
 	}
 	
+	// tests that the DBConnection object created for this instance of appController is the one that is fetched
+	// and properly updated given valid authentication
+	@Test
+	public void testConnection() {
+		app1.setUsername(DBUtil.USERNAME);
+		app1.setPassword(DBUtil.PASSWORD);
+		app1.LogIn();
+		
+		DBConnection dbc = app1.getCon();
+		assertEquals("Gets username", DBUtil.USERNAME, dbc.getUsername());
+		assertEquals("Gets password", DBUtil.PASSWORD, dbc.getPassword());
+		assertTrue(dbc.isConnected());
+	}
+	
+	// tests that the DBConnection object created for this instance of appController is the one that is fetched
+	// and properly updated given invalid authentication
+	@Test
+	public void testConnection2() {
+		app1.setUsername("badUser");
+		app1.setPassword("badPassword");
+		app1.LogIn();
+		
+		DBConnection dbc = app1.getCon();
+		assertEquals("Gets username", "badUser", dbc.getUsername());
+		assertEquals("Gets password", "badPassword", dbc.getPassword());
+		assertFalse(dbc.isConnected());
+	}
+	
 	@Test
 	public void testLoginState() {
+		app1.setLoggedIn(false);
+		app1.getIc().log.setLoginStateFlag(true);
 		app1.loginState();
-		// add assert(s)
+		assertEquals("Gets username", DBUtil.USERNAME, app1.getUsername());
+		assertEquals("Gets password", DBUtil.PASSWORD, app1.getPassword());
+		assertFalse(app1.isDataReceived());
 	}
 	
 	/*
@@ -125,7 +153,9 @@ public class appControllerLogin_SS {
 		app1.setPassword(DBUtil.PASSWORD);
 		
 		app1.authenticate();
-		// add assert(s)
+		assertTrue(app1.getAuth().validate_Login());
+		assertTrue(app1.isLoggedin());
+		assertTrue(app1.getDb().isConnected());
 	}
 	
 	
@@ -135,10 +165,21 @@ public class appControllerLogin_SS {
 		app1.setPassword("badPassword");
 		
 		app1.authenticate();
+		assertFalse(app1.getAuth().validate_Login());
 		app1.authenticate();
+		assertFalse(app1.getAuth().validate_Login());
 		exit.expectSystemExitWithStatus(0);
 		app1.authenticate();
-		// add assert(s)
+
+		assertFalse(app1.getAuth().validate_Login());
+		assertTrue(Messages.isLockedOut());
+		assertFalse(app1.isDataReceived());
 	}
 	
+	@Test
+	public void testLogOut() {
+		app1.logOut();
+		
+		assertTrue(Messages.getLogOut());
+	}
 }

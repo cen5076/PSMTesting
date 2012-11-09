@@ -262,7 +262,4 @@ public class ScheduleForm extends javax.swing.JFrame {
 	public static void setNewCourseEnd(String newCourseEnd) {
 		ScheduleForm.newCourseEnd = newCourseEnd;
 	}
-
-	
-    
 }

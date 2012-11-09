@@ -7,12 +7,17 @@ public class LoginForm {
 
 	private static final long serialVersionUID = 1L;
 
-	public boolean loggedin = false;
-    public boolean dataRec = true;
-    public String username;
-    public String password;
+	public boolean loggedin;
+    private boolean dataRec;
+    private String username;
+    private String password;
+    private boolean loginStateFlag = false;
     
 
+    public void setLoginStateFlag(boolean b) {
+    	loginStateFlag = b;
+    }
+    
     
     public LoginForm() {
     	/* TODO Initialize variables */
@@ -29,6 +34,10 @@ public class LoginForm {
 
     public boolean dataReceived()
     {
+    	if (loginStateFlag) {
+    		setLoginStateFlag(false);
+    		return false;
+    	}
         return dataRec;
     }
     
@@ -47,9 +56,15 @@ public class LoginForm {
     public void launchForm() {
        
     }
-       public String getUsername()
+    
+    public String getUsername()
     {
         return username;
+    }
+    
+    public void setUsername(String usr)
+    {
+        username = usr;
     }
     
     public String getPassword()
@@ -57,5 +72,8 @@ public class LoginForm {
         return password;
     }
     
-    
+    public void setPassword(String pass)
+    {
+        password = pass;
+    }
 }

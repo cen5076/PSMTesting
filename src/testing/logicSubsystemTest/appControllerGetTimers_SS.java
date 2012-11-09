@@ -51,7 +51,7 @@ public class appControllerGetTimers_SS {
 	// Test for return date that is same as current time with 1 minute difference
 	public void testGetEndTime1_SS() {
 		
-		//set hour and minutes of day 
+		//set hour and minutes of day
 		//h=0=0:00, h=1=1:00, h=-1=23:00
 		//m=0=:00, m=1=:01, m=-1=:59
 		int h=0;
@@ -59,10 +59,10 @@ public class appControllerGetTimers_SS {
 		
 		//set offset for current time to match
 		long hDiff = dbUtil.hrsInMilli(Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) - dbUtil.hrsInMilli(h); 
-		long mDiff = dbUtil.minInMilli(Calendar.getInstance().get(Calendar.MINUTE)) -dbUtil.minInMilli(m) +60000; 
+		long mDiff = dbUtil.minInMilli(Calendar.getInstance().get(Calendar.MINUTE)) - dbUtil.minInMilli(m) + 60000; 
 		
 		//create new Date with time offset
-		Date time = new Date(System.currentTimeMillis()- hDiff - mDiff);
+		Date time = new Date(System.currentTimeMillis() - hDiff - mDiff);
 		
 		//create Calendars from each to compare
 		Calendar expected = new GregorianCalendar();
