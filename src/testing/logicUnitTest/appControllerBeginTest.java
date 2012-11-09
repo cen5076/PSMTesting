@@ -569,7 +569,7 @@ public class appControllerBeginTest {
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesTue(){
 		
-		//Set the date to a Monday
+		//Set the date to a Tuesday
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-23-12");
 		} catch (IOException e) {
@@ -621,7 +621,7 @@ public class appControllerBeginTest {
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesWed(){
 		
-		//Set the date to a Monday
+		//Set the date to a Wednesday
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-24-12");
 		} catch (IOException e) {
@@ -674,7 +674,7 @@ public class appControllerBeginTest {
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesThu(){
 		
-		//Set the date to a Monday
+		//Set the date to a Thursday
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-25-12");
 		} catch (IOException e) {
@@ -726,7 +726,7 @@ public class appControllerBeginTest {
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesFri(){
 		
-		//Set the date to a Monday
+		//Set the date to a Friday
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-26-12");
 		} catch (IOException e) {
@@ -778,7 +778,7 @@ public class appControllerBeginTest {
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesSat(){
 		
-		//Set the date to a Monday
+		//Set the date to a Saturday
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-27-12");
 		} catch (IOException e) {
@@ -830,7 +830,7 @@ public class appControllerBeginTest {
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesSun(){
 		
-		//Set the date to a Monday
+		//Set the date to a Sunday
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-28-12");
 		} catch (IOException e) {
@@ -903,30 +903,23 @@ public class appControllerBeginTest {
 		c1.fillDates(DBUtil.defaultDates);
 		
 		app1.getDb().addCourse(c1);
-		//app1.setLoggedIn(false);
-		//app1.setDataReceived(false);
-
-		//app1.setLoggedIn(false);
-		//app1.setDataReceived(true);
-		//app1.setUsername(DBUtil.USERNAME);
-		//app1.setPassword(DBUtil.PASSWORD);
 		int counter = 0;
 		app1.setCounter(counter);	
 		app1.setClassEnded(System.currentTimeMillis());
 		app1.getIc().mm.setdataRec(true);
-		//app1.getIc().mm.setLogout(true);
-		//app1.setEdSchedSel(true);
-		//app1.setSchedSetupSel(true);
 		app1.getIc().mm.setEditSched(true);
-		//app1.getIc().mm.setLogout(true);
 		app1.getIc().mm.setInitSetup(true);
 		app1.initAuthenticate(DBUtil.USERNAME,DBUtil.PASSWORD);
 		
 		app1.begin();
 		
+		assertTrue("Loggedin",app1.isLoggedin());
+		assertFalse("DataReceived",app1.getDataReceived());
 	}
 	
+	@SuppressWarnings("static-access")
 	@Test
+	/** M12 ***/
 	public void testBegin_BeginEditSched(){
 		
 		app1.setLoggedIn(true);
@@ -949,36 +942,24 @@ public class appControllerBeginTest {
 		c1.fillDates(DBUtil.defaultDates);
 		
 		app1.getDb().addCourse(c1);
-		//app1.setLoggedIn(false);
-		//app1.setDataReceived(false);
-
-		//app1.setLoggedIn(false);
-		//app1.setDataReceived(true);
-		//app1.setUsername(DBUtil.USERNAME);
-		//app1.setPassword(DBUtil.PASSWORD);
 		int counter = 0;
 		app1.setCounter(counter);	
 		app1.setClassEnded(System.currentTimeMillis());
 		app1.getIc().mm.dataRec = true;
 		app1.getIc().mm.alwaystrue = true;
-		//app1.getIc().mm.setLogout(true);
-		//app1.setEdSchedSel(true);
-		//app1.setSchedSetupSel(true);
 		app1.getIc().mm.setEditSched(true);
 		app1.getIc().mm.setLogout(false);
 		app1.getIc().mm.togglelogout = true;
-		//app1.getIc().mm.setInitSetup(true);
 		app1.initAuthenticate(DBUtil.USERNAME,DBUtil.PASSWORD);
 		app1.getAuth().passLogoutRef = true;
 		app1.getIc().edSched.setDataRec(true);
-		//app1.getDb().addCourse(c1);
 		app1.getIc().edSched.addCourse(c1);
 		app1.getIc().msg.exitTest = true;
 		exit.expectSystemExitWithStatus(0);
 		app1.begin();
 
-
-		//app1.logOut();
+		assertTrue("Logged in",app1.isLoggedin()); //toggle to need
+		assertFalse("DataReceived",app1.getDataReceived());
 
 
 	}
