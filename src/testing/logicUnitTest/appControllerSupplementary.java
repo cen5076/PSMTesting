@@ -27,7 +27,12 @@ public class appControllerSupplementary {
 		app1 = null;
 	}
 
-	/*** L01 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-L01
+	 * Purpose: Test miscellaneous getter methods
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test
 	public void testGetters() {
 		
@@ -47,7 +52,12 @@ public class appControllerSupplementary {
 		assertNotNull("Completed Getters Successfully",app1);
 	}
 	
-	/*** L02 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-L02
+	 * Purpose: Test miscellaneous setter methods
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test
 	public void testSetters() {
 		
@@ -66,7 +76,12 @@ public class appControllerSupplementary {
 		
 	}
 	
-	/*** L03 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-L03
+	 * Purpose: Test miscellaneous system calls wrapped in methods
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test
 	public void testSystemCalls() {
 		

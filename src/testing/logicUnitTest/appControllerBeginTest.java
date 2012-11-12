@@ -103,7 +103,12 @@ public class appControllerBeginTest {
 	}
 	*/
 	
-	/*** M01 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-M01
+	 * Purpose: Test Begin authenticate state transition to login with a branch to the lockout case.
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test  //Valid
 	public void testBegin_AuthenticateToLoginTransition(){
 		
@@ -184,7 +189,13 @@ public class appControllerBeginTest {
 	 * Has an end date that has passed and clears the DB
 	 * 
 	 */
-	/*** M02 ***/
+
+	/** Test Case ID: PSM001_Login-UnitTest-M02
+	 * Purpose: Test miscellaneous system calls wrapped in methods
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test  //Valid
 	public void testBegin_ReadyState_ClearDB(){
 		
@@ -342,7 +353,12 @@ public class appControllerBeginTest {
 	}
 	*/
 	
-	/*** MO3 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-M03
+	 * Purpose: Test All the states of the Begin method.
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@SuppressWarnings("static-access")
 	@Test  //Valid
 	public void testBegin_AllStates(){
@@ -502,7 +518,12 @@ public class appControllerBeginTest {
 		
 	}
 	
-	/*** M04 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-M04
+	 * Purpose: Test the branch for a Monday class end date check
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesMon(){
 		
@@ -557,7 +578,12 @@ public class appControllerBeginTest {
 		assertFalse("Data Received",app1.getDataReceived());
 	}
 	
-	/*** M05 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-M05
+	 * Purpose: Test the branch for a Tuesday class end date check
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesTue(){
 		
@@ -609,7 +635,12 @@ public class appControllerBeginTest {
 		}
 	}
 	
-	/*** M06 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-M06
+	 * Purpose: Test the branch for a Wednesday class end date check
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesWed(){
 		
@@ -662,7 +693,12 @@ public class appControllerBeginTest {
 	}
 	
 	
-	/*** M07 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-M07
+	 * Purpose: Test the branch for a Thursday class end date check
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesThu(){
 		
@@ -714,7 +750,12 @@ public class appControllerBeginTest {
 		}
 	}
 	
-	/*** M08 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-M08
+	 * Purpose: Test the branch for a Friday class end date check
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesFri(){
 		
@@ -766,7 +807,12 @@ public class appControllerBeginTest {
 		}
 	}
 	
-	/*** M09 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-M09
+	 * Purpose: Test the branch for a Saturday class end date check
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesSat(){
 		
@@ -818,7 +864,12 @@ public class appControllerBeginTest {
 		}
 	}
 	
-	/*** M10 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-M10
+	 * Purpose: Test the branch for a Sunday class end date check
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesSun(){
 		
@@ -871,7 +922,12 @@ public class appControllerBeginTest {
 	}
 	
 	
-	/*** M11 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-M11
+	 * Purpose: Test the call to the actual begin method and not its parsed out pieces. We set the values so that it takes a path thru LogIn, Authenticate and Ready in the Begin State Chart, calling clearDatabase method within Ready.
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	//@Test
 	public void testBegin_Begin(){
 		
@@ -918,6 +974,12 @@ public class appControllerBeginTest {
 		
 	}
 	
+	/** Test Case ID: PSM001_Login-UnitTest-M12
+	 * Purpose: Test the call to the actual begin method and not its parsed out pieces. We set the values so that it takes a path thru LogIn, Authenticate, Ready, Edit Schedule and Logout states in the Begin State Chart.
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test
 	public void testBegin_BeginEditSched(){
 		
