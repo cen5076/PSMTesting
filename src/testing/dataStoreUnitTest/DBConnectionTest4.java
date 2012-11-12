@@ -48,6 +48,11 @@ public class DBConnectionTest4 {
 		dbc = null;
 	}
 	
+	/** Test Case ID: PSM001_Login-UnitTest-J01
+	 * Purpose: Test the creation of the Class100 table in a database with an underprivileged user
+	 * Date Created: 10/18/12
+	 * Author: Matthew Brown
+	 */
 	@Test
 	public void testCreateClassTable3() {
 		dbc.connect(UNDERPRIV_USERNAME, UNDERPRIV_PASSWORD);
@@ -56,6 +61,11 @@ public class DBConnectionTest4 {
 		dbc.disconnect();
 	}
 	
+	/** Test Case ID: PSM001_Login-UnitTest-J02
+	 * Purpose: Test the updating of a course’s times on a nonexistent Class100 table
+	 * Date Created: 10/18/12
+	 * Author: Matthew Brown
+	 */
 	@Test
 	public void testStoreClassSched3() {
 		try {
@@ -73,9 +83,9 @@ public class DBConnectionTest4 {
 		assertEquals("Store Class Schedule", -1, result);
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-I07
-	 * Purpose: Test that all course IDs in DB are returned
-	 * Date Created: 09/15/12
+	/** Test Case ID: PSM001_Login-UnitTest-J03
+	 * Purpose: Test that no end dates are returned for empty Class100 table
+	 * Date Created: 10/18/12
 	 * Author: Matthew Brown
 	 */
 	@Test
@@ -94,9 +104,9 @@ public class DBConnectionTest4 {
 		assertTrue("End Date ArrayList", endDates.isEmpty());
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-I10
-	 * Purpose: Test that all course IDs in DB are returned where there are no courses
-	 * Date Created: 09/15/12
+	/** Test Case ID: PSM001_Login-UnitTest-J04
+	 * Purpose: Test that no course IDs are returned for nonexistent Class100 table
+	 * Date Created: 10/18/12
 	 * Author: Matthew Brown
 	 */
 	@Test
@@ -115,9 +125,9 @@ public class DBConnectionTest4 {
 		assertTrue("CourseID ArrayList", actuals.isEmpty());
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-I13
-	 * Purpose: Test that the correct course name is fetched
-	 * Date Created: 09/15/12
+	/** Test Case ID: PSM001_Login-UnitTest-J05
+	 * Purpose: Test that all course IDs are returned where there is no Class100 table
+	 * Date Created: 10/18/12
 	 * Author: Matthew Brown
 	 */
 	@Test
@@ -136,9 +146,9 @@ public class DBConnectionTest4 {
 		assertEquals("Fetch Course IDs", "", courses);
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-I14
+	/** Test Case ID: PSM001_Login-UnitTest-J06
 	 * Purpose: Test fetching the course name for a course that does not exist
-	 * Date Created: 09/15/12
+	 * Date Created: 10/18/12
 	 * Author: Matthew Brown
 	 */
 	@Test

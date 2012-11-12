@@ -53,7 +53,12 @@ public class appControllerTimerTaskTest {
 		dbUtil = null;
 	}
 
-	/* K01 */	
+	/** Test Case ID: PSM001_Login-UnitTest-K01
+	 * Purpose: Test that all Timertasks execute their appropriate run methods
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */	
 	@Test
 	public void testTimerTask_testAll() {
 		
@@ -264,7 +269,12 @@ public class appControllerTimerTaskTest {
 	}
 	*/
 	
-	/** K02 **/
+	/** Test Case ID: PSM001_Login-UnitTest-K02
+	 * Purpose: Test the autoexit method for a course that ended.
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test
 	public void testTimerTasks_autoExit(){
 		
@@ -276,7 +286,12 @@ public class appControllerTimerTaskTest {
 		assertNotNull("Completed test autoExit",app1);
 	}
 	
-	/** K03 **/
+	/** Test Case ID: PSM001_Login-UnitTest-K03
+	 * Purpose: Test the dbClear method for a course that ended.
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test
 	public void testTimerTasks_autoClear(){
 		

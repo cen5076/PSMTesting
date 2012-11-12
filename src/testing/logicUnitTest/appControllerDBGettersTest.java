@@ -18,20 +18,24 @@ import stubs.DBConnection;
 public class appControllerDBGettersTest {
 
 	appController app1;
-	Course c1,c2;
+	Course c1;
+	DBConnection db;
 	DBUtil dbUtil;
-	public ArrayList<Course> courseList;
+//	public ArrayList<Course> courseList;
 
 	
 	@Before
 	public void setUp() throws Exception {
 		
 		app1 = new appController();
-		c1= new Course(1234,"Sub","Nam","Semester",Course.STARTDATE,Course.ENDDATE);
+		app1.setUsername(DBUtil.USERNAME);
+		app1.setPassword(DBUtil.PASSWORD);
+		app1.LogIn();
+		c1= new Course(1234, "Subject", "Name", "Semester", Course.STARTDATE, Course.ENDDATE);
 		c1.fillDates(DBUtil.defaultDates);
-		c2= new Course(2345,"Sub2","Nam2","Semester",Course.STARTDATE,Course.ENDDATE);
-		c2.fillDates(DBUtil.defaultDates);
-		courseList = new ArrayList<Course>();
+//		c2= new Course(2345,"Sub2","Nam2","Semester",Course.STARTDATE,Course.ENDDATE);
+//		c2.fillDates(DBUtil.defaultDates);
+//		courseList = new ArrayList<Course>();
 		
 		
 	}
@@ -40,8 +44,8 @@ public class appControllerDBGettersTest {
 	public void tearDown() throws Exception {
 		
 		app1 = null;
-		c1=null;
-		courseList.clear();
+		c1 = null;
+//		courseList.clear();
 		//dbUtil.deleteAll();
 		
 	}
@@ -60,31 +64,31 @@ public class appControllerDBGettersTest {
 		
 		
 		//add a different course
-		courseList.add(c2);
-		app1.getDb().initializeStub(courseList);
+//		courseList.add(c2);
+//		app1.getDb().initializeStub(courseList);
 		
 		
 		//get Course 1
 		app1.getData(c1.getCrseid());
 		
 		
-		assertNull("Subject",app1.getDefSub());
-		assertNull("Semester",app1.getDefSemester());
-        assertNull("CourseName",app1.getDefCourseName());
-        assertNull("CourseStart",app1.getDefCourseStart());
-        assertNull("CourseEnd",app1.getDefCourseEnd());
-        assertNull("MonStart",app1.getDefMonStart());
-        assertNull("MonEnd",app1.getDefMonEnd());
-        assertNull("TueStart",app1.getDefTueStart());
-        assertNull("TueEnd",app1.getDefTueEnd());
-        assertNull("WedStart",app1.getDefWedStart());
-        assertNull("WedEnd",app1.getDefWedEnd());
-        assertNull("ThuStart",app1.getDefThuStart());
-        assertNull("ThuEnd",app1.getDefThuEnd());
-        assertNull("FriStart",app1.getDefFriStart());
-        assertNull("FriEnd",app1.getDefFriEnd());
-        assertNull("SatStart",app1.getDefSatStart());
-        assertNull("SatEnd",app1.getDefSatEnd());
+		assertNull("Subject", app1.getDefSub());
+		assertNull("Semester", app1.getDefSemester());
+        assertNull("CourseName", app1.getDefCourseName());
+        assertNull("CourseStart", app1.getDefCourseStart());
+        assertNull("CourseEnd", app1.getDefCourseEnd());
+        assertNull("MonStart", app1.getDefMonStart());
+        assertNull("MonEnd", app1.getDefMonEnd());
+        assertNull("TueStart", app1.getDefTueStart());
+        assertNull("TueEnd", app1.getDefTueEnd());
+        assertNull("WedStart", app1.getDefWedStart());
+        assertNull("WedEnd", app1.getDefWedEnd());
+        assertNull("ThuStart", app1.getDefThuStart());
+        assertNull("ThuEnd", app1.getDefThuEnd());
+        assertNull("FriStart", app1.getDefFriStart());
+        assertNull("FriEnd", app1.getDefFriEnd());
+        assertNull("SatStart", app1.getDefSatStart());
+        assertNull("SatEnd", app1.getDefSatEnd());
 		
 	}
 	
@@ -102,16 +106,16 @@ public class appControllerDBGettersTest {
 		String messg = new Object(){}.getClass().getEnclosingMethod().getName(); 
 		System.out.println("---" + messg + "---");
 		
-		courseList.add(c1);
-		app1.getDb().initializeStub(courseList);
+//		courseList.add(c1);
+		app1.getDb().addCourse(c1);
 		
 		app1.getData(this.c1.getCrseid());
 		
-		assertEquals("Subject",this.c1.getCrseSub(),app1.getDefSub());
-		assertEquals("Semester",this.c1.getSemester(),app1.getDefSemester());
-        assertEquals("CourseName",this.c1.getCrseNam(),app1.getDefCourseName());
-        assertEquals("CourseStart",this.c1.getStartdt(),app1.getDefCourseStart());
-        assertEquals("CourseEnd",this.c1.getEnddt(),app1.getDefCourseEnd());
+		assertEquals("Subject", this.c1.getCrseSub(), app1.getDefSub());
+		assertEquals("Semester", this.c1.getSemester(), app1.getDefSemester());
+        assertEquals("CourseName", this.c1.getCrseNam(), app1.getDefCourseName());
+        assertEquals("CourseStart", this.c1.getStartdt(), app1.getDefCourseStart());
+        assertEquals("CourseEnd", this.c1.getEnddt(), app1.getDefCourseEnd());
         assertEquals("MonStart",this.c1.getMonStart(),app1.getDefMonStart());
         assertEquals("MonEnd",this.c1.getMonEnd(),app1.getDefMonEnd());
         assertEquals("TueStart",this.c1.getTueStart(),app1.getDefTueStart());

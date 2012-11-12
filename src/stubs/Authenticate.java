@@ -1,7 +1,6 @@
 package stubs;
 
 import Logic.appController;
-import stubs.DBConnection;
 
 
 /*

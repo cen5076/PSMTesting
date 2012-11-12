@@ -11,15 +11,13 @@ import java.util.Timer;
 public class FutureTimer extends Timer {
 
     public void schedule(TimerTask task, Date myDate)
-
-	  {/*
-	       
-	        Calendar cal = new GregorianCalendar();
-	        cal.setTimeInMillis(System.currentTimeMillis());
-	        Date currentDate = cal.getTime();
-	        if (myDate.compareTo(currentDate) < 0)
-	            return;
+    {
+    	Calendar cal = new GregorianCalendar();
+    	cal.setTimeInMillis(System.currentTimeMillis());
+    	Date currentDate = cal.getTime();
+    	if (myDate.compareTo(currentDate) < 0)
+    		return;
 	        
-	        super.schedule(task, myDate); 
-	    */}
-	}
+    	super.schedule(task, myDate); 
+    }
+}

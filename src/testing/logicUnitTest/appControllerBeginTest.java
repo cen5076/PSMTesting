@@ -55,7 +55,6 @@ public class appControllerBeginTest {
 		app1.getEndofclass().cancel();
 		c1  =null;
 
-		
 		app1 = null;
 		
 	}
@@ -104,7 +103,12 @@ public class appControllerBeginTest {
 	}
 	*/
 	
-	/*** M01 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-M01
+	 * Purpose: Test Begin authenticate state transition to login with a branch to the lockout case.
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test  //Valid
 	public void testBegin_AuthenticateToLoginTransition(){
 		
@@ -185,7 +189,13 @@ public class appControllerBeginTest {
 	 * Has an end date that has passed and clears the DB
 	 * 
 	 */
-	/*** M02 ***/
+
+	/** Test Case ID: PSM001_Login-UnitTest-M02
+	 * Purpose: Test miscellaneous system calls wrapped in methods
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test  //Valid
 	public void testBegin_ReadyState_ClearDB(){
 		
@@ -343,7 +353,12 @@ public class appControllerBeginTest {
 	}
 	*/
 	
-	/*** MO3 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-M03
+	 * Purpose: Test All the states of the Begin method.
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@SuppressWarnings("static-access")
 	@Test  //Valid
 	public void testBegin_AllStates(){
@@ -355,8 +370,8 @@ public class appControllerBeginTest {
 		/** LOGIN **/
 		app1.setLoggedIn(true);
 		app1.setDataReceived(true);
-		app1.getIc().log.username = DBUtil.USERNAME;
-		app1.getIc().log.password = DBUtil.PASSWORD; 
+		app1.getIc().log.setUsername(DBUtil.USERNAME);
+		app1.getIc().log.setPassword(DBUtil.PASSWORD); 
 		app1.testingTimers = true;
 		app1.loginState();
 		
@@ -375,7 +390,7 @@ public class appControllerBeginTest {
 		
 		app1.authenticate();
 		
-		assertTrue("Connected",app1.getDb().connected);
+		assertTrue("Connected",app1.getDb().isConnected());
 		assertEquals("Counter unchanged", counter , app1.getCounter());
 		
 		
@@ -444,6 +459,7 @@ public class appControllerBeginTest {
 		app1.getIc().mm.setEditSched(true);
 		app1.getIc().mm.setdataRec(true);
 		
+		//DBUtil dbUtil = new DBUtil();
 		dbUtil.defaultCourseId = 1234;
 		Course c3 = new Course(DBUtil.defaultCourseId,"Sub","Nam","Semester",Course.STARTDATE,Course.ENDDATE);
 		c3.fillDates(DBUtil.defaultDates);
@@ -453,7 +469,8 @@ public class appControllerBeginTest {
 		//make sure class has not ended
 		app1.setClassEnded(0);
 
-		app1.getDb().connected = true;
+//		app1.getDb().connected = true;
+		app1.LogIn();
 		app1.getIc().Course_Select_Form();
 		app1.getIc().cs.setCourseSelected(true);
 		app1.getIc().cs.setSelection(c3.crseid);
@@ -488,7 +505,8 @@ public class appControllerBeginTest {
 		//make sure class has not ended
 		app1.setClassEnded(0);
 
-		app1.getDb().connected = true;
+//		app1.getDb().connected = true;
+		app1.LogIn();
 		app1.initAuthenticate(DBUtil.USERNAME, DBUtil.PASSWORD);
 
 		app1.logOut();
@@ -500,7 +518,12 @@ public class appControllerBeginTest {
 		
 	}
 	
-	/*** M04 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-M04
+	 * Purpose: Test the branch for a Monday class end date check
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesMon(){
 		
@@ -555,11 +578,16 @@ public class appControllerBeginTest {
 		assertFalse("Data Received",app1.getDataReceived());
 	}
 	
-	/*** M05 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-M05
+	 * Purpose: Test the branch for a Tuesday class end date check
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesTue(){
 		
-		//Set the date to a Tuesday
+		//Set the date to a Monday
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-23-12");
 		} catch (IOException e) {
@@ -607,11 +635,16 @@ public class appControllerBeginTest {
 		}
 	}
 	
-	/*** M06 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-M06
+	 * Purpose: Test the branch for a Wednesday class end date check
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesWed(){
 		
-		//Set the date to a Wednesday
+		//Set the date to a Monday
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-24-12");
 		} catch (IOException e) {
@@ -660,11 +693,16 @@ public class appControllerBeginTest {
 	}
 	
 	
-	/*** M07 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-M07
+	 * Purpose: Test the branch for a Thursday class end date check
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesThu(){
 		
-		//Set the date to a Thursday
+		//Set the date to a Monday
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-25-12");
 		} catch (IOException e) {
@@ -712,11 +750,16 @@ public class appControllerBeginTest {
 		}
 	}
 	
-	/*** M08 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-M08
+	 * Purpose: Test the branch for a Friday class end date check
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesFri(){
 		
-		//Set the date to a Friday
+		//Set the date to a Monday
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-26-12");
 		} catch (IOException e) {
@@ -764,11 +807,16 @@ public class appControllerBeginTest {
 		}
 	}
 	
-	/*** M09 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-M09
+	 * Purpose: Test the branch for a Saturday class end date check
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesSat(){
 		
-		//Set the date to a Saturday
+		//Set the date to a Monday
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-27-12");
 		} catch (IOException e) {
@@ -816,11 +864,16 @@ public class appControllerBeginTest {
 		}
 	}
 	
-	/*** M10 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-M10
+	 * Purpose: Test the branch for a Sunday class end date check
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test  //Valid
 	public void testBegin_TestDaysBranchesSun(){
 		
-		//Set the date to a Sunday
+		//Set the date to a Monday
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-28-12");
 		} catch (IOException e) {
@@ -869,7 +922,12 @@ public class appControllerBeginTest {
 	}
 	
 	
-	/*** M11 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-M11
+	 * Purpose: Test the call to the actual begin method and not its parsed out pieces. We set the values so that it takes a path thru LogIn, Authenticate and Ready in the Begin State Chart, calling clearDatabase method within Ready.
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	//@Test
 	public void testBegin_Begin(){
 		
@@ -893,23 +951,36 @@ public class appControllerBeginTest {
 		c1.fillDates(DBUtil.defaultDates);
 		
 		app1.getDb().addCourse(c1);
+		//app1.setLoggedIn(false);
+		//app1.setDataReceived(false);
+
+		//app1.setLoggedIn(false);
+		//app1.setDataReceived(true);
+		//app1.setUsername(DBUtil.USERNAME);
+		//app1.setPassword(DBUtil.PASSWORD);
 		int counter = 0;
 		app1.setCounter(counter);	
 		app1.setClassEnded(System.currentTimeMillis());
 		app1.getIc().mm.setdataRec(true);
+		//app1.getIc().mm.setLogout(true);
+		//app1.setEdSchedSel(true);
+		//app1.setSchedSetupSel(true);
 		app1.getIc().mm.setEditSched(true);
+		//app1.getIc().mm.setLogout(true);
 		app1.getIc().mm.setInitSetup(true);
 		app1.initAuthenticate(DBUtil.USERNAME,DBUtil.PASSWORD);
 		
 		app1.begin();
 		
-		assertTrue("Loggedin",app1.isLoggedin());
-		assertFalse("DataReceived",app1.getDataReceived());
 	}
 	
-	@SuppressWarnings("static-access")
+	/** Test Case ID: PSM001_Login-UnitTest-M12
+	 * Purpose: Test the call to the actual begin method and not its parsed out pieces. We set the values so that it takes a path thru LogIn, Authenticate, Ready, Edit Schedule and Logout states in the Begin State Chart.
+	 * Date Created: 10/27/12
+	 * Author: David Garcia
+	 * Stubs needed: 
+	 */
 	@Test
-	/** M12 ***/
 	public void testBegin_BeginEditSched(){
 		
 		app1.setLoggedIn(true);
@@ -932,24 +1003,37 @@ public class appControllerBeginTest {
 		c1.fillDates(DBUtil.defaultDates);
 		
 		app1.getDb().addCourse(c1);
+		//app1.setLoggedIn(false);
+		//app1.setDataReceived(false);
+
+		//app1.setLoggedIn(false);
+		//app1.setDataReceived(true);
+		//app1.setUsername(DBUtil.USERNAME);
+		//app1.setPassword(DBUtil.PASSWORD);
 		int counter = 0;
 		app1.setCounter(counter);	
 		app1.setClassEnded(System.currentTimeMillis());
 		app1.getIc().mm.dataRec = true;
 		app1.getIc().mm.alwaystrue = true;
+		//app1.getIc().mm.setLogout(true);
+		//app1.setEdSchedSel(true);
+		//app1.setSchedSetupSel(true);
 		app1.getIc().mm.setEditSched(true);
 		app1.getIc().mm.setLogout(false);
 		app1.getIc().mm.togglelogout = true;
+		//app1.getIc().mm.setInitSetup(true);
 		app1.initAuthenticate(DBUtil.USERNAME,DBUtil.PASSWORD);
+		//requires Authenticate stub
 		app1.getAuth().passLogoutRef = true;
 		app1.getIc().edSched.setDataRec(true);
+		//app1.getDb().addCourse(c1);
 		app1.getIc().edSched.addCourse(c1);
 		app1.getIc().msg.exitTest = true;
 		exit.expectSystemExitWithStatus(0);
 		app1.begin();
 
-		assertTrue("Logged in",app1.isLoggedin()); //toggle to need
-		assertFalse("DataReceived",app1.getDataReceived());
+
+		//app1.logOut();
 
 
 	}

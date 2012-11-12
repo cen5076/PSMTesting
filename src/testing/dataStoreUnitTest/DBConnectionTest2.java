@@ -6,8 +6,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import DataStore.DBConnection;
@@ -16,37 +17,39 @@ import testUtil.DBUtil;
 
 public class DBConnectionTest2 {
 
-	private DBConnection dbc;
-	private Course c1;
-	private Connection myCon;
+	private static DBConnection dbc;
+	private static Course c1;
+	private static Connection myCon;
 	
-	private final String USERNAME = DBUtil.USERNAME;
-	private final String PASSWORD = DBUtil.PASSWORD;
+	private static final String USERNAME = DBUtil.USERNAME;
+	private static final String PASSWORD = DBUtil.PASSWORD;
 	
-	
-	@Before
-	public void setUp() throws Exception {
+	@BeforeClass
+	public static void setUpOnce() throws Exception {
 		dbc = new DBConnection();
 		dbc.connect(USERNAME, PASSWORD);
 		myCon = dbc.getMyCon();
-		dbc.createClassTable();
 		
 		c1 = new Course(1234, "Subject", "Name", "Semester", Course.STARTDATE, Course.ENDDATE);
 	}
+	
+	@Before
+	public void setUp() throws Exception {
+		dbc.createClassTable();
+	}
 
-	@After
-	public void tearDown() throws Exception {
+	@AfterClass
+	public static void tearDownOnce() throws Exception {
 		dbc.disconnect();
 		dbc = null;
 	}
 	
-	@Test // PSM001_Login-UnitTest-H01
 	/** Test Case ID: PSM001_Login-UnitTest-H01
 	 * Purpose: Test the inserting of a course into the database with Class100 table
 	 * Date Created: 09/11/12
 	 * Author: Matthew Brown
-	 * Stubs needed: 
 	 */
+	@Test
 	public void testStoreClassInfo1() {
 		int cId = c1.getCrseid();
 		String cSub = c1.getCrseSub();
@@ -73,13 +76,12 @@ public class DBConnectionTest2 {
         }
 	}
 	
-	@Test // PSM001_Login-UnitTest-H02
 	/** Test Case ID: PSM001_Login-UnitTest-H02
 	 * Purpose: Test the inserting of a course into the database without a Class100 table
 	 * Date Created: 09/11/12
 	 * Author: Matthew Brown
-	 * Stubs needed: 
 	 */
+	@Test
 	public void testStoreClassInfo2() {
 		try {
 			Statement s = myCon.createStatement();
@@ -93,13 +95,13 @@ public class DBConnectionTest2 {
 		assertEquals("Store Class Info with no table", -1, result);
 	}
 	
-	@Test // PSM001_Login-UnitTest-H03
 	/** Test Case ID: PSM001_Login-UnitTest-H03
 	 * Purpose: Test the inserting of a course into the database with a Class100 table containing a course with the same course_id
 	 * Date Created: 09/11/12
 	 * Author: Matthew Brown
 	 * Stubs needed: 
 	 */
+	@Test
 	public void testStoreClassInfo3() {
 		dbc.storeClassInfo(c1.getCrseid(), c1.getCrseSub(), 
 				c1.getCrseNam(), c1.getSemester());
@@ -108,13 +110,12 @@ public class DBConnectionTest2 {
 		assertEquals("Store Duplicate Class Info", -1, result);
 	}
 	
-	@Test // PSM001_Login-UnitTest-H04
 	/** Test Case ID: PSM001_Login-UnitTest-H04
 	 * Purpose: Test the inserting of a course into the database with a Class100 table and a string parameter of more than 20 characters in length
 	 * Date Created: 09/11/12
 	 * Author: Matthew Brown
-	 * Stubs needed: 
 	 */
+	@Test
 	public void testStoreClassInfo4() {
 		int cId = c1.getCrseid();
 		String cSub = c1.getCrseSub();
@@ -134,13 +135,12 @@ public class DBConnectionTest2 {
 		}
 	}
 	
-	@Test // PSM001_Login-UnitTest-H05
 	/** Test Case ID: PSM001_Login-UnitTest-H05
 	 * Purpose: Test the updating of a course’s time in the database
 	 * Date Created: 09/11/12
 	 * Author: Matthew Brown
-	 * Stubs needed: 
 	 */
+	@Test
 	public void testStoreClassSched() {
 		int cId = c1.getCrseid();
 		dbc.storeClassInfo(cId, c1.getCrseSub(), c1.getCrseNam(), c1.getSemester());
@@ -189,13 +189,13 @@ public class DBConnectionTest2 {
         }
 	}
 	
-	@Test // PSM001_Login-UnitTest-H06
 	/** Test Case ID: PSM001_Login-UnitTest-H06
 	 * Purpose: Test the updating of a course’s times for a course not in the database
 	 * Date Created: 09/11/12
 	 * Author: Matthew Brown
 	 * Stubs needed: 
 	 */
+	@Test
 	public void testStoreClassSched2() {
 		int result = dbc.storeClassSched(c1.getCrseid(), c1.getStartdt(), c1.getEnddt(), c1.getMonStart(), c1.getMonEnd(),
 				c1.getTueStart(), c1.getTueEnd(), c1.getWedStart(), c1.getWedEnd(), c1.getThuStart(), c1.getThuEnd(),
