@@ -923,7 +923,9 @@ public class appControllerBeginTest {
 	
 	
 	/** Test Case ID: PSM001_Login-UnitTest-M11
-	 * Purpose: Test the call to the actual begin method and not its parsed out pieces. We set the values so that it takes a path thru LogIn, Authenticate and Ready in the Begin State Chart, calling clearDatabase method within Ready.
+	 * Purpose: Test the call to the actual begin method and not its parsed out pieces. 
+	 * We set the values so that it takes a path thru LogIn, Authenticate and Ready in 
+	 * the Begin State Chart, calling clearDatabase method within Ready.
 	 * Date Created: 10/27/12
 	 * Author: David Garcia
 	 * Stubs needed: 
@@ -975,7 +977,9 @@ public class appControllerBeginTest {
 	}
 	
 	/** Test Case ID: PSM001_Login-UnitTest-M12
-	 * Purpose: Test the call to the actual begin method and not its parsed out pieces. We set the values so that it takes a path thru LogIn, Authenticate, Ready, Edit Schedule and Logout states in the Begin State Chart.
+	 * Purpose: Test the call to the actual begin method and not its parsed out pieces. 
+	 * We set the values so that it takes a path thru LogIn, Authenticate, Ready, Edit 
+	 * Schedule and Logout states in the Begin State Chart.
 	 * Date Created: 10/27/12
 	 * Author: David Garcia
 	 * Stubs needed: 
