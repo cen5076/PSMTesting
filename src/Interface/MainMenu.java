@@ -54,8 +54,18 @@ public class MainMenu extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        
+        /** CEN5076 **/
+        /** 
+         * This button is being added to comply with cobertura and Rational Tester.
+         * The program does not exit correctly so we added a button that will always 
+         * exit gracefully and allow the instrumented code to complete.
+         */
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        javax.swing.JButton forceExit = new javax.swing.JButton();
+        
+        //setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("PSM Main Menu");
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12));
