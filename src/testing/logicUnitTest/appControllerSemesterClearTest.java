@@ -37,7 +37,6 @@ public class appControllerSemesterClearTest {
 	 * 			a Timer action.
 	 * Date Created: 09/18/12
 	 * Author: David Garcia
-	 * Stubs needed: AutoClear()
 	 */
 	@Test
 	public void testSetSemesterClear_1() {
@@ -66,7 +65,6 @@ public class appControllerSemesterClearTest {
 	 * Purpose: Test the setSemesterClear function which sets a variable used when clearing the database on a Timer action
 	 * Date Created: 09/18/12
 	 * Author: David Garcia
-	 * Stubs needed: AutoClear()
 	 */
 	@Test
 	public void testSetSemesterClear_2() {

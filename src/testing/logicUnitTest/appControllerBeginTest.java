@@ -76,6 +76,8 @@ public class appControllerBeginTest {
 			e.printStackTrace();
 		}
 	}
+	
+	// TODO Delete all unused/commented out code
 
 	/* Test States of Begin method */
 	/*** Subsumed by other tests ***/
@@ -119,6 +121,8 @@ public class appControllerBeginTest {
 		
 	}
 	*/
+	
+	// TODO Add stubs used to headers
 	
 	/** Test Case ID: PSM001_Login-UnitTest-M01
 	* Purpose: Test Begin authenticate state transition to login with a branch to the lockout case.
@@ -543,7 +547,6 @@ public class appControllerBeginTest {
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-22-12");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} // dd-MM-yy
 		
@@ -609,7 +612,6 @@ public class appControllerBeginTest {
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-23-12");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} // dd-MM-yy
 		
@@ -675,7 +677,6 @@ public class appControllerBeginTest {
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-24-12");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} // dd-MM-yy
 		
@@ -742,7 +743,6 @@ public class appControllerBeginTest {
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-25-12");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} // dd-MM-yy
 		
@@ -808,7 +808,6 @@ public class appControllerBeginTest {
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-26-12");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} // dd-MM-yy
 		
@@ -874,7 +873,6 @@ public class appControllerBeginTest {
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-27-12");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} // dd-MM-yy
 		
@@ -940,7 +938,6 @@ public class appControllerBeginTest {
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-28-12");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} // dd-MM-yy
 		

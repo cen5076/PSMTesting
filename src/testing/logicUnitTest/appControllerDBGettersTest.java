@@ -50,14 +50,13 @@ public class appControllerDBGettersTest {
 		
 	}
 
-	@Test //PSM001_Login-UnitTest-B01
 	/** Test Case ID: PSM001_Login-UnitTest-B01
 	 * Purpose: To test the getData functionality that returns necessary setup data after successful login for a Course Id in the database.
 	 * Date Created: 09/08/12
 	 * Author: David Garcia
 	 * Stubs needed: DBConnection()
 	 */
-	/* Test a course id not in database */
+	@Test
 	public void testGetData_1() {
 		String messg = new Object(){}.getClass().getEnclosingMethod().getName(); 
 		System.out.println("---" + messg + "---");
@@ -92,14 +91,13 @@ public class appControllerDBGettersTest {
 		
 	}
 	
-	@Test //PSM001_Login-UnitTest-B02
 	/** Test Case ID: PSM001_Login-UnitTest-B02
 	 * Purpose: To test the getData functionality that returns necessary setup data after successful login for a Course Id NOT in the database.
 	 * Date Created: 09/08/12
 	 * Author: David Garcia
 	 * Stubs needed: DBConnection()
 	 */
-	/* Test a course id in database */
+	@Test
 	public void testGetData_2() {
 		
 		// DEBUG message
@@ -130,7 +128,5 @@ public class appControllerDBGettersTest {
         assertEquals("SatEnd",this.c1.getSatEnd(),app1.getDefSatEnd());
      
 		System.out.println("END testGetData");
-
 	}
-
 }

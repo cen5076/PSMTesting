@@ -31,7 +31,6 @@ public class appControllerSupplementary {
 	* Purpose: Test miscellaneous getter methods
 	* Date Created: 10/27/12
 	* Author: David Garcia
-	* Stubs needed:
 	*/
 	@Test
 	public void testGetters() {
@@ -56,7 +55,6 @@ public class appControllerSupplementary {
 	* Purpose: Test miscellaneous setter methods
 	* Date Created: 10/27/12
 	* Author: David Garcia
-	* Stubs needed:
 	*/
 	@Test
 	public void testSetters() {
@@ -80,7 +78,6 @@ public class appControllerSupplementary {
 	* Purpose: Test miscellaneous system calls wrapped in methods
 	* Date Created: 10/27/12
 	* Author: David Garcia
-	* Stubs needed:
 	*/
 	@Test
 	public void testSystemCalls() {

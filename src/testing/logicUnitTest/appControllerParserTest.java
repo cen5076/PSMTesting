@@ -34,14 +34,12 @@ public class appControllerParserTest {
 		c1 = null;
 	}
 	
-	@Test //PSM014_End_Semester_Clear-UnitTest-C01
 	/** Test Case ID: PSM014_End_Semester_Clear-UnitTest-C01
 	 * Purpose: To test parsing of a valid formatted date string. Should conform to DateFormat in C01 Test Identification and Setup.
 	 * Date Created: 09/11/12
 	 * Author: David Garcia
-	 * Stubs needed: 
 	 */
-	/* Test a valid formatted string */
+	@Test
 	public void testDateParser_1() {
 
 		String date = "01/02/12";
@@ -53,14 +51,13 @@ public class appControllerParserTest {
 
 	}
 	
-	@Test //PSM014_End_Semester_Clear-UnitTest-C02
 	/** Test Case ID: PSM014_End_Semester_Clear-UnitTest-C02
-	 * Purpose: To test parsing of an invalid formatted date string. Should not conform to DateFormat in C01 Test Identification and Setup. Specifically the month is incorrect.
+	 * Purpose: To test parsing of an invalid formatted date string. Should not conform to DateFormat in C01 Test 
+	 * 			Identification and Setup. Specifically the month is incorrect.
 	 * Date Created: 09/11/12
 	 * Author: David Garcia
-	 * Stubs needed: 
 	 */
-	/* Test an invalid formatted string for 'mm'*/
+	@Test
 	public void testDateParser_2() {
 
 		String date = "ss/the rest no matter";
@@ -81,15 +78,13 @@ public class appControllerParserTest {
 		
 	}
 	
-
-	@Test //PSM014_End_Semester_Clear-UnitTest-C03
 	/** Test Case ID: PSM014_End_Semester_Clear-UnitTest-C03
-	 * Purpose: To test parsing of an invalid formatted date string. Should not conform to DateFormat in C01 Test Identification and Setup. Specifically the date is incorrect.
+	 * Purpose: To test parsing of an invalid formatted date string. Should not conform to DateFormat in C01 Test 
+	 * 			Identification and Setup. Specifically the date is incorrect.
 	 * Date Created: 09/11/12
 	 * Author: David Garcia
-	 * Stubs needed: 
 	 */
-	/* Test an invalid formatted string for 'dd'*/
+	@Test
 	public void testDateParser_3() {
 	
 		String date = "12the rest no matter";
@@ -110,15 +105,13 @@ public class appControllerParserTest {
 		
 	}
 	
-	
-	@Test //PSM014_End_Semester_Clear-UnitTest-C04
 	/** Test Case ID: PSM014_End_Semester_Clear-UnitTest-C04
-	 * Purpose: To test parsing of an invalid formatted date string. Should not conform to DateFormat in C01 Test Identification and Setup. Specifically the year is incorrect.
+	 * Purpose: To test parsing of an invalid formatted date string. Should not conform to DateFormat in C01 Test 
+	 * 			Identification and Setup. Specifically the year is incorrect.
 	 * Date Created: 09/11/12
 	 * Author: David Garcia
-	 * Stubs needed: 
 	 */
-	/* Test an invalid formatted string for 'yy'*/
+	@Test
 	public void testDateParser_4() {
 	
 		String date = "12-66the rest no matter";
@@ -139,14 +132,13 @@ public class appControllerParserTest {
 		
 	}
 	
-	@Test //PSM014_End_Semester_Clear-UnitTest-C05
 	/** Test Case ID: PSM014_End_Semester_Clear-UnitTest-C05
-	 * Purpose: To test parsing of an invalid formatted date string. Should not conform to DateFormat in C01 Test Identification and Setup. Specifically the wildcard + is more than 1 character.(2 spaces)
+	 * Purpose: To test parsing of an invalid formatted date string. Should not conform to DateFormat in C01 Test 
+	 * 			Identification and Setup. Specifically the wildcard + is more than 1 character.(2 spaces)
 	 * Date Created: 09/11/12
 	 * Author: David Garcia
-	 * Stubs needed: 
 	 */
-	/* Test an invalid formatted string for '+' more than 1 char*/
+	@Test
 	public void testDateParser_5() {
 	
 		String date = "12  2276the rest no matter";
@@ -167,14 +159,13 @@ public class appControllerParserTest {
 		
 	}
 	
-	@Test //PSM014_End_Semester_Clear-UnitTest-C06
 	/** Test Case ID: PSM014_End_Semester_Clear-UnitTest-C06
-	 * Purpose: To test parsing of an invalid formatted date string. Should not conform to DateFormat in C01 Test Identification and Setup. Specifically the wildcard + is too short.
+	 * Purpose: To test parsing of an invalid formatted date string. Should not conform to DateFormat in C01 Test 
+	 * 			Identification and Setup. Specifically the wildcard + is too short.
 	 * Date Created: 09/11/12
-	 * Author: David Garcia
-	 * Stubs needed: 
+	 * Author: David Garcia 
 	 */
-	/* Test an invalid formatted string for '+' less one char*/
+	@Test
 	public void testDateParser_6() {
 	
 		String date = "12";
@@ -192,21 +183,14 @@ public class appControllerParserTest {
 		}
 		
 		fail("Exception not thrown");
-	
-		
-		
-		
 	}
 
-
-	@Test //PSM001_Login-UnitTest-C07
 	/** Test Case ID: PSM001_Login-UnitTest-07
 	 * Purpose: To test parsing of a valid time string. Should conform to TimeFormat in C07 Test Identification and Objective.
 	 * Date Created: 09/13/12
 	 * Author: David Garcia
-	 * Stubs needed: 
 	 */
-	// Test a valid format string
+	@Test
 	public void testTimerParser_1() {
 		
 		String hour = "11:56";
@@ -218,14 +202,13 @@ public class appControllerParserTest {
 
 	}
 	
-	@Test //PSM001_Login-UnitTest-C08
 	/** Test Case ID: PSM001_Login-UnitTest-08
-	 * Purpose: To test parsing of an invalid time string. Should not conform to TimeFormat in C07 Test Identification and Objective.Specifically the ‘hh’ is not a valid value.
+	 * Purpose: To test parsing of an invalid time string. Should not conform to TimeFormat in C07 Test Identification 
+	 * 			and Objective.Specifically the ‘hh’ is not a valid value.
 	 * Date Created: 09/13/12
 	 * Author: David Garcia
-	 * Stubs needed: 
 	 */
-	//Test invalid string format hh
+	@Test
 	public void testTimerParser_2() {
 		
 		String hour = "ss:56";
@@ -245,14 +228,13 @@ public class appControllerParserTest {
 		fail("No Exception Thrown");
 	}
 	
-	@Test //PSM001_Login-UnitTest-C09
 	/** Test Case ID: PSM001_Login-UnitTest-09
-	 * Purpose: To test parsing of an invalid time string. Should not conform to TimeFormat in C07 Test Identification and Objective.Specifically the ‘mm’ is not a valid value;
+	 * Purpose: To test parsing of an invalid time string. Should not conform to TimeFormat in C07 Test Identification 
+	 * 			and Objective.Specifically the ‘mm’ is not a valid value;
 	 * Date Created: 09/13/12
 	 * Author: David Garcia
-	 * Stubs needed: 
 	 */
-	//Test invalid string format mm
+	@Test
 	public void testTimerParser_3() {
 		
 
@@ -273,14 +255,13 @@ public class appControllerParserTest {
 		fail("No Exception Thrown");
 	}
 	
-	@Test //PSM001_Login-UnitTest-C10
 	/** Test Case ID: PSM001_Login-UnitTest-10
-	 * Purpose: To test parsing of an invalid time string. Should not conform to TimeFormat in C07 Test Identification and Objective.Specifically the ‘:’ is not a valid length, too long;
+	 * Purpose: To test parsing of an invalid time string. Should not conform to TimeFormat in C07 Test Identification 
+	 * 			and Objective.Specifically the ‘:’ is not a valid length, too long;
 	 * Date Created: 09/13/12
 	 * Author: David Garcia
-	 * Stubs needed: 
 	 */
-	//Test invalid string format '+' too long
+	@Test
 	public void testTimerParser_4() {
 		
 		String hour = "09::07the rest dont matter";
@@ -300,14 +281,13 @@ public class appControllerParserTest {
 		fail("No Exception Thrown");
 	}
 	
-	@Test //PSM001_Login-UnitTest-C11
 	/** Test Case ID: PSM001_Login-UnitTest-11
-	 * Purpose: To test parsing of an invalid time string. Should not conform to TimeFormat in C07 Test Identification and Objective.Specifically the ‘:’ is not a valid length, too short;
+	 * Purpose: To test parsing of an invalid time string. Should not conform to TimeFormat in C07 Test Identification 
+	 * 			and Objective.Specifically the ‘:’ is not a valid length, too short;
 	 * Date Created: 09/13/12
 	 * Author: David Garcia
-	 * Stubs needed: 
 	 */
-	//Test invalid string format '+' too short
+	@Test
 	public void testTimerParser_5() {
 		
 		String hour = "0907the rest dont matter";
@@ -327,14 +307,13 @@ public class appControllerParserTest {
 		fail("No Exception Thrown");
 	}
 	
-	@Test //PSM001_Login-UnitTest-C12
 	/** Test Case ID: PSM001_Login-UnitTest-12
-	 * Purpose: To test parsing of an invalid time string. Should not conform to TimeFormat in C07 Test Identification and Objective.Specifically the string is not a valid length, too short;
+	 * Purpose: To test parsing of an invalid time string. Should not conform to TimeFormat in C07 Test Identification 
+	 * 			and Objective.Specifically the string is not a valid length, too short;
 	 * Date Created: 09/13/12
 	 * Author: David Garcia
-	 * Stubs needed: 
 	 */
-	//Test invalid string format
+	@Test
 	public void testTimerParser_6() {
 		
 		String hour = "9";

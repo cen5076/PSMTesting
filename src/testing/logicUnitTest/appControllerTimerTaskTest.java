@@ -15,7 +15,9 @@ import testUtil.Course;
 import testUtil.DBUtil;
 import Logic.appController;
 
-/** This is supplemantary class to get additional coverage **/
+// TODO Remove all unused/commented out code
+
+/** This is supplementary class to get additional coverage **/
 /** K class **/
 public class appControllerTimerTaskTest {
 
@@ -54,7 +56,7 @@ public class appControllerTimerTaskTest {
 	}
 
 	/** Test Case ID: PSM001_Login-UnitTest-K01
-	* Purpose: Test that all Timertasks execute their appropriate run methods
+	* Purpose: Test that all TimerTasks execute their appropriate run methods
 	* Date Created: 10/27/12
 	* Author: David Garcia
 	* Stubs needed:
