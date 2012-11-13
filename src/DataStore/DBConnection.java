@@ -209,8 +209,6 @@ public class DBConnection
     {
         // SELECT * FROM example WHERE name='Sandy Smith'
         try{
-           
-            
             Statement s = myCon.createStatement();          
            // System.out.print("here");
             // System.out.println("SELECT course_id FROM class100 WHERE course_id = " +courseID +";");

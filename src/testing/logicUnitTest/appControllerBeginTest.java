@@ -202,7 +202,12 @@ public class appControllerBeginTest {
 	 * Has an end date that has passed and clears the DB
 	 * 
 	 */
-	/*** M02 ***/
+	/** Test Case ID: PSM001_Login-UnitTest-M02
+	* Purpose: Tests the ready state of appController and calls the clearDB section since a course has expired
+	* Date Created: 10/27/12
+	* Author: David Garcia
+	* Stubs needed:
+	*/
 	@Test
 	public void testBegin_ReadyState_ClearDB(){
 		

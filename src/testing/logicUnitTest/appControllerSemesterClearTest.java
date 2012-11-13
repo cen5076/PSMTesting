@@ -32,23 +32,22 @@ public class appControllerSemesterClearTest {
 		dbUtil = null;
 	}
 
-	@Test // PSM014-End_Semester_Clear-UnitTest-E01
 	/** Test Case ID: PSM014_End_Semester_Clear-UnitTest-E01
-	 * Purpose: To test the setSemesterClear function which sets a variable used when clearing the database on a Timer action.
+	 * Purpose: To test the setSemesterClear function which sets a variable used when clearing the database on 
+	 * 			a Timer action.
 	 * Date Created: 09/18/12
 	 * Author: David Garcia
 	 * Stubs needed: AutoClear()
 	 */
-	// Test the setting of the set semester clear
+	@Test
 	public void testSetSemesterClear_1() {
 		
 		Date d = new Date(System.currentTimeMillis());
 		Calendar c = Calendar.getInstance();
 		c.setTime(d);
 		
-		
-		
-		app1.setSemesterClear(c.get(Calendar.YEAR), c.get(Calendar.MONTH),c.get(Calendar.DATE), c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE));
+		app1.setSemesterClear(c.get(Calendar.YEAR), c.get(Calendar.MONTH),c.get(Calendar.DATE), 
+				c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE));
 		
 		System.out.println("Calendar:" + c.getTime().toString());
 		System.out.println("date2   :" + app1.getDate2().toString());
@@ -63,14 +62,13 @@ public class appControllerSemesterClearTest {
 		
 	}
 	
-	@Test // PSM014-End_Semester_Clear-UnitTest-E02
 	/** Test Case ID: PSM014_End_Semester_Clear-UnitTest-E02
-	 * Purpose: To test the setSemesterClear function which sets a variable used when clearing the database on a Timer action.
+	 * Purpose: Test the setSemesterClear function which sets a variable used when clearing the database on a Timer action
 	 * Date Created: 09/18/12
 	 * Author: David Garcia
 	 * Stubs needed: AutoClear()
 	 */
-	// Test the setting of the set semester clear
+	@Test
 	public void testSetSemesterClear_2() {
 		
 	    Date d = new Date(System.currentTimeMillis());
@@ -89,5 +87,4 @@ public class appControllerSemesterClearTest {
 		
 		assertEquals("Date2",-1,app1.getDate2().compareTo(c.getTime()));
 	}
-
 }

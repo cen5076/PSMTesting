@@ -32,10 +32,10 @@ import stubs.Messages;
 import stubs.PrefilledScheduleForm;
 //import Interface.ScheduleForm;
 import stubs.ScheduleForm;
-//import stubs.FutureTimer;
 
-//Don't use Authenticate stub for SS testing
-//import stubs.Authenticate;
+//Don't use these stubs for SS testing
+import stubs.FutureTimer;
+import stubs.Authenticate;
 
 
 /**
