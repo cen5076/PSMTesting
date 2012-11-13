@@ -8,12 +8,16 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 import Logic.appController;
+import stubs.DBConnection;
 import stubs.FutureTimer;
+import stubs.MainMenu;
 import testUtil.DBUtil;
 import testUtil.Course;
 
@@ -27,38 +31,51 @@ import testUtil.Course;
 @SuppressWarnings("unused")
 public class appControllerBeginTest {
 	
+	static int currMonth;
+	static int currDate;
+	static int currYear;
 	appController app1;
 	Course c1;
-
+	DBConnection db;
 
 	@Rule
 	public final ExpectedSystemExit exit = ExpectedSystemExit.none();
+	
+	@BeforeClass
+	public static void setUpOnce() throws Exception {
+		Calendar cal = Calendar.getInstance();
+		currMonth = cal.get(Calendar.MONTH) + 1;
+		currDate = cal.get(Calendar.DATE);
+		currYear = cal.get(Calendar.YEAR) - 2000;
+	}
 	
 	@Before
 	/*
 	 * Create a new appController
 	 */
 	public void setUp() throws Exception {
-		
 		app1 = new appController();
 		app1.newTimer = new FutureTimer();
-
-		
-		
+		db = app1.getDb();
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		
 		app1.getPopup5min().cancel();
 		app1.getPopup15min().cancel();
 		app1.getEndofclass().cancel();
-		c1  =null;
-
+		c1 = null;
 		app1 = null;
-		
 	}
 	
+	@AfterClass
+	public static void tearDownOnce() throws Exception {
+		try {
+			Runtime.getRuntime().exec("cmd /C date " + currMonth + '-' + currDate + '-' + currYear);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	/* Test States of Begin method */
 	/*** Subsumed by other tests ***/
@@ -104,12 +121,12 @@ public class appControllerBeginTest {
 	*/
 	
 	/** Test Case ID: PSM001_Login-UnitTest-M01
-	 * Purpose: Test Begin authenticate state transition to login with a branch to the lockout case.
-	 * Date Created: 10/27/12
-	 * Author: David Garcia
-	 * Stubs needed: 
-	 */
-	@Test  //Valid
+	* Purpose: Test Begin authenticate state transition to login with a branch to the lockout case.
+	* Date Created: 10/27/12
+	* Author: David Garcia
+	* Stubs needed:
+	*/
+	@Test
 	public void testBegin_AuthenticateToLoginTransition(){
 		
 		String messg = new Object(){}.getClass().getEnclosingMethod().getName(); 
@@ -125,12 +142,8 @@ public class appControllerBeginTest {
 		exit.expectSystemExitWithStatus(0);
 		app1.authenticate();
 		
-		assertFalse("Logged in",app1.isLoggedin());
+		assertFalse("Logged in", app1.isLoggedin());
 		assertFalse("DataReceived toggled", app1.getDataReceived());
-		
-		
-		
-		
 	}
 	
 	/**
@@ -189,14 +202,8 @@ public class appControllerBeginTest {
 	 * Has an end date that has passed and clears the DB
 	 * 
 	 */
-
-	/** Test Case ID: PSM001_Login-UnitTest-M02
-	 * Purpose: Test miscellaneous system calls wrapped in methods
-	 * Date Created: 10/27/12
-	 * Author: David Garcia
-	 * Stubs needed: 
-	 */
-	@Test  //Valid
+	/*** M02 ***/
+	@Test
 	public void testBegin_ReadyState_ClearDB(){
 		
 		String messg = new Object(){}.getClass().getEnclosingMethod().getName(); 
@@ -213,13 +220,13 @@ public class appControllerBeginTest {
 		g.set(g.get(Calendar.YEAR)-1,g.get(Calendar.MONTH),g.get(Calendar.DATE));
 		Date passedDate = g.getTime();
 		
-		String endDate = DBUtil.pastAsString(passedDate);
+		String endDate = DBUtil.passedAsString(passedDate);
 		
 		Course c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
-		c1.fillDates(DBUtil.defaultDates);
+		c1.fillTimes(Course.defaultTimes);
 		
 		//System.out.println(endDate);
-		app1.getDb().addCourse(c1);
+		db.addCourse(c1);
 		
 		try{
 			app1.ready();
@@ -354,13 +361,13 @@ public class appControllerBeginTest {
 	*/
 	
 	/** Test Case ID: PSM001_Login-UnitTest-M03
-	 * Purpose: Test All the states of the Begin method.
-	 * Date Created: 10/27/12
-	 * Author: David Garcia
-	 * Stubs needed: 
-	 */
+	* Purpose: Test All the states of the Begin method.
+	* Date Created: 10/27/12
+	* Author: David Garcia
+	* Stubs needed:
+	*/
 	@SuppressWarnings("static-access")
-	@Test  //Valid
+	@Test
 	public void testBegin_AllStates(){
 		
 		String messg = new Object(){}.getClass().getEnclosingMethod().getName(); 
@@ -390,7 +397,7 @@ public class appControllerBeginTest {
 		
 		app1.authenticate();
 		
-		assertTrue("Connected",app1.getDb().isConnected());
+		assertTrue("Connected", db.isConnected());
 		assertEquals("Counter unchanged", counter , app1.getCounter());
 		
 		
@@ -406,11 +413,11 @@ public class appControllerBeginTest {
 		g.set(g.get(Calendar.YEAR)+1,g.get(Calendar.MONTH),g.get(Calendar.DATE));
 		Date passedDate = g.getTime();
 		
-		String endDate = DBUtil.pastAsString(passedDate);
+		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
 		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
-		c1.fillDates(DBUtil.defaultDates);
+		c1.fillTimes(Course.defaultTimes);
 		
 		try{
 			Thread.sleep(300);
@@ -419,10 +426,10 @@ public class appControllerBeginTest {
 			
 		}
 		
-		assertNotNull("Database Null",app1.getDb());
+		assertNotNull("Database Null", db);
 		System.out.println("Course=" + c1.getCrseid());
 		System.out.println(c1.toString());
-		app1.getDb().addCourse(c1);
+		db.addCourse(c1);
 		
 		try{
 			app1.ready();
@@ -442,9 +449,9 @@ public class appControllerBeginTest {
 		DBUtil dbUtil = new DBUtil();
 		dbUtil.defaultCourseId = 1234;
 		Course c2 = new Course(DBUtil.defaultCourseId,"Sub","Nam","Semester",Course.STARTDATE,Course.ENDDATE);
-		c1.fillDates(DBUtil.defaultDates);
+		c1.fillTimes(Course.defaultTimes);
 		
-		app1.getDb().addCourse(c2);
+		db.addCourse(c2);
 		app1.getIc().sched.addCourse(c2);
 		app1.getIc().sched.dataReceived=true;
 		
@@ -462,9 +469,9 @@ public class appControllerBeginTest {
 		//DBUtil dbUtil = new DBUtil();
 		dbUtil.defaultCourseId = 1234;
 		Course c3 = new Course(DBUtil.defaultCourseId,"Sub","Nam","Semester",Course.STARTDATE,Course.ENDDATE);
-		c3.fillDates(DBUtil.defaultDates);
+		c3.fillTimes(Course.defaultTimes);
 		
-		app1.getDb().addCourse(c3);
+		db.addCourse(c3);
 		
 		//make sure class has not ended
 		app1.setClassEnded(0);
@@ -519,12 +526,12 @@ public class appControllerBeginTest {
 	}
 	
 	/** Test Case ID: PSM001_Login-UnitTest-M04
-	 * Purpose: Test the branch for a Monday class end date check
-	 * Date Created: 10/27/12
-	 * Author: David Garcia
-	 * Stubs needed: 
-	 */
-	@Test  //Valid
+	* Purpose: Test the branch for a Monday class end date check
+	* Date Created: 10/27/12
+	* Author: David Garcia
+	* Stubs needed:
+	*/
+	@Test
 	public void testBegin_TestDaysBranchesMon(){
 		
 		//Set the date to a Monday
@@ -536,10 +543,13 @@ public class appControllerBeginTest {
 		} // dd-MM-yy
 		
 		/** Set Values to Be in Ready **/
-		app1.setLoggedIn(true);
+		//app1.setLoggedIn(true);
 		app1.setUsername(DBUtil.USERNAME);
 		app1.setPassword(DBUtil.PASSWORD);
+		app1.LogIn();
 		app1.setDataReceived(true);
+		
+		assertTrue("Connected", db.isConnected());
 		
 		GregorianCalendar g = new GregorianCalendar();
 		Date d = new Date(System.currentTimeMillis());
@@ -547,24 +557,25 @@ public class appControllerBeginTest {
 		g.set(g.get(Calendar.YEAR)+1,g.get(Calendar.MONTH),g.get(Calendar.DATE));
 		Date passedDate = g.getTime();
 		
-		String endDate = DBUtil.pastAsString(passedDate);
+		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
 		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
-		c1.fillDates(DBUtil.defaultDates);
+		c1.fillTimes(Course.defaultTimes);
 		
 		//System.out.println(endDate);
 		try{
-			Thread.sleep(300);
+			Thread.sleep(1000);
 		}
 		catch(Exception e){
 			
 		}
 		
-		assertNotNull("Database Null",app1.getDb());
-		System.out.println("Course=" + c1.getCrseid());
-		System.out.println(c1.toString());
-		app1.getDb().addCourse(c1);
+		assertNotNull("Database Null", db);
+//		System.out.println("Course=" + c1.getCrseid());
+//		System.out.println(c1.toString());
+		db.addCourse(c1);
+		assertEquals("DB Size", 1, db.getCourseSet().size());
 		
 		try{
 			app1.ready();
@@ -574,20 +585,22 @@ public class appControllerBeginTest {
 			
 		}
 		
-		assertTrue("Logged in",app1.isLoggedin());
-		assertFalse("Data Received",app1.getDataReceived());
+		assertTrue("Logged in", app1.isLoggedin());
+		assertFalse("Data Received", app1.getDataReceived());
+		assertEquals("Get End Hour", 13, app1.getHr());
+		assertEquals("Get End Minute", 0, app1.getMin());
 	}
 	
 	/** Test Case ID: PSM001_Login-UnitTest-M05
-	 * Purpose: Test the branch for a Tuesday class end date check
-	 * Date Created: 10/27/12
-	 * Author: David Garcia
-	 * Stubs needed: 
-	 */
-	@Test  //Valid
+	* Purpose: Test the branch for a Tuesday class end date check
+	* Date Created: 10/27/12
+	* Author: David Garcia
+	* Stubs needed:
+	*/
+	@Test
 	public void testBegin_TestDaysBranchesTue(){
 		
-		//Set the date to a Monday
+		//Set the date to a Tuesday
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-23-12");
 		} catch (IOException e) {
@@ -596,10 +609,13 @@ public class appControllerBeginTest {
 		} // dd-MM-yy
 		
 		/** Set Values to Be in Ready **/
-		app1.setLoggedIn(true);
+//		app1.setLoggedIn(true);
 		app1.setUsername(DBUtil.USERNAME);
 		app1.setPassword(DBUtil.PASSWORD);
+		app1.LogIn();
 		app1.setDataReceived(true);
+		
+		assertTrue("Connected", db.isConnected());
 		
 		GregorianCalendar g = new GregorianCalendar();
 		Date d = new Date(System.currentTimeMillis());
@@ -607,24 +623,25 @@ public class appControllerBeginTest {
 		g.set(g.get(Calendar.YEAR)+1,g.get(Calendar.MONTH),g.get(Calendar.DATE));
 		Date passedDate = g.getTime();
 		
-		String endDate = DBUtil.pastAsString(passedDate);
+		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
 		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
-		c1.fillDates(DBUtil.defaultDates);
+		c1.fillTimes(Course.defaultTimes);
 		
 		//System.out.println(endDate);
 		try{
-			Thread.sleep(300);
+			Thread.sleep(1000);
 		}
 		catch(Exception e){
 			
 		}
 		
-		assertNotNull("Database Null",app1.getDb());
-		System.out.println("Course=" + c1.getCrseid());
-		System.out.println(c1.toString());
-		app1.getDb().addCourse(c1);
+		assertNotNull("Database Null", db);
+//		System.out.println("Course=" + c1.getCrseid());
+//		System.out.println(c1.toString());
+		db.addCourse(c1);
+		assertEquals("DB Size", 1, db.getCourseSet().size());
 		
 		try{
 			app1.ready();
@@ -633,18 +650,23 @@ public class appControllerBeginTest {
 			
 			
 		}
+		
+		assertTrue("Logged in", app1.isLoggedin());
+		assertFalse("Data Received", app1.getDataReceived());
+		assertEquals("Get End Hour", 13, app1.getHr());
+		assertEquals("Get End Minute", 0, app1.getMin());
 	}
 	
 	/** Test Case ID: PSM001_Login-UnitTest-M06
-	 * Purpose: Test the branch for a Wednesday class end date check
-	 * Date Created: 10/27/12
-	 * Author: David Garcia
-	 * Stubs needed: 
-	 */
-	@Test  //Valid
+	* Purpose: Test the branch for a Wednesday class end date check
+	* Date Created: 10/27/12
+	* Author: David Garcia
+	* Stubs needed:
+	*/
+	@Test
 	public void testBegin_TestDaysBranchesWed(){
 		
-		//Set the date to a Monday
+		//Set the date to a Wednesday
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-24-12");
 		} catch (IOException e) {
@@ -653,10 +675,13 @@ public class appControllerBeginTest {
 		} // dd-MM-yy
 		
 		/** Set Values to Be in Ready **/
-		app1.setLoggedIn(true);
+//		app1.setLoggedIn(true);
 		app1.setUsername(DBUtil.USERNAME);
 		app1.setPassword(DBUtil.PASSWORD);
+		app1.LogIn();
 		app1.setDataReceived(true);
+		
+		assertTrue("Connected", db.isConnected());
 		
 		GregorianCalendar g = new GregorianCalendar();
 		Date d = new Date(System.currentTimeMillis());
@@ -664,24 +689,25 @@ public class appControllerBeginTest {
 		g.set(g.get(Calendar.YEAR)+1,g.get(Calendar.MONTH),g.get(Calendar.DATE));
 		Date passedDate = g.getTime();
 		
-		String endDate = DBUtil.pastAsString(passedDate);
+		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
 		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
-		c1.fillDates(DBUtil.defaultDates);
+		c1.fillTimes(Course.defaultTimes);
 		
 		//System.out.println(endDate);
 		try{
-			Thread.sleep(300);
+			Thread.sleep(1000);
 		}
 		catch(Exception e){
 			
 		}
 		
-		assertNotNull("Database Null",app1.getDb());
-		System.out.println("Course=" + c1.getCrseid());
-		System.out.println(c1.toString());
-		app1.getDb().addCourse(c1);
+		assertNotNull("Database Null", db);
+//		System.out.println("Course=" + c1.getCrseid());
+//		System.out.println(c1.toString());
+		db.addCourse(c1);
+		assertEquals("DB Size", 1, db.getCourseSet().size());
 		
 		try{
 			app1.ready();
@@ -690,19 +716,24 @@ public class appControllerBeginTest {
 			
 			
 		}
+		
+		assertTrue("Logged in", app1.isLoggedin());
+		assertFalse("Data Received", app1.getDataReceived());
+		assertEquals("Get End Hour", 13, app1.getHr());
+		assertEquals("Get End Minute", 0, app1.getMin());
 	}
 	
 	
 	/** Test Case ID: PSM001_Login-UnitTest-M07
-	 * Purpose: Test the branch for a Thursday class end date check
-	 * Date Created: 10/27/12
-	 * Author: David Garcia
-	 * Stubs needed: 
-	 */
-	@Test  //Valid
+	* Purpose: Test the branch for a Thursday class end date check
+	* Date Created: 10/27/12
+	* Author: David Garcia
+	* Stubs needed:
+	*/
+	@Test
 	public void testBegin_TestDaysBranchesThu(){
 		
-		//Set the date to a Monday
+		//Set the date to a Thursday
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-25-12");
 		} catch (IOException e) {
@@ -711,10 +742,13 @@ public class appControllerBeginTest {
 		} // dd-MM-yy
 		
 		/** Set Values to Be in Ready **/
-		app1.setLoggedIn(true);
+//		app1.setLoggedIn(true);
 		app1.setUsername(DBUtil.USERNAME);
 		app1.setPassword(DBUtil.PASSWORD);
+		app1.LogIn();
 		app1.setDataReceived(true);
+		
+		assertTrue("Connected", db.isConnected());
 		
 		GregorianCalendar g = new GregorianCalendar();
 		Date d = new Date(System.currentTimeMillis());
@@ -722,24 +756,25 @@ public class appControllerBeginTest {
 		g.set(g.get(Calendar.YEAR)+1,g.get(Calendar.MONTH),g.get(Calendar.DATE));
 		Date passedDate = g.getTime();
 		
-		String endDate = DBUtil.pastAsString(passedDate);
+		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
 		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
-		c1.fillDates(DBUtil.defaultDates);
+		c1.fillTimes(Course.defaultTimes);
 		
 		//System.out.println(endDate);
 		try{
-			Thread.sleep(300);
+			Thread.sleep(1000);
 		}
 		catch(Exception e){
 			
 		}
 		
-		assertNotNull("Database Null",app1.getDb());
-		System.out.println("Course=" + c1.getCrseid());
-		System.out.println(c1.toString());
-		app1.getDb().addCourse(c1);
+		assertNotNull("Database Null", db);
+//		System.out.println("Course=" + c1.getCrseid());
+//		System.out.println(c1.toString());
+		db.addCourse(c1);
+		assertEquals("DB Size", 1, db.getCourseSet().size());
 		
 		try{
 			app1.ready();
@@ -748,18 +783,23 @@ public class appControllerBeginTest {
 			
 			
 		}
+		
+		assertTrue("Logged in", app1.isLoggedin());
+		assertFalse("Data Received", app1.getDataReceived());
+		assertEquals("Get End Hour", 13, app1.getHr());
+		assertEquals("Get End Minute", 0, app1.getMin());
 	}
 	
 	/** Test Case ID: PSM001_Login-UnitTest-M08
-	 * Purpose: Test the branch for a Friday class end date check
-	 * Date Created: 10/27/12
-	 * Author: David Garcia
-	 * Stubs needed: 
-	 */
-	@Test  //Valid
+	* Purpose: Test the branch for a Friday class end date check
+	* Date Created: 10/27/12
+	* Author: David Garcia
+	* Stubs needed:
+	*/
+	@Test
 	public void testBegin_TestDaysBranchesFri(){
 		
-		//Set the date to a Monday
+		//Set the date to a Friday
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-26-12");
 		} catch (IOException e) {
@@ -768,10 +808,13 @@ public class appControllerBeginTest {
 		} // dd-MM-yy
 		
 		/** Set Values to Be in Ready **/
-		app1.setLoggedIn(true);
+//		app1.setLoggedIn(true);
 		app1.setUsername(DBUtil.USERNAME);
 		app1.setPassword(DBUtil.PASSWORD);
+		app1.LogIn();
 		app1.setDataReceived(true);
+		
+		assertTrue("Connected", db.isConnected());
 		
 		GregorianCalendar g = new GregorianCalendar();
 		Date d = new Date(System.currentTimeMillis());
@@ -779,24 +822,25 @@ public class appControllerBeginTest {
 		g.set(g.get(Calendar.YEAR)+1,g.get(Calendar.MONTH),g.get(Calendar.DATE));
 		Date passedDate = g.getTime();
 		
-		String endDate = DBUtil.pastAsString(passedDate);
+		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
 		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
-		c1.fillDates(DBUtil.defaultDates);
+		c1.fillTimes(Course.defaultTimes);
 		
 		//System.out.println(endDate);
 		try{
-			Thread.sleep(300);
+			Thread.sleep(1000);
 		}
 		catch(Exception e){
 			
 		}
 		
-		assertNotNull("Database Null",app1.getDb());
-		System.out.println("Course=" + c1.getCrseid());
-		System.out.println(c1.toString());
-		app1.getDb().addCourse(c1);
+		assertNotNull("Database Null", db);
+//		System.out.println("Course=" + c1.getCrseid());
+//		System.out.println(c1.toString());
+		db.addCourse(c1);
+		assertEquals("DB Size", 1, db.getCourseSet().size());
 		
 		try{
 			app1.ready();
@@ -805,18 +849,23 @@ public class appControllerBeginTest {
 			
 			
 		}
+		
+		assertTrue("Logged in", app1.isLoggedin());
+		assertFalse("Data Received", app1.getDataReceived());
+		assertEquals("Get End Hour", 13, app1.getHr());
+		assertEquals("Get End Minute", 0, app1.getMin());
 	}
 	
 	/** Test Case ID: PSM001_Login-UnitTest-M09
-	 * Purpose: Test the branch for a Saturday class end date check
-	 * Date Created: 10/27/12
-	 * Author: David Garcia
-	 * Stubs needed: 
-	 */
-	@Test  //Valid
+	* Purpose: Test the branch for a Saturday class end date check
+	* Date Created: 10/27/12
+	* Author: David Garcia
+	* Stubs needed:
+	*/
+	@Test
 	public void testBegin_TestDaysBranchesSat(){
 		
-		//Set the date to a Monday
+		//Set the date to a Saturday
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-27-12");
 		} catch (IOException e) {
@@ -825,10 +874,13 @@ public class appControllerBeginTest {
 		} // dd-MM-yy
 		
 		/** Set Values to Be in Ready **/
-		app1.setLoggedIn(true);
+//		app1.setLoggedIn(true);
 		app1.setUsername(DBUtil.USERNAME);
 		app1.setPassword(DBUtil.PASSWORD);
+		app1.LogIn();
 		app1.setDataReceived(true);
+		
+		assertTrue("Connected", db.isConnected());
 		
 		GregorianCalendar g = new GregorianCalendar();
 		Date d = new Date(System.currentTimeMillis());
@@ -836,11 +888,11 @@ public class appControllerBeginTest {
 		g.set(g.get(Calendar.YEAR)+1,g.get(Calendar.MONTH),g.get(Calendar.DATE));
 		Date passedDate = g.getTime();
 		
-		String endDate = DBUtil.pastAsString(passedDate);
+		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
 		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
-		c1.fillDates(DBUtil.defaultDates);
+		c1.fillTimes(Course.defaultTimes);
 		
 		//System.out.println(endDate);
 		try{
@@ -850,10 +902,11 @@ public class appControllerBeginTest {
 			
 		}
 		
-		assertNotNull("Database Null",app1.getDb());
-		System.out.println("Course=" + c1.getCrseid());
-		System.out.println(c1.toString());
-		app1.getDb().addCourse(c1);
+		assertNotNull("Database Null", db);
+//		System.out.println("Course=" + c1.getCrseid());
+//		System.out.println(c1.toString());
+		db.addCourse(c1);
+		assertEquals("DB Size", 1, db.getCourseSet().size());
 		
 		try{
 			app1.ready();
@@ -862,18 +915,23 @@ public class appControllerBeginTest {
 			
 			
 		}
+		
+		assertTrue("Logged in", app1.isLoggedin());
+		assertFalse("Data Received", app1.getDataReceived());
+		assertEquals("Get End Hour", 13, app1.getHr());
+		assertEquals("Get End Minute", 0, app1.getMin());
 	}
 	
 	/** Test Case ID: PSM001_Login-UnitTest-M10
-	 * Purpose: Test the branch for a Sunday class end date check
-	 * Date Created: 10/27/12
-	 * Author: David Garcia
-	 * Stubs needed: 
-	 */
-	@Test  //Valid
+	* Purpose: Test the branch for a Sunday class end date check
+	* Date Created: 10/27/12
+	* Author: David Garcia
+	* Stubs needed:
+	*/
+	@Test
 	public void testBegin_TestDaysBranchesSun(){
 		
-		//Set the date to a Monday
+		//Set the date to a Sunday
 		try {
 			Runtime.getRuntime().exec("cmd /C date " + "10-28-12");
 		} catch (IOException e) {
@@ -882,10 +940,13 @@ public class appControllerBeginTest {
 		} // dd-MM-yy
 		
 		/** Set Values to Be in Ready **/
-		app1.setLoggedIn(true);
+//		app1.setLoggedIn(true);
 		app1.setUsername(DBUtil.USERNAME);
 		app1.setPassword(DBUtil.PASSWORD);
+		app1.LogIn();
 		app1.setDataReceived(true);
+		
+		assertTrue("Connected", db.isConnected());
 		
 		GregorianCalendar g = new GregorianCalendar();
 		Date d = new Date(System.currentTimeMillis());
@@ -893,24 +954,25 @@ public class appControllerBeginTest {
 		g.set(g.get(Calendar.YEAR)+1,g.get(Calendar.MONTH),g.get(Calendar.DATE));
 		Date passedDate = g.getTime();
 		
-		String endDate = DBUtil.pastAsString(passedDate);
+		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
 		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
-		c1.fillDates(DBUtil.defaultDates);
+		c1.fillTimes(Course.defaultTimes);
 		
 		//System.out.println(endDate);
 		try{
-			Thread.sleep(300);
+			Thread.sleep(1000);
 		}
 		catch(Exception e){
 			
 		}
 		
-		assertNotNull("Database Null",app1.getDb());
-		System.out.println("Course=" + c1.getCrseid());
-		System.out.println(c1.toString());
-		app1.getDb().addCourse(c1);
+		assertNotNull("Database Null", db);
+//		System.out.println("Course=" + c1.getCrseid());
+//		System.out.println(c1.toString());
+		db.addCourse(c1);
+		assertEquals("DB Size", 1, db.getCourseSet().size());
 		
 		try{
 			app1.ready();
@@ -919,18 +981,23 @@ public class appControllerBeginTest {
 			
 			
 		}
+		
+		assertTrue("Logged in", app1.isLoggedin());
+		assertFalse("Data Received", app1.getDataReceived());
+		assertEquals("Get End Hour", 0, app1.getHr());
+		assertEquals("Get End Minute", 0, app1.getMin());
 	}
 	
 	
 	/** Test Case ID: PSM001_Login-UnitTest-M11
-	 * Purpose: Test the call to the actual begin method and not its parsed out pieces. 
-	 * We set the values so that it takes a path thru LogIn, Authenticate and Ready in 
-	 * the Begin State Chart, calling clearDatabase method within Ready.
-	 * Date Created: 10/27/12
-	 * Author: David Garcia
-	 * Stubs needed: 
-	 */
-	//@Test
+	* Purpose: Test the call to the actual begin method and not its parsed out pieces. We set the values so
+	* 		   that it takes a path through LogIn, Authenticate, and Ready in the Begin State Chart, calling
+	* 		   clearDatabase method within Ready.
+	* Date Created: 10/27/12
+	* Author: David Garcia
+	* Stubs needed:
+	*/
+	@Test
 	public void testBegin_Begin(){
 		
 		app1.setLoggedIn(true);
@@ -946,13 +1013,13 @@ public class appControllerBeginTest {
 		g.set(g.get(Calendar.YEAR)-1,g.get(Calendar.MONTH),g.get(Calendar.DATE));
 		Date passedDate = g.getTime();
 		
-		String endDate = DBUtil.pastAsString(passedDate);
+		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
 		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
-		c1.fillDates(DBUtil.defaultDates);
+		c1.fillTimes(Course.defaultTimes);
 		
-		app1.getDb().addCourse(c1);
+		db.addCourse(c1);
 		//app1.setLoggedIn(false);
 		//app1.setDataReceived(false);
 
@@ -961,7 +1028,7 @@ public class appControllerBeginTest {
 		//app1.setUsername(DBUtil.USERNAME);
 		//app1.setPassword(DBUtil.PASSWORD);
 		int counter = 0;
-		app1.setCounter(counter);	
+		app1.setCounter(counter);
 		app1.setClassEnded(System.currentTimeMillis());
 		app1.getIc().mm.setdataRec(true);
 		//app1.getIc().mm.setLogout(true);
@@ -974,16 +1041,19 @@ public class appControllerBeginTest {
 		
 		app1.begin();
 		
+		assertTrue(app1.isLoggedin());
+		assertFalse(app1.isDataReceived());
+		
 	}
 	
 	/** Test Case ID: PSM001_Login-UnitTest-M12
-	 * Purpose: Test the call to the actual begin method and not its parsed out pieces. 
-	 * We set the values so that it takes a path thru LogIn, Authenticate, Ready, Edit 
-	 * Schedule and Logout states in the Begin State Chart.
-	 * Date Created: 10/27/12
-	 * Author: David Garcia
-	 * Stubs needed: 
-	 */
+	* Purpose: Test the call to the actual begin method and not its parsed out pieces. We set the values so
+	* 	       that it takes a path thru LogIn, Authenticate, Ready, Edit Schedule and Logout states in the
+	* 		   Begin State Chart.
+	* Date Created: 10/27/12
+	* Author: David Garcia
+	* Stubs needed:
+	*/
 	@Test
 	public void testBegin_BeginEditSched(){
 		
@@ -1000,13 +1070,12 @@ public class appControllerBeginTest {
 		g.set(g.get(Calendar.YEAR)+1,g.get(Calendar.MONTH),g.get(Calendar.DATE));
 		Date passedDate = g.getTime();
 		
-		String endDate = DBUtil.pastAsString(passedDate);
-		
+		String endDate = DBUtil.passedAsString(passedDate);
 		
 		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
-		c1.fillDates(DBUtil.defaultDates);
+		c1.fillTimes(Course.defaultTimes);
 		
-		app1.getDb().addCourse(c1);
+		db.addCourse(c1);
 		//app1.setLoggedIn(false);
 		//app1.setDataReceived(false);
 
@@ -1015,9 +1084,9 @@ public class appControllerBeginTest {
 		//app1.setUsername(DBUtil.USERNAME);
 		//app1.setPassword(DBUtil.PASSWORD);
 		int counter = 0;
-		app1.setCounter(counter);	
+		app1.setCounter(counter);
 		app1.setClassEnded(System.currentTimeMillis());
-		app1.getIc().mm.dataRec = true;
+		MainMenu.dataRec = true;
 		app1.getIc().mm.alwaystrue = true;
 		//app1.getIc().mm.setLogout(true);
 		//app1.setEdSchedSel(true);
@@ -1026,9 +1095,10 @@ public class appControllerBeginTest {
 		app1.getIc().mm.setLogout(false);
 		app1.getIc().mm.togglelogout = true;
 		//app1.getIc().mm.setInitSetup(true);
-		app1.initAuthenticate(DBUtil.USERNAME,DBUtil.PASSWORD);
-		//requires Authenticate stub
-		app1.getAuth().passLogoutRef = true;
+		app1.initAuthenticate(DBUtil.USERNAME, DBUtil.PASSWORD);
+		
+		//requires Authenticate stub in appController
+//		app1.getAuth().passLogoutRef = true;
 		app1.getIc().edSched.setDataRec(true);
 		//app1.getDb().addCourse(c1);
 		app1.getIc().edSched.addCourse(c1);
@@ -1039,7 +1109,5 @@ public class appControllerBeginTest {
 
 		//app1.logOut();
 
-
 	}
-
 }

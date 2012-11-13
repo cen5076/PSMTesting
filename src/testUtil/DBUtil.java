@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 import stubs.DBConnection;
 import testUtil.Course;
@@ -26,8 +27,6 @@ public class DBUtil {
 	private String db;
 	public Connection conn;
 	public ArrayList<Course> crsList;
-	public static final String[] defaultDates = {"12:00","13:00","12:00","13:00","12:00","13:00"
-		,"12:00","13:00","12:00","13:00","12:00","24:00"};
 	
 	public static final String USERNAME = "cen5076";
 	public static final String PASSWORD = "cen5076";
@@ -102,7 +101,7 @@ public class DBUtil {
 		
 		Course c = new Course();
 		
-		ArrayList<String> fieldNames = c.getFieldNames();
+		List<String> fieldNames = c.getFieldNames();
 		
 		Iterator<String> iter = fieldNames.iterator();
 		
@@ -296,7 +295,7 @@ public class DBUtil {
 	 * @param dayOffSet
 	 * @return
 	 */
-	public static String pastAsString(Date d){
+	public static String passedAsString(Date d){
 		
 		
 		GregorianCalendar now = new GregorianCalendar();

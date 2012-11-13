@@ -12,7 +12,6 @@ import Logic.appController;
 
 import stubs.DBConnection;
 import testUtil.Course;
-import testUtil.DBUtil;
 
 public class appControllerGetData_SS {
 
@@ -28,9 +27,9 @@ public class appControllerGetData_SS {
 		dbc = app1.getDb();
 		dbc.connect("cen5076", "cen5076");
 		c1 = new Course(1234,"Sub", "Nam", "Semester", Course.STARTDATE, Course.ENDDATE);
-		c1.fillDates(DBUtil.defaultDates);
+		c1.fillTimes(Course.defaultTimes);
 		c2 = new Course(2345, "Sub2", "Nam2", "Semester", Course.STARTDATE, Course.ENDDATE);
-		c2.fillDates(DBUtil.defaultDates);
+		c2.fillTimes(Course.defaultTimes);
 		courseList = new ArrayList<Course>();
 	}
 

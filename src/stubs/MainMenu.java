@@ -29,7 +29,7 @@ public class MainMenu {
 	    public boolean logoutSelected()
 	    {
 	    	if(this.togglelogout){
-	    	this.logout = (!this.logout);
+	    	logout = (!logout);
 	        return (!logout);
 	    	}
 	    	return logout;
@@ -54,7 +54,7 @@ public class MainMenu {
 	     */
 	    public void setDataRec(Boolean d){
 	    	
-	    	this.dataRec = d;
+	    	dataRec = d;
 	    }
 	    
 	    /**
@@ -63,7 +63,7 @@ public class MainMenu {
 	     * @param e - set the editSchedul to simulate edit schedule button
 	     */
 	    public void setEditSched(Boolean e){
-	    	this.editSched = e;
+	    	editSched = e;
 	    }
 
 	    /**
@@ -71,7 +71,7 @@ public class MainMenu {
 	     * @param l - set the logout to simulate the logout schedule button
 	     */
 	    public void setLogout(Boolean l){
-	    	this.logout = l;
+	    	logout = l;
 	    }
 	    
 	    /**
@@ -79,7 +79,7 @@ public class MainMenu {
 	     * @param i - set the initsetup to simulate the initsetup button
 	     */
 	    public void setInitSetup(Boolean i){
-	    	this.initSetup = i;
+	    	initSetup = i;
 	    }
 	    
 

@@ -1,7 +1,8 @@
 package testUtil;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * 
@@ -18,7 +19,7 @@ public class Course {
 	public String crseSub;
 	public String crseNam;
 	public String semester;
-	public  String startdt;
+	public String startdt;
 	public String enddt;
 	public String monStart;
 	public String monEnd;
@@ -37,20 +38,16 @@ public class Course {
 	public static final String STARTDATE = "01/01/13";
 	public static final String ENDDATE = "01/02/13";
 	
-	/* Arraylist of the values for the days */
-	public final ArrayList<String> days = new ArrayList<String>();
+	/* List of the values for the days */
+	public static final List<String> days = Arrays.asList("mon", "tue", "wed", "thu", "fri", "sat");
+	public static final List<String> defaultTimes = Arrays.asList("12:00","13:00","12:00","13:00","12:00","13:00",
+		"12:00","13:00","12:00","13:00","12:00","13:00");
 	
 	/**
-	 *Constructor for Course, sets the days.
+	 *Constructor for Course.
 	 */
 	public Course(){
 		
-		days.add("mon");
-		days.add("tue");
-		days.add("wed");
-		days.add("thu");
-		days.add("fri");
-		days.add("sat");
 	}
 	
 	/**
@@ -73,18 +70,18 @@ public class Course {
 		this.semester = sem;
 		this.startdt = start;
 		this.enddt = end;
-		this.monStart = DBUtil.defaultDates[0];
-		this.monEnd = DBUtil.defaultDates[1];
-		this.tueStart = DBUtil.defaultDates[2];
-		this.tueEnd = DBUtil.defaultDates[3];
-		this.wedStart = DBUtil.defaultDates[4];
-		this.wedEnd = DBUtil.defaultDates[5];
-		this.thuStart = DBUtil.defaultDates[6];
-		this.thuEnd = DBUtil.defaultDates[7];
-		this.friStart = DBUtil.defaultDates[8];
-		this.friEnd = DBUtil.defaultDates[9];
-		this.satStart = DBUtil.defaultDates[10];
-		this.satEnd = DBUtil.defaultDates[11];
+		this.monStart = defaultTimes.get(0);
+		this.monEnd = defaultTimes.get(1);
+		this.tueStart = defaultTimes.get(2);
+		this.tueEnd = defaultTimes.get(3);
+		this.wedStart = defaultTimes.get(4);
+		this.wedEnd = defaultTimes.get(5);
+		this.thuStart = defaultTimes.get(6);
+		this.thuEnd = defaultTimes.get(7);
+		this.friStart = defaultTimes.get(8);
+		this.friEnd = defaultTimes.get(9);
+		this.satStart = defaultTimes.get(10);
+		this.satEnd = defaultTimes.get(11);
 
 		
 	}
@@ -136,7 +133,7 @@ public class Course {
 	 * @return - a string array with one value of the field name for each field
 	 * that would be in the database.
 	 */
-	public ArrayList<String> getFieldNames() {
+	public List<String> getFieldNames() {
 		
 		ArrayList<String> fields = new ArrayList<String>();
 		
@@ -147,11 +144,7 @@ public class Course {
 		fields.add("start_date");
 		fields.add("end_date");
 		
-		Iterator<String> days = this.days.iterator();
-		
-		while(days.hasNext()) {
-			
-			String day = days.next();
+		for (String day : days) {
 			fields.add("start_" + day);
 			fields.add("end_" + day);
 		}
@@ -194,26 +187,25 @@ public class Course {
 	/**
 	 * Set the values for the dates based on the array
 	 * 
-	 * @param arr - array with sequence monStart,monEnd,tueStart... 
+	 * @param times - list with sequence of times monStart, monEnd, tueStart, etc.
 	 * @return - true if added successfully
 	 */
-	public boolean fillDates(String[] arr){
+	public boolean fillTimes(List<String> times) {
 		
-		if(arr.length != 12)
+		if(times.size() != 12)
 			return false;
-		this.monStart = arr[0];
-		this.monEnd = arr[1];
-		this.tueStart = arr[2];
-		this.tueEnd = arr[3];
-		this.wedStart = arr[4];
-		this.wedEnd = arr[5];
-		this.thuStart = arr[6];
-		this.thuEnd = arr[7];
-		this.friStart = arr[8];
-		this.friEnd = arr[9];
-		this.satStart = arr[10];
-		this.satEnd = arr[11];
-		
+		this.monStart = times.get(0);
+		this.monEnd = times.get(1);
+		this.tueStart = times.get(2);
+		this.tueEnd = times.get(3);
+		this.wedStart = times.get(4);
+		this.wedEnd = times.get(5);
+		this.thuStart = times.get(6);
+		this.thuEnd = times.get(7);
+		this.friStart = times.get(8);
+		this.friEnd = times.get(9);
+		this.satStart = times.get(10);
+		this.satEnd = times.get(11);
 		
 		return true;
 	}
@@ -223,7 +215,7 @@ public class Course {
 	 * 
 	 * @return - ArrayList<String> ends
 	 */
-	public ArrayList<String>  getEndDates(){
+	public ArrayList<String> getEndTimes(){
 		
 		ArrayList<String> ends = new ArrayList<String>();
 		
@@ -520,7 +512,7 @@ public class Course {
 	
 	public String toString(){
 		
-		String course = "Course=Id-" + this.crseid + ",Name-" + this.crseNam + ",Subj-" + this.crseSub + ",Semester-" + this.semester + ",Starts[" + this.monStart + "," + this.tueStart + "," + this.wedStart + "," + this.thuStart + "," + this.friStart + this.satStart + "],Ends=[" + this.monEnd + "," + this.tueEnd + "," + this.wedEnd + ","+ this.thuEnd + ","+ this.friEnd + ","+ this.satEnd + "]";
+		String course = "Id=" + this.crseid + ", Name=" + this.crseNam + ", Subj=" + this.crseSub + ", Semester=" + this.semester + ", Starts=[" + this.monStart + "," + this.tueStart + "," + this.wedStart + "," + this.thuStart + "," + this.friStart + "," + this.satStart + "], Ends=[" + this.monEnd + "," + this.tueEnd + "," + this.wedEnd + ","+ this.thuEnd + ","+ this.friEnd + ","+ this.satEnd + "]";
 		
 		return course;
 		

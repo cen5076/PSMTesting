@@ -32,7 +32,7 @@ public class appControllerDBGettersTest {
 		app1.setPassword(DBUtil.PASSWORD);
 		app1.LogIn();
 		c1= new Course(1234, "Subject", "Name", "Semester", Course.STARTDATE, Course.ENDDATE);
-		c1.fillDates(DBUtil.defaultDates);
+		c1.fillTimes(Course.defaultTimes);
 //		c2= new Course(2345,"Sub2","Nam2","Semester",Course.STARTDATE,Course.ENDDATE);
 //		c2.fillDates(DBUtil.defaultDates);
 //		courseList = new ArrayList<Course>();

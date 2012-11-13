@@ -54,11 +54,11 @@ public class appControllerTimerTaskTest {
 	}
 
 	/** Test Case ID: PSM001_Login-UnitTest-K01
-	 * Purpose: Test that all Timertasks execute their appropriate run methods
-	 * Date Created: 10/27/12
-	 * Author: David Garcia
-	 * Stubs needed: 
-	 */	
+	* Purpose: Test that all Timertasks execute their appropriate run methods
+	* Date Created: 10/27/12
+	* Author: David Garcia
+	* Stubs needed:
+	*/	
 	@Test
 	public void testTimerTask_testAll() {
 		
@@ -66,9 +66,9 @@ public class appControllerTimerTaskTest {
 		//set end time to be a 6 minutes from now so 5 minute alarm sounds in 1 minute
 		gc.setTimeInMillis(dbUtil.minInMilli(3) + dbUtil.secInMilli(30) + System.currentTimeMillis());
 		Date d = gc.getTime();
-		String endDate = dbUtil.pastAsString(d);
+		String endDate = DBUtil.passedAsString(d);
 		c1 = new Course(1234,"Nam","Sub","Semester",Course.STARTDATE,endDate);
-		c1.fillDates(DBUtil.defaultDates);
+		c1.fillTimes(Course.defaultTimes);
 		
 		int today = gc.get(Calendar.DAY_OF_WEEK);
 		int hour = gc.get(Calendar.HOUR_OF_DAY);
@@ -270,11 +270,11 @@ public class appControllerTimerTaskTest {
 	*/
 	
 	/** Test Case ID: PSM001_Login-UnitTest-K02
-	 * Purpose: Test the autoexit method for a course that ended.
-	 * Date Created: 10/27/12
-	 * Author: David Garcia
-	 * Stubs needed: 
-	 */
+	* Purpose: Test the autoexit method for a course that ended.
+	* Date Created: 10/27/12
+	* Author: David Garcia
+	* Stubs needed:
+	*/
 	@Test
 	public void testTimerTasks_autoExit(){
 		
@@ -287,11 +287,11 @@ public class appControllerTimerTaskTest {
 	}
 	
 	/** Test Case ID: PSM001_Login-UnitTest-K03
-	 * Purpose: Test the dbClear method for a course that ended.
-	 * Date Created: 10/27/12
-	 * Author: David Garcia
-	 * Stubs needed: 
-	 */
+	* Purpose: Test the dbClear method for a course that ended.
+	* Date Created: 10/27/12
+	* Author: David Garcia
+	* Stubs needed:
+	*/
 	@Test
 	public void testTimerTasks_autoClear(){
 		
@@ -299,8 +299,7 @@ public class appControllerTimerTaskTest {
 		
 		/* TODO - Add dbClear check */
 		app1.autoClear();
-		assertNotNull("Completed test autoClear check database state.",app1);
+		assertNotNull("Completed test autoClear check database state.", app1);
 
 	}
-
 }

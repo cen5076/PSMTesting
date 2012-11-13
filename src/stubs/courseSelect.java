@@ -149,7 +149,7 @@ public int getSelection()
     
     public void setCourseSelected(boolean condition)
     {
-    	this.courseSelected = condition;
+    	courseSelected = condition;
     }
     
 	private void initComponents() {

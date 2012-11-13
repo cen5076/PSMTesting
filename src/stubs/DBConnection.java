@@ -46,7 +46,7 @@ public class DBConnection {
     
     //two sets that are inaccessible to use for disconnect without nulling out
 //    private ArrayList<Course> lockedList;
-    private HashMap<Integer,Course> lockedSet;
+//    private HashMap<Integer,Course> lockedSet;
     
     /** Creates a new instance of DBConnection */
     public DBConnection() {

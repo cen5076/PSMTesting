@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import stubs.DBConnection;
 import testUtil.Course;
-import testUtil.DBUtil;
 import static org.junit.Assert.*;
 
 import Logic.appController;
@@ -24,7 +23,7 @@ public class appControllerReady_SS {
 		dbc = app1.getDb();
 		dbc.connect("cen5076", "cen5076");
 		c1 = new Course(1234,"Sub", "Nam", "Semester", Course.STARTDATE, Course.ENDDATE);
-		c1.fillDates(DBUtil.defaultDates);
+		c1.fillTimes(Course.defaultTimes);
 	}
 
 	@After

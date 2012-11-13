@@ -46,57 +46,57 @@ public class appController {
     
     private static final long TENMIN = 600000;
     
-    private  int hr;
-    private  int min;
-    private  Calendar autoClear = new GregorianCalendar();
-    private  Calendar setRun = new GregorianCalendar();
+    private int hr;
+    private int min;
+    private Calendar autoClear = new GregorianCalendar();
+    private Calendar setRun = new GregorianCalendar();
     //@SuppressWarnings("unused")
 	//private static Calendar calendar = new GregorianCalendar();
     // CEN5076 - commented and added public to debug
-	private  Timer timer = new FutureTimer();
-	//public  Timer timer = new FutureTimer();
+	private Timer timer = new FutureTimer();
+	//public Timer timer = new FutureTimer();
 	public boolean testingTimers = false;
-    private  Date date = new Date();
-    private  Date date2 = new Date();
+    private Date date = new Date();
+    private Date date2 = new Date();
     
-    public  String defSub = "";
-    public  String defSemester = "";
-    public  String defCourseName = "";
-    public  String defCourseStart = "";
-    public  String defCourseEnd = "";
-    public  String defMonStart = "";
-    public  String defMonEnd = "";
-    public  String defTueStart = "";
-    public  String defTueEnd = "";
-    public  String defWedStart = "";
-    public  String defWedEnd = "";
-    public  String defThuStart = "";
-    public  String defThuEnd = "";
-    public  String defFriStart = "";
-    public  String defFriEnd = "";
-    public  String defSatStart = "";
-    public  String defSatEnd = "";
+    public String defSub = "";
+    public String defSemester = "";
+    public String defCourseName = "";
+    public String defCourseStart = "";
+    public String defCourseEnd = "";
+    public String defMonStart = "";
+    public String defMonEnd = "";
+    public String defTueStart = "";
+    public String defTueEnd = "";
+    public String defWedStart = "";
+    public String defWedEnd = "";
+    public String defThuStart = "";
+    public String defThuEnd = "";
+    public String defFriStart = "";
+    public String defFriEnd = "";
+    public String defSatStart = "";
+    public String defSatEnd = "";
     
-    private  String username;
-    private  String password;
-    private  boolean loggedin;
+    private String username;
+    private String password;
+    private boolean loggedin;
     //CEN5076 - commented made public for Debugging, also needed to be public for Authenticate stub to set a value
     //private boolean dataReceived = false;
-    public  boolean dataReceived = false;
-    private  boolean edSchedSel = false;
-    private  boolean schedSetupSel = false;
-    private  boolean logoutSel = false;
+    public boolean dataReceived = false;
+    private boolean edSchedSel = false;
+    private boolean schedSetupSel = false;
+    private boolean logoutSel = false;
     
-    private  int clearDate, clearMonth, clearYear;
-    private  int counter = 0;
+    private int clearDate, clearMonth, clearYear;
+    private int counter = 0;
     
     //CEN5076 - commented made public for Debugging
     public static DBConnection db = new DBConnection();
-    //private DBConnection db;// = new DBConnection();
+    //private DBConnection db;
     private static InterfaceController ic = new InterfaceController();
-    private  Authenticate auth;
-    private  int courseSel;
-    private  static long classEnded = 0;
+    private Authenticate auth;
+    private int courseSel;
+    private static long classEnded = 0;
     
     /* CEN5076 */
     //added to help in Testing TimerTasks
@@ -118,10 +118,9 @@ public class appController {
      * All fields until END TEST GENERATED FIELDS are used to get validation values for tests and help set
      * necessary fields.
      */
-    /**
-     * @ return edSchedSel
-     */
-     //@Unused
+    
+    //@Unused
+    /*
      public boolean getEdSchedSel(){
     	 return edSchedSel;
      }
@@ -130,16 +129,7 @@ public class appController {
     	 
     	 this.edSchedSel = b;
      }
-	public void setTestingTimers() {
-    	 testingTimers = true;
-     }
  
-     
-     /**
-      * 
-      * @return schedSetupSel
-      */
-    //@Unused
      public boolean getSchedSetupSel(){
     	 return schedSetupSel;
      }
@@ -149,6 +139,12 @@ public class appController {
     	 this.schedSetupSel = b;
      }
  
+     */
+    // End Unused
+    
+    public void setTestingTimers() {
+    	testingTimers = true;
+    }
     
     /**
 	 * @return the hr
@@ -177,7 +173,6 @@ public class appController {
 	public  Calendar getSetRun() {
 		return setRun;
 	}
-
 	
 	/**
 	 * @return the timer
@@ -200,16 +195,12 @@ public class appController {
 		return date2;
 	}
 
-	
-
 	/**
 	 * @return the defSub
 	 */
 	public String getDefSub() {
 		return defSub;
 	}
-
-	
 
 	/**
 	 * @return the defSemester
@@ -218,16 +209,12 @@ public class appController {
 		return defSemester;
 	}
 
-	
-
 	/**
 	 * @return the defCourseName
 	 */
 	public  String getDefCourseName() {
 		return defCourseName;
 	}
-
-	
 
 	/**
 	 * @return the defCourseStart
@@ -236,16 +223,12 @@ public class appController {
 		return defCourseStart;
 	}
 
-	
-
 	/**
 	 * @return the defCourseEnd
 	 */
 	public  String getDefCourseEnd() {
 		return defCourseEnd;
 	}
-
-	
 
 	/**
 	 * @return the defMonStart
@@ -254,16 +237,12 @@ public class appController {
 		return defMonStart;
 	}
 
-	
-
 	/**
 	 * @return the defMonEnd
 	 */
 	public  String getDefMonEnd() {
 		return defMonEnd;
 	}
-
-	
 
 	/**
 	 * @return the defTueStart
@@ -272,16 +251,12 @@ public class appController {
 		return defTueStart;
 	}
 
-	
-
 	/**
 	 * @return the defTueEnd
 	 */
 	public  String getDefTueEnd() {
 		return defTueEnd;
 	}
-
-	
 
 	/**
 	 * @return the defWedStart
@@ -290,16 +265,12 @@ public class appController {
 		return defWedStart;
 	}
 
-	
-
 	/**
 	 * @return the defWedEnd
 	 */
 	public  String getDefWedEnd() {
 		return defWedEnd;
 	}
-
-	
 
 	/**
 	 * @return the defThuStart
@@ -308,16 +279,12 @@ public class appController {
 		return defThuStart;
 	}
 
-	
-
 	/**
 	 * @return the defThuEnd
 	 */
 	public  String getDefThuEnd() {
 		return defThuEnd;
 	}
-
-	
 
 	/**
 	 * @return the defFriStart
@@ -326,16 +293,12 @@ public class appController {
 		return defFriStart;
 	}
 
-	
-
 	/**
 	 * @return the defFriEnd
 	 */
 	public  String getDefFriEnd() {
 		return defFriEnd;
 	}
-
-	
 
 	/**
 	 * @return the defSatStart
@@ -344,16 +307,12 @@ public class appController {
 		return defSatStart;
 	}
 
-	
-
 	/**
 	 * @return the defSatEnd
 	 */
 	public  String getDefSatEnd() {
 		return defSatEnd;
 	}
-
-	
 
 	/**
 	 * @return the username
@@ -362,12 +321,9 @@ public class appController {
 		return username;
 	}
 	
-	
 	public void setUsername(String name) {
 		this.username = name;
 	}
-
-	
 
 	/**
 	 * @return the password
@@ -381,15 +337,12 @@ public class appController {
 		this.password = pass;
 	}
 
-	
-
 	/**
 	 * @return the loggedin
 	 */
-	public  boolean isLoggedin() {
+	public boolean isLoggedin() {
 		return loggedin;
 	}
-
 	
 	/**
 	 * 
@@ -407,16 +360,12 @@ public class appController {
 		return dataReceived;
 	}
 
-	
-
 	/**
 	 * @return the edSchedSel
 	 */
 	public  boolean isEdSchedSel() {
 		return edSchedSel;
 	}
-
-	
 
 	/**
 	 * @return the schedSetupSel
@@ -425,16 +374,12 @@ public class appController {
 		return schedSetupSel;
 	}
 
-	
-
 	/**
 	 * @return the logoutSel
 	 */
 	public  boolean isLogoutSel() {
 		return logoutSel;
 	}
-
-	
 
 	/**
 	 * @return the clearDate
@@ -443,16 +388,12 @@ public class appController {
 		return clearDate;
 	}
 
-	
-
 	/**
 	 * @return the clearMonth
 	 */
 	public  int getClearMonth() {
 		return clearMonth;
 	}
-
-	
 
 	/**
 	 * @return the clearYear
@@ -461,8 +402,6 @@ public class appController {
 		return clearYear;
 	}
 
-	
-
 	/**
 	 * @return the counter
 	 */
@@ -470,16 +409,12 @@ public class appController {
 		return counter;
 	}
 
-	
 	/**
 	 * 
 	 * @param c - set the counter for login attempts
 	 */
 	public void setCounter(int c){
-		
-		
 		this.counter = c;
-		
 	}
 
 	/**
@@ -497,13 +432,13 @@ public class appController {
 	public  InterfaceController getIc() {
 		return ic;
 	}
-
 	
 	public void setDataReceived(Boolean d){
 		
 		//this.ic.log.dataRec = d;
 		this.dataReceived = d;
 	}
+	
 	/**
 	 * @return the auth
 	 */
@@ -511,16 +446,12 @@ public class appController {
 		return auth;
 	}
 
-	
-
 	/**
 	 * @return the courseSel
 	 */
 	public  int getCourseSel() {
 		return courseSel;
 	}
-
-	
 
 	/**
 	 * @return the classEnded
@@ -547,7 +478,6 @@ public class appController {
 		return this.dataReceived;
 	}
 	
-
 	/**
 	 * @return the dbClear
 	 */
@@ -557,15 +487,12 @@ public class appController {
 	}
 	*/
 
-
 	/**
 	 * @return the popup15min
 	 */
 	public TimerTask getPopup15min() {
 		return this.popup15min;
 	}
-
-	
 
 	/**
 	 * @return the popup5min
@@ -574,16 +501,12 @@ public class appController {
 		return this.popup5min;
 	}
 
-	
-
 	/**
 	 * @return the endofclass
 	 */
 	public TimerTask getEndofclass() {
 		return this.endofclass;
 	}
-
-	
 
 	/**
 	 * @return the systemExit
@@ -593,8 +516,6 @@ public class appController {
 		return systemExit;
 	}
 	*/
-
-	
 
 	/**
 	 * @return the tenmin
@@ -638,15 +559,13 @@ public class appController {
 	}
 	
 /*	public void nullTimers(){
-		
-		
+
 		this.popup15min = null;
 		this.popup5min = null;
 		this.endofclass = null;
 	}*/
 
 	public void newTimers(){
-		
 
 	}
 
@@ -686,314 +605,304 @@ public class appController {
 		//int result = db.connect("jdbc:mysql://dgarc012.homeip.net:3306/mydb", "cen5076", "cen5076");
 		//System.out.println("Connected:" + result);
 		appc.begin();
-       
-       
     }
 
 	/**
 	 * Loginstate 
 	 * 
 	 */
-public void loginState(){
+	public void loginState(){
+		
+		ic.Initiate_Login_Form();            
+	    dataReceived = false;
+	    do
+	    {
+	    	//data ! received
+	    	dataReceived = ic.log.dataReceived();
+	    	sleep(300);
+	         
+	    	//Waiting Login
 	
-	ic.Initiate_Login_Form();            
-    dataReceived = false;
-     do
-     {
-     //data ! received
-     	dataReceived = ic.log.dataReceived();
-         sleep(300);
-         
-		 	//Waiting Login
-
-     }while(!dataReceived);
-     
-     
-     //data received
-     ic.log.setDataRec(false);
-     dataReceived = false;
-     //CEN5076
-     //System.out.println("User= " + ic.log.getUsername());
-     //System.out.println("Password= " + ic.log.getPassword());
-     username = ic.log.getUsername();
-     password = ic.log.getPassword();
-
+	    } while(!dataReceived);
+	     
+	     
+	    //data received
+	    ic.log.setDataRec(false);
+	    dataReceived = false;
+	    //CEN5076
+	    //System.out.println("User= " + ic.log.getUsername());
+	    //System.out.println("Password= " + ic.log.getPassword());
+	    username = ic.log.getUsername();
+	    password = ic.log.getPassword();
+	}
 	
-}
-
-/**
- * In charge of authentication
- * 
- */
-public void authenticate(){
+	/**
+	 * In charge of authentication
+	 * 
+	 */
+	public void authenticate(){
+		
+		 auth = new Authenticate(username,password);
+	     if(auth.validate_Login()){
+	         loggedin = true;
+	         auth.logout();
+	         db.connect(username,password);
+	         
+	         //logged in
+	     }
+	     
+	       
+	     if(!loggedin){
+			 	//Waiting Login
 	
-	 auth = new Authenticate(username,password);
-     if(auth.validate_Login()){
-         loggedin = true;
-         auth.logout();
-         db.connect(username,password);
-         
-         //logged in
-     }
-     
-       
-     if(!loggedin){
-		 	//Waiting Login
-
-     //invalid not locked out
-         ic.Initiate_IncorrectLogin();
-         counter++;
-         while(!dataReceived)
-         {
-             dataReceived = Messages.isAck();
-             //System.out.println("in");
-         }
-         dataReceived = false;
-         Messages.setAck(false);
-         
-     }
-     
-     if(counter >= 3){
-        
-     	//terminated
-        
-         ic.passwordLock();
-         while(!dataReceived)
-         {
-             dataReceived = Messages.isAck();
-             
-         }
-         System.exit(0);
-      }
+	     //invalid not locked out
+	         ic.Initiate_IncorrectLogin();
+	         counter++;
+	         while(!dataReceived)
+	         {
+	             dataReceived = Messages.isAck();
+	             //System.out.println("in");
+	         }
+	         dataReceived = false;
+	         Messages.setAck(false);
+	         
+	     }
+	     
+	     if(counter >= 3){
+	        
+	     	//terminated
+	        
+	         ic.passwordLock();
+	         while(!dataReceived)
+	         {
+	             dataReceived = Messages.isAck();
+	             
+	         }
+	         System.exit(0);
+	      }
+	}
 	
-}
-
-/**
- * main work of the begin method
- * 
- */
-public void ready(){
+	/**
+	 * main work of the begin method
+	 * 
+	 */
+	public void ready(){
+		
+		//Added by DG
+		dataReceived = false;
 	
-	//Added by DG
-	dataReceived = false;
+	    //logged in
+	    ic.Initiate_MainMenu();
+	    try{
+		    if(this.checkClear())
+		    {
+		 	   db.clearDatabase();
+		    }
+	    }
+	    catch (Exception e){
+	 	   System.out.println(e.toString());
+	    }
+	    
+	    ArrayList<Integer> courseList = db.getCourses();
+	     
+	    Calendar tempC = new GregorianCalendar();
+	    int currentDay = tempC.get(Calendar.DAY_OF_WEEK);
+	    tempC.setTimeInMillis(System.currentTimeMillis());
+	    //System.out.println("Curr Day: " +currentDay);
+	    Date fifteenMin;
+	    Date fiveMin;
+	    Date endClass;
+	     
+	    for(int i = 0; i < courseList.size(); i++)
+	    {
+	    	System.out.println("Courses for day" + currentDay + ": " + courseList);
+	    	 
+	    	boolean isNull = true;
+	    	getData(courseList.get(i).intValue());
+	    	newTimer = new FutureTimer();
+	         
+	    	if(currentDay == 2 && defMonEnd.compareTo("") != 0)
+	    	{
+	    		timerParser(defMonEnd);
+	    		isNull = false;
+	    	}
+	    	
+	    	else if(currentDay == 3 && defTueEnd.compareTo("") != 0)
+	    	{
+	    		timerParser(defTueEnd);
+	    		isNull = false;
+	    	}
+	    	
+	    	else if(currentDay == 4 && defWedEnd.compareTo("") != 0)
+	    	{
+	    		timerParser(defWedEnd);
+	    		isNull = false;
+	    	}
+	     
+	    	else if(currentDay == 5 && defThuEnd.compareTo("") != 0)
+	    	{
+	    		timerParser(defThuEnd);
+	    		isNull = false;
+	    	}
+	    	else if(currentDay == 6 && defFriEnd.compareTo("") != 0)
+	    	{
+	    		timerParser(defFriEnd);
+	    		isNull = false;
+	    	}
+	         
+	    	else if(currentDay == 7 && defSatEnd.compareTo("") != 0)
+	    	{    
+	    		timerParser(defSatEnd);
+	    		isNull = false;
+	    	}         
+	         
+	    	if(!isNull) {
+	    		fiveMin = get5BeforeEnd(hr, min);
+	    		System.out.println("Five Minute Warning-" + fiveMin.toString());
+	    		newTimer.schedule(popup5min, fiveMin);
+	    		//newTimer.schedule(popup5min, new Date(System.currentTimeMillis()+10));
 
-    //logged in
-    ic.Initiate_MainMenu();
-    try{
-    if(this.checkClear())
-    {
- 	   
- 	   db.clearDatabase();
-    }
-    }
-    catch (Exception e){
- 	   System.out.println(e.toString());
-    }
-    
-    ArrayList<Integer> courseList = db.getCourses();
-     
-     Calendar tempC = new GregorianCalendar();
-     int currentDay = tempC.get(Calendar.DAY_OF_WEEK);
-     tempC.setTimeInMillis(System.currentTimeMillis());
-     //System.out.println("Curr Day: " +currentDay);
-     Date fifteenMin;
-     Date fiveMin;
-     Date endClass;
-     
-     for(int i = 0; i < courseList.size(); i++)
-     {
-         boolean isNull = true;
-         getData(courseList.get(i).intValue());
-         newTimer = new FutureTimer();
-         
-         if(currentDay == 2 && defMonEnd.compareTo("") != 0)
-         {
-             timerParser(defMonEnd);
-             isNull = false;
-         }
-         else if(currentDay == 3 && defTueEnd.compareTo("") != 0)
-         {
-             timerParser(defTueEnd);
-             isNull = false;
-         }
-         else if(currentDay == 4 && defWedEnd.compareTo("") != 0)
-         {
-             timerParser(defWedEnd);
-             isNull = false;
-         }
-         else if(currentDay == 5 && defThuEnd.compareTo("") != 0)
-         {
-             timerParser(defThuEnd);
-             isNull = false;
-         }
-         else if(currentDay == 6 && defFriEnd.compareTo("") != 0)
-         {
-             timerParser(defFriEnd);
-             isNull = false;
-         }
-         
-         else if(currentDay == 7 && defSatEnd.compareTo("") != 0)
-         {
-             
-             timerParser(defSatEnd);
-             isNull = false;
-         }
-         
-         
-         if(!isNull){
-             fiveMin = get5BeforeEnd(hr, min);
-             System.out.println("Five Minute Warning-" + fiveMin.toString());
-             //newTimer.schedule(popup5min, fiveMin);
-             newTimer.schedule(popup5min,  new Date(System.currentTimeMillis()+10));
-
-             fifteenMin = get15BeforeEnd(hr, min);   
-             System.out.println("Fifteen Minute Warning-" + fifteenMin.toString());
-             //newTimer.schedule(popup15min, fifteenMin);
-             newTimer.schedule(popup15min, new Date(System.currentTimeMillis()+10));
-
-
-             endClass = getEndTime(hr, min);
-             System.out.println("End Class Warning-" + endClass.toString());
-             //newTimer.schedule(endofclass, endClass);
-             newTimer.schedule(endofclass,  new Date(System.currentTimeMillis()+10));
-
-         }
-     }
+	    		fifteenMin = get15BeforeEnd(hr, min);   
+	    		System.out.println("Fifteen Minute Warning-" + fifteenMin.toString());
+	    		newTimer.schedule(popup15min, fifteenMin);
+	    		//newTimer.schedule(popup15min, new Date(System.currentTimeMillis()+10));
 	
+	    		endClass = getEndTime(hr, min);
+	    		System.out.println("End Class Warning-" + endClass.toString());
+	    		newTimer.schedule(endofclass, endClass);
+	    		//newTimer.schedule(endofclass, new Date(System.currentTimeMillis()+10));
+	    	}
+	    }	
+	}
 	
-}
+	/**
+	 * 
+	 * Handles the logout actions if logout selected
+	 * 
+	 */
+	public void logOut(){
 
-/**
- * 
- * Handles the logout actions if logout selected
- * 
- */
-public void logOut(){
+		//terminated
+	    // Logout 
+		//CEN5076 Changed to have parameter this
+	    //auth.logout(this);
+	    ic.Initiate_Logout();
+
+	}
 	
-	//terminated
-    // Logout 
-	//CEN5076 Changed to have parameter this
-    //auth.logout(this);
-    ic.Initiate_Logout();
-
-}
-
-/**
- * Handles the edit schedule button and changing a course schedule
- * 
- */
-@SuppressWarnings("static-access")
-public void editSchedule(){
-    //System.out.println("Selection=" + ic.cs.selection);
-
-	//Editing Schedule
-    ic.Course_Select_Form();
-
-    while(!dataReceived)
-    {
-        dataReceived = ic.cs.courseSelected();
-        sleep(300);
-    }
-
-    ic.cs.setCourseSelected(false);
-    dataReceived = false;
-
-    courseSel = ic.cs.getSelection();
-
-    
-    getData(courseSel);
-
-    ic.Pre_Filled_Form(courseSel,defSub,defCourseName,defSemester,defCourseStart,
-            defCourseEnd,defMonStart,defMonEnd,defTueStart,defTueEnd,defWedStart,
-            defWedEnd,defThuStart,defThuEnd,defFriStart,defFriEnd,defSatStart,defSatEnd);
-
-    while(!dataReceived)
-    {
-        dataReceived = ic.edSched.dataRec(); 
-        sleep(300);
-    }    dataReceived = false;
-    
-    ic.edSched.setDataRec(false);
-
-    //System.out.println("Save has been pressed" +ic.edSched.newMonStart);
-    System.out.println("Store class");
-    if(db == null)
-    	System.out.println("Null db");
-    
-    System.out.println(PrefilledScheduleForm.getDefCourseID()); 
-    System.out.println(PrefilledScheduleForm.getNewCourseStart()); 
-    System.out.println(PrefilledScheduleForm.getNewCourseEnd()); 
-    System.out.println(PrefilledScheduleForm.getNewMonStart()); 
-    System.out.println(PrefilledScheduleForm.getNewMonEnd()); 
-    System.out.println(PrefilledScheduleForm.getNewTueStart()); 
-    System.out.println(PrefilledScheduleForm.getNewTueEnd()); 
-    System.out.println(PrefilledScheduleForm.getNewWedStart()); 
-    System.out.println(PrefilledScheduleForm.getNewWedEnd()); 
-    System.out.println(PrefilledScheduleForm.getNewThuStart());
-    System.out.println(PrefilledScheduleForm.getNewThuEnd()); 
-    System.out.println(PrefilledScheduleForm.getNewFriStart()); 
-    System.out.println(PrefilledScheduleForm.getNewFriEnd()); 
-    System.out.println(PrefilledScheduleForm.getNewSatStart()); 
-    System.out.println(PrefilledScheduleForm.getNewSatEnd());
-    db.storeClassSched(PrefilledScheduleForm.getDefCourseID(), PrefilledScheduleForm.getNewCourseStart(), PrefilledScheduleForm.getNewCourseEnd(), 
-            PrefilledScheduleForm.getNewMonStart(), PrefilledScheduleForm.getNewMonEnd(), PrefilledScheduleForm.getNewTueStart(), PrefilledScheduleForm.getNewTueEnd(), 
-            PrefilledScheduleForm.getNewWedStart(), PrefilledScheduleForm.getNewWedEnd(), PrefilledScheduleForm.getNewThuStart(), PrefilledScheduleForm.getNewThuEnd(), 
-            PrefilledScheduleForm.getNewFriStart(), PrefilledScheduleForm.getNewFriEnd(), PrefilledScheduleForm.getNewSatStart(), PrefilledScheduleForm.getNewSatEnd());
-    System.out.println("Class Stored");
-
+	/**
+	 * Handles the edit schedule button and changing a course schedule
+	 * 
+	 */
+	@SuppressWarnings("static-access")
+	public void editSchedule(){
+	    //System.out.println("Selection=" + ic.cs.selection);
 	
-}
-
-/**
- * Handles the adding of a new courses schedule
- * 
- */
-public void setSchedule(){
+		//Editing Schedule
+	    ic.Course_Select_Form();
 	
-	 ic.sched.launchInitial();
-     //Initial Schedule Setup
-	 //TODO Issue they did not use dataReceived so cannot enter this code
-     while(!ic.sched.dataRec())
-     {
-         dataReceived = ic.sched.dataRec();
-         sleep(300);
-     }
-     dataReceived = false;
-     ic.sched.setDataRec(false);
-     
-     db.storeClassInfo(ScheduleForm.getNewCourseID(), ScheduleForm.getNewSub(), ScheduleForm.getNewCourseName(),ScheduleForm.getNewSemester());
-     db.storeClassSched(ScheduleForm.getNewCourseID(), ScheduleForm.getNewCourseStart(), ScheduleForm.getNewCourseEnd(), 
-             ScheduleForm.getNewMonStart(), ScheduleForm.getNewMonEnd(), ScheduleForm.getNewTueStart(), ScheduleForm.getNewTueEnd(), 
-             ScheduleForm.getNewWedStart(), ScheduleForm.getNewWedEnd(), ScheduleForm.getNewThuStart(), ScheduleForm.getNewThuEnd(), 
-             ScheduleForm.getNewFriStart(), ScheduleForm.getNewFriEnd(), ScheduleForm.getNewSatStart(), ScheduleForm.getNewSatEnd());
-
-}
-
-/**
- *  Created to parse out MAIN and handles clearing the database when a course has ended
- */
-public boolean checkClear()
-{
-    ArrayList<String> endDates = db.getEndDates();
-    Calendar endCal = new GregorianCalendar();
-    Calendar now = Calendar.getInstance();
-    
-    for(int i = 0; i < endDates.size(); i++)
-    {
-        dateParser(endDates.get(i));
-        
-        //System.out.println("Day : " +clearDate);
-        //System.out.println("Month : " +clearMonth);
-        //System.out.println("Year : " +clearYear);
-
-        endCal.set(clearYear + 2000, clearMonth-1, clearDate);
-        if(now.compareTo(endCal) <= 0)
-           return false;
-            
-    }
-    return true;
-            
-}
+	    while(!dataReceived)
+	    {
+	        dataReceived = ic.cs.courseSelected();
+	        sleep(300);
+	    }
+	
+	    ic.cs.setCourseSelected(false);
+	    dataReceived = false;
+	
+	    courseSel = ic.cs.getSelection();
+	    
+	    getData(courseSel);
+	
+	    ic.Pre_Filled_Form(courseSel,defSub,defCourseName,defSemester,defCourseStart,
+	            defCourseEnd,defMonStart,defMonEnd,defTueStart,defTueEnd,defWedStart,
+	            defWedEnd,defThuStart,defThuEnd,defFriStart,defFriEnd,defSatStart,defSatEnd);
+	
+	    while(!dataReceived)
+	    {
+	        dataReceived = ic.edSched.dataRec(); 
+	        sleep(300);
+	    }    dataReceived = false;
+	    
+	    ic.edSched.setDataRec(false);
+	
+	    //System.out.println("Save has been pressed" +ic.edSched.newMonStart);
+	    System.out.println("Store class");
+	    if(db == null)
+	    	System.out.println("Null db");
+	    
+	    System.out.println(PrefilledScheduleForm.getDefCourseID()); 
+	    System.out.println(PrefilledScheduleForm.getNewCourseStart()); 
+	    System.out.println(PrefilledScheduleForm.getNewCourseEnd()); 
+	    System.out.println(PrefilledScheduleForm.getNewMonStart()); 
+	    System.out.println(PrefilledScheduleForm.getNewMonEnd()); 
+	    System.out.println(PrefilledScheduleForm.getNewTueStart()); 
+	    System.out.println(PrefilledScheduleForm.getNewTueEnd()); 
+	    System.out.println(PrefilledScheduleForm.getNewWedStart()); 
+	    System.out.println(PrefilledScheduleForm.getNewWedEnd()); 
+	    System.out.println(PrefilledScheduleForm.getNewThuStart());
+	    System.out.println(PrefilledScheduleForm.getNewThuEnd()); 
+	    System.out.println(PrefilledScheduleForm.getNewFriStart()); 
+	    System.out.println(PrefilledScheduleForm.getNewFriEnd()); 
+	    System.out.println(PrefilledScheduleForm.getNewSatStart()); 
+	    System.out.println(PrefilledScheduleForm.getNewSatEnd());
+	    db.storeClassSched(PrefilledScheduleForm.getDefCourseID(), PrefilledScheduleForm.getNewCourseStart(), PrefilledScheduleForm.getNewCourseEnd(), 
+	            PrefilledScheduleForm.getNewMonStart(), PrefilledScheduleForm.getNewMonEnd(), PrefilledScheduleForm.getNewTueStart(), PrefilledScheduleForm.getNewTueEnd(), 
+	            PrefilledScheduleForm.getNewWedStart(), PrefilledScheduleForm.getNewWedEnd(), PrefilledScheduleForm.getNewThuStart(), PrefilledScheduleForm.getNewThuEnd(), 
+	            PrefilledScheduleForm.getNewFriStart(), PrefilledScheduleForm.getNewFriEnd(), PrefilledScheduleForm.getNewSatStart(), PrefilledScheduleForm.getNewSatEnd());
+	    System.out.println("Class Stored");
+	}
+	
+	/**
+	 * Handles the adding of a new courses schedule
+	 * 
+	 */
+	public void setSchedule(){
+		
+		 ic.sched.launchInitial();
+	     //Initial Schedule Setup
+		 //TODO Issue they did not use dataReceived so cannot enter this code
+	     while(!ic.sched.dataRec())
+	     {
+	         dataReceived = ic.sched.dataRec();
+	         sleep(300);
+	     }
+	     dataReceived = false;
+	     ic.sched.setDataRec(false);
+	     
+	     db.storeClassInfo(ScheduleForm.getNewCourseID(), ScheduleForm.getNewSub(), ScheduleForm.getNewCourseName(),ScheduleForm.getNewSemester());
+	     db.storeClassSched(ScheduleForm.getNewCourseID(), ScheduleForm.getNewCourseStart(), ScheduleForm.getNewCourseEnd(), 
+	             ScheduleForm.getNewMonStart(), ScheduleForm.getNewMonEnd(), ScheduleForm.getNewTueStart(), ScheduleForm.getNewTueEnd(), 
+	             ScheduleForm.getNewWedStart(), ScheduleForm.getNewWedEnd(), ScheduleForm.getNewThuStart(), ScheduleForm.getNewThuEnd(), 
+	             ScheduleForm.getNewFriStart(), ScheduleForm.getNewFriEnd(), ScheduleForm.getNewSatStart(), ScheduleForm.getNewSatEnd());
+	
+	}
+	
+	/**
+	 *  Created to parse out MAIN and handles clearing the database when a course has ended
+	 */
+	public boolean checkClear()
+	{
+	    ArrayList<String> endDates = db.getEndDates();
+	    Calendar endCal = new GregorianCalendar();
+	    Calendar now = Calendar.getInstance();
+	    
+	    for(int i = 0; i < endDates.size(); i++)
+	    {
+	        dateParser(endDates.get(i));
+	        
+	        //System.out.println("Day : " +clearDate);
+	        //System.out.println("Month : " +clearMonth);
+	        //System.out.println("Year : " +clearYear);
+	
+	        endCal.set(clearYear + 2000, clearMonth-1, clearDate);
+	        if(now.compareTo(endCal) <= 0)
+	           return false;
+	            
+	    }
+	    return true;
+	            
+	}
 
 /**
  * This is the main method parsed out into many methods which are inside begin.
@@ -1262,6 +1171,7 @@ public void begin(){
         hr = Integer.parseInt(timer.substring(0,2));
         min = Integer.parseInt(timer.substring(3,5));
     }
+    
     public void dateParser(String timer)
     {
     	System.out.println("dateParser input:"+ timer);

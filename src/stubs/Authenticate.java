@@ -1,6 +1,6 @@
 package stubs;
 
-import Logic.appController;
+import testUtil.DBUtil;
 
 
 /*
@@ -20,45 +20,29 @@ import Logic.appController;
  */
 public class Authenticate {
 
-
-	    
-	    String username;
-	    String password;
-	    DBConnection db;
-	    /*** CEN5076 ***/
-	    public boolean exit = false;
-
-    	public boolean passLogoutRef;
+	String username;
+	String password;
+	/*** CEN5076 ***/
+	public boolean exit = false;
+	
+//	public boolean passLogoutRef;
 	   
-	    /** Creates a new instance of Authenticate */
-	    public Authenticate(String user, String pw) {
-	        username = user;
-	        password = pw;
-	        db = new DBConnection();
-	        
-	    }
+	/** Creates a new instance of Authenticate */
+	public Authenticate(String user, String pw) {
+		username = user;
+		password = pw;
+	}
 	    
-	    public boolean validate_Login()
-	    {
-	        int state; 
-	        state = db.connect(username,password);          // connect to default database
-	        if(state == 0)
-	            return true;
-	        else
-	            return false;   
-	    }
-	    
-	    public boolean logout()
-	    {
-	        int state;
-	        state = db.disconnect();
-
-	        if(state == 0)
-	            return true;
-	        else
-	            return false;
-	    }
-	    
+	public boolean validate_Login()
+	{
+		return (username == DBUtil.USERNAME) && (password == DBUtil.PASSWORD);
+	}
+	
+	public boolean logout()
+	{
+		return true;
+	}
+/*
 	    public boolean logout(appController app){
 	    	
 			if(passLogoutRef){
@@ -67,6 +51,5 @@ public class Authenticate {
 			}
 	    	return this.logout();
 	    }
-	    
-	}
-
+*/
+}

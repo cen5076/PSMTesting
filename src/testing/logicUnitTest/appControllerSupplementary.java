@@ -28,11 +28,11 @@ public class appControllerSupplementary {
 	}
 
 	/** Test Case ID: PSM001_Login-UnitTest-L01
-	 * Purpose: Test miscellaneous getter methods
-	 * Date Created: 10/27/12
-	 * Author: David Garcia
-	 * Stubs needed: 
-	 */
+	* Purpose: Test miscellaneous getter methods
+	* Date Created: 10/27/12
+	* Author: David Garcia
+	* Stubs needed:
+	*/
 	@Test
 	public void testGetters() {
 		
@@ -53,11 +53,11 @@ public class appControllerSupplementary {
 	}
 	
 	/** Test Case ID: PSM001_Login-UnitTest-L02
-	 * Purpose: Test miscellaneous setter methods
-	 * Date Created: 10/27/12
-	 * Author: David Garcia
-	 * Stubs needed: 
-	 */
+	* Purpose: Test miscellaneous setter methods
+	* Date Created: 10/27/12
+	* Author: David Garcia
+	* Stubs needed:
+	*/
 	@Test
 	public void testSetters() {
 		
@@ -77,11 +77,11 @@ public class appControllerSupplementary {
 	}
 	
 	/** Test Case ID: PSM001_Login-UnitTest-L03
-	 * Purpose: Test miscellaneous system calls wrapped in methods
-	 * Date Created: 10/27/12
-	 * Author: David Garcia
-	 * Stubs needed: 
-	 */
+	* Purpose: Test miscellaneous system calls wrapped in methods
+	* Date Created: 10/27/12
+	* Author: David Garcia
+	* Stubs needed:
+	*/
 	@Test
 	public void testSystemCalls() {
 		
