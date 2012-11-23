@@ -6,17 +6,13 @@ package DataStore;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import testUtil.Course;
-
 /**
  * @author Luis
  */
-@SuppressWarnings("unused")
 public class DBConnection
 {
     private Connection myCon;
@@ -29,7 +25,7 @@ public class DBConnection
     //private String marcosDb = "jdbc:mysql://131.94.178.165:3306/mydb";
     private String localDb = "jdbc:mysql://dgarc012.homeip.net:3306/mydb";
     private String result;
-    private String [] courses;
+    //private String [] courses;
     
     /** Creates a new instance of DBConnection */
     public DBConnection()
@@ -617,9 +613,10 @@ public class DBConnection
     {
        try{ 
         Statement s = myCon.createStatement();
-        int rowCount;
+//        int rowCount;
         s.executeUpdate("DROP TABLE IF EXISTS Class100");
-        rowCount = s.executeUpdate(
+//        rowCount = 
+        		s.executeUpdate(
                         "CREATE TABLE Class100("
                             + "course_id INT UNSIGNED NOT NULL,"
                             + "course_subject VARCHAR (20),"

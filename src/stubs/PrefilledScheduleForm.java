@@ -1,51 +1,49 @@
 package stubs;
 
 import testUtil.Course;
-//import Interface.PrefilledScheduleForm;
-@SuppressWarnings("unused")
+
 public class PrefilledScheduleForm {
 
-	private static final long serialVersionUID = 1L;
+//	private static final long serialVersionUID = 1L;
 	private static int defCourseID;
-      static  String defSub;
-      static  String defSemester;
-      static  String defCourseName;
-      static  String defCourseStart;
-      static  String defCourseEnd;
-      static  String defMonStart;
-      static  String defMonEnd;
-      static  String defTueStart;
-      static  String defTueEnd;
-      static  String defWedStart;
-      static  String defWedEnd;
-      static  String defThuStart;
-      static  String defThuEnd;
-      static  String defFriStart;
-      static  String defFriEnd;
-      static  String defSatStart;
-      static  String defSatEnd;
+	static  String defSub;
+	static  String defSemester;
+	static  String defCourseName;
+	static  String defCourseStart;
+	static  String defCourseEnd;
+	static  String defMonStart;
+	static  String defMonEnd;
+	static  String defTueStart;
+	static  String defTueEnd;
+	static  String defWedStart;
+	static  String defWedEnd;
+	static  String defThuStart;
+	static  String defThuEnd;
+	static  String defFriStart;
+	static  String defFriEnd;
+	static  String defSatStart;
+	static  String defSatEnd;
       
-      static int newCourseID;
-      static String newSub;
-      static String newSemester;
-      static String newCourseName;
-      private static String newCourseStart;
-      private static String newCourseEnd;
-      private static String newMonStart;
-      private static String newMonEnd;
-      private static String newTueStart;
-      private static String newTueEnd;
-      private static String newWedStart;
-      private static String newWedEnd;
-      private static String newThuStart;
-      private static String newThuEnd;
-      private static String newFriStart;
-      private static String newFriEnd;
-      private static String newSatStart;
-      private static String newSatEnd;
-
+	static int newCourseID;
+	static String newSub;
+	static String newSemester;
+	static String newCourseName;
+	private static String newCourseStart;
+	private static String newCourseEnd;
+	private static String newMonStart;
+	private static String newMonEnd;
+	private static String newTueStart;
+	private static String newTueEnd;
+	private static String newWedStart;
+	private static String newWedEnd;
+	private static String newThuStart;
+	private static String newThuEnd;
+	private static String newFriStart;
+	private static String newFriEnd;
+	private static String newSatStart;
+	private static String newSatEnd;
       
-      static boolean dataReceived;
+	static boolean dataReceived;
         
     /** Creates new form EditScheduleSetupUI2 */
     public PrefilledScheduleForm() {

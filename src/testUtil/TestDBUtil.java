@@ -14,7 +14,7 @@ public class TestDBUtil {
 		
 		Course c = new Course(1234,"Sub","Name","Semester","01/01/13","01/02/13");
 		
-		c.fillTimes(Course.defaultTimes);
+		c.fillTimes(Course.DEFAULT_TIMES);
 		
 		System.out.println(d.insertCourse(c));
 		

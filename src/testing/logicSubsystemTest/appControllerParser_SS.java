@@ -1,4 +1,4 @@
-package testing.logicUnitTest;
+package testing.logicSubsystemTest;
 
 import static org.junit.Assert.*;
 
@@ -11,7 +11,7 @@ import Logic.appController;
 import testUtil.Course;
 import testUtil.DBUtil;
 
-public class appControllerParserTest {
+public class appControllerParser_SS{
 
 	appController app1;
 	DBUtil dbUtil;
@@ -34,7 +34,7 @@ public class appControllerParserTest {
 		c1 = null;
 	}
 	
-	/** Test Case ID: PSM014_End_Semester_Clear-UnitTest-C01
+	/** Test Case ID: PSM014_End_Semester_Clear-SubsystemTest-C01
 	 * Purpose: To test parsing of a valid formatted date string. Should conform to DateFormat in C01 Test Identification and Setup.
 	 * Date Created: 09/11/12
 	 * Author: David Garcia
@@ -51,7 +51,7 @@ public class appControllerParserTest {
 
 	}
 	
-	/** Test Case ID: PSM014_End_Semester_Clear-UnitTest-C02
+	/** Test Case ID: PSM014_End_Semester_Clear-SubsystemTest-C02
 	 * Purpose: To test parsing of an invalid formatted date string. Should not conform to DateFormat in C01 Test 
 	 * 			Identification and Setup. Specifically the month is incorrect.
 	 * Date Created: 09/11/12
@@ -73,7 +73,7 @@ public class appControllerParserTest {
 		}
 	}
 	
-	/** Test Case ID: PSM014_End_Semester_Clear-UnitTest-C03
+	/** Test Case ID: PSM014_End_Semester_Clear-SubsystemTest-C03
 	 * Purpose: To test parsing of an invalid formatted date string. Should not conform to DateFormat in C01 Test 
 	 * 			Identification and Setup. Specifically the date is incorrect.
 	 * Date Created: 09/11/12
@@ -95,7 +95,7 @@ public class appControllerParserTest {
 		}
 	}
 	
-	/** Test Case ID: PSM014_End_Semester_Clear-UnitTest-C04
+	/** Test Case ID: PSM014_End_Semester_Clear-SubsystemTest-C04
 	 * Purpose: To test parsing of an invalid formatted date string. Should not conform to DateFormat in C01 Test 
 	 * 			Identification and Setup. Specifically the year is incorrect.
 	 * Date Created: 09/11/12
@@ -118,7 +118,7 @@ public class appControllerParserTest {
 		}
 	}
 	
-	/** Test Case ID: PSM014_End_Semester_Clear-UnitTest-C05
+	/** Test Case ID: PSM014_End_Semester_Clear-SubsystemTest-C05
 	 * Purpose: To test parsing of an invalid formatted date string. Should not conform to DateFormat in C01 Test 
 	 * 			Identification and Setup. Specifically the wildcard + is more than 1 character.(2 spaces)
 	 * Date Created: 09/11/12
@@ -140,7 +140,7 @@ public class appControllerParserTest {
 		}
 	}
 	
-	/** Test Case ID: PSM014_End_Semester_Clear-UnitTest-C06
+	/** Test Case ID: PSM014_End_Semester_Clear-SubsystemTest-C06
 	 * Purpose: To test parsing of an invalid formatted date string. Should not conform to DateFormat in C01 Test 
 	 * 			Identification and Setup. Specifically the wildcard + is too short.
 	 * Date Created: 09/11/12
@@ -162,7 +162,7 @@ public class appControllerParserTest {
 		}
 	}
 
-	/** Test Case ID: PSM001_Login-UnitTest-07
+	/** Test Case ID: PSM001_Login-SubsystemTest-07
 	 * Purpose: To test parsing of a valid time string. Should conform to TimeFormat in C07 Test Identification and Objective.
 	 * Date Created: 09/13/12
 	 * Author: David Garcia
@@ -178,7 +178,7 @@ public class appControllerParserTest {
 		
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-08
+	/** Test Case ID: PSM001_Login-SubsystemTest-08
 	 * Purpose: To test parsing of an invalid time string. Should not conform to TimeFormat in C07 Test Identification 
 	 * 			and Objective.Specifically the ‘hh’ is not a valid value.
 	 * Date Created: 09/13/12
@@ -200,7 +200,7 @@ public class appControllerParserTest {
 		}
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-09
+	/** Test Case ID: PSM001_Login-SubsystemTest-09
 	 * Purpose: To test parsing of an invalid time string. Should not conform to TimeFormat in C07 Test Identification 
 	 * 			and Objective.Specifically the ‘mm’ is not a valid value;
 	 * Date Created: 09/13/12
@@ -222,7 +222,7 @@ public class appControllerParserTest {
 		}
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-10
+	/** Test Case ID: PSM001_Login-SubsystemTest-10
 	 * Purpose: To test parsing of an invalid time string. Should not conform to TimeFormat in C07 Test Identification 
 	 * 			and Objective.Specifically the ‘:’ is not a valid length, too long;
 	 * Date Created: 09/13/12
@@ -244,7 +244,7 @@ public class appControllerParserTest {
 		}
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-11
+	/** Test Case ID: PSM001_Login-SubsystemTest-11
 	 * Purpose: To test parsing of an invalid time string. Should not conform to TimeFormat in C07 Test Identification 
 	 * 			and Objective.Specifically the ‘:’ is not a valid length, too short;
 	 * Date Created: 09/13/12
@@ -266,7 +266,7 @@ public class appControllerParserTest {
 		}
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-12
+	/** Test Case ID: PSM001_Login-SubsystemTest-12
 	 * Purpose: To test parsing of an invalid time string. Should not conform to TimeFormat in C07 Test Identification 
 	 * 			and Objective.Specifically the string is not a valid length, too short;
 	 * Date Created: 09/13/12

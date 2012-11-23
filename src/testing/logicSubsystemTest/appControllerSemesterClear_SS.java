@@ -1,4 +1,4 @@
-package testing.logicUnitTest;
+package testing.logicSubsystemTest;
 
 import static org.junit.Assert.*;
 
@@ -12,7 +12,7 @@ import Logic.appController;
 
 import testUtil.DBUtil;
 
-public class appControllerSemesterClearTest {
+public class appControllerSemesterClear_SS {
 
 	appController app1;
 	DBUtil dbUtil;
@@ -31,7 +31,7 @@ public class appControllerSemesterClearTest {
 		dbUtil = null;
 	}
 
-	/** Test Case ID: PSM014_End_Semester_Clear-UnitTest-E01
+	/** Test Case ID: PSM014_End_Semester_Clear-SubsystemTest-E01
 	 * Purpose: To test the setSemesterClear function which sets a variable used when clearing the database on 
 	 * 			a Timer action.
 	 * Date Created: 09/18/12
@@ -54,7 +54,7 @@ public class appControllerSemesterClearTest {
 		
 	}
 	
-	/** Test Case ID: PSM014_End_Semester_Clear-UnitTest-E02
+	/** Test Case ID: PSM014_End_Semester_Clear-SubsystemTest-E02
 	 * Purpose: Test the setSemesterClear function which sets a variable used when clearing the database on a Timer action
 	 * Date Created: 09/18/12
 	 * Author: David Garcia

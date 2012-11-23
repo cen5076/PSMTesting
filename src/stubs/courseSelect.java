@@ -27,7 +27,6 @@ public class courseSelect {
    
 
    
-@SuppressWarnings("rawtypes")
 public courseSelect() {
        /* TODO Initialize Course list */
 	   courseSelect.selection = DBUtil.defaultCourseId;

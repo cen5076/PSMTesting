@@ -39,9 +39,10 @@ public class Course {
 	public static final String ENDDATE = "01/02/13";
 	
 	/* List of the values for the days */
-	public static final List<String> days = Arrays.asList("mon", "tue", "wed", "thu", "fri", "sat");
-	public static final List<String> defaultTimes = Arrays.asList("12:00","13:00","12:00","13:00","12:00","13:00",
+	public static final List<String> DAYS = Arrays.asList("mon", "tue", "wed", "thu", "fri", "sat");
+	public static final List<String> DEFAULT_TIMES = Arrays.asList("12:00","13:00","12:00","13:00","12:00","13:00",
 		"12:00","13:00","12:00","13:00","12:00","13:00");
+	public static final List<String> NO_TIMES = Arrays.asList("","","","","","","","","","","","");
 	
 	/**
 	 *Constructor for Course.
@@ -70,18 +71,18 @@ public class Course {
 		this.semester = sem;
 		this.startdt = start;
 		this.enddt = end;
-		this.monStart = defaultTimes.get(0);
-		this.monEnd = defaultTimes.get(1);
-		this.tueStart = defaultTimes.get(2);
-		this.tueEnd = defaultTimes.get(3);
-		this.wedStart = defaultTimes.get(4);
-		this.wedEnd = defaultTimes.get(5);
-		this.thuStart = defaultTimes.get(6);
-		this.thuEnd = defaultTimes.get(7);
-		this.friStart = defaultTimes.get(8);
-		this.friEnd = defaultTimes.get(9);
-		this.satStart = defaultTimes.get(10);
-		this.satEnd = defaultTimes.get(11);
+		this.monStart = DEFAULT_TIMES.get(0);
+		this.monEnd = DEFAULT_TIMES.get(1);
+		this.tueStart = DEFAULT_TIMES.get(2);
+		this.tueEnd = DEFAULT_TIMES.get(3);
+		this.wedStart = DEFAULT_TIMES.get(4);
+		this.wedEnd = DEFAULT_TIMES.get(5);
+		this.thuStart = DEFAULT_TIMES.get(6);
+		this.thuEnd = DEFAULT_TIMES.get(7);
+		this.friStart = DEFAULT_TIMES.get(8);
+		this.friEnd = DEFAULT_TIMES.get(9);
+		this.satStart = DEFAULT_TIMES.get(10);
+		this.satEnd = DEFAULT_TIMES.get(11);
 
 		
 	}
@@ -144,7 +145,7 @@ public class Course {
 		fields.add("start_date");
 		fields.add("end_date");
 		
-		for (String day : days) {
+		for (String day : DAYS) {
 			fields.add("start_" + day);
 			fields.add("end_" + day);
 		}
@@ -154,9 +155,9 @@ public class Course {
 	}
 	
 	/**
-	 * returns the values of the course as an arraylist.
+	 * returns the values of the course as an ArrayList.
 	 * 
-	 * @return ArrayList<Stirng> values
+	 * @return ArrayList<String> values
 	 */
 	public ArrayList<String> getValues(){
 		

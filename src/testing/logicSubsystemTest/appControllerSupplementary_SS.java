@@ -1,4 +1,4 @@
-package testing.logicUnitTest;
+package testing.logicSubsystemTest;
 
 import static org.junit.Assert.*;
 
@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import Logic.appController;
 
-public class appControllerSupplementary {
+public class appControllerSupplementary_SS {
 
 	appController app1;
 	
@@ -26,7 +26,7 @@ public class appControllerSupplementary {
 		app1 = null;
 	}
 
-	/** Test Case ID: PSM001_Login-UnitTest-L01
+	/** Test Case ID: PSM001_Login-SubsystemTest-G01
 	* Purpose: Test miscellaneous getter methods
 	* Date Created: 10/27/12
 	* Author: David Garcia
@@ -35,7 +35,7 @@ public class appControllerSupplementary {
 	@Test
 	public void testGetters() {
 		
-		try {
+		try{
 			app1.getCon();
 			app1.getTime();
 			app1.getTimeMillis();
@@ -43,7 +43,7 @@ public class appControllerSupplementary {
 			app1.returnMin();
 			app1.getSemesterClear();
 		}
-		catch (Exception e) {
+		catch (Exception e){
 			
 			fail("Caught Exception Getting- " + e.toString());
 		}
@@ -51,7 +51,7 @@ public class appControllerSupplementary {
 		assertNotNull("Completed Getters Successfully", app1);
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-L02
+	/** Test Case ID: PSM001_Login-SubsystemTest-G02
 	* Purpose: Test miscellaneous setter methods
 	* Date Created: 10/27/12
 	* Author: David Garcia
@@ -71,9 +71,10 @@ public class appControllerSupplementary {
 		assertEquals("Hour", now.get(Calendar.HOUR), app1.getSetRun().get(Calendar.HOUR));
 		assertEquals("Minute", now.get(Calendar.MINUTE), app1.getSetRun().get(Calendar.MINUTE));
 		
+		
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-L03
+	/** Test Case ID: PSM001_Login-SubsystemTest-G03
 	* Purpose: Test miscellaneous system calls wrapped in methods
 	* Date Created: 10/27/12
 	* Author: David Garcia
@@ -84,4 +85,5 @@ public class appControllerSupplementary {
 		app1.sleep(0);
 		assertNotNull("Completed sleep command", app1);
 	}
+
 }

@@ -33,11 +33,9 @@ import stubs.PrefilledScheduleForm;
 //import Interface.ScheduleForm;
 import stubs.ScheduleForm;
 
-//Don't use these stubs for SS testing
-import stubs.FutureTimer;
-import stubs.Authenticate;
-
-//TODO Delete unused/commented out code
+//Only use these stubs for unit testing
+//import stubs.FutureTimer;
+//import stubs.Authenticate;
 
 /**
  *
@@ -47,19 +45,19 @@ public class appController {
     
     private static final long TENMIN = 600000;
     
+    // removed static modifier from most fields
     private int hr;
     private int min;
     private Calendar autoClear = new GregorianCalendar();
     private Calendar setRun = new GregorianCalendar();
-    //@SuppressWarnings("unused")
-	//private static Calendar calendar = new GregorianCalendar();
-    // CEN5076 - commented and added public to debug
-	private Timer timer = new FutureTimer();
-	//public Timer timer = new FutureTimer();
-	public boolean testingTimers = false;
-    private Date date = new Date();
-    private Date date2 = new Date();
     
+    // unused
+    // private static Calendar calendar = new GregorianCalendar();
+    
+	private Timer timer = new FutureTimer();
+	private Date date = new Date();
+    private Date date2 = new Date();
+	
     public String defSub = "";
     public String defSemester = "";
     public String defCourseName = "";
@@ -81,9 +79,7 @@ public class appController {
     private String username;
     private String password;
     private boolean loggedin;
-    //CEN5076 - commented made public for Debugging, also needed to be public for Authenticate stub to set a value
-    //private boolean dataReceived = false;
-    public boolean dataReceived = false;
+    private boolean dataReceived = false;
     private boolean edSchedSel = false;
     private boolean schedSetupSel = false;
     private boolean logoutSel = false;
@@ -91,9 +87,7 @@ public class appController {
     private int clearDate, clearMonth, clearYear;
     private int counter = 0;
     
-    //CEN5076 - commented made public for Debugging
     public static DBConnection db = new DBConnection();
-    //private DBConnection db;
     private static InterfaceController ic = new InterfaceController();
     private Authenticate auth;
     private int courseSel;
@@ -110,61 +104,17 @@ public class appController {
     /** Creates a new instance of ApplicationLogic */
     public appController() {
         hr = min = 0;
-        db = new DBConnection();
     }
-    
     
     /**** BEGIN TEST GENERATED FIELDS ****/
     /**
-     * All fields until END TEST GENERATED FIELDS are used to get validation values for tests and help set
-     * necessary fields.
+     * All fields until END TEST GENERATED FIELDS are added to help get and set necessary private fields.
      */
-    
-    //@Unused
-    /*
-     public boolean getEdSchedSel(){
-    	 return edSchedSel;
-     }
-     
-     public void setEdSchedSel(boolean b){
-    	 
-    	 this.edSchedSel = b;
-     }
- 
-     public boolean getSchedSetupSel(){
-    	 return schedSetupSel;
-     }
-     
-     
-     public void setSchedSetupSel(boolean b){
-    	 this.schedSetupSel = b;
-     }
- 
-     */
-    // End Unused
-    
-    public void setTestingTimers() {
-    	testingTimers = true;
-    }
-    
-    /**
-	 * @return the hr
-	 */
-	public int getHr() {
-		return hr;
-	}
-
-	/**
-	 * @return the min
-	 */
-	public int getMin() {
-		return min;
-	}
 
 	/**
 	 * @return the autoClear
 	 */
-	public  Calendar getAutoClear() {
+	public Calendar getAutoClear() {
 		return autoClear;
 	}
 
@@ -346,10 +296,9 @@ public class appController {
 	}
 	
 	/**
-	 * 
 	 * @param l - logged in state T or F
 	 */
-	public void setLoggedIn(Boolean l ){
+	public void setLoggedIn(Boolean l){
 		
 		this.loggedin = l;
 	}
@@ -357,49 +306,49 @@ public class appController {
 	/**
 	 * @return the dataReceived
 	 */
-	public  boolean isDataReceived() {
+	public boolean isDataReceived() {
 		return dataReceived;
 	}
 
 	/**
 	 * @return the edSchedSel
 	 */
-	public  boolean isEdSchedSel() {
+	public boolean isEdSchedSel() {
 		return edSchedSel;
 	}
 
 	/**
 	 * @return the schedSetupSel
 	 */
-	public  boolean isSchedSetupSel() {
+	public boolean isSchedSetupSel() {
 		return schedSetupSel;
 	}
 
 	/**
 	 * @return the logoutSel
 	 */
-	public  boolean isLogoutSel() {
+	public boolean isLogoutSel() {
 		return logoutSel;
 	}
 
 	/**
 	 * @return the clearDate
 	 */
-	public  int getClearDate() {
+	public int getClearDate() {
 		return clearDate;
 	}
 
 	/**
 	 * @return the clearMonth
 	 */
-	public  int getClearMonth() {
+	public int getClearMonth() {
 		return clearMonth;
 	}
 
 	/**
 	 * @return the clearYear
 	 */
-	public  int getClearYear() {
+	public int getClearYear() {
 		return clearYear;
 	}
 
@@ -411,7 +360,6 @@ public class appController {
 	}
 
 	/**
-	 * 
 	 * @param c - set the counter for login attempts
 	 */
 	public void setCounter(int c){
@@ -421,16 +369,14 @@ public class appController {
 	/**
 	 * @return the db
 	 */
-	public  DBConnection getDb() {
+	public DBConnection getDb() {
 		return db;
 	}
-
-	
 
 	/**
 	 * @return the ic
 	 */
-	public  InterfaceController getIc() {
+	public InterfaceController getIc() {
 		return ic;
 	}
 	
@@ -443,14 +389,14 @@ public class appController {
 	/**
 	 * @return the auth
 	 */
-	public  Authenticate getAuth() {
+	public Authenticate getAuth() {
 		return auth;
 	}
 
 	/**
 	 * @return the courseSel
 	 */
-	public  int getCourseSel() {
+	public int getCourseSel() {
 		return courseSel;
 	}
 
@@ -462,7 +408,6 @@ public class appController {
 	}
 	
 	/**
-	 * 
 	 * @param c - the classEnded long time in milliseconds
 	 */
 	public void setClassEnded(long c){
@@ -471,22 +416,12 @@ public class appController {
 	}
 
 	/**
-	 * 
 	 * @return dataReceived private variable
 	 */
 	public boolean getDataReceived(){
 		
 		return this.dataReceived;
 	}
-	
-	/**
-	 * @return the dbClear
-	 */
-	/*@Unused
-	public static TimerTask getDbClear() {
-		return dbClear;
-	}
-	*/
 
 	/**
 	 * @return the popup15min
@@ -510,15 +445,6 @@ public class appController {
 	}
 
 	/**
-	 * @return the systemExit
-	 */
-	/*@Unused
-	public static TimerTask getSystemExit() {
-		return systemExit;
-	}
-	*/
-
-	/**
 	 * @return the tenmin
 	 */
 	public long getTenmin() {
@@ -526,17 +452,6 @@ public class appController {
 	}
 	
 	/**
-	 * 
-	 * @return return the logOutSel value
-	 */
-	/*public boolean getLogOutSel(){
-		
-		return this.logoutSel;
-	}
-	*/
-	/**
-	 * 
-	 *
 	 * @param b set the logout selected to b
 	 */
 	public void setLogOutSel(Boolean b){
@@ -551,38 +466,12 @@ public class appController {
 	}
 	
 	/**
-	 * 
 	 * @param d - Date sets the date used in appcontroller for autoexit
 	 */
 	public void setDate(Date d){
 		
 		this.date = d;
 	}
-	
-/*	public void nullTimers(){
-
-		this.popup15min = null;
-		this.popup5min = null;
-		this.endofclass = null;
-	}*/
-
-	public void newTimers(){
-
-	}
-
-	/**
-	 * Test Driver for entering authenticate
-	 * 
-	 * @param - username
-	 * @param - password
-	 * 
-	 */
-	/*@Unused
-	public void testDriverLogin(String user,String pass){
-		
-		this.dataReceived = true;
-	}
-	*/
 
     /**** END TEST GENERATED FIELDS ****/
 
@@ -593,18 +482,9 @@ public class appController {
 	 * @param args
 	 */
 	public static void main(String args[])
-    {       
-//       Calendar now = new GregorianCalendar();
-//       now.set(2008, 3, 15, 13, 29);
-//       date = now.getTime();
-//      
-    	
+    {   
 		appController appc = new appController();
 		
-		//DBConnection db = new DBConnection();
-		
-		//int result = db.connect("jdbc:mysql://dgarc012.homeip.net:3306/mydb", "cen5076", "cen5076");
-		//System.out.println("Connected:" + result);
 		appc.begin();
     }
 
@@ -630,9 +510,7 @@ public class appController {
 	    //data received
 	    ic.log.setDataRec(false);
 	    dataReceived = false;
-	    //CEN5076
-	    //System.out.println("User= " + ic.log.getUsername());
-	    //System.out.println("Password= " + ic.log.getPassword());
+
 	    username = ic.log.getUsername();
 	    password = ic.log.getPassword();
 	}
@@ -709,19 +587,17 @@ public class appController {
 	    Calendar tempC = new GregorianCalendar();
 	    int currentDay = tempC.get(Calendar.DAY_OF_WEEK);
 	    tempC.setTimeInMillis(System.currentTimeMillis());
-	    //System.out.println("Curr Day: " +currentDay);
+
 	    Date fifteenMin;
 	    Date fiveMin;
 	    Date endClass;
 	     
 	    for(int i = 0; i < courseList.size(); i++)
-	    {
-	    	System.out.println("Courses for day" + currentDay + ": " + courseList);
-	    	 
+	    {	 
 	    	boolean isNull = true;
 	    	getData(courseList.get(i).intValue());
 	    	newTimer = new FutureTimer();
-	         
+
 	    	if(currentDay == 2 && defMonEnd.compareTo("") != 0)
 	    	{
 	    		timerParser(defMonEnd);
@@ -759,17 +635,14 @@ public class appController {
 	         
 	    	if(!isNull) {
 	    		fiveMin = get5BeforeEnd(hr, min);
-	    		System.out.println("Five Minute Warning-" + fiveMin.toString());
 	    		newTimer.schedule(popup5min, fiveMin);
 	    		//newTimer.schedule(popup5min, new Date(System.currentTimeMillis()+10));
 
 	    		fifteenMin = get15BeforeEnd(hr, min);   
-	    		System.out.println("Fifteen Minute Warning-" + fifteenMin.toString());
 	    		newTimer.schedule(popup15min, fifteenMin);
 	    		//newTimer.schedule(popup15min, new Date(System.currentTimeMillis()+10));
 	
 	    		endClass = getEndTime(hr, min);
-	    		System.out.println("End Class Warning-" + endClass.toString());
 	    		newTimer.schedule(endofclass, endClass);
 	    		//newTimer.schedule(endofclass, new Date(System.currentTimeMillis()+10));
 	    	}
@@ -795,9 +668,7 @@ public class appController {
 	 * Handles the edit schedule button and changing a course schedule
 	 * 
 	 */
-	@SuppressWarnings("static-access")
 	public void editSchedule(){
-	    //System.out.println("Selection=" + ic.cs.selection);
 	
 		//Editing Schedule
 	    ic.Course_Select_Form();
@@ -828,30 +699,11 @@ public class appController {
 	    ic.edSched.setDataRec(false);
 	
 	    //System.out.println("Save has been pressed" +ic.edSched.newMonStart);
-	    System.out.println("Store class");
-	    if(db == null)
-	    	System.out.println("Null db");
-	    
-	    System.out.println(PrefilledScheduleForm.getDefCourseID()); 
-	    System.out.println(PrefilledScheduleForm.getNewCourseStart()); 
-	    System.out.println(PrefilledScheduleForm.getNewCourseEnd()); 
-	    System.out.println(PrefilledScheduleForm.getNewMonStart()); 
-	    System.out.println(PrefilledScheduleForm.getNewMonEnd()); 
-	    System.out.println(PrefilledScheduleForm.getNewTueStart()); 
-	    System.out.println(PrefilledScheduleForm.getNewTueEnd()); 
-	    System.out.println(PrefilledScheduleForm.getNewWedStart()); 
-	    System.out.println(PrefilledScheduleForm.getNewWedEnd()); 
-	    System.out.println(PrefilledScheduleForm.getNewThuStart());
-	    System.out.println(PrefilledScheduleForm.getNewThuEnd()); 
-	    System.out.println(PrefilledScheduleForm.getNewFriStart()); 
-	    System.out.println(PrefilledScheduleForm.getNewFriEnd()); 
-	    System.out.println(PrefilledScheduleForm.getNewSatStart()); 
-	    System.out.println(PrefilledScheduleForm.getNewSatEnd());
+
 	    db.storeClassSched(PrefilledScheduleForm.getDefCourseID(), PrefilledScheduleForm.getNewCourseStart(), PrefilledScheduleForm.getNewCourseEnd(), 
 	            PrefilledScheduleForm.getNewMonStart(), PrefilledScheduleForm.getNewMonEnd(), PrefilledScheduleForm.getNewTueStart(), PrefilledScheduleForm.getNewTueEnd(), 
 	            PrefilledScheduleForm.getNewWedStart(), PrefilledScheduleForm.getNewWedEnd(), PrefilledScheduleForm.getNewThuStart(), PrefilledScheduleForm.getNewThuEnd(), 
 	            PrefilledScheduleForm.getNewFriStart(), PrefilledScheduleForm.getNewFriEnd(), PrefilledScheduleForm.getNewSatStart(), PrefilledScheduleForm.getNewSatEnd());
-	    System.out.println("Class Stored");
 	}
 	
 	/**
@@ -862,7 +714,6 @@ public class appController {
 		
 		 ic.sched.launchInitial();
 	     //Initial Schedule Setup
-		 //TODO Issue they did not use dataReceived so cannot enter this code
 	     while(!ic.sched.dataRec())
 	     {
 	         dataReceived = ic.sched.dataRec();
@@ -891,10 +742,6 @@ public class appController {
 	    for(int i = 0; i < endDates.size(); i++)
 	    {
 	        dateParser(endDates.get(i));
-	        
-	        //System.out.println("Day : " +clearDate);
-	        //System.out.println("Month : " +clearMonth);
-	        //System.out.println("Year : " +clearYear);
 	
 	        endCal.set(clearYear + 2000, clearMonth-1, clearDate);
 	        if(now.compareTo(endCal) <= 0)
@@ -935,20 +782,13 @@ public void begin(){
 	               {
 	                   dataReceived = ic.mm.dataRec();
 	                   edSchedSel = ic.mm.editSchedSelected();
-	                   //CEN5076
-	                   //dataReceived = true;	                   //
 	                   schedSetupSel = ic.mm.InitSetupSelected();
-	                   //schedSetupSel = true;
-//
+
 	                   logoutSel = ic.mm.logoutSelected();
-	                   //System.out.println("Class end time: " +classEnded);
-	                   //System.out.println("Current time: " +System.currentTimeMillis());
 	                           
 	                           
 	                   if(classEnded != 0 && System.currentTimeMillis() - classEnded >= TENMIN)
 	                   {
-	                	   //terminated
-	                     //System.out.println("EXIT");
 	                     System.exit(0);   
 	                   }
 	                   
@@ -980,90 +820,14 @@ public void begin(){
 	               }
 
 	               dataReceived = false;
-	               
-	              // db.disconnect();
 	        }
 	        
 	        
 	}
-
-
-    /*
-     * * Created to parse out MAIN 
-     * 
-     *  @Unused
-     */
-/*
-    public void checkTimes()
-    {
-        ArrayList<Integer> courseList = db.getCourses();
-        
-        Calendar tempC = new GregorianCalendar();
-        int currentDay = tempC.get(Calendar.DAY_OF_WEEK);
-        tempC.setTimeInMillis(System.currentTimeMillis());
-        //System.out.println("Curr Day: " +currentDay);
-        Date fifteenMin;
-        Date fiveMin;
-        Date endClass;
-        
-        for(int i = 0; i < courseList.size(); i++)
-        {
-            boolean isNull = true;
-            getData(courseList.get(i).intValue());
-            Timer newTimer = new FutureTimer();
-            
-            if(currentDay == 2 && defMonEnd.compareTo("") != 0)
-            {
-                timerParser(defMonEnd);
-                isNull = false;
-            }
-            else if(currentDay == 3 && defTueEnd.compareTo("") != 0)
-            {
-                timerParser(defTueEnd);
-                isNull = false;
-            }
-            else if(currentDay == 4 && defWedEnd.compareTo("") != 0)
-            {
-                timerParser(defWedEnd);
-                isNull = false;
-            }
-            else if(currentDay == 5 && defThuEnd.compareTo("") != 0)
-            {
-                timerParser(defThuEnd);
-                isNull = false;
-            }
-            else if(currentDay == 6 && defFriEnd.compareTo("") != 0)
-            {
-                timerParser(defFriEnd);
-                isNull = false;
-            }
-            
-            else if(currentDay == 7 && defSatEnd.compareTo("") != 0)
-            {
-                
-                timerParser(defSatEnd);
-                isNull = false;
-            }
-            
-            
-            if(!isNull){
-                fiveMin = get5BeforeEnd(hr, min);
-                newTimer.schedule(popup5min, fiveMin);
-                fifteenMin = get15BeforeEnd(hr, min);              
-                newTimer.schedule(popup15min, fifteenMin);
-                endClass = getEndTime(hr, min);
-                newTimer.schedule(endofclass, endClass);
-            }
-        }   
-       
-    }
-
-    */
     
     public void getData(int course)
     {
         defSub = db.fetchCourseSubj(course);
-        System.out.println("setting Course " + course + " sub to " + String.valueOf(db.fetchCourseSubj(course)));
         defSemester = db.fetchCourseSemester(course);
         defCourseName = db.fetchCourseName(course);
         defCourseStart = db.fetchCourseStart(course);
@@ -1085,7 +849,7 @@ public void begin(){
     
     public void sleep(int milli)
     {
-          try { 
+        try { 
            Thread.sleep(milli);
         } catch (InterruptedException ex) {
            Logger.getLogger(appController.class.getName()).log(Level.SEVERE, null, ex);
@@ -1110,8 +874,7 @@ public void begin(){
     {
         public void run()
         {
-        	
-          //db.clearDatabase();
+        	db.clearDatabase();
         }
     };
     
@@ -1163,7 +926,6 @@ public void begin(){
     
     public long getTimeMillis()
     {
-    	//setRun = Gregorian calendar
         return setRun.getTimeInMillis();
     }
     
@@ -1175,10 +937,7 @@ public void begin(){
     
     public void dateParser(String timer)
     {
-    	System.out.println("dateParser input:"+ timer);
-        
         clearMonth = Integer.parseInt(timer.substring(0,2));
-       // System.out.println(timer.substring(0,2));
         clearDate = Integer.parseInt(timer.substring(3,5));
         clearYear = Integer.parseInt(timer.substring(6,8));
     }
@@ -1195,8 +954,9 @@ public void begin(){
     
     public Date getEndTime(int hrs, int mins)
     {
-        @SuppressWarnings("unused")
-		int years, months, dates, dayOfWeek;
+//		int years, months, dates, dayOfWeek;
+		
+		int years, months, dates;
         
         Calendar tempC = new GregorianCalendar();
         
@@ -1205,9 +965,9 @@ public void begin(){
         years = tempC.get(Calendar.YEAR);
         months = tempC.get(Calendar.MONTH);
         dates = tempC.get(Calendar.DATE);
-        dayOfWeek = tempC.get(Calendar.DAY_OF_WEEK);
+//        dayOfWeek = tempC.get(Calendar.DAY_OF_WEEK);
         tempC.set(years, months, dates, hrs, mins - 1, 1);
-        System.out.println(tempC.getTime().toString());
+//        System.out.println(tempC.getTime().toString());
         return tempC.getTime();
     }
     
@@ -1224,9 +984,10 @@ public void begin(){
     
     public Date get15BeforeEnd(int hrs, int mins)
     {
-        @SuppressWarnings("unused")
-		int years, months, dates, dayOfWeek; 
+//		int years, months, dates, dayOfWeek; 
         
+    	int years, months, dates; 
+    	
         Calendar tempC = new GregorianCalendar();
         
         tempC.setTimeInMillis(System.currentTimeMillis());
@@ -1234,21 +995,18 @@ public void begin(){
         years = tempC.get(Calendar.YEAR);
         months = tempC.get(Calendar.MONTH);
         dates =  tempC.get(Calendar.DATE);
-        dayOfWeek = tempC.get(Calendar.DAY_OF_WEEK);
+ //     dayOfWeek = tempC.get(Calendar.DAY_OF_WEEK);
         
-        /** CEN5076 - added for easier timer testing **/
-        if (this.testingTimers)
-        	tempC.set(years, months, dates, hrs, mins - 3, 1);
-        else
-        	tempC.set(years, months, dates, hrs, mins - 15, 1);
-        
+        tempC.set(years, months, dates, hrs, mins - 15, 1);
+    
         return tempC.getTime();
     }
     
     public Date get5BeforeEnd(int hrs, int mins)
     {
-        @SuppressWarnings("unused")
-		int years, months, dates, dayOfWeek;
+//		int years, months, dates, dayOfWeek;
+		
+		int years, months, dates;
         
         Calendar tempC = new GregorianCalendar();
         
@@ -1257,22 +1015,19 @@ public void begin(){
         years = tempC.get(Calendar.YEAR);
         months = tempC.get(Calendar.MONTH);
         dates = tempC.get(Calendar.DATE);
-        dayOfWeek = tempC.get(Calendar.DAY_OF_WEEK);
+//      dayOfWeek = tempC.get(Calendar.DAY_OF_WEEK);
         
-        /** CEN5076 - added for easier timer testing **/
-        if (this.testingTimers)
-        	tempC.set(years, months, dates, hrs, mins - 2, 1);
-        else
-        	tempC.set(years, months, dates, hrs, mins - 5, 1);
-        // System.out.println(dayWeek);
+        tempC.set(years, months, dates, hrs, mins - 5, 1);
         return tempC.getTime();
     }
     
+    // unused
     public void autoExit()
     {
         timer.schedule(systemExit, date);
     }
     
+    // unused
     public void autoClear()
     {
         timer.schedule(dbClear, date2);

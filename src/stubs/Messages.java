@@ -1,19 +1,16 @@
 package stubs;
 
-//import Stubs.Messages;
-
 public class Messages {
 
 	 /**
 	  * 
 	  */
-	private static final long serialVersionUID = 1L;
+//	private static final long serialVersionUID = 1L;
 	private static String m = "";
 	private static boolean logout;
 	private static boolean incorrectLogin;
 	private static boolean ack;
 	private static boolean lockedOut;
-	private boolean authTestFlag = false;
 	private javax.swing.JButton jButton1;
 	private javax.swing.JLabel jLabel1;
 	private static int counter = 0;
@@ -132,17 +129,6 @@ public class Messages {
 		this.jLabel1 = jLabel1;
 	}
 
-	/**
-	 * @return the serialversionuid
-	 */
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-		
-	public void setAuthFlag(boolean b) {
-		authTestFlag = b;
-	}
-
 	public void lockedOut()
 	{
 		m = "Too many tries. System Exiting.";
@@ -154,6 +140,7 @@ public class Messages {
 	{
 	        
 	}
+	
 	public void FifteenMinWarning()
     {
     	System.out.println("FifteenMinute Warning Ran");
@@ -181,7 +168,6 @@ public class Messages {
     		System.exit(0);
     	else
     		logout = true;
-      
     }
     
     @SuppressWarnings("unused")
@@ -208,7 +194,7 @@ public class Messages {
     public static boolean isAck() {
     	counter++;
 		System.out.println(counter);
-		if (counter >= 5) setAck(!ack);
+		if (counter % 3 == 0) setAck(!ack);
 		return ack;
 	}
 

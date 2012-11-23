@@ -1,4 +1,4 @@
-package testing.logicUnitTest;
+package testing.logicSubsystemTest;
 
 import static org.junit.Assert.*;
 
@@ -16,7 +16,7 @@ import testUtil.DBUtil;
 import Logic.appController;
 
 
-public class appControllerTimerTaskTest {
+public class appControllerTimerTask_SS {
 
 	appController app1;
 	Course c1;
@@ -38,11 +38,11 @@ public class appControllerTimerTaskTest {
 		dbUtil = null;
 	}
 
-	/** Test Case ID: PSM001_Login-UnitTest-K01
+	/** Test Case ID: PSM001_Login-SubsystemTest-F01
 	* Purpose: Test that all TimerTasks execute their appropriate run methods
 	* Date Created: 10/27/12
 	* Author: David Garcia
-	* Stubs needed: DBConnection, InterfaceController, Messages, FutureTimer
+	* Stubs needed: DBConnection, InterfaceController, Messages
 	*/	
 	@Test
 	public void testTimerTask_testAll() {
@@ -140,11 +140,10 @@ public class appControllerTimerTaskTest {
 
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-K02
+	/** Test Case ID: PSM001_Login-SubsystemTest-F02
 	* Purpose: Test the autoexit method for a course that ended.
 	* Date Created: 10/27/12
 	* Author: David Garcia
-	* Stubs needed: FutureTimer
 	*/
 	@Test
 	public void testTimerTasks_autoExit(){
@@ -157,11 +156,10 @@ public class appControllerTimerTaskTest {
 		assertNotNull("Completed test autoExit",app1);
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-K03
+	/** Test Case ID: PSM001_Login-SubsystemTest-F03
 	* Purpose: Test the dbClear method for a course that ended.
 	* Date Created: 10/27/12
 	* Author: David Garcia
-	* Stubs needed: FutureTimer
 	*/
 	@Test
 	public void testTimerTasks_autoClear(){

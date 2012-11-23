@@ -63,7 +63,7 @@ public class MainMenu extends javax.swing.JFrame {
          */
     	setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
       	
-      	javax.swing.JButton forceExit = new javax.swing.JButton();
+//      	javax.swing.JButton forceExit = new javax.swing.JButton();
 
       	//setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("PSM Main Menu");

@@ -1,4 +1,4 @@
-package testing.logicUnitTest;
+package testing.logicSubsystemTest;
 
 import static org.junit.Assert.*;
 
@@ -15,7 +15,7 @@ import org.junit.Test;
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 import Logic.appController;
 import stubs.DBConnection;
-import stubs.FutureTimer;
+import Logic.FutureTimer;
 import stubs.MainMenu;
 import stubs.Messages;
 import stubs.ScheduleForm;
@@ -25,10 +25,10 @@ import testUtil.Course;
 
 /**
  * This class tests the Begin method which has system functionality and is called within main.
- * Tests M04-M16 require admin rights to change system time
+ * Tests H04-H16 require admin rights to change system time
  */
 
-public class appControllerBeginTest {
+public class appControllerBegin_SS {
 	
 	static int currMonth;
 	static int currDate;
@@ -73,11 +73,11 @@ public class appControllerBeginTest {
 		}
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-M01
+	/** Test Case ID: PSM001_Login-SubsystemTest-F01
 	* Purpose: Test Begin authenticate state transition to login with a branch to the lockout case.
 	* Date Created: 10/27/12
 	* Author: David Garcia
-	* Stubs needed: Authenticate, DBConnection, InterfaceController, Messages
+	* Stubs needed: DBConnection, InterfaceController, Messages
 	*/
 	@Test
 	public void testBegin_AuthenticateToLoginTransition(){
@@ -99,11 +99,11 @@ public class appControllerBeginTest {
 		assertFalse("DataReceived toggled", app1.getDataReceived());
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-M02
+	/** Test Case ID: PSM001_Login-SubsystemTest-F02
 	* Purpose: Tests the ready state of appController and calls the clearDB section since a course has expired
 	* Date Created: 10/27/12
 	* Author: David Garcia
-	* Stubs needed: DBConnection, InterfaceController, FutureTimer
+	* Stubs needed: DBConnection, InterfaceController
 	*/
 	@Test
 	public void testBegin_ReadyState_ClearDB(){
@@ -143,12 +143,11 @@ public class appControllerBeginTest {
 		assertEquals("Timer End of Class",0,app1.getEndofclass().scheduledExecutionTime());
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-M03
+	/** Test Case ID: PSM001_Login-SubsystemTest-F03
 	* Purpose: Test All the states of the Begin method.
 	* Date Created: 10/27/12
 	* Author: David Garcia
-	* Stubs needed: InterFaceController, LoginForm, Authenticate, DBConnection, FutureTimer, ScheduleForm, MainMenu, 
-	* 				courseSelect
+	* Stubs needed: InterFaceController, LoginForm,  DBConnection, ScheduleForm, MainMenu, courseSelect
 	*/
 	@Test
 	public void testBegin_AllStates(){
@@ -305,11 +304,11 @@ public class appControllerBeginTest {
 		
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-M04
+	/** Test Case ID: PSM001_Login-SubsystemTest-F04
 	* Purpose: Test the branch for a Monday class end date check
 	* Date Created: 10/27/12
 	* Author: David Garcia
-	* Stubs needed: DBConnection, InterfaceController, FutureTimer
+	* Stubs needed: DBConnection, InterfaceController
 	*/
 	@Test
 	public void testBegin_TestDaysBranchesMon(){
@@ -370,11 +369,11 @@ public class appControllerBeginTest {
 		assertEquals("Get End Minute", 0, app1.returnMin());
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-M05
+	/** Test Case ID: PSM001_Login-SubsystemTest-F05
 	* Purpose: Test the branch for a Monday class end check that fails validation of end time check
 	* Date Created: 11/13/12
 	* Author: Matthew Brown
-	* Stubs needed: DBConnection, InterfaceController, FutureTimer
+	* Stubs needed: DBConnection, InterfaceController
 	*/
 	@Test
 	public void testBegin_TestDaysBranchesMon2(){
@@ -434,11 +433,11 @@ public class appControllerBeginTest {
 		assertEquals("Get End Minute", 0, app1.returnMin());
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-M06
+	/** Test Case ID: PSM001_Login-SubsystemTest-F06
 	* Purpose: Test the branch for a Tuesday class end date check
 	* Date Created: 10/27/12
 	* Author: David Garcia
-	* Stubs needed: DBConnection, InterfaceController, FutureTimer
+	* Stubs needed: DBConnection, InterfaceController
 	*/
 	@Test
 	public void testBegin_TestDaysBranchesTue(){
@@ -498,11 +497,11 @@ public class appControllerBeginTest {
 		assertEquals("Get End Minute", 0, app1.returnMin());
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-M07
+	/** Test Case ID: PSM001_Login-SubsystemTest-F07
 	* Purpose: Test the branch for a Tuesday class end check that fails validation of end time check
 	* Date Created: 11/13/12
 	* Author: Matthew Brown
-	* Stubs needed: DBConnection, InterfaceController, FutureTimer
+	* Stubs needed: DBConnection, InterfaceController
 	*/
 	@Test
 	public void testBegin_TestDaysBranchesTue2(){
@@ -563,11 +562,11 @@ public class appControllerBeginTest {
 		assertEquals("Get End Minute", 0, app1.returnMin());
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-M08
+	/** Test Case ID: PSM001_Login-SubsystemTest-F08
 	* Purpose: Test the branch for a Wednesday class end date check
 	* Date Created: 10/27/12
 	* Author: David Garcia
-	* Stubs needed: DBConnection, InterfaceController, FutureTimer
+	* Stubs needed: DBConnection, InterfaceController
 	*/
 	@Test
 	public void testBegin_TestDaysBranchesWed(){
@@ -628,11 +627,11 @@ public class appControllerBeginTest {
 		assertEquals("Get End Minute", 0, app1.returnMin());
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-M09
+	/** Test Case ID: PSM001_Login-SubsystemTest-F09
 	* Purpose: Test the branch for a Wednesday class end check that fails validation of end time check
 	* Date Created: 11/13/12
 	* Author: Matthew Brown
-	* Stubs needed: DBConnection, InterfaceController, FutureTimer
+	* Stubs needed: DBConnection, InterfaceController
 	*/
 	@Test
 	public void testBegin_TestDaysBranchesWed2(){
@@ -694,11 +693,11 @@ public class appControllerBeginTest {
 	}
 	
 	
-	/** Test Case ID: PSM001_Login-UnitTest-M10
+	/** Test Case ID: PSM001_Login-SubsystemTest-F10
 	* Purpose: Test the branch for a Thursday class end date check
 	* Date Created: 10/27/12
 	* Author: David Garcia
-	* Stubs needed: DBConnection, InterfaceController, FutureTimer
+	* Stubs needed: DBConnection, InterfaceController
 	*/
 	@Test
 	public void testBegin_TestDaysBranchesThu(){
@@ -759,11 +758,11 @@ public class appControllerBeginTest {
 		assertEquals("Get End Minute", 0, app1.returnMin());
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-M11
+	/** Test Case ID: PSM001_Login-SubsystemTest-F11
 	* Purpose: Test the branch for a Thursday class end check that fails validation of end time check
 	* Date Created: 11/13/12
 	* Author: Matthew Brown
-	* Stubs needed: DBConnection, InterfaceController, FutureTimer
+	* Stubs needed: DBConnection, InterfaceController
 	*/
 	@Test
 	public void testBegin_TestDaysBranchesThu2(){
@@ -824,11 +823,11 @@ public class appControllerBeginTest {
 		assertEquals("Get End Minute", 0, app1.returnMin());
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-M12
+	/** Test Case ID: PSM001_Login-SubsystemTest-F12
 	* Purpose: Test the branch for a Friday class end date check
 	* Date Created: 10/27/12
 	* Author: David Garcia
-	* Stubs needed: DBConnection, InterfaceController, FutureTimer
+	* Stubs needed: DBConnection, InterfaceController
 	*/
 	@Test
 	public void testBegin_TestDaysBranchesFri(){
@@ -889,11 +888,11 @@ public class appControllerBeginTest {
 		assertEquals("Get End Minute", 0, app1.returnMin());
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-M13
+	/** Test Case ID: PSM001_Login-SubsystemTest-F13
 	* Purpose: Test the branch for a Friday class end check that fails validation of end time check
 	* Date Created: 11/13/12
 	* Author: Matthew Brown
-	* Stubs needed: DBConnection, InterfaceController, FutureTimer
+	* Stubs needed: DBConnection, InterfaceController
 	*/
 	@Test
 	public void testBegin_TestDaysBranchesFri2(){
@@ -954,11 +953,11 @@ public class appControllerBeginTest {
 		assertEquals("Get End Minute", 0, app1.returnMin());
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-M14
+	/** Test Case ID: PSM001_Login-SubsystemTest-F14
 	* Purpose: Test the branch for a Saturday class end date check
 	* Date Created: 10/27/12
 	* Author: David Garcia
-	* Stubs needed: DBConnection, InterfaceController, FutureTimer
+	* Stubs needed: DBConnection, InterfaceController
 	*/
 	@Test
 	public void testBegin_TestDaysBranchesSat(){
@@ -1019,11 +1018,11 @@ public class appControllerBeginTest {
 		assertEquals("Get End Minute", 0, app1.returnMin());
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-M15
+	/** Test Case ID: PSM001_Login-SubsystemTest-F15
 	* Purpose: Test the branch for a Saturday class end check that fails validation of end time check
 	* Date Created: 11/13/12
 	* Author: Matthew Brown
-	* Stubs needed: DBConnection, InterfaceController, FutureTimer
+	* Stubs needed: DBConnection, InterfaceController
 	*/
 	@Test
 	public void testBegin_TestDaysBranchesSat2(){
@@ -1084,11 +1083,11 @@ public class appControllerBeginTest {
 		assertEquals("Get End Minute", 0, app1.returnMin());
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-M16
+	/** Test Case ID: PSM001_Login-SubsystemTest-F16
 	* Purpose: Test the branch for a Sunday class end date check
 	* Date Created: 10/27/12
 	* Author: David Garcia
-	* Stubs needed: DBConnection, InterfaceController, FutureTimer
+	* Stubs needed: DBConnection, InterfaceController
 	*/
 	@Test
 	public void testBegin_TestDaysBranchesSun(){
@@ -1150,13 +1149,13 @@ public class appControllerBeginTest {
 	}
 	
 	
-	/** Test Case ID: PSM001_Login-UnitTest-M17
+	/** Test Case ID: PSM001_Login-SubsystemTest-F17
 	* Purpose: Test the call to the actual begin method and not its parsed out pieces. We set the values so
 	* 		   that it takes a path through LogIn, Authenticate, and Ready in the Begin State Chart, calling
 	* 		   clearDatabase method within Ready.
 	* Date Created: 10/27/12
 	* Author: David Garcia
-	* Stubs needed: DBConnection, InterfaceController, MainMenu, Authenticate, Messages
+	* Stubs needed: DBConnection, InterfaceController, MainMenu, Messages
 	*/
 	@Test
 	public void testBegin_Begin(){
@@ -1207,13 +1206,13 @@ public class appControllerBeginTest {
 		
 	}
 	
-	/** Test Case ID: PSM001_Login-UnitTest-M18
+	/** Test Case ID: PSM001_Login-SubsystemTest-F18
 	* Purpose: Test the call to the actual begin method and not its parsed out pieces. We set the values so
 	* 	       that it takes a path thru LogIn, Authenticate, Ready, Edit Schedule and Logout states in the
 	* 		   Begin State Chart.
 	* Date Created: 10/27/12
 	* Author: David Garcia
-	* Stubs needed: DBConnection, InterfaceController, MainMenu, Authenticate, PrefilledScheduleForm, Messages, FutureTimer
+	* Stubs needed: DBConnection, InterfaceController, MainMenu, PrefilledScheduleForm, Messages
 	*/
 	@Test
 	public void testBegin_BeginEditSched(){

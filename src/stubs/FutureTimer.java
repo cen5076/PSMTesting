@@ -7,7 +7,6 @@ import java.util.TimerTask;
 import java.util.Timer;
 
 
-@SuppressWarnings("unused")
 public class FutureTimer extends Timer {
 
     public void schedule(TimerTask task, Date myDate)

@@ -1,4 +1,4 @@
-package testing.logicUnitTest;
+package testing.logicSubsystemTest;
 
 import static org.junit.Assert.*;
 
@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import Logic.appController;
 
-public class appControllerTimersTest {
+public class appControllerTimers_SS {
 
 	private appController app1;
 	private Calendar temp;
@@ -33,7 +33,7 @@ public class appControllerTimersTest {
 		result = null;
 	}
 	
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D01
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D01
 	 * Purpose: test onpoint values for getEndTime.
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -60,10 +60,10 @@ public class appControllerTimersTest {
 		assertEquals("Second", SECONDS, result.get(Calendar.SECOND));
 	}
 
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D02
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D02
 	 * Purpose: test onpoint, and offpoint/inpoint values for getEndTime
 	 * Date Created: 09/15/12
-	 * Author: Matthew Brown
+	 * Author: Matthew Brown 
 	 */
 	@Test
 	public void testGetEndTime_2() {
@@ -86,10 +86,10 @@ public class appControllerTimersTest {
 
 	}
 	
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D03
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D03
 	 * Purpose: test onpoint, and offpoint/outpoint values for getEndTime
 	 * Date Created: 09/15/12
-	 * Author: Matthew Brown
+	 * Author: Matthew Brown 
 	 */
 	@Test
 	public void testGetEndTime_3() {
@@ -114,7 +114,7 @@ public class appControllerTimersTest {
 
 	}
 
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D04
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D04
 	 * Purpose: test offpoint/inpoint, and onpoint values for getEndTime
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -140,10 +140,10 @@ public class appControllerTimersTest {
 
 	}
 
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D05
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D05
 	 * Purpose: test offpoint/inpoints values for getEndTime
 	 * Date Created: 09/15/12
-	 * Author: Matthew Brown
+	 * Author: Matthew Brown 
 	 */
 	@Test
 	public void testGetEndTime_5() {
@@ -166,7 +166,7 @@ public class appControllerTimersTest {
 
 	}
 
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D06
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D06
 	 * Purpose: test offpoint/inpoint, and offpoint/outpoint values for getEndTime
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -192,7 +192,7 @@ public class appControllerTimersTest {
 
 	}
 
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D07
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D07
 	 * Purpose: test offpoint/outpoint, and onpoint values for getEndTime
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -220,7 +220,7 @@ public class appControllerTimersTest {
 
 	}
 
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D08
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D08
 	 * Purpose: test offpoint/outpoint, and offpoint/inpoint values for getEndTime
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -248,10 +248,10 @@ public class appControllerTimersTest {
 
 	}
 
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D09
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D09
 	 * Purpose: test offpoint/outpoint values for getEndTime
 	 * Date Created: 09/15/12
-	 * Author: Matthew Brown
+	 * Author: Matthew Brown 
 	 */
 	@Test
 	public void testGetEndTime_9() {
@@ -276,7 +276,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D10
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D10
 	 * Purpose: test onpoint values for get15BeforeEnd
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -303,7 +303,7 @@ public class appControllerTimersTest {
 		assertEquals("Second", SECONDS, result.get(Calendar.SECOND));
 	}
 	
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D11
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D11
 	 * Purpose: test onpoint, and offpoint/inpoint values for get15BeforeEnd
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -330,7 +330,7 @@ public class appControllerTimersTest {
 		assertEquals("Second", SECONDS, result.get(Calendar.SECOND));
 	}
 	
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D12
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D12
 	 * Purpose: test onpoint, and offpoint/outpoint values for get15BeforeEnd
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -358,7 +358,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D13
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D13
 	 * Purpose: test offpoint/inpoint, and onpoint values for get15BeforeEnd
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -384,7 +384,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D14
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D14
 	 * Purpose: test offpoint/inpoint values for get15BeforeEnd
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -410,7 +410,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D15
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D15
 	 * Purpose: test offpoint/inpoint, and offpoint/outpoint values for get15BeforeEnd
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -435,7 +435,7 @@ public class appControllerTimersTest {
 		assertEquals("Second", SECONDS, result.get(Calendar.SECOND));
 	}
 	
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D16
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D16
 	 * Purpose: test offpoint/outpoint, and onpoint values for get15BeforeEnd
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -463,7 +463,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D17
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D17
 	 * Purpose: test offpoint/outpoint, and offpoint/inpoint values for get15BeforeEnd
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -491,7 +491,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D18
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D18
 	 * Purpose: test offpoint/outpoint values for get15BeforeEnd
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -519,7 +519,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D19
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D19
 	 * Purpose: test onpoint values for get5BeforeEnd
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -547,7 +547,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D20
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D20
 	 * Purpose: test onpoint, and offpoint/inpoint values for get5BeforeEnd
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -575,7 +575,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D21
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D21
 	 * Purpose: test onpoint, and offpoint/outpoint values for get5BeforeEnd
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -603,7 +603,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D22
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D22
 	 * Purpose: test offpoint/inpoint, and onpoint values for get5BeforeEnd
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -628,7 +628,7 @@ public class appControllerTimersTest {
 		assertEquals("Second", SECONDS, result.get(Calendar.SECOND));
 	}
 	
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D23
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D23
 	 * Purpose: test offpoint/inpoint values for get5BeforeEnd
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -653,7 +653,7 @@ public class appControllerTimersTest {
 		assertEquals("Second", SECONDS, result.get(Calendar.SECOND));
 	}
 	
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D24
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D24
 	 * Purpose: test offpoint/inpoint, and offpoint/outpoint values for get5BeforeEnd
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -679,7 +679,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D25
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D25
 	 * Purpose: test offpoint/outpoint, and onpoint values for get5BeforeEnd
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -707,7 +707,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D26
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D26
 	 * Purpose: test offpoint/outpoint, and offpoint/inpoint values for get5BeforeEnd
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown
@@ -735,7 +735,7 @@ public class appControllerTimersTest {
 
 	}
 	
-	/** Test Case ID: PSM_008-Message_PopUp-UnitTest-D27
+	/** Test Case ID: PSM_008-Message_PopUp-SubsystemTest-D27
 	 * Purpose: test offpoint/outpoint values for get5BeforeEnd
 	 * Date Created: 09/15/12
 	 * Author: Matthew Brown

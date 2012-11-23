@@ -5,8 +5,11 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ appControllerGetData_SS.class, appControllerGetTimers_SS.class,
-		appControllerLogin_SS.class })
-public class AllSubsystemTests {
+@SuiteClasses({
+	appControllerLogin_SS.class,
+	appControllerGetData_SS.class,
+	appControllerGetTimers_SS.class
+	})
+public class AllLogicSubsystemTests_Old {
 
 }

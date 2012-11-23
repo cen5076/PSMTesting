@@ -3,7 +3,6 @@ package stubs;
 
 import testUtil.Course;
 
-//import Interface.ScheduleForm;
 
 @SuppressWarnings({ "unused"})
 public class ScheduleForm extends javax.swing.JFrame {

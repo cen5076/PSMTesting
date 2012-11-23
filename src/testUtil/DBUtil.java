@@ -3,23 +3,17 @@ package testUtil;
 // TODO Make static as with most utility classes
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import stubs.DBConnection;
 import testUtil.Course;
 
-@SuppressWarnings("unused")
 public class DBUtil {
 	
 	private String userName;
@@ -84,16 +78,6 @@ public class DBUtil {
 		}
 	}
 	
-	private String quote(String field){
-		
-		return "'" + field + "'";
-	}
-	
-	private String quote(int field){
-		
-		return "'" + String.valueOf(field) + "'";
-	}
-	
 	/* comma separated and '' quoted fields */
 	private String fieldsSQL() {
 		
@@ -102,8 +86,6 @@ public class DBUtil {
 		Course c = new Course();
 		
 		List<String> fieldNames = c.getFieldNames();
-		
-		Iterator<String> iter = fieldNames.iterator();
 		
 		for (String field : fieldNames) {
 			fields.append(field);
@@ -178,37 +160,10 @@ public class DBUtil {
 		return sql.toString();
 		
 	}
-	
-	/*private String insertSQL(int crsid, String crssub, String crsnam,String semester,String start,String end,String mons,String mone,String tues,String tuee,String weds,String wede,String thus,String thue,String fris,String frie,String sats,String sate){
-			
-		String insert = "INSERT INTO class100 (course_id,course_subject,course_name,semester,start_date,end_date,start_mon,end_mon,start_tue,end_tue,) values (";
-
-		StringBuilder sql = new StringBuilder();
-	} */
 		
 	public boolean addCourse(Course c) {
 		
 		return this.crsList.add(c);
-	}
-	
-	public int insertCourses(){
-		
-		int count = 0;
-		int i =0;
-		
-		Iterator<Course> list = this.crsList.listIterator();
-
-		while(list.hasNext()){
-			
-			if( this.insertCourse(list.next()) == 1)
-				i++;
-			else
-				return -1;
-			
-			
-		}
-		
-		return count;
 	}
 	
 	/* remove all from table */
@@ -282,13 +237,6 @@ public class DBUtil {
 		return this.minInMilli(hours)*60;
 	}
 	
-	public void initializeStub(DataStore.DBConnection dbConnection,ArrayList<Course> arrlist){
-	
-		
-		
-	
-	}
-	
 	/**
 	 * Returns a String of a date object passed in the right format expected by DB
 	 * 
@@ -304,25 +252,23 @@ public class DBUtil {
 		String endDate = d.toString();
 		String mon;
 		switch(now.get(Calendar.MONTH)){
-		
-		case Calendar.JANUARY: mon = "01"; break;
-		case Calendar.FEBRUARY: mon="02";break;
-		case Calendar.MARCH: mon="03";break;
-		case Calendar.APRIL: mon="04";break;
-		case Calendar.MAY: mon="05";break;
-		case Calendar.JUNE: mon="06";break;
-		case Calendar.JULY: mon="07";break;
-		case Calendar.AUGUST: mon="08";break;
-		case Calendar.SEPTEMBER: mon="09";break;
-		case Calendar.OCTOBER: mon="10";break;
-		case Calendar.NOVEMBER: mon="11";break;
-		case Calendar.DECEMBER: mon="12";break;
-		default: mon="00";
+			case Calendar.JANUARY: mon = "01"; break;
+			case Calendar.FEBRUARY: mon = "02"; break;
+			case Calendar.MARCH: mon = "03"; break;
+			case Calendar.APRIL: mon = "04"; break;
+			case Calendar.MAY: mon = "05"; break;
+			case Calendar.JUNE: mon = "06"; break;
+			case Calendar.JULY: mon = "07"; break;
+			case Calendar.AUGUST: mon = "08"; break;
+			case Calendar.SEPTEMBER: mon = "09"; break;
+			case Calendar.OCTOBER: mon = "10"; break;
+			case Calendar.NOVEMBER: mon = "11"; break;
+			case Calendar.DECEMBER: mon = "12"; break;
+			default: mon = "00";
 		}
 		
 		endDate = mon + "/" + endDate.substring(8,10) + "/" + endDate.substring(endDate.length()-2,endDate.length());
 		
 		return endDate;
 	}
-	
-	}
+}

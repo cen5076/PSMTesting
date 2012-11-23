@@ -2,8 +2,6 @@ package stubs;
 
 import testUtil.DBUtil;
 
-//TODO Delete unused/commented out code
-
 /*
  * *** STUB CLASS ***
  * Authenticate.java
@@ -43,14 +41,4 @@ public class Authenticate {
 	{
 		return true;
 	}
-/*
-	    public boolean logout(appController app){
-	    	
-			if(passLogoutRef){
-	    		app.setLogOutSel(true);
-	    		app.dataReceived = true;
-			}
-	    	return this.logout();
-	    }
-*/
 }

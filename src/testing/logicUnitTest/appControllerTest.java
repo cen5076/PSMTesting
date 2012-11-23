@@ -15,7 +15,6 @@ public class appControllerTest {
 
 	private appController app1;
 	private DBUtil dbUtil;
-
 	
 	@Before
 	public void setUp() throws Exception {
@@ -34,59 +33,59 @@ public class appControllerTest {
 	 * 			for all subsequent tests that rely on it.
 	 * Date Created: 09/08/12
 	 * Author: David Garcia
-	 * Stubs needed: DBConnection, InterfaceController, Messages, PrefilledScheduleForm, ScheduleForm
+	 * Stubs needed: DBConnection, InterfaceController, Messages, PrefilledScheduleForm, ScheduleForm, Authenticate, 
 	 */
 	@Test
 	public void testAppController() {
 		
 		// TODO verify if need to check others 
-		assertEquals("Hours",0,app1.getHr());//
-		assertEquals("Minutes",0,app1.getMin());//
-		assertEquals("Ten Minutes",dbUtil.minInMilli(10),app1.getTenmin());//
+		assertEquals("Hours", 0, app1.returnHr());//
+		assertEquals("Minutes", 0, app1.returnMin());//
+		assertEquals("Ten Minutes", dbUtil.minInMilli(10), app1.getTenmin());//
 		assertNotNull("Auto Clear", app1.getAutoClear());//
-		assertNotNull("Set Run",app1.getSetRun());//
-		assertNotNull("Timer",app1.getTimer());//
-		assertNotNull("Date",app1.getDate());//
-		assertNotNull("Date 2",app1.getDate2());//
-		assertEquals("DefSub","",app1.getDefSub());//
-		assertEquals("DefSemester","",app1.getDefSemester());
-		assertEquals("DefName","",app1.getDefCourseName());
-		assertEquals("DefStart","",app1.getDefCourseStart());
-		assertEquals("DefEnd","",app1.getDefCourseEnd());
-		assertEquals("DefMonStart","",app1.getDefMonStart());
-		assertEquals("DefMonEnd","",app1.getDefMonEnd());
-		assertEquals("DefTueStart","",app1.getDefTueStart());
-		assertEquals("DefTueEnd","",app1.getDefTueEnd());
-		assertEquals("DefWedStart","",app1.getDefWedStart());
-		assertEquals("DefWedEnd","",app1.getDefWedEnd());
-		assertEquals("DefThuStart","",app1.getDefThuStart());
-		assertEquals("DefThuEnd","",app1.getDefThuEnd());
-		assertEquals("DefFriStart","",app1.getDefFriStart());
-		assertEquals("DefFriEnd","",app1.getDefFriEnd());
-		assertEquals("DefSatStart","",app1.getDefSatStart());
-		assertEquals("DefSatEnd","",app1.getDefSatEnd());
+		assertNotNull("Set Run", app1.getSetRun());//
+		assertNotNull("Timer", app1.getTimer());//
+		assertNotNull("Date", app1.getDate());//
+		assertNotNull("Date 2", app1.getDate2());//
+		assertEquals("DefSub", "", app1.getDefSub());//
+		assertEquals("DefSemester", "", app1.getDefSemester());
+		assertEquals("DefName", "", app1.getDefCourseName());
+		assertEquals("DefStart", "", app1.getDefCourseStart());
+		assertEquals("DefEnd", "", app1.getDefCourseEnd());
+		assertEquals("DefMonStart", "", app1.getDefMonStart());
+		assertEquals("DefMonEnd", "", app1.getDefMonEnd());
+		assertEquals("DefTueStart", "", app1.getDefTueStart());
+		assertEquals("DefTueEnd", "", app1.getDefTueEnd());
+		assertEquals("DefWedStart", "", app1.getDefWedStart());
+		assertEquals("DefWedEnd", "", app1.getDefWedEnd());
+		assertEquals("DefThuStart", "", app1.getDefThuStart());
+		assertEquals("DefThuEnd", "", app1.getDefThuEnd());
+		assertEquals("DefFriStart", "", app1.getDefFriStart());
+		assertEquals("DefFriEnd", "", app1.getDefFriEnd());
+		assertEquals("DefSatStart", "", app1.getDefSatStart());
+		assertEquals("DefSatEnd", "", app1.getDefSatEnd());
 	    
-		assertNull("Username",app1.getUsername());
-		assertNull("Password",app1.getPassword());
-		assertFalse("Logged In",app1.isLoggedin());
+		assertNull("Username", app1.getUsername());
+		assertNull("Password", app1.getPassword());
+		assertFalse("Logged In", app1.isLoggedin());
 		
-		assertFalse("Data Recieved",app1.isDataReceived());
-		assertFalse("Ed Sched Select",app1.isEdSchedSel());
-		assertFalse("Schedule Setup Select",app1.isSchedSetupSel());
-		assertFalse("Logout Select",app1.isLogoutSel());
+		assertFalse("Data Recieved", app1.isDataReceived());
+		assertFalse("Ed Sched Select", app1.isEdSchedSel());
+		assertFalse("Schedule Setup Select", app1.isSchedSetupSel());
+		assertFalse("Logout Select", app1.isLogoutSel());
 		
-		assertEquals("ClearDate",0,app1.getClearDate());
-		assertEquals("ClearMonth",0,app1.getClearMonth());
-		assertEquals("ClearYear",0,app1.getClearYear());
+		assertEquals("ClearDate", 0, app1.getClearDate());
+		assertEquals("ClearMonth", 0, app1.getClearMonth());
+		assertEquals("ClearYear", 0, app1.getClearYear());
 		
-		assertEquals("Counter",0,app1.getCounter());
-		assertEquals("Class Ended",0,app1.getClassEnded());
-		assertNotNull("DBConnection",app1.getDb());
-		assertNotNull("InterfaceController",app1.getIc());
+		assertEquals("Counter", 0, app1.getCounter());
+		assertEquals("Class Ended", 0, app1.getClassEnded());
+		assertNotNull("DBConnection", app1.getDb());
+		assertNotNull("InterfaceController", app1.getIc());
 		
-		assertNull("Authenticate",app1.getAuth());
-		assertEquals("Course Sel",0,app1.getCourseSel());
-		assertEquals("Class End",0,app1.getClassEnded());
+		assertNull("Authenticate", app1.getAuth());
+		assertEquals("Course Sel", 0, app1.getCourseSel());
+		assertEquals("Class End", 0, app1.getClassEnded());
 		
 	}
 
@@ -103,7 +102,7 @@ public class appControllerTest {
 		app1.setPassword(DBUtil.PASSWORD);
 		
 		app1.LogIn();
-		assertTrue("Log In",app1.isLoggedin());
+		assertTrue("Log In", app1.isLoggedin());
 
 	}
 	
@@ -120,7 +119,7 @@ public class appControllerTest {
 		app1.setPassword(DBUtil.PASSWORD);
 
 		app1.LogIn();
-		assertFalse("Log In",app1.isLoggedin());
+		assertFalse("Log In", app1.isLoggedin());
 
 	}
 	
@@ -137,7 +136,24 @@ public class appControllerTest {
 		app1.setPassword("badPassword");
 		
 		app1.LogIn();
-		assertFalse("Log In",app1.isLoggedin());
+		assertFalse("Log In", app1.isLoggedin());
+
+	}
+	
+	/** Test Case ID: PSM001_Login-UnitTest-A05
+	 * Purpose: To test the login functionality for a valid username and invalid password
+	 * Date Created: 09/08/12
+	 * Author: David Garcia
+	 * Stubs needed: DBConnection
+	 */
+	@Test
+	public void testLogIn_4() {
+
+		app1.setUsername("badUser");
+		app1.setPassword("badPassword");
+		
+		app1.LogIn();
+		assertFalse("Log In", app1.isLoggedin());
 
 	}
 }
