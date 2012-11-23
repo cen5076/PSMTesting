@@ -52,7 +52,7 @@ public class appControllerTimerTaskTest {
 		gc.setTimeInMillis(dbUtil.minInMilli(3) + dbUtil.secInMilli(30) + System.currentTimeMillis());
 		Date d = gc.getTime();
 		String endDate = DBUtil.passedAsString(d);
-		c1 = new Course(1234,"Nam","Sub","Semester",Course.STARTDATE,endDate);
+		c1 = new Course(1234,"Name","Subject","Semester",Course.STARTDATE,endDate);
 		c1.fillTimes(Course.DEFAULT_TIMES);
 		
 		int today = gc.get(Calendar.DAY_OF_WEEK);

@@ -12,7 +12,7 @@ import Logic.appController;
 import testUtil.Course;
 import testUtil.DBUtil;
 
-public class appControllerGetData_SS {
+public class appControllerGetData_SS_Old {
 
 	appController app1;
 	Course c1,c2;
@@ -26,7 +26,7 @@ public class appControllerGetData_SS {
 		dbUtil = new DBUtil();
 		dbUtil.deleteAll();
 		app1 = new appController();
-		c1= new Course(1234,"Sub","Nam","Semester",Course.STARTDATE,Course.ENDDATE);
+		c1= new Course(1234,"Subject","Name","Semester",Course.STARTDATE,Course.ENDDATE);
 		c1.fillTimes(Course.DEFAULT_TIMES);
 		c2= new Course(2345,"Sub2","Nam2","Semester",Course.STARTDATE,Course.ENDDATE);
 		c2.fillTimes(Course.DEFAULT_TIMES);

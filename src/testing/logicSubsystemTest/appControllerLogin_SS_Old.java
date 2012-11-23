@@ -10,7 +10,7 @@ import Logic.appController;
 import testUtil.DBUtil;
 
 
-public class appControllerLogin_SS {
+public class appControllerLogin_SS_Old {
 
 	private appController app1;
 	

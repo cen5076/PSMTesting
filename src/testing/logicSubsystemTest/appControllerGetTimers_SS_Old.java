@@ -13,7 +13,7 @@ import org.junit.Test;
 import testUtil.DBUtil;
 import Logic.appController;
 
-public class appControllerGetTimers_SS {
+public class appControllerGetTimers_SS_Old {
 	
 	appController app1;
 	Calendar today;

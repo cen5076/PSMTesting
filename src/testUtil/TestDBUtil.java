@@ -12,7 +12,7 @@ public class TestDBUtil {
 		
 		d.deleteAll();
 		
-		Course c = new Course(1234,"Sub","Name","Semester","01/01/13","01/02/13");
+		Course c = new Course(1234,"Subject","Name","Semester","01/01/13","01/02/13");
 		
 		c.fillTimes(Course.DEFAULT_TIMES);
 		

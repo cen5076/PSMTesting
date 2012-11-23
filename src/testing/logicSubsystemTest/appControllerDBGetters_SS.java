@@ -37,6 +37,7 @@ public class appControllerDBGetters_SS {
 		
 		app1 = null;
 		c1 = null;
+		db.clearDatabase();
 		db = null;
 		
 	}
@@ -51,6 +52,37 @@ public class appControllerDBGetters_SS {
 	public void testGetData_1() {
 		
 		db.addCourse(c1);
+		app1.getData(c1.getCrseid());
+		
+		assertEquals("Subject", c1.getCrseSub(), app1.getDefSub());
+		assertEquals("Semester", c1.getSemester(), app1.getDefSemester());
+        assertEquals("CourseName", c1.getCrseNam(), app1.getDefCourseName());
+        assertEquals("CourseStart", c1.getStartdt(), app1.getDefCourseStart());
+        assertEquals("CourseEnd", c1.getEnddt(), app1.getDefCourseEnd());
+        assertEquals("MonStart", c1.getMonStart(), app1.getDefMonStart());
+        assertEquals("MonEnd", c1.getMonEnd(), app1.getDefMonEnd());
+        assertEquals("TueStart", c1.getTueStart(), app1.getDefTueStart());
+        assertEquals("TueEnd", c1.getTueEnd(), app1.getDefTueEnd());
+        assertEquals("WedStart", c1.getWedStart(), app1.getDefWedStart());
+        assertEquals("WedEnd", c1.getWedEnd(), app1.getDefWedEnd());
+        assertEquals("ThuStart", c1.getThuStart(), app1.getDefThuStart());
+        assertEquals("ThuEnd", c1.getThuEnd(), app1.getDefThuEnd());
+        assertEquals("FriStart", c1.getFriStart(), app1.getDefFriStart());
+        assertEquals("FriEnd", c1.getFriEnd(), app1.getDefFriEnd());
+        assertEquals("SatStart", c1.getSatStart(), app1.getDefSatStart());
+        assertEquals("SatEnd", c1.getSatEnd(), app1.getDefSatEnd());
+		
+	}
+	
+	/** Test Case ID: PSM001_Login-SubsystemTest-B02
+	 * Purpose: To test the getData functionality that returns necessary setup data after successful login for a Course Id NOT in the database.
+	 * Date Created: 09/08/12
+	 * Author: David Garcia
+	 * Stubs needed: DBConnection
+	 */
+	@Test
+	public void testGetData_2() {
+
 		app1.getData(c1.getCrseid());
 		
 		assertNull("Subject", app1.getDefSub());
@@ -70,37 +102,6 @@ public class appControllerDBGetters_SS {
         assertNull("FriEnd", app1.getDefFriEnd());
         assertNull("SatStart", app1.getDefSatStart());
         assertNull("SatEnd", app1.getDefSatEnd());
-		
-	}
-	
-	/** Test Case ID: PSM001_Login-SubsystemTest-B02
-	 * Purpose: To test the getData functionality that returns necessary setup data after successful login for a Course Id NOT in the database.
-	 * Date Created: 09/08/12
-	 * Author: David Garcia
-	 * Stubs needed: DBConnection
-	 */
-	@Test
-	public void testGetData_2() {
-
-		app1.getData(this.c1.getCrseid());
-		
-		assertEquals("Subject", this.c1.getCrseSub(), app1.getDefSub());
-		assertEquals("Semester", this.c1.getSemester(), app1.getDefSemester());
-        assertEquals("CourseName", this.c1.getCrseNam(), app1.getDefCourseName());
-        assertEquals("CourseStart", this.c1.getStartdt(), app1.getDefCourseStart());
-        assertEquals("CourseEnd", this.c1.getEnddt(), app1.getDefCourseEnd());
-        assertEquals("MonStart",this.c1.getMonStart(),app1.getDefMonStart());
-        assertEquals("MonEnd",this.c1.getMonEnd(),app1.getDefMonEnd());
-        assertEquals("TueStart",this.c1.getTueStart(),app1.getDefTueStart());
-        assertEquals("TueEnd",this.c1.getTueEnd(),app1.getDefTueEnd());
-        assertEquals("WedStart",this.c1.getWedStart(),app1.getDefWedStart());
-        assertEquals("WedEnd",this.c1.getWedEnd(),app1.getDefWedEnd());
-        assertEquals("ThuStart",this.c1.getThuStart(),app1.getDefThuStart());
-        assertEquals("ThuEnd",this.c1.getThuEnd(),app1.getDefThuEnd());
-        assertEquals("FriStart",this.c1.getFriStart(),app1.getDefFriStart());
-        assertEquals("FriEnd",this.c1.getFriEnd(),app1.getDefFriEnd());
-        assertEquals("SatStart",this.c1.getSatStart(),app1.getDefSatStart());
-        assertEquals("SatEnd",this.c1.getSatEnd(),app1.getDefSatEnd());
 
 	}
 }

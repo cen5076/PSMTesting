@@ -124,7 +124,7 @@ public class appControllerBegin_SS {
 		
 		String endDate = DBUtil.passedAsString(passedDate);
 		
-		Course c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
+		Course c1 = new Course(1234,"Subject","Name","Semester","10/01/12",endDate);
 		c1.fillTimes(Course.DEFAULT_TIMES);
 		
 		//System.out.println(endDate);
@@ -197,7 +197,7 @@ public class appControllerBegin_SS {
 		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
-		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
+		c1 = new Course(1234,"Subject","Name","Semester","10/01/12",endDate);
 		c1.fillTimes(Course.DEFAULT_TIMES);
 		
 		try{
@@ -228,7 +228,7 @@ public class appControllerBegin_SS {
 		ScheduleForm.dataReceived=false;
 
 		DBUtil.defaultCourseId = 1234;
-		Course c2 = new Course(DBUtil.defaultCourseId,"Sub","Nam","Semester",Course.STARTDATE,Course.ENDDATE);
+		Course c2 = new Course(DBUtil.defaultCourseId,"Subject","Name","Semester",Course.STARTDATE,Course.ENDDATE);
 		c1.fillTimes(Course.DEFAULT_TIMES);
 		
 		db.addCourse(c2);
@@ -247,7 +247,7 @@ public class appControllerBegin_SS {
 		app1.getIc().mm.setdataRec(true);
 		
 		DBUtil.defaultCourseId = 1234;
-		Course c3 = new Course(DBUtil.defaultCourseId, "Sub", "Nam", "Semester", Course.STARTDATE, Course.ENDDATE);
+		Course c3 = new Course(DBUtil.defaultCourseId, "Subject", "Name", "Semester", Course.STARTDATE, Course.ENDDATE);
 		c3.fillTimes(Course.DEFAULT_TIMES);
 		
 		db.addCourse(c3);
@@ -338,7 +338,7 @@ public class appControllerBegin_SS {
 		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
-		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
+		c1 = new Course(1234,"Subject","Name","Semester","10/01/12",endDate);
 		c1.fillTimes(Course.DEFAULT_TIMES);
 		
 		//System.out.println(endDate);
@@ -402,7 +402,7 @@ public class appControllerBegin_SS {
 		
 		String endDate = DBUtil.passedAsString(passedDate);
 		
-		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
+		c1 = new Course(1234,"Subject","Name","Semester","10/01/12",endDate);
 		c1.fillTimes(Course.NO_TIMES);
 		
 		//System.out.println(endDate);
@@ -466,7 +466,7 @@ public class appControllerBegin_SS {
 		
 		String endDate = DBUtil.passedAsString(passedDate);
 		
-		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
+		c1 = new Course(1234,"Subject","Name","Semester","10/01/12",endDate);
 		c1.fillTimes(Course.DEFAULT_TIMES);
 		
 		//System.out.println(endDate);
@@ -531,7 +531,7 @@ public class appControllerBegin_SS {
 		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
-		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
+		c1 = new Course(1234,"Subject","Name","Semester","10/01/12",endDate);
 		c1.fillTimes(Course.NO_TIMES);
 		
 		//System.out.println(endDate);
@@ -596,7 +596,7 @@ public class appControllerBegin_SS {
 		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
-		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
+		c1 = new Course(1234,"Subject","Name","Semester","10/01/12",endDate);
 		c1.fillTimes(Course.DEFAULT_TIMES);
 		
 		//System.out.println(endDate);
@@ -661,7 +661,7 @@ public class appControllerBegin_SS {
 		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
-		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
+		c1 = new Course(1234,"Subject","Name","Semester","10/01/12",endDate);
 		c1.fillTimes(Course.NO_TIMES);
 		
 		//System.out.println(endDate);
@@ -727,7 +727,7 @@ public class appControllerBegin_SS {
 		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
-		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
+		c1 = new Course(1234,"Subject","Name","Semester","10/01/12",endDate);
 		c1.fillTimes(Course.DEFAULT_TIMES);
 		
 		//System.out.println(endDate);
@@ -792,7 +792,7 @@ public class appControllerBegin_SS {
 		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
-		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
+		c1 = new Course(1234,"Subject","Name","Semester","10/01/12",endDate);
 		c1.fillTimes(Course.NO_TIMES);
 		
 		//System.out.println(endDate);
@@ -857,7 +857,7 @@ public class appControllerBegin_SS {
 		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
-		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
+		c1 = new Course(1234,"Subject","Name","Semester","10/01/12",endDate);
 		c1.fillTimes(Course.DEFAULT_TIMES);
 		
 		//System.out.println(endDate);
@@ -922,7 +922,7 @@ public class appControllerBegin_SS {
 		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
-		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
+		c1 = new Course(1234,"Subject","Name","Semester","10/01/12",endDate);
 		c1.fillTimes(Course.NO_TIMES);
 		
 		//System.out.println(endDate);
@@ -987,7 +987,7 @@ public class appControllerBegin_SS {
 		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
-		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
+		c1 = new Course(1234,"Subject","Name","Semester","10/01/12",endDate);
 		c1.fillTimes(Course.DEFAULT_TIMES);
 		
 		//System.out.println(endDate);
@@ -1052,7 +1052,7 @@ public class appControllerBegin_SS {
 		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
-		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
+		c1 = new Course(1234,"Subject","Name","Semester","10/01/12",endDate);
 		c1.fillTimes(Course.NO_TIMES);
 		
 		//System.out.println(endDate);
@@ -1117,7 +1117,7 @@ public class appControllerBegin_SS {
 		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
-		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
+		c1 = new Course(1234,"Subject","Name","Semester","10/01/12",endDate);
 		c1.fillTimes(Course.DEFAULT_TIMES);
 		
 		//System.out.println(endDate);
@@ -1176,7 +1176,7 @@ public class appControllerBegin_SS {
 		String endDate = DBUtil.passedAsString(passedDate);
 		
 		
-		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
+		c1 = new Course(1234,"Subject","Name","Semester","10/01/12",endDate);
 		c1.fillTimes(Course.DEFAULT_TIMES);
 		
 		db.addCourse(c1);
@@ -1232,7 +1232,7 @@ public class appControllerBegin_SS {
 		
 		String endDate = DBUtil.passedAsString(passedDate);
 		
-		c1 = new Course(1234,"Sub","Nam","Semester","10/01/12",endDate);
+		c1 = new Course(1234,"Subject","Name","Semester","10/01/12",endDate);
 		c1.fillTimes(Course.DEFAULT_TIMES);
 		
 		db.addCourse(c1);

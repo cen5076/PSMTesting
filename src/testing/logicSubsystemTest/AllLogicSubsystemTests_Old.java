@@ -6,9 +6,9 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	appControllerLogin_SS.class,
-	appControllerGetData_SS.class,
-	appControllerGetTimers_SS.class
+	appControllerLogin_SS_Old.class,
+	appControllerGetData_SS_Old.class,
+	appControllerGetTimers_SS_Old.class
 	})
 public class AllLogicSubsystemTests_Old {
 
