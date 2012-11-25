@@ -694,8 +694,9 @@ public class appController {
 	    {
 	        dataReceived = ic.edSched.dataRec(); 
 	        sleep(300);
-	    }    dataReceived = false;
+	    }
 	    
+	    dataReceived = false;
 	    ic.edSched.setDataRec(false);
 	
 	    //System.out.println("Save has been pressed" +ic.edSched.newMonStart);

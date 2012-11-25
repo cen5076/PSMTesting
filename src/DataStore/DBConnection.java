@@ -61,20 +61,6 @@ public class DBConnection
 	public String getDbAddr() {
 		return dbAddr;
 	}
-
-	/**
-	 * @return the localDb
-	 */
-//	public String getLocalDb() {
-//		return localDb;
-//	}
-
-	/**
-	 * @return the result
-	 */
-//	public String getResult() {
-//		return result;
-//	}
 	
 	/*** END TEST GENERATED METHODS ***/
 
